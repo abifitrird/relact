@@ -11,6 +11,13 @@
     <script src="<?php echo base_url('assets/js/jquery-3.4.1.slim.min.js') ?>"></script>
     <script src="<?php echo base_url('assets/js/popper.min.js') ?>"></script>
     <script src="<?php echo base_url('assets/js/bootstrap.min.js') ?>"></script>
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/pell/dist/pell.min.css">
+    <style>
+        /* override styles here */
+        .pell-content {
+            background-color: pink;
+        }
+    </style>
 </head>
 
 <body>
@@ -77,6 +84,7 @@
             <!-- isi halaman -->
             <div class="container-fluid shadow-sm" style="padding: 25px">
                 <h1>materi</h1>
+                <div id="editor" class="pell"></div>
             </div>
 
             <!-- footer -->
@@ -91,6 +99,14 @@
             e.preventDefault();
             $("#wrapper").toggleClass("toggled");
         });
+    </script>
+    <!-- Bottom of body -->
+    <script src="https://unpkg.com/pell"></script>
+    <script>
+        var editor = window.pell.init({
+            element: document.getElementById('editor'),
+            defaultParagraphSeparator: 'p',
+        })
     </script>
 </body>
 
