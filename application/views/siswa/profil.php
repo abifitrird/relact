@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,64 +12,52 @@
     <script src="<?php echo base_url('assets/js/popper.min.js') ?>"></script>
     <script src="<?php echo base_url('assets/js/bootstrap.min.js') ?>"></script>
 </head>
-<?php include("header.php") ?>      
+<?php include("header.php") ?>
 
-        <!-- isi halaman -->
-        <div class="container">
-            <div class="row shadow-sm" style="padding: 25px">
-                <div class="col-2">
-                    <img src="<?php echo base_url('assets/images/patrick.gif') ?>" class="shadow-sm rounded-circle src="./assets/images/patrick.gif" style=" width: 150px; height: 150px;">
-                </div>
-                <div class="col-10 my-auto">
-                    <h3>Nama Lengkap</h3>
-                    <p style="color: lightgray">
-                        Tambahkan bio singkat untuk memperkenalkan diri anda
-                    </p>
-                </div>
-            </div>
-            <div class="row shadow-sm" style="padding: 25px">
-                <div class="col-12">
-                    <p>
-                        NIS<br>
-                        Jabatan<br>
-                        Sekolah<br>
-                        Alamat<br>
-                        No. Telp/HP<br>
-                        Alamat email<br>
-                    </p>
-                </div>
-                <div class="row flex-row ml-md-auto d-md-flex">
-                    <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-primary mr-1" data-toggle="modal" data-target="#editProfil">
-                        Edit Profil Saya
-                    </button>
-                    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#editPassword">
-                        Edit Password Saya
-                    </button>
-                </div>
-            </div>
-            <div class="row shadow-sm bg-secondary" style="padding: 25px">
-                <h5>Lencana <?php echo $this->session->userdata("nama"); ?></h5>
-            </div>
-            <div class="m-3 bd-highlight">
-                <div class="d-flex align-content-start flex-wrap">
-                    <div class="px-1 mb-2 col-3">
-                        <div class="bg-white rounded shadow-sm d-flex flex-wrap">
-                            <h2>Hello</h2>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<!-- isi halaman -->
+<div class="container">
+    <div class="row shadow-sm" style="padding: 25px">
+        <div class="col-2">
+            <img src="<?php echo base_url('assets/images/patrick.gif') ?>" class="shadow-sm rounded-circle src=" ./assets/images/patrick.gif" style=" width: 150px; height: 150px;">
         </div>
+        <div class="col-10 my-auto">
+            <h3>Nama Lengkap</h3>
+            <p style="color: lightgray">
+                Tambahkan bio singkat untuk memperkenalkan diri anda
+            </p>
+        </div>
+    </div>
+    <div class="row shadow-sm" style="padding: 25px">
+        <div class="col-12">
+            <p>
+                NIS<br>
+                Jabatan<br>
+                Sekolah<br>
+                Alamat<br>
+                No. Telp/HP<br>
+                Alamat email<br>
+            </p>
+        </div>
+        <div class="row flex-row ml-md-auto d-md-flex">
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary mr-1" data-toggle="modal" data-target="#editProfil">
+                Edit Profil Saya
+            </button>
+            <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#editPassword">
+                Edit Password Saya
+            </button>
+        </div>
+    </div>
+</div>
 
-        <!-- Modal Edit Profil -->
-        <div class="modal fade" id="editProfil" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
+<!-- Modal Edit Profil -->
+<div class="modal fade" id="editProfil" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="staticBackdropLabel">Edit Profil Saya</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
+                    <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
@@ -99,18 +88,18 @@
                 <button type="submit" class="btn btn-primary">Simpan</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
             </div>
-            </div>
         </div>
-        </div>
+    </div>
+</div>
 
-        <!-- Modal Edit Password -->
-        <div class="modal fade" id="editPassword" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
+<!-- Modal Edit Password -->
+<div class="modal fade" id="editPassword" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="staticBackdropLabel">Edit Password Saya</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
+                    <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
@@ -134,22 +123,23 @@
                 <button type="submit" class="btn btn-primary">Simpan</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
             </div>
-            </div>
         </div>
-        </div>
-
-        <!-- footer -->
-        <?php include("footer.php") ?>
-    <!-- /#page-content-wrapper -->
     </div>
 </div>
 
+<!-- footer -->
+<?php include("footer.php") ?>
+<!-- /#page-content-wrapper -->
+</div>
+</div>
+
 <!-- Menu Toggle Script -->
-  <script>
+<script>
     $("#menu-toggle").click(function(e) {
-      e.preventDefault();
-      $("#wrapper").toggleClass("toggled");
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
     });
-  </script>
+</script>
 </body>
+
 </html>

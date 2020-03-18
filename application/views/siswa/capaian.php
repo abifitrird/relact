@@ -1,34 +1,51 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Capaian Belajar</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" type="text/css" media="screen" href="<?php echo base_url('assets/css/main.css') ?>">
-    <link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap.min.css') ?>">
-    <script src="<?php echo base_url('assets/js/jquery-3.4.1.slim.min.js') ?>"></script>
-    <script src="<?php echo base_url('assets/js/popper.min.js') ?>"></script>
-    <script src="<?php echo base_url('assets/js/bootstrap.min.js') ?>"></script>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Capaian Belajar</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" type="text/css" media="screen" href="<?php echo base_url('assets/css/main.css') ?>">
+  <link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap.min.css') ?>">
+  <script src="<?php echo base_url('assets/js/jquery-3.4.1.slim.min.js') ?>"></script>
+  <script src="<?php echo base_url('assets/js/popper.min.js') ?>"></script>
+  <script src="<?php echo base_url('assets/js/bootstrap.min.js') ?>"></script>
 </head>
 <?php include('header.php') ?>
 <!-- isi halaman -->
-        <div class="container-fluid shadow-sm" style="padding: 25px">
-            <h1>halaman capaian</h1>
+<div class="container-fluid shadow-sm" style="padding: 25px">
+  <div class="row shadow-sm bg-secondary" style="padding: 25px">
+    <h5>Lencana <?php echo $this->session->userdata("nama"); ?></h5>
+  </div>
+  <div class="m-3 bd-highlight">
+    <div class="d-flex align-content-start flex-wrap">
+      <div class="px-1 mb-2 col-3">
+        <div class="bg-white rounded shadow-sm d-flex flex-wrap">
+          <p>
+            <b>Mengerjakan Soal Percabangan</b><br>
+            Pemrograman Dasar<br>
+            Pada tanggal 17-03-2020
+          </p>
         </div>
-        
-        <!-- footer -->
-        <?php include("footer.php") ?>
-    <!-- /#page-content-wrapper -->
+      </div>
     </div>
+  </div>
+</div>
+
+<!-- footer -->
+<?php include("footer.php") ?>
+<!-- /#page-content-wrapper -->
+</div>
 </div>
 
 <!-- Menu Toggle Script -->
-  <script>
-    $("#menu-toggle").click(function(e) {
-      e.preventDefault();
-      $("#wrapper").toggleClass("toggled");
-    });
-  </script>
+<script>
+  $("#menu-toggle").click(function(e) {
+    e.preventDefault();
+    $("#wrapper").toggleClass("toggled");
+  });
+</script>
 </body>
+
 </html>
