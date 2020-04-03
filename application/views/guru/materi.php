@@ -8,16 +8,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" type="text/css" media="screen" href="<?php echo base_url('assets/css/main.css') ?>">
     <link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap.min.css') ?>">
+
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/quill.snow.css') ?>">
     <script src="<?php echo base_url('assets/js/jquery-3.4.1.slim.min.js') ?>"></script>
     <script src="<?php echo base_url('assets/js/popper.min.js') ?>"></script>
     <script src="<?php echo base_url('assets/js/bootstrap.min.js') ?>"></script>
-    <link rel="stylesheet" type="text/css" href="https://unpkg.com/pell/dist/pell.min.css">
-    <style>
-        /* override styles here */
-        .pell-content {
-            background-color: pink;
-        }
-    </style>
 </head>
 
 <body>
@@ -84,7 +79,19 @@
             <!-- isi halaman -->
             <div class="container-fluid shadow-sm" style="padding: 25px">
                 <h1>materi</h1>
-                <div id="editor" class="pell"></div>
+                <!-- <div id="editor" class="pell"></div> -->
+                <!-- Create the toolbar container -->
+                <div id="toolbar">
+                    <button class="ql-bold">Bold</button>
+                    <button class="ql-italic">Italic</button>
+                    <button class="ql-underline">Underline</button>
+                    <button class="ql-font">Font</button>
+                </div>
+
+                <!-- Create the editor container -->
+                <div id="editor">
+                    <p>Hello World!</p>
+                </div>
             </div>
 
             <!-- footer -->
@@ -100,13 +107,26 @@
             $("#wrapper").toggleClass("toggled");
         });
     </script>
-    <!-- Bottom of body -->
+    <!-- Bottom of body
     <script src="https://unpkg.com/pell"></script>
     <script>
         var editor = window.pell.init({
             element: document.getElementById('editor'),
             defaultParagraphSeparator: 'p',
         })
+    </script> -->
+
+    <!-- Include the Quill library -->
+    <script src="https://cdn.quilljs.com/1.0.0/quill.js"></script>
+
+    <!-- Initialize Quill editor -->
+    <script>
+        var editor = new Quill('#editor', {
+            modules: {
+                toolbar: '#toolbar'
+            },
+            theme: 'snow'
+        });
     </script>
 </body>
 
