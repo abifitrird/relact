@@ -15,7 +15,7 @@
 <?php include("header.php") ?>
 
 <!-- isi halaman -->
-<div class="container">
+<div class="container-fluid">
     <div class="row shadow-sm" style="padding: 25px">
         <div class="col-2">
             <img src="<?php echo base_url('assets/images/patrick.gif') ?>" class="shadow-sm rounded-circle src=" ./assets/images/patrick.gif" style=" width: 150px; height: 150px;">
@@ -141,7 +141,8 @@
 </div>
 
 <!-- footer -->
-<?php include("footer.php") ?>
+<?php //include("footer.php") 
+?>
 <!-- /#page-content-wrapper -->
 </div>
 </div>

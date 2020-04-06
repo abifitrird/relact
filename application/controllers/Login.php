@@ -10,13 +10,6 @@ class Login extends CI_Controller
 	}
 	public function index()
 	{
-		if ($this->session->userdata('status') == 'login') {
-			if ($this->session->userdata('role') == 'guru') {
-				redirect(base_url('Teacher/Guru'));
-			} else if ($this->session->userdata('role') == 'siswa') {
-				redirect(base_url('Student/Siswa'));
-			}
-		}
 		$this->load->view('login');
 	}
 
@@ -48,9 +41,9 @@ class Login extends CI_Controller
 			$this->session->set_userdata($data_session);
 
 			if ($role == "guru") {
-				redirect(base_url("Teacher/Guru"));
+				redirect(site_url("guru"));
 			} else if ($role == "siswa") {
-				redirect(base_url("Student/Siswa"));
+				redirect(site_url("siswa"));
 			}
 		} else {
 			echo "Username atau password salah !";

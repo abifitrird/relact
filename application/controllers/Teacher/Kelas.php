@@ -16,14 +16,31 @@ class Kelas extends CI_Controller
 		$this->load->view('guru/kelas', $data);
 	}
 
-	public function listMateri()
+	public function getMateri($id)
 	{
-		$this->load->view('guru/list_materi');
+		$data['data'] = $this->KelasModel->getMateriByKelasId($id);
+		$this->load->view('guru/list_materi', $data);
 	}
-	public function lihatMateri()
+
+	public function saveMateri($kelas_id)
 	{
-		$this->load->view('guru/materi');
+		$data = array(
+			'kode' => random_string('alnum', 6),
+			'kelas_id' => $kelas_id,
+			'judul' => $this->input->post('judul'),
+			'konten' => $this->input->post('konten'),
+			'status' => 1
+		);
+
+		echo $this->KelasModel->saveMateri($data);
 	}
+
+	public function showMateri($kelas_id, $materi_id)
+	{
+		$data['data'] = $this->KelasModel->getMateriById($materi_id);
+		$this->load->view('guru/materi', $data);
+	}
+
 	public function lihatSoal()
 	{
 		$this->load->view('guru/soal');

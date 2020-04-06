@@ -49,8 +49,29 @@ defined('BASEPATH') or exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['default_controller'] = 'login';
-$route['404_override'] = '';
+$route['default_controller'] = 'Home';
+$route['404_override'] = 'Home/page404';
 $route['translate_uri_dashes'] = FALSE;
 
-$route['logout']['get'] = 'Login/Logout';
+/* authentification */
+$route['login']['get'] = "Login/index";             // view login
+$route['login']['post'] = "Login/aksi_login";       // proses login
+$route['logout']['get'] = 'Login/Logout';           // logout
+
+$route['daftar']['get'] = "Signup/index";           // view daftar
+$route['daftar']['post'] = "Signup/daftar";         // proses daftar
+
+
+/* route guru */
+$route['guru']['get'] = "Teacher/Guru";                 // view guru beranda
+$route['guru/profil']['get'] = "Profil/index";         // view profil guru
+$route['guru/kelas']['get'] = "Teacher/Kelas";          // view guru kelas
+$route['guru/capaian']['get'] = "Teacher/CapaianSiswa"; // view guru/capaian siswa
+$route['guru/saran']['get'] = "Maintenances";           // view untuk saran
+
+/* route guru/kelas */
+$route['guru/kelas']['post'] = 'Teacher/Kelas/saveKelas';                   // simpan kelas guru
+$route['guru/kelas/(:num)']['get'] = "Teacher/Kelas/getMateri/$1";          // getList Materi by Id
+$route['guru/kelas/(:num)/materi']['post'] = "Teacher/Kelas/saveMateri/$1"; // save mteri by kelas id
+$route['guru/kelas/(:num)/materi/(:num)']['get'] = "Teacher/Kelas/showMateri/$1/$2"; // view materi by materi id and kelas id
+$route['guru/kelas/(:num)/materi/(:num)/soal']['get'] = "Teacher/Kelas/showSoalByMateri/$1/$2"; // view soal by materi id
