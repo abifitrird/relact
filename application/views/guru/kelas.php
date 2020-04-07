@@ -20,7 +20,7 @@
             <div class="px-1 mb-2 col-3">
                 <div class="bg-white rounded shadow-sm d-flex flex-wrap">
                     <div class="px-2 pt-3 col-12 rounded-top text-white bg-dark">
-                        <a href="<?php echo site_url('guru/kelas/' . $dat['id']) ?>" class="text-white">
+                        <a href="<?php echo site_url('guru/kelas/' . $dat['code']) ?>" class="text-white">
                             <h4><?php echo $dat['nama_mapel'] ?></h4>
                         </a>
                         <h5>

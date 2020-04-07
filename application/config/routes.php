@@ -71,7 +71,7 @@ $route['guru/saran']['get'] = "Maintenances";           // view untuk saran
 
 /* route guru/kelas */
 $route['guru/kelas']['post'] = 'Teacher/Kelas/saveKelas';                   // simpan kelas guru
-$route['guru/kelas/(:num)']['get'] = "Teacher/Kelas/getMateri/$1";          // getList Materi by Id
-$route['guru/kelas/(:num)/materi']['post'] = "Teacher/Kelas/saveMateri/$1"; // save mteri by kelas id
-$route['guru/kelas/(:num)/materi/(:num)']['get'] = "Teacher/Kelas/showMateri/$1/$2"; // view materi by materi id and kelas id
-$route['guru/kelas/(:num)/materi/(:num)/soal']['get'] = "Teacher/Kelas/showSoalByMateri/$1/$2"; // view soal by materi id
+$route['guru/kelas/(:any)']['get'] = "Teacher/Kelas/getMateri/$1";          // getList Materi by Id
+$route['guru/kelas/(:any)/materi']['post'] = "Teacher/Kelas/saveMateri/$1"; // save mteri by kelas id
+$route['guru/kelas/(:any)/materi/(:num)']['get'] = "Teacher/Kelas/showMateri/$1/$2"; // view materi by materi id and kelas id
+$route['guru/kelas/(:any)/materi/(:num)/soal']['get'] = "Teacher/Kelas/showSoalByMateri/$1/$2"; // view soal by materi id

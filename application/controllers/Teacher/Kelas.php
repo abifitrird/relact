@@ -16,9 +16,9 @@ class Kelas extends CI_Controller
 		$this->load->view('guru/kelas', $data);
 	}
 
-	public function getMateri($id)
+	public function getMateri($kode)
 	{
-		$data['data'] = $this->KelasModel->getMateriByKelasId($id);
+		$data['data'] = $this->KelasModel->getMateriByKodeKelas($kode);
 		$this->load->view('guru/list_materi', $data);
 	}
 
@@ -39,6 +39,11 @@ class Kelas extends CI_Controller
 	{
 		$data['data'] = $this->KelasModel->getMateriById($materi_id);
 		$this->load->view('guru/materi', $data);
+	}
+
+	public function showSoalByMateri($kelas_id, $materi_id)
+	{
+		$this->load->view('guru/soal');
 	}
 
 	public function lihatSoal()

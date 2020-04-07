@@ -25,9 +25,16 @@ class KelasModel extends CI_Model
      * @param $id kelas_id
      * @return data
      */
-    public function getMateriByKelasId($id)
+    public function getMateriByKodeKelas($kode)
     {
-        $this->db->where('kelas_id', $id);
+        $this->db->select('id');
+        $this->db->where('code', $kode);
+        $this->db->limit(1);
+        $kelas_id = $this->db->get('kelas');
+        $kelas_id = $kelas_id->row_array();
+        $kelas_id = $kelas_id['id'];
+
+        $this->db->where('kelas_id', $kelas_id);
         $data = $this->db->get('materi');
         return $data->result_array();
     }
