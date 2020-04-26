@@ -15,35 +15,50 @@
 <!-- isi halaman -->
         <div class="container-fluid shadow-sm" style="padding: 25px">
             <h1>Soal</h1>
-            <table class="table table-hover">
-            <thead>
-                <tr>
-                <th scope="col">No.</th>
-                <th scope="col">Pertanyaan</th>
-                <th scope="col">Kunci Jawaban</th>
-                <th scope="col">Tipe Soal</th>
-                <th scope="col">Bobot</th>
-                <th scope="col" style="text-align: center">Aksi</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                <th scope="row">1</th>
-                <td>Fungsi yang menggunakan pemilihan keputusan dalam pemrograman dasar disebut dengan fungsi</td>
-                <td>Percabangan</td>
-                <td>Pilihan Ganda</td>
-                <td>10</td>
-                <td style="text-align: center; white-space: nowrap; width: 1%">
-                  <a href="#"><button class="btn btn-success">Edit</button></a>
-                  <a href="#"><button class="btn btn-danger">Hapus</button></a>
-                </td>
-                </tr>
-            </tbody>
-        </table>
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+              <li class="nav-item">
+                <a class="nav-link active" id="pg-tab" data-toggle="tab" href="#pg" role="tab" aria-controls="pilihan ganda" aria-selected="true">Pilihan Ganda</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="esai-tab" data-toggle="tab" href="#esai" role="tab" aria-controls="esai" aria-selected="false">Esai</a>
+              </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+              <div class="tab-pane fade show active" id="pg" role="tabpanel" aria-labelledby="pg-tab">
+              <table class="table table-hover">
+                <thead>
+                    <tr>
+                    <th scope="col">No.</th>
+                    <th scope="col">Pertanyaan</th>
+                    <th scope="col">Kunci Jawaban</th>
+                    <th scope="col">Tipe Soal</th>
+                    <th scope="col">Bobot</th>
+                    <th scope="col" style="text-align: center">Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <?php $i=1; foreach ($soal as $soa) { ?>
+                    <tr>
+                      <th scope="row"><?php echo $i ?></th>
+                      <td><?php echo $soa['pertanyaan'] ?></td>
+                      <td>Percabangan</td>
+                      <td>Pilihan Ganda</td>
+                      <td>10</td>
+                      <td style="text-align: center; white-space: nowrap; width: 1%">
+                        <a href="#"><button class="btn btn-success">Edit</button></a>
+                        <a href="#"><button class="btn btn-danger">Hapus</button></a>
+                      </td>
+                    </tr>
+                <?php } ?>
+                </tbody>
+              </table>
+              </div>
+              <div class="tab-pane fade" id="esai" role="tabpanel" aria-labelledby="esai-tab">...</div>
+            </div>
         </div>
         
         <!-- footer -->
-        <?php include("footer.php") ?>
+        <?php //include("footer.php") ?>
     <!-- /#page-content-wrapper -->
     </div>
 </div>
