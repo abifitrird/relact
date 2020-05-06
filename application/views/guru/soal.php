@@ -76,8 +76,8 @@
                       <td>Pilihan Ganda</td>
                       <td>10</td>
                       <td style="text-align: center; white-space: nowrap; width: 1%">
-                        <a href="#"><button class="btn btn-success">Edit</button></a>
-                        <a href="#"><button class="btn btn-danger">Hapus</button></a>
+                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#ubahSoal">Ubah</button>
+                        <button class="btn btn-danger">Hapus</button> <!-- FIXME: hapus soal -->
                       </td>
                     </tr>
                 <?php }} ?>
@@ -103,7 +103,6 @@
                 </button>
             </div>
             <div class="modal-body">
-            <!-- TODO: change form action -->
                 <form action="<?php echo site_url('guru/kelas/' . $this->uri->segment(3) . '/materi/' . $this->uri->segment(5) . '/soal') ?>" method="POST">
                     <div class="form-group">
                         <label for="tipeSoal">Tipe Soal</label>
@@ -135,6 +134,7 @@
     </div>
 </div>
 
+<!-- TODO: buat modal untuk tambah pilihan jawaban. Terdapat penambahan pilihan ganda, penambahan kunci jawaban, dan level bloom -->
 <!-- Menu Toggle Script -->
   <script>
     $("#menu-toggle").click(function(e) {
