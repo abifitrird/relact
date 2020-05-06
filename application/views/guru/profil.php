@@ -32,7 +32,7 @@
             <table>
                 <tr>
                     <th>Jabatan</th>
-                    <td>: <?php echo $this->session->userdata('role') ?></td>
+                    <td>: <?php echo ucfirst($this->session->userdata('role')) ?></td>
                 </tr>
                 <tr>
                     <th>Sekolah</th>
@@ -75,11 +75,11 @@
                 <form action="<?php echo base_url('Profil/updateProfil') ?>" method="POST">
                     <div class="form-group">
                         <label for="namaLengkap">Nama Lengkap</label>
-                        <input type="text" class="form-control" id="namaLengkap" name="namaLengkap">
+                        <input type="text" class="form-control" id="namaLengkap" name="namaLengkap" value="<?php echo isset($data['nama_lengkap']) ? $data['nama_lengkap'] : "" ?>">
                     </div>
                     <div class="form-group">
                         <label for="nomorInduk">Nomor Induk Pegawai (NIP)</label>
-                        <input type="text" class="form-control" id="nomorInduk" name="nomorInduk">
+                        <input type="text" class="form-control" id="nomorInduk" name="nomorInduk" value="<?php echo isset($data['nomor_induk']) ? $data['nomor_induk'] : "" ?>">
                     </div>
                     <div class="form-group">
                         <label for="sekolah">Sekolah</label>
@@ -91,11 +91,11 @@
                     </div>
                     <div class="form-group">
                         <label for="Alamat">Alamat</label>
-                        <textarea class="form-control" id="Alamat" name="Alamat"></textarea>
+                        <textarea class="form-control" id="Alamat" name="Alamat"><?php echo isset($data['alamat']) ? $data['alamat'] : "" ?></textarea>
                     </div>
                     <div class="form-group">
                         <label for="noTelp">No. Telp/HP</label>
-                        <input type="text" class="form-control" id="noTelp" name="noTelp">
+                        <input type="text" class="form-control" id="noTelp" name="noTelp" value="<?php echo isset($data['no_hp']) ? $data['no_hp'] : "" ?>">
                     </div>
             </div>
             <div class="modal-footer">
