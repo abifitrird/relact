@@ -37,7 +37,8 @@
                     </tr>
                 </thead>
                 <tbody>
-                <?php $i=1; foreach ($soal as $soa) { ?>
+                <?php $i=1; foreach ($soal as $soa) {
+                  if ($soa['tipe'] == 'pg') { ?>
                     <tr>
                       <th scope="row"><?php echo $i ?></th>
                       <td><?php echo $soa['pertanyaan'] ?></td>
@@ -49,17 +50,88 @@
                         <a href="#"><button class="btn btn-danger">Hapus</button></a>
                       </td>
                     </tr>
-                <?php } ?>
+                <?php } } ?>
                 </tbody>
               </table>
               </div>
-              <div class="tab-pane fade" id="esai" role="tabpanel" aria-labelledby="esai-tab">...</div>
+              <div class="tab-pane fade" id="esai" role="tabpanel" aria-labelledby="esai-tab">
+                <table class="table table-hover">
+                <thead>
+                    <tr>
+                    <th scope="col">No.</th>
+                    <th scope="col">Pertanyaan</th>
+                    <th scope="col">Kunci Jawaban</th>
+                    <th scope="col">Tipe Soal</th>
+                    <th scope="col">Bobot</th>
+                    <th scope="col" style="text-align: center">Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <?php $i=1; foreach ($soal as $soa) {
+                  if ($soa['tipe'] == 'esai') { ?>
+                    <tr>
+                      <th scope="row"><?php echo $i ?></th>
+                      <td><?php echo $soa['pertanyaan'] ?></td>
+                      <td>Percabangan</td>
+                      <td>Pilihan Ganda</td>
+                      <td>10</td>
+                      <td style="text-align: center; white-space: nowrap; width: 1%">
+                        <a href="#"><button class="btn btn-success">Edit</button></a>
+                        <a href="#"><button class="btn btn-danger">Hapus</button></a>
+                      </td>
+                    </tr>
+                <?php }} ?>
+                </tbody>
+              </table>
+              </div>
             </div>
         </div>
         
         <!-- footer -->
         <?php //include("footer.php") ?>
     <!-- /#page-content-wrapper -->
+    </div>
+</div>
+
+<div class="modal fade" id="tambahSoal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Tambah Soal Baru</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+            <!-- TODO: change form action -->
+                <form action="<?php echo site_url('guru/kelas/' . $this->uri->segment(3) . '/materi/' . $this->uri->segment(5) . '/soal') ?>" method="POST">
+                    <div class="form-group">
+                        <label for="tipeSoal">Tipe Soal</label>
+                        <select class="form-control" id="tipeSoal" name="tipeSoal" required>
+                          <option default value="pg">Pilihan Ganda</option>
+                          <option value="esai">Esai</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="kodeMateri">Kode Materi</label>
+                        <input type="text" class="form-control" id="kodeMateri" name="kodeMateri" value="<?php echo $this->uri->segment(5) ?>" readonly />
+                    </div>
+                    <div class="form-group">
+                        <label for="pertanyaan">Pertanyaan</label>
+                        <textarea class="form-control" id="pertanyaan" rows="6" name="pertanyaan" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="bobotSoal">Bobot Soal</label>
+                        <input type="number" class="form-control" id="bobotSoal" name="bobotSoal" min="0" required>
+                    </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Simpan</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                </form>
+            </div>
+        </div>
     </div>
 </div>
 

@@ -13,4 +13,16 @@ class SoalModel extends CI_Model
         $data = $this->db->get('soal');
         return $data->result_array();
     }
+
+    /**
+     * add soal
+     * 
+     * @param kode_materi $kode_materi
+     * @return boolean success/failed
+     */
+    public function addSoal($data)
+    {
+        return $this->db->insert('soal', $data);
+
+    }
 }

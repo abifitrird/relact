@@ -20,10 +20,9 @@
   <br>
   <div class="list-group">
     <?php foreach ($data as $dat) { ?>
-      <a href="<?php echo base_url('guru/kelas/' . $this->uri->segment(3) . '/materi/' . $dat['id']) ?>" class="list-group-item list-group-item-action">
+      <a href="<?php echo base_url('guru/kelas/' . $this->uri->segment(3) . '/materi/' . $dat['kode']) ?>" class="list-group-item list-group-item-action">
         <div class="d-flex w-100 justify-content-between">
           <h5 class="mb-1"><?php echo $dat['judul'] ?></h5>
-          <span class="badge badge-danger">9 pemberitahuan</span>
         </div>
         <p class="mb-1"><?php echo substr($dat['konten'], 0, 160) ?></p>
       </a>

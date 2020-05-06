@@ -18,4 +18,23 @@ class Soal extends CI_Controller
         $data['soal'] = $this->Soal->getSoalByKodeMateri($kode_materi);
         $this->load->view('guru/soal', $data);
     }
+
+    /**
+     * add new Soal
+     * 
+     * @param kode_materi $kode_materi
+     * @return boolean
+     */
+    public function addSoal($kode_materi)
+    {
+        $data_post = array(
+            'materi_kode' => $this->input->post('kodeMateri'),
+            'tipe' => $this->input->post('tipeSoal'),
+            'pertanyaan' => $this->input->post('pertanyaan'),
+            'bobot' => $this->input->post('bobotSoal')
+        );
+
+        $this->Soal->addSoal($data_post);
+        redirect($_SERVER['HTTP_REFERER']);
+    }
 }

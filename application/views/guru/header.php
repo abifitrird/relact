@@ -53,9 +53,13 @@
                                 </li>
 
                             <?php }
-                            if ($this->uri->segment(4) == 'materi' && $this->uri->segment(5)) { ?>
+                            if ($this->uri->segment(4) == 'materi' && $this->uri->segment(5) && !$this->uri->segment(6) == 'soal') { ?>
                                 <li>
                                     <a class="btn btn-warning" href="<?php echo base_url('guru/kelas/' . $this->uri->segment(3) . '/materi/' . $this->uri->segment(5) . '/soal') ?>" role="button">Lihat Soal</a>
+                                </li>
+                            <?php } else if ($this->uri->segment(4) == 'materi' && $this->uri->segment(5) && $this->uri->segment(6) == 'soal') { ?>
+                                <li>
+                                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#tambahSoal">Tambah Soal</button>
                                 </li>
                             <?php }
                         } else { ?>

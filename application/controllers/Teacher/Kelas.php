@@ -35,9 +35,10 @@ class Kelas extends CI_Controller
 		echo $this->KelasModel->saveMateri($data);
 	}
 
-	public function showMateri($kelas_id, $materi_id)
+	public function showMateri($kelas_id, $materi_kode)
 	{
-		$data['data'] = $this->KelasModel->getMateriById($materi_id);
+		// $data['data'] = $this->KelasModel->getMateriById($materi_id);
+		$data['data'] = $this->KelasModel->getMateriByKode($materi_kode);
 		$this->load->view('guru/materi', $data);
 	}
 

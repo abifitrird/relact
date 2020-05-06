@@ -18,12 +18,12 @@
 <div class="container-fluid">
     <div class="row shadow-sm" style="padding: 25px">
         <div class="col-2">
-            <img src="<?php echo base_url('assets/images/patrick.gif') ?>" class="shadow-sm rounded-circle src=" ./assets/images/patrick.gif" style=" width: 150px; height: 150px;">
+            <img src="<?php echo base_url('assets/images/patrick.gif') ?>" class="shadow-sm rounded-circle" style=" width: 150px; height: 150px;">
         </div>
         <div class="col-10 my-auto">
-            <h2><?php echo $data['nama_lengkap'] ?></h2>
+            <h2><?php echo isset($data['nama_lengkap']) ? $data['nama_lengkap'] : "Tidak ada data" ?></h2>
             <p style="color: gray">
-                NIP : <?php echo $data['nomor_induk'] ?>
+                NIP : <?php echo isset($data['nomor_induk']) ? $data['nomor_induk'] : "Tidak ada data" ?>
             </p>
         </div>
     </div>
@@ -36,15 +36,15 @@
                 </tr>
                 <tr>
                     <th>Sekolah</th>
-                    <td>: <?php echo $data['nama_sekolah'] ?></td>
+                    <td>: <?php echo isset($data['nama_sekolah']) ? $data['nama_sekolah'] : "Tidak ada data" ?></td>
                 </tr>
                 <tr>
                     <th>Alamat</th>
-                    <td>: <?php echo $data['alamat'] ?></td>
+                    <td>: <?php echo isset($data['alamat']) ? $data['alamat'] : "Tidak ada data" ?></td>
                 </tr>
                 <tr>
                     <th>No. Telp/HP</th>
-                    <td>: <?php echo $data['no_hp'] ?></td>
+                    <td>: <?php echo isset($data['no_hp']) ? $data['no_hp'] : "Tidak ada data" ?></td>
                 </tr>
             </table>
         </div>
@@ -60,6 +60,7 @@
     </div>
 </div>
 
+<!-- TODO: tambah edit profile -->
 <!-- Modal Edit Profil -->
 <div class="modal fade" id="editProfil" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">

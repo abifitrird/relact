@@ -53,6 +53,18 @@ class KelasModel extends CI_Model
     }
 
     /**
+     * get Materi by kode materi
+     * 
+     * @param kode $materi_kode
+     * @return arrayOfMateriTable $data
+     */
+    public function getMateriByKode($materi_kode)
+    {
+        $data = $this->db->where('kode', $materi_kode)->get('materi');
+        return $data->row_array();
+    }
+
+    /**
      * save materi by kelas id
      * 
      * @param $data
