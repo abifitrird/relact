@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.1
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 07, 2020 at 05:02 AM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.3.13
+-- Generation Time: May 06, 2020 at 07:59 PM
+-- Server version: 10.4.12-MariaDB
+-- PHP Version: 7.4.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -34,6 +33,24 @@ CREATE TABLE `ci_sessions` (
   `timestamp` int(10) UNSIGNED NOT NULL DEFAULT 0,
   `data` blob NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `ci_sessions`
+--
+
+INSERT INTO `ci_sessions` (`id`, `ip_address`, `timestamp`, `data`) VALUES
+('b6qd978rkggnm7oj8gbh8pv7p78aithc', '127.0.0.1', 1588364450, 0x5f5f63695f6c6173745f726567656e65726174657c693a313538383336343435303b6e616d617c733a333a22667575223b7374617475737c733a353a226c6f67696e223b726f6c657c733a343a2267757275223b757365725f69647c733a313a2233223b),
+('pmsq1rc00bs1f933cag7lcvcr608sr5a', '127.0.0.1', 1588364456, 0x5f5f63695f6c6173745f726567656e65726174657c693a313538383336343435363b),
+('rotk75gveai0mkm5hvjkrvgd635n0b13', '127.0.0.1', 1588788105, 0x5f5f63695f6c6173745f726567656e65726174657c693a313538383738383130353b6e616d617c733a333a22667575223b7374617475737c733a353a226c6f67696e223b726f6c657c733a343a2267757275223b757365725f69647c733a313a2233223b),
+('v4dikmuafl0g5q7smua21qumfd2cjq32', '127.0.0.1', 1588788475, 0x5f5f63695f6c6173745f726567656e65726174657c693a313538383738383437353b6e616d617c733a333a22667575223b7374617475737c733a353a226c6f67696e223b726f6c657c733a343a2267757275223b757365725f69647c733a313a2233223b),
+('65f09l96052jpjrkb1t60o8ricgadtsq', '127.0.0.1', 1588788997, 0x5f5f63695f6c6173745f726567656e65726174657c693a313538383738383939373b6e616d617c733a333a22667575223b7374617475737c733a353a226c6f67696e223b726f6c657c733a343a2267757275223b757365725f69647c733a313a2233223b),
+('lj9pasp88mptrg8i9ibhgeg994fv72lr', '127.0.0.1', 1588789310, 0x5f5f63695f6c6173745f726567656e65726174657c693a313538383738393331303b6e616d617c733a333a22667575223b7374617475737c733a353a226c6f67696e223b726f6c657c733a343a2267757275223b757365725f69647c733a313a2233223b),
+('gr1kbv33586r95cqe33aehjkvbdijq3h', '127.0.0.1', 1588789627, 0x5f5f63695f6c6173745f726567656e65726174657c693a313538383738393632373b6e616d617c733a333a22667575223b7374617475737c733a353a226c6f67696e223b726f6c657c733a343a2267757275223b757365725f69647c733a313a2233223b),
+('a0ec4eiai27cti5u8l5ido3th77ddja5', '127.0.0.1', 1588789930, 0x5f5f63695f6c6173745f726567656e65726174657c693a313538383738393933303b6e616d617c733a333a22667575223b7374617475737c733a353a226c6f67696e223b726f6c657c733a343a2267757275223b757365725f69647c733a313a2233223b),
+('l071e6mee5vcgdgksnvi4upoa8jo45cd', '127.0.0.1', 1588790779, 0x5f5f63695f6c6173745f726567656e65726174657c693a313538383739303737393b6e616d617c733a333a22667575223b7374617475737c733a353a226c6f67696e223b726f6c657c733a343a2267757275223b757365725f69647c733a313a2233223b),
+('pr9h39mpbs3p0tm0f6tlramt4lailqu2', '127.0.0.1', 1588791096, 0x5f5f63695f6c6173745f726567656e65726174657c693a313538383739313039363b6e616d617c733a333a22667575223b7374617475737c733a353a226c6f67696e223b726f6c657c733a343a2267757275223b757365725f69647c733a313a2233223b),
+('knfakvl7vq0i6v7sjmout39cral3eqv9', '127.0.0.1', 1588791654, 0x5f5f63695f6c6173745f726567656e65726174657c693a313538383739313635343b6e616d617c733a333a22667575223b7374617475737c733a353a226c6f67696e223b726f6c657c733a343a2267757275223b757365725f69647c733a313a2233223b),
+('hg7ge411jpplp136s944eecab6v05gi1', '127.0.0.1', 1588791796, 0x5f5f63695f6c6173745f726567656e65726174657c693a313538383739313635343b6e616d617c733a333a22667575223b7374617475737c733a353a226c6f67696e223b726f6c657c733a343a2267757275223b757365725f69647c733a313a2233223b);
 
 -- --------------------------------------------------------
 
@@ -139,6 +156,21 @@ CREATE TABLE `log_answer` (
   `pilihan_soal_id` int(11) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `log_answer_essay`
+--
+
+CREATE TABLE `log_answer_essay` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `soal_id` int(11) NOT NULL,
+  `jawaban` text NOT NULL,
+  `created_at` timestamp NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -310,13 +342,21 @@ INSERT INTO `sekolah` (`id`, `nama_sekolah`, `alamat`) VALUES
 CREATE TABLE `soal` (
   `id` int(11) NOT NULL,
   `materi_kode` varchar(255) NOT NULL,
-  `tipe` enum('latihan','evaluasi') NOT NULL,
+  `tipe` enum('pg','esai') NOT NULL,
   `pertanyaan` text NOT NULL,
   `bloom` int(11) DEFAULT NULL,
   `bobot` int(11) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `soal`
+--
+
+INSERT INTO `soal` (`id`, `materi_kode`, `tipe`, `pertanyaan`, `bloom`, `bobot`, `created_at`, `updated_at`) VALUES
+(1, 'GRyBjP', 'pg', 'hello world', NULL, 10, '2020-05-06 18:52:52', '0000-00-00 00:00:00'),
+(2, 'GRyBjP', 'esai', 'Hello world hehe', NULL, 1, '2020-05-06 19:00:54', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -409,6 +449,14 @@ ALTER TABLE `log_answer`
   ADD KEY `user_id` (`user_id`),
   ADD KEY `soal_id` (`soal_id`),
   ADD KEY `pilihan_soal_id` (`pilihan_soal_id`);
+
+--
+-- Indexes for table `log_answer_essay`
+--
+ALTER TABLE `log_answer_essay`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `log_answer_essay_ibfk_1` (`soal_id`),
+  ADD KEY `log_answer_essay_ibfk_2` (`user_id`);
 
 --
 -- Indexes for table `log_on_evaluasi`
@@ -507,7 +555,7 @@ ALTER TABLE `user_kelas`
 -- AUTO_INCREMENT for table `detail_user`
 --
 ALTER TABLE `detail_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `hak_akses`
@@ -537,6 +585,12 @@ ALTER TABLE `log_activity`
 -- AUTO_INCREMENT for table `log_answer`
 --
 ALTER TABLE `log_answer`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `log_answer_essay`
+--
+ALTER TABLE `log_answer_essay`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
@@ -597,7 +651,7 @@ ALTER TABLE `sekolah`
 -- AUTO_INCREMENT for table `soal`
 --
 ALTER TABLE `soal`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -655,6 +709,13 @@ ALTER TABLE `log_answer`
   ADD CONSTRAINT `log_answer_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
   ADD CONSTRAINT `log_answer_ibfk_2` FOREIGN KEY (`soal_id`) REFERENCES `soal` (`id`),
   ADD CONSTRAINT `log_answer_ibfk_3` FOREIGN KEY (`pilihan_soal_id`) REFERENCES `pilihan_soal` (`id`);
+
+--
+-- Constraints for table `log_answer_essay`
+--
+ALTER TABLE `log_answer_essay`
+  ADD CONSTRAINT `log_answer_essay_ibfk_1` FOREIGN KEY (`soal_id`) REFERENCES `soal` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `log_answer_essay_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON UPDATE CASCADE;
 
 --
 -- Constraints for table `log_on_evaluasi`
