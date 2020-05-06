@@ -21,9 +21,9 @@ class Signup extends CI_Controller
 		$this->form_validation->set_rules('inputEmail', 'Email', 'trim|required');
 		$this->form_validation->set_rules('inputPassword', 'Password', 'trim|required');
 		if ($this->form_validation->run() == TRUE) {
-			$data['username'] = $this->input->post('inputUsername');
+			$data['username'] = strtolower($this->input->post('inputUsername'));
 			$data['role_id'] = $this->input->post('radioJabatan');
-			$data['email'] = $this->input->post('inputEmail');
+			$data['email'] = strtolower($this->input->post('inputEmail'));
 			$data['password'] = $this->input->post('inputPassword');
 			$cek_data = $this->SignupModel->registrasiUser($data);
 			if ($cek_data) {
