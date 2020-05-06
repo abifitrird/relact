@@ -14,6 +14,7 @@ class Profil extends CI_Controller
     {
         $id = $this->session->userdata('user_id');
         $data['data'] = $this->ProfilModel->getProfil($id);
+        $data['sekolah'] = $this->getListOfSchools();
         if ($this->session->userdata('role') == 'guru') {
             // print_r($data);
             $this->load->view('guru/profil', $data);
@@ -40,7 +41,18 @@ class Profil extends CI_Controller
         );
 
         if ($this->ProfilModel->updateProfil($data)) {
-            redirect(site_url('Profil'));
+            redirect($_SERVER['HTTP_REFERER']);
         }
+    }
+
+    /**
+     * get list of sekolah
+     * 
+     * @param
+     * @return dataOfSekolahTable
+     */
+    public function getListOfSchools()
+    {
+        return $this->ProfilModel->getListOfSchools();
     }
 }

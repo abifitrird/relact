@@ -84,8 +84,9 @@
                     <div class="form-group">
                         <label for="sekolah">Sekolah</label>
                         <select id="sekolah" class="form-control" name="sekolah" required>
-                            <option value="1">SMKN 1 Cimahi</option>
-                            <option value="2">SMKN 1 Bandung</option>
+                            <?php foreach($sekolah as $school) { ?>
+                            <option value="<?php echo $school['id'] ?>"><?php echo $school['nama_sekolah'] ?></option>
+                            <?php } ?>
                         </select>
                     </div>
                     <div class="form-group">
