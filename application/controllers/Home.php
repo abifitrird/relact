@@ -22,6 +22,6 @@ class Home extends CI_Controller
 
     public function page404()
     {
-        echo "error coy";
+        echo "not found lah coy, cik atuh sing jeli kana routingna ufil";
     }
 }

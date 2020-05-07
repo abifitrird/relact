@@ -140,7 +140,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="<?php echo site_url('guru/kelas/' . $this->uri->segment(3) . '/materi/' . $this->uri->segment(5) . '/soal') ?>" method="POST">
+                <form action="" method="POST">
                     <div class="form-group"> 
                         <label for="pertanyaan">Pertanyaan</label>
                         <textarea class="form-control" id="pertanyaan" rows="6" name="pertanyaan" required></textarea>
@@ -153,14 +153,7 @@
                         <th >Kunci</th>
                       </thead>
                       <tbody class="text-center">
-                      <tr>
-                        <td><input type="text" name="pilihan[0]" class="form-control" aria-label="Pilihan Jawaban" value="<?php echo isset($pilihan['pilihan']) ? $pilihan['pilihan'] : "" ?>"></td>
-                        <td>
-                          <input class="form-check-input" type="checkbox" name="kunci[0]" value="<?php echo isset($pilihan['kunci']) ? $pilihan['kunci'] : "" ?>" id="checkKunci">
-                          <label for="checkKunci">Kunci</label>
-                        </td>
-                        <input type="hidden" name="id[0]" value="<?php echo isset($pilihan['id']) ? $pilihan['id'] : "" ?>">
-                      </tr>
+                      
                       </tbody>
                     </table>
                     </div>
@@ -172,8 +165,8 @@
                     <button type="button" id="btnTambahPilihan" class="btn btn-info">Tambah Pilihan</button>
                 </div>
                 <div class="text-right">
-                    <button type="submit" class="btn btn-primary">Simpan</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-primary" >Simpan</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="resetTableRow()">Batal</button>
                 </div>
                 
                 </form>
@@ -183,6 +176,7 @@
 </div>
 <!-- Menu Toggle Script -->
   <script>
+  
     $("#menu-toggle").click(function(e) {
       e.preventDefault();
       $("#wrapper").toggleClass("toggled");
@@ -192,6 +186,7 @@
       var button = $(event.relatedTarget)
       var soal_id = button.data('soalid')
       var soal_jenis = button.data('soaljenis')
+      $('.modal-body form').attr('action', '<?php echo site_url('guru/kelas/' . $this->uri->segment(3) . '/materi/' . $this->uri->segment(5) . '/soal/') ?>' + soal_id);
       var modal = $(this)
       fetch('<?php echo site_url('api/soal/') ?>' + soal_id)
         .then(response => response.json())
@@ -200,6 +195,14 @@
           modal.find('.modal-body #pertanyaan').val(pertanyaan)
           // console.log(pertanyaan)
         });
+        
+        fetch('<?php echo site_url('api/soal/pilihan/') ?>' + soal_id)
+        .then(response => response.json())
+        .then(function(data) {
+          console.log(data)
+          this.appendPilihan(data)
+        })
+
         if (soal_jenis == 'pg') {
           modal.find('.modal-body #pilihanGanda').removeClass('d-none');
           modal.find('.modal-footer #btnTambahPilihan').removeClass('d-none');
@@ -208,17 +211,53 @@
           modal.find('.modal-footer #btnTambahPilihan').addClass('d-none');
         }
     });
-    let i = 1;
+
     $('#btnTambahPilihan').click(function() {
-      $("#pilihanGanda tbody").append(`<tr>
-                        <td><input type="text" name="pilihan[` + i + `]" class="form-control" aria-label="Pilihan Jawaban"></td>
-                        <td>
-                          <input class="form-check-input" type="checkbox" name="kunci[` + i + `]" value="" id="checkKunci">
-                          <label for="checkKunci">Kunci</label>
-                        </td>
-                      </tr>`)
-      i++
+      data = [
+        {
+          id: "",
+          soal_id: "",
+          pilihan: "",
+          kunci_id: ""
+        }
+      ]
+      appendPilihan(data)
     })
+
+    let i = 0;
+    function appendPilihan(data) {
+      data.forEach(el => {
+        $("#pilihanGanda tbody")
+        .append(`
+        <tr>
+          <td><input type="text" name="pilihan[` + i + `]" class="form-control" aria-label="Pilihan Jawaban" value="`+ el.pilihan +`"></td>
+          <td>
+            <input class="form-check-input" type="checkbox" name="kunci[` + i + `]" value="1" id="checkKunci` + i + `" onclick="selectOnlyThis(this.id)">
+            <label for="checkKunci` + i + `">Kunci</label>
+            <input type="hidden" name="id[`+ i +`]" value="` + el.id + `">
+          </td>
+        </tr>
+        `)
+        if (el.kunci_id) {
+          $("#checkKunci" + i).prop('checked', true)
+        }
+        i++;
+      });
+    }
+
+    function resetTableRow() {
+      $('#pilihanGanda tbody tr').remove();
+      i = 0;
+    }
+
+    function selectOnlyThis(id) {
+        for (var j = 0;j <= i; j++)
+        {
+            $("#checkKunci" + j).prop("checked", false)
+        }
+        $("#" + id).prop("checked", true)
+    }
+
 // FIXME: need to fix this, when data exist, how to make data removed from database
     $('#btnHapusPilihan').click(function() {
       $("#pilihanGanda tbody tr").last().remove();

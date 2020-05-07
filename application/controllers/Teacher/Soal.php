@@ -37,6 +37,19 @@ class Soal extends CI_Controller
         $this->Soal->addSoal($data_post);
         redirect($_SERVER['HTTP_REFERER']);
     }
+
+    /**
+     * save pilihan jawaban
+     * 
+     * @param soal_id
+     * @return boolean
+     */
+    public function savePilihanJawaban($soal_id)
+    {
+        $data = $this->input->post();
+        $this->Soal->savePilihanJawabanBySoalId($soal_id, $data);
+        redirect($_SERVER['HTTP_REFERER']);
+    }
     
     /**
      * get Saol by Id as JSON
@@ -48,5 +61,17 @@ class Soal extends CI_Controller
     {
         $data = $this->Soal->getSoalById($soal_id);
         echo json_encode($data);
+    }
+
+    /**
+     * get Pilihan jawaban by soal Id as JSON
+     * 
+     * @param soal_id
+     * @return json
+     */
+    public function getPilihanJawabanBySoalId($soal_id)
+    {
+        echo json_encode($this->Soal->getPilihanJawabanBySoalId($soal_id));
+        
     }
 }

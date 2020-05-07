@@ -77,4 +77,7 @@ $route['guru/kelas/(:any)/materi/(:any)']['get'] = "Teacher/Kelas/showMateri/$1/
 $route['guru/kelas/(:any)/materi/(:any)/soal']['get'] = "Teacher/Soal/getSoal/$2"; // view soal by materi id
 $route['guru/kelas/(:any)/materi/(:any)/soal']['post'] = "Teacher/Soal/addSoal/$2"; // add soal by materi kode
 
+$route['guru/kelas/(:any)/materi/(:any)/soal/(:num)']['post'] = "Teacher/Soal/savePilihanJawaban/$3"; // save pilihan jawaban
+
 $route['api/soal/(:num)']['get'] = "Teacher/Soal/getSoalJson/$1"; // get JSON API
+$route['api/soal/pilihan/(:num)']['get'] = "Teacher/Soal/getPilihanJawabanBySoalId/$1"; // getpilihan jawbaban as JSON
