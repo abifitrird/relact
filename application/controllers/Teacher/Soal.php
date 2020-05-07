@@ -37,4 +37,16 @@ class Soal extends CI_Controller
         $this->Soal->addSoal($data_post);
         redirect($_SERVER['HTTP_REFERER']);
     }
+    
+    /**
+     * get Saol by Id as JSON
+     * 
+     * @param saal_id
+     * @return json
+     */
+    public function getSoalJson($soal_id)
+    {
+        $data = $this->Soal->getSoalById($soal_id);
+        echo json_encode($data);
+    }
 }

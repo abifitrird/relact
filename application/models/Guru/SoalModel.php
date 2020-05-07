@@ -23,6 +23,17 @@ class SoalModel extends CI_Model
     public function addSoal($data)
     {
         return $this->db->insert('soal', $data);
+    }
 
+    /**
+     * get Soal by Id
+     * 
+     * @param soal_id
+     * @return data
+     */
+    public function getSoalById($soal_id)
+    {
+        $data = $this->db->where('id', $soal_id)->get('soal');
+        return $data->row_array();
     }
 }

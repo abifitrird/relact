@@ -31,7 +31,6 @@
                     <th scope="col">No.</th>
                     <th scope="col">Pertanyaan</th>
                     <th scope="col">Kunci Jawaban</th>
-                    <th scope="col">Tipe Soal</th>
                     <th scope="col">Bobot</th>
                     <th scope="col" style="text-align: center">Aksi</th>
                     </tr>
@@ -43,11 +42,10 @@
                       <th scope="row"><?php echo $i ?></th>
                       <td><?php echo $soa['pertanyaan'] ?></td>
                       <td>Percabangan</td>
-                      <td>Pilihan Ganda</td>
-                      <td>10</td>
+                      <td><?php echo $soa['bobot'] ?></td>
                       <td style="text-align: center; white-space: nowrap; width: 1%">
-                        <a href="#"><button class="btn btn-success">Edit</button></a>
-                        <a href="#"><button class="btn btn-danger">Hapus</button></a>
+                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#ubahSoal" data-soalid="<?php echo $soa['id'] ?>" data-soaljenis="<?php echo $soa['tipe'] ?>">Ubah</button>
+                        <button class="btn btn-danger">Hapus</button> <!-- FIXME: hapus soal -->
                       </td>
                     </tr>
                 <?php } } ?>
@@ -60,8 +58,6 @@
                     <tr>
                     <th scope="col">No.</th>
                     <th scope="col">Pertanyaan</th>
-                    <th scope="col">Kunci Jawaban</th>
-                    <th scope="col">Tipe Soal</th>
                     <th scope="col">Bobot</th>
                     <th scope="col" style="text-align: center">Aksi</th>
                     </tr>
@@ -72,11 +68,9 @@
                     <tr>
                       <th scope="row"><?php echo $i ?></th>
                       <td><?php echo $soa['pertanyaan'] ?></td>
-                      <td>Percabangan</td>
-                      <td>Pilihan Ganda</td>
-                      <td>10</td>
+                      <td><?php echo $soa['bobot'] ?></td>
                       <td style="text-align: center; white-space: nowrap; width: 1%">
-                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#ubahSoal">Ubah</button>
+                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#ubahSoal" data-soalid="<?php echo $soa['id'] ?>" data-soaljenis="<?php echo $soa['tipe'] ?>">Ubah</button>
                         <button class="btn btn-danger">Hapus</button> <!-- FIXME: hapus soal -->
                       </td>
                     </tr>
@@ -121,7 +115,7 @@
                     </div>
                     <div class="form-group">
                         <label for="bobotSoal">Bobot Soal</label>
-                        <input type="number" class="form-control" id="bobotSoal" name="bobotSoal" min="0" required>
+                        <input type="number" class="form-control" id="bobotSoal" name="bobotSoal" min="0" required placeholder="10">
                     </div>
 
             </div>
@@ -135,12 +129,101 @@
 </div>
 
 <!-- TODO: buat modal untuk tambah pilihan jawaban. Terdapat penambahan pilihan ganda, penambahan kunci jawaban, dan level bloom -->
+
+<div class="modal fade" id="ubahSoal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Ubah Soal Pilihan Ganda</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="<?php echo site_url('guru/kelas/' . $this->uri->segment(3) . '/materi/' . $this->uri->segment(5) . '/soal') ?>" method="POST">
+                    <div class="form-group"> 
+                        <label for="pertanyaan">Pertanyaan</label>
+                        <textarea class="form-control" id="pertanyaan" rows="6" name="pertanyaan" required></textarea>
+                    </div>
+                    <div id="pilihanGanda">
+                    <h5 class="modal-title">Pilihan Jawaban</h5>
+                    <table class="table">
+                      <thead class="text-center">
+                        <th>Pilihan</th>
+                        <th >Kunci</th>
+                      </thead>
+                      <tbody class="text-center">
+                      <tr>
+                        <td><input type="text" name="pilihan[0]" class="form-control" aria-label="Pilihan Jawaban" value="<?php echo isset($pilihan['pilihan']) ? $pilihan['pilihan'] : "" ?>"></td>
+                        <td>
+                          <input class="form-check-input" type="checkbox" name="kunci[0]" value="<?php echo isset($pilihan['kunci']) ? $pilihan['kunci'] : "" ?>" id="checkKunci">
+                          <label for="checkKunci">Kunci</label>
+                        </td>
+                        <input type="hidden" name="id[0]" value="<?php echo isset($pilihan['id']) ? $pilihan['id'] : "" ?>">
+                      </tr>
+                      </tbody>
+                    </table>
+                    </div>
+
+            </div>
+            <div class="modal-footer">
+                <div class="text-left">
+                    <button type="button" id="btnHapusPilihan" class="btn btn-danger">Hapus Pilihan</button>
+                    <button type="button" id="btnTambahPilihan" class="btn btn-info">Tambah Pilihan</button>
+                </div>
+                <div class="text-right">
+                    <button type="submit" class="btn btn-primary">Simpan</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                </div>
+                
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 <!-- Menu Toggle Script -->
   <script>
     $("#menu-toggle").click(function(e) {
       e.preventDefault();
       $("#wrapper").toggleClass("toggled");
     });
+
+    $('#ubahSoal').on('show.bs.modal', function (event) {
+      var button = $(event.relatedTarget)
+      var soal_id = button.data('soalid')
+      var soal_jenis = button.data('soaljenis')
+      var modal = $(this)
+      fetch('<?php echo site_url('api/soal/') ?>' + soal_id)
+        .then(response => response.json())
+        .then(data => {
+          var pertanyaan = data.pertanyaan
+          modal.find('.modal-body #pertanyaan').val(pertanyaan)
+          // console.log(pertanyaan)
+        });
+        if (soal_jenis == 'pg') {
+          modal.find('.modal-body #pilihanGanda').removeClass('d-none');
+          modal.find('.modal-footer #btnTambahPilihan').removeClass('d-none');
+        } else if (soal_jenis == 'esai') {
+          modal.find('.modal-body #pilihanGanda').addClass('d-none');
+          modal.find('.modal-footer #btnTambahPilihan').addClass('d-none');
+        }
+    });
+    let i = 1;
+    $('#btnTambahPilihan').click(function() {
+      $("#pilihanGanda tbody").append(`<tr>
+                        <td><input type="text" name="pilihan[` + i + `]" class="form-control" aria-label="Pilihan Jawaban"></td>
+                        <td>
+                          <input class="form-check-input" type="checkbox" name="kunci[` + i + `]" value="" id="checkKunci">
+                          <label for="checkKunci">Kunci</label>
+                        </td>
+                      </tr>`)
+      i++
+    })
+// FIXME: need to fix this, when data exist, how to make data removed from database
+    $('#btnHapusPilihan').click(function() {
+      $("#pilihanGanda tbody tr").last().remove();
+      i--;
+    })
   </script>
 </body>
 </html>

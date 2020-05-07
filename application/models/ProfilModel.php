@@ -12,19 +12,6 @@ class ProfilModel extends CI_Model
         }
 
         return $res;
-
-
-        // $this->db->set('user_id', $data['user_id']);
-        // $this->db->set('nama_lengkap', $data['nama_lengkap']);
-        // $this->db->set('nomor_induk', $data['nomor_induk']);
-        // $this->db->set('sekolah_id', $data['sekolah_id']);
-        // $this->db->set('alamat', $data['alamat']);
-        // $this->db->set('no_hp', $data['no_hp']);
-        // $this->db->where('user_id', $data['user_id']);
-        // if ($this->db->update('detail_user')) {
-        //     return true;
-        // }
-        // return false;
     }
     public function getProfil($id)
     {
