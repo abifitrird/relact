@@ -82,4 +82,19 @@ class KelasModel extends CI_Model
         );
         return $this->db->insert('materi', $dataa);
     }
+
+    /**
+     * ubah Materi by materi kode
+     * 
+     * @param data
+     * @return boolean
+     */
+    public function ubahMateri($data)
+    {
+        $this->db->where('kode', $data['kode'])->update('materi', $data);
+        if ($this->db->affected_rows() == 0) {
+            return false;
+        }
+        return true;
+    }
 }

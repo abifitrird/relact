@@ -38,6 +38,20 @@ class Kelas extends CI_Controller
 		redirect($_SERVER['HTTP_REFERER']);
 	}
 
+	public function ubahMateri($materi_kode)
+	{
+		$data = array(
+			'kode' => $materi_kode,
+			'judul' => $this->input->post('judul'),
+			'konten' => $this->input->post('konten'),
+		);
+
+		if (!$this->KelasModel->ubahMateri($data)) {
+			redirect($_SERVER['HTTP_REFERER']);
+		}
+		redirect($_SERVER['HTTP_REFERER']);
+	}
+
 	public function showMateri($kelas_id, $materi_kode)
 	{
 		// $data['data'] = $this->KelasModel->getMateriById($materi_id);
