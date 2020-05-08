@@ -61,6 +61,9 @@ $route['logout']['get'] = 'Login/Logout';           // logout
 $route['daftar']['get'] = "Signup/index";           // view daftar
 $route['daftar']['post'] = "Signup/daftar";         // proses daftar
 
+$route['guru/profil/ubah/password']['post'] = "Profil/updatePassword"; // change password
+$route['guru/profil/ubah']['post'] = "Profil/updateProfil"; // update profil
+
 
 /* route guru */
 $route['guru']['get'] = "Teacher/Guru";                 // view guru beranda
@@ -78,6 +81,8 @@ $route['guru/kelas/(:any)/materi/(:any)/soal']['get'] = "Teacher/Soal/getSoal/$2
 $route['guru/kelas/(:any)/materi/(:any)/soal']['post'] = "Teacher/Soal/addSoal/$2"; // add soal by materi kode
 
 $route['guru/kelas/(:any)/materi/(:any)/soal/(:num)']['post'] = "Teacher/Soal/savePilihanJawaban/$3"; // save pilihan jawaban
+$route['guru/kelas/(:any)/materi/(:any)/soal/delete/(:num)']['post'] = "Teacher/Soal/deleteSoal/$3"; // hapus soal
+$route['guru/kelas/(:any)/materi/(:any)/soal/esai/(:num)']['post'] = "Teacher/Soal/editSoal/$3"; // save pilihan 
 
 $route['api/soal/(:num)']['get'] = "Teacher/Soal/getSoalJson/$1"; // get JSON API
 $route['api/soal/pilihan/(:num)']['get'] = "Teacher/Soal/getPilihanJawabanBySoalId/$1"; // getpilihan jawbaban as JSON

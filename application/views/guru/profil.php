@@ -15,7 +15,21 @@
 <?php include("header.php") ?>
 
 <!-- isi halaman -->
+
+
 <div class="container-fluid">
+    <?php if ($this->session->flashdata('alert')) { ?>
+    <div class="mx-3 my-4 alert alert-danger" role="alert">
+        <?php echo $this->session->flashdata('alert') ?>
+    </div>
+    <?php } ?>
+
+    <?php if ($this->session->flashdata('success')) { ?>
+    <div class="mx-3 my-4 alert alert-success" role="alert">
+        <?php echo $this->session->flashdata('success') ?>
+    </div>
+    <?php } ?>
+
     <div class="row shadow-sm" style="padding: 25px">
         <div class="col-2">
             <img src="<?php echo base_url('assets/images/patrick.gif') ?>" class="shadow-sm rounded-circle" style=" width: 150px; height: 150px;">
@@ -60,7 +74,6 @@
     </div>
 </div>
 
-<!-- TODO: tambah edit profile -->
 <!-- Modal Edit Profil -->
 <div class="modal fade" id="editProfil" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -72,7 +85,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="<?php echo base_url('Profil/updateProfil') ?>" method="POST">
+                <form action="<?php echo site_url('guru/profil/ubah') ?>" method="POST">
                     <div class="form-group">
                         <label for="namaLengkap">Nama Lengkap</label>
                         <input type="text" class="form-control" id="namaLengkap" name="namaLengkap" value="<?php echo isset($data['nama_lengkap']) ? $data['nama_lengkap'] : "" ?>">
@@ -118,7 +131,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="#" method="POST">
+                <form action="<?php echo site_url('guru/profil/ubah/password') ?>" method="POST">
                     <div class="form-group">
                         <label for="passwordLama">Password Saat Ini</label>
                         <input type="password" class="form-control" id="passwordLama" name="passwordLama" required>
@@ -132,11 +145,12 @@
                         <label for="konfirmasiPassword">Ketik Ulang Password Baru</label>
                         <input type="password" class="form-control" id="konfirmasiPassword" name="konfirmasiPassword" required>
                     </div>
-                </form>
+                
             </div>
             <div class="modal-footer">
                 <button type="submit" class="btn btn-primary">Simpan</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                </form>
             </div>
         </div>
     </div>

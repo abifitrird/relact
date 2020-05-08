@@ -46,6 +46,37 @@ class Profil extends CI_Controller
     }
 
     /**
+     * change password
+     * 
+     * @return boolean
+     */
+    public function updatePassword()
+    {
+        $user_id = $this->session->userdata('user_id');
+        $password_lama = $this->input->post('passwordLama');
+        $password_baru = $this->input->post('passwordBaru');
+        $konfirm_baru = $this->input->post('konfirmasiPassword');
+
+        if ($password_baru != $konfirm_baru) {
+            $this->session->set_flashdata('alert', 'Konfirmasi password baru salah');
+            redirect($_SERVER['HTTP_REFERER']);
+        }
+
+        $lama = $this->ProfilModel->checkPassword($user_id);
+        if ($lama != md5($password_lama)) {
+            $this->session->set_flashdata('alert', 'Password lama salah');
+            redirect($_SERVER['HTTP_REFERER']);
+        }
+
+        if (!$this->ProfilModel->changePassword($user_id, md5($password_baru))) {
+            $this->session->set_flashdata('alert', 'Error, password tidak berubah');
+            redirect($_SERVER['HTTP_REFERER']);
+        }
+        $this->session->set_flashdata('success', 'Password berhasil diubah');
+        redirect($_SERVER['HTTP_REFERER']);
+    }
+
+    /**
      * get list of sekolah
      * 
      * @param

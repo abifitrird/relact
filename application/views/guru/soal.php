@@ -36,19 +36,19 @@
                     </tr>
                 </thead>
                 <tbody>
-                <?php $i=1; foreach ($soal as $soa) {
+                <?php $no_pg=1; foreach ($soal as $soa) {
                   if ($soa['tipe'] == 'pg') { ?>
                     <tr>
-                      <th scope="row"><?php echo $i ?></th>
+                      <th scope="row"><?php echo $no_pg ?></th>
                       <td><?php echo $soa['pertanyaan'] ?></td>
                       <td>Percabangan</td>
                       <td><?php echo $soa['bobot'] ?></td>
                       <td style="text-align: center; white-space: nowrap; width: 1%">
                         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#ubahSoal" data-soalid="<?php echo $soa['id'] ?>" data-soaljenis="<?php echo $soa['tipe'] ?>">Ubah</button>
-                        <button class="btn btn-danger">Hapus</button> <!-- FIXME: hapus soal -->
+                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#hapusSoal" data-soalid="<?php echo $soa['id'] ?>">Hapus</button> <!-- FIXME: hapus soal -->
                       </td>
                     </tr>
-                <?php } } ?>
+                <?php $no_pg++;}} ?>
                 </tbody>
               </table>
               </div>
@@ -63,18 +63,18 @@
                     </tr>
                 </thead>
                 <tbody>
-                <?php $i=1; foreach ($soal as $soa) {
+                <?php $no_esai=1; foreach ($soal as $soa) {
                   if ($soa['tipe'] == 'esai') { ?>
                     <tr>
-                      <th scope="row"><?php echo $i ?></th>
+                      <th scope="row"><?php echo $no_esai ?></th>
                       <td><?php echo $soa['pertanyaan'] ?></td>
                       <td><?php echo $soa['bobot'] ?></td>
                       <td style="text-align: center; white-space: nowrap; width: 1%">
                         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#ubahSoal" data-soalid="<?php echo $soa['id'] ?>" data-soaljenis="<?php echo $soa['tipe'] ?>">Ubah</button>
-                        <button class="btn btn-danger">Hapus</button> <!-- FIXME: hapus soal -->
+                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#hapusSoal" data-soalid="<?php echo $soa['id'] ?>">Hapus</button> <!-- FIXME: hapus soal -->
                       </td>
                     </tr>
-                <?php }} ?>
+                <?php $no_esai++;}} ?>
                 </tbody>
               </table>
               </div>
@@ -84,6 +84,28 @@
         <!-- footer -->
         <?php //include("footer.php") ?>
     <!-- /#page-content-wrapper -->
+    </div>
+</div>
+
+<div class="modal fade" id="hapusSoal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Hapus Soal</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h6>Yakin ingin menghapus soal?</h6>
+            </div>
+            <div class="modal-footer">
+              <form action="" method="POST">
+                <button type="submit" class="btn btn-danger">Hapus</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+              </form>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -160,7 +182,7 @@
 
             </div>
             <div class="modal-footer">
-                <div class="text-left">
+                <div class="text-left" id="btnPG">
                     <button type="button" id="btnHapusPilihan" class="btn btn-danger">Hapus Pilihan</button>
                     <button type="button" id="btnTambahPilihan" class="btn btn-info">Tambah Pilihan</button>
                 </div>
@@ -182,12 +204,17 @@
       $("#wrapper").toggleClass("toggled");
     });
 
-    $('#ubahSoal').on('show.bs.modal', function (event) {
+    $('#hapusSoal').on('show.bs.modal', function(event) {
       var button = $(event.relatedTarget)
       var soal_id = button.data('soalid')
+      $('.modal-footer form').attr('action', '<?php echo site_url('guru/kelas/' . $this->uri->segment(3) . '/materi/' . $this->uri->segment(5) . '/soal/delete/') ?>' + soal_id)
+    })
+
+    $('#ubahSoal').on('show.bs.modal', function (event) {
+      let button = $(event.relatedTarget)
+      let soal_id = button.data('soalid')
       var soal_jenis = button.data('soaljenis')
-      $('.modal-body form').attr('action', '<?php echo site_url('guru/kelas/' . $this->uri->segment(3) . '/materi/' . $this->uri->segment(5) . '/soal/') ?>' + soal_id);
-      var modal = $(this)
+      let modal = $(this)
       fetch('<?php echo site_url('api/soal/') ?>' + soal_id)
         .then(response => response.json())
         .then(data => {
@@ -204,11 +231,13 @@
         })
 
         if (soal_jenis == 'pg') {
+          $('.modal-body form').attr('action', '<?php echo site_url('guru/kelas/' . $this->uri->segment(3) . '/materi/' . $this->uri->segment(5) . '/soal/') ?>' + soal_id);
           modal.find('.modal-body #pilihanGanda').removeClass('d-none');
-          modal.find('.modal-footer #btnTambahPilihan').removeClass('d-none');
+          modal.find('.modal-footer #btnPG').removeClass('d-none');
         } else if (soal_jenis == 'esai') {
+          $('.modal-body form').attr('action', '<?php echo site_url('guru/kelas/' . $this->uri->segment(3) . '/materi/' . $this->uri->segment(5) . '/soal/esai/') ?>' + soal_id);
           modal.find('.modal-body #pilihanGanda').addClass('d-none');
-          modal.find('.modal-footer #btnTambahPilihan').addClass('d-none');
+          modal.find('.modal-footer #btnPG').addClass('d-none');
         }
     });
 

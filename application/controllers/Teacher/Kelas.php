@@ -22,17 +22,20 @@ class Kelas extends CI_Controller
 		$this->load->view('guru/list_materi', $data);
 	}
 
-	public function saveMateri($kelas_id)
+	public function saveMateri($kelas_kode)
 	{
 		$data = array(
 			'kode' => random_string('alnum', 6),
-			'kelas_id' => $kelas_id,
+			'kelas_kode' => $kelas_kode,
 			'judul' => $this->input->post('judul'),
 			'konten' => $this->input->post('konten'),
 			'status' => 1
 		);
 
-		echo $this->KelasModel->saveMateri($data);
+		if (!$this->KelasModel->saveMateri($data)) {
+			redirect($_SERVER['HTTP_REFERER']);
+		}
+		redirect($_SERVER['HTTP_REFERER']);
 	}
 
 	public function showMateri($kelas_id, $materi_kode)
@@ -67,7 +70,8 @@ class Kelas extends CI_Controller
 		);
 
 		if ($this->KelasModel->saveKelas($data)) {
-			redirect(site_url('Guru/Kelas'));
+			// redirect(site_url('Guru/Kelas'));
+			redirect($_SERVER['HTTP_REFERER']);
 		}
 	}
 }

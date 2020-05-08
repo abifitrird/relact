@@ -48,9 +48,40 @@ class Soal extends CI_Controller
     {
         $data = $this->input->post();
         $this->Soal->savePilihanJawabanBySoalId($soal_id, $data);
+        $this->editSoal($soal_id, $data['pertanyaan']);
         redirect($_SERVER['HTTP_REFERER']);
     }
     
+    /**
+     * edit soal
+     * 
+     * @param soal_id
+     * @param pertanyaan
+     */
+    public function editSoal($soal_id, $pertanyaan = null)
+    {
+        if (!$pertanyaan) {
+            $pertanyaan = $this->input->post('pertanyaan');
+        }
+
+        if ($this->Soal->updateSoal($soal_id, $pertanyaan)) {
+            redirect($_SERVER['HTTP_REFERER']);
+        }
+    }
+
+    /**
+     * hapus Soal
+     * 
+     * @param soal_id
+     * @return boolean
+     */
+    public function deleteSoal($soal_id)
+    {
+        if ($this->Soal->deleteSoal($soal_id)) {
+            redirect($_SERVER['HTTP_REFERER']);
+        }
+    }
+
     /**
      * get Saol by Id as JSON
      * 

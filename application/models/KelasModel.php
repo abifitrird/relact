@@ -72,6 +72,14 @@ class KelasModel extends CI_Model
      */
     public function saveMateri($data)
     {
-        return $this->db->insert('materi', $data);
+        $kelas_id = $this->db->where('code', $data['kelas_kode'])->get('kelas')->row_array()['id'];
+        $dataa = array(
+            'kode' => $data['kode'],
+			'kelas_id' => $kelas_id,
+			'judul' => $data['judul'],
+			'konten' => $data['konten'],
+			'status' => $data['status']
+        );
+        return $this->db->insert('materi', $dataa);
     }
 }

@@ -24,6 +24,34 @@ class ProfilModel extends CI_Model
     }
 
     /**
+     * check password lama
+     * 
+     * @param user_id
+     * @return password_lama
+     */
+    public function checkPassword($user_id)
+    {
+        return $this->db->where('id', $user_id)->select('password')->get('users')->row_array()['password'];
+    }
+
+    /**
+     * change password
+     * 
+     * @param user_id
+     * @param password_baru
+     * @return boolean
+     */
+    public function changePassword($user_id, $baru)
+    {
+        $this->db->set('password', $baru)->where('id', $user_id)->update('users');
+        if ($this->db->affected_rows() == 0) {
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
      * get list of school
      * 
      * @param

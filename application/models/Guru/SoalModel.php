@@ -109,4 +109,37 @@ class SoalModel extends CI_Model
 
         return $pilihan = $pilihan->result_array();
     }
+
+    /**
+     * update Soal
+     * 
+     * @param soal_id
+     * @param pertanyaan
+     * @return boolean
+     */
+    public function updateSoal($soal_id, $pertanyaan)
+    {
+        $this->db->set('pertanyaan', $pertanyaan)->where('id', $soal_id)->update('soal');
+        if ($this->db->affected_rows() == 0) {
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
+     * delete Soal
+     * 
+     * @param soal_id
+     * @return boolean
+     */
+    public function deleteSoal($soal_id)
+    {
+        $this->db->where('id', $soal_id)->delete('soal');
+        if ($this->db->affected_rows() == 0) {
+            return false;
+        }
+
+        return true;
+    }
 }
