@@ -9,17 +9,17 @@ class SignupModel extends CI_Model {
 	}
 	public function registrasiUser($data)
 	{
-		$username = $data['email'];
+		$email = $data['email'];
         $data['password'] = MD5($data['password']);
-        $query = $this->db->query("SELECT * FROM users WHERE email = '$username' LIMIT 1");
-        if($query->num_rows() == 0){
-            $this->db->insert('users',$data);
-            if ($this->db->affected_rows() > 0) {
+        $cek_email = $this->db->where('email', $email)->limit(1)->get('users')->num_rows();
+        if($cek_email == 0){
+            $cek_username = $this->db->where('username', $data['username'])->limit(1)->get('users')->num_rows();
+            if ($cek_username == 0) {
+                $this->db->insert('users',$data);
                 return true;
             }
         }
-        else{
-            return false;
-        }
+
+        return false;
 	}
 }

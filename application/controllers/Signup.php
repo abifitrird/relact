@@ -25,14 +25,13 @@ class Signup extends CI_Controller
 			$data['role_id'] = $this->input->post('radioJabatan');
 			$data['email'] = strtolower($this->input->post('inputEmail'));
 			$data['password'] = $this->input->post('inputPassword');
-			$cek_data = $this->SignupModel->registrasiUser($data);
-			if ($cek_data) {
-				echo $this->session->set_flashdata('msg', 'Email sudah terdaftar');
-				redirect(base_url('Signup/daftar'));
-			} else {
-				echo $this->session->set_flashdata('msg', 'Silahkan Login');
-				redirect(base_url());
+			if (!$this->SignupModel->registrasiUser($data)) {
+				$this->session->set_flashdata('msg', 'Username/Email sudah terdaftar');
+				redirect($_SERVER['HTTP_REFERER']);
 			}
+
+			$this->session->set_flashdata('msg', 'Silahkan Login');
+			redirect(site_url());
 		}
 	}
 }
