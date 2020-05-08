@@ -41,7 +41,7 @@
                     <tr>
                       <th scope="row"><?php echo $no_pg ?></th>
                       <td><?php echo $soa['pertanyaan'] ?></td>
-                      <td>Percabangan</td>
+                      <td><?php echo $soa['pilihan'] ? $soa['pilihan'] : "belum ada kunci jawaban" ?></td>
                       <td><?php echo $soa['bobot'] ?></td>
                       <td style="text-align: center; white-space: nowrap; width: 1%">
                         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#ubahSoal" data-soalid="<?php echo $soa['id'] ?>" data-soaljenis="<?php echo $soa['tipe'] ?>">Ubah</button>
