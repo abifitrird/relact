@@ -53,11 +53,11 @@ INSERT INTO `ci_sessions` (`id`, `ip_address`, `timestamp`, `data`) VALUES
 CREATE TABLE `detail_user` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `nomor_induk` varchar(255) NOT NULL,
-  `nama_lengkap` varchar(255) DEFAULT NULL,
+  `nomor_induk` varchar(191) NOT NULL,
+  `nama_lengkap` varchar(191) DEFAULT NULL,
   `sekolah_id` int(11) NOT NULL,
-  `alamat` varchar(255) DEFAULT NULL,
-  `no_hp` varchar(255) DEFAULT NULL
+  `alamat` varchar(191) DEFAULT NULL,
+  `no_hp` varchar(191) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -76,7 +76,7 @@ INSERT INTO `detail_user` (`id`, `user_id`, `nomor_induk`, `nama_lengkap`, `seko
 CREATE TABLE `hak_akses` (
   `id` int(11) NOT NULL,
   `role_id` int(11) NOT NULL,
-  `akses` varchar(255) NOT NULL,
+  `akses` varchar(191) NOT NULL,
   `metode` enum('create','read','update','delete') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -90,8 +90,8 @@ CREATE TABLE `kelas` (
   `id` int(11) NOT NULL,
   `guru_id` int(11) NOT NULL,
   `mapel_id` int(11) NOT NULL,
-  `code` varchar(255) NOT NULL,
-  `nama` varchar(255) NOT NULL,
+  `code` varchar(191) NOT NULL,
+  `nama` varchar(191) NOT NULL,
   `periode` year(4) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
@@ -127,9 +127,9 @@ CREATE TABLE `kunci_soal` (
 CREATE TABLE `log_activity` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `url` varchar(255) NOT NULL,
-  `element` varchar(255) NOT NULL,
-  `action` varchar(255) NOT NULL,
+  `url` varchar(191) NOT NULL,
+  `element` varchar(191) NOT NULL,
+  `action` varchar(191) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -218,7 +218,7 @@ CREATE TABLE `log_on_materi_detail` (
 
 CREATE TABLE `mata_pelajaran` (
   `id` int(11) NOT NULL,
-  `nama_mapel` varchar(255) NOT NULL
+  `nama_mapel` varchar(191) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -237,10 +237,10 @@ INSERT INTO `mata_pelajaran` (`id`, `nama_mapel`) VALUES
 
 CREATE TABLE `materi` (
   `id` int(11) NOT NULL,
-  `kode` varchar(255) NOT NULL,
+  `kode` varchar(191) NOT NULL,
   `kelas_id` int(11) NOT NULL,
-  `judul` varchar(255) NOT NULL,
-  `konten` varchar(255) NOT NULL,
+  `judul` varchar(191) NOT NULL,
+  `konten` varchar(191) NOT NULL,
   `status` int(11) NOT NULL,
   `tanggal_buka` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `tanggal_tutup_tes` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
@@ -265,7 +265,7 @@ INSERT INTO `materi` (`id`, `kode`, `kelas_id`, `judul`, `konten`, `status`, `ta
 CREATE TABLE `nilai` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `materi_kode` varchar(255) NOT NULL,
+  `materi_kode` varchar(191) NOT NULL,
   `skor` int(11) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
@@ -293,8 +293,8 @@ CREATE TABLE `pilihan_soal` (
 
 CREATE TABLE `roles` (
   `id` int(11) NOT NULL,
-  `nama` varchar(255) NOT NULL,
-  `kode` varchar(255) NOT NULL
+  `nama` varchar(191) NOT NULL,
+  `kode` varchar(191) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -313,8 +313,8 @@ INSERT INTO `roles` (`id`, `nama`, `kode`) VALUES
 
 CREATE TABLE `sekolah` (
   `id` int(11) NOT NULL,
-  `nama_sekolah` varchar(255) NOT NULL,
-  `alamat` varchar(255) NOT NULL
+  `nama_sekolah` varchar(191) NOT NULL,
+  `alamat` varchar(191) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -332,7 +332,7 @@ INSERT INTO `sekolah` (`id`, `nama_sekolah`, `alamat`) VALUES
 
 CREATE TABLE `soal` (
   `id` int(11) NOT NULL,
-  `materi_kode` varchar(255) NOT NULL,
+  `materi_kode` varchar(191) NOT NULL,
   `tipe` enum('pg','esai') NOT NULL,
   `pertanyaan` text NOT NULL,
   `bloom` int(11) DEFAULT NULL,
@@ -349,9 +349,9 @@ CREATE TABLE `soal` (
 
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
-  `username` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL,
+  `username` varchar(191) NOT NULL,
+  `email` varchar(191) NOT NULL,
+  `password` varchar(191) NOT NULL,
   `role_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
