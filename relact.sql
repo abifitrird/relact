@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 07, 2020 at 10:25 PM
+-- Generation Time: May 08, 2020 at 08:53 PM
 -- Server version: 10.4.12-MariaDB
 -- PHP Version: 7.4.5
 
@@ -34,32 +34,6 @@ CREATE TABLE `ci_sessions` (
   `data` blob NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `ci_sessions`
---
-
-INSERT INTO `ci_sessions` (`id`, `ip_address`, `timestamp`, `data`) VALUES
-('rg2a31lmd27dv838j3rrrb0fboi0tpjh', '127.0.0.1', 1588880015, 0x5f5f63695f6c6173745f726567656e65726174657c693a313538383838303031353b6e616d617c733a333a22667575223b7374617475737c733a353a226c6f67696e223b726f6c657c733a343a2267757275223b757365725f69647c733a313a2233223b),
-('mlp9abtt4drl180jv4eqeief9n5ro48e', '127.0.0.1', 1588880550, 0x5f5f63695f6c6173745f726567656e65726174657c693a313538383838303535303b6e616d617c733a333a22667575223b7374617475737c733a353a226c6f67696e223b726f6c657c733a343a2267757275223b757365725f69647c733a313a2233223b),
-('4u6f43sc2kht7h68ft68l6ng6atqvbda', '127.0.0.1', 1588880993, 0x5f5f63695f6c6173745f726567656e65726174657c693a313538383838303939333b6e616d617c733a333a22667575223b7374617475737c733a353a226c6f67696e223b726f6c657c733a343a2267757275223b757365725f69647c733a313a2233223b),
-('4as7jm127ikvgeuq2c40706j6hefqsv9', '127.0.0.1', 1588882740, 0x5f5f63695f6c6173745f726567656e65726174657c693a313538383838323734303b6e616d617c733a333a22667575223b7374617475737c733a353a226c6f67696e223b726f6c657c733a343a2267757275223b757365725f69647c733a313a2233223b),
-('do64h2sjjlnhplbherhfhg0sjjaabi3m', '127.0.0.1', 1588883047, 0x5f5f63695f6c6173745f726567656e65726174657c693a313538383838333034373b6e616d617c733a333a22667575223b7374617475737c733a353a226c6f67696e223b726f6c657c733a343a2267757275223b757365725f69647c733a313a2233223b),
-('1jpd8cren8v06t0tksasdcek6k3ln36j', '127.0.0.1', 1588884015, 0x5f5f63695f6c6173745f726567656e65726174657c693a313538383838343031353b6e616d617c733a333a22667575223b7374617475737c733a353a226c6f67696e223b726f6c657c733a343a2267757275223b757365725f69647c733a313a2233223b),
-('m871cu4jm7iv116163s2lq7hh7l328gs', '127.0.0.1', 1588883949, 0x5f5f63695f6c6173745f726567656e65726174657c693a313538383838333832333b),
-('3n83vdc4vvihihh0ac20jhsqunc5g2cl', '127.0.0.1', 1588884656, 0x5f5f63695f6c6173745f726567656e65726174657c693a313538383838343635363b6e616d617c733a333a22667575223b7374617475737c733a353a226c6f67696e223b726f6c657c733a343a2267757275223b757365725f69647c733a313a2233223b),
-('8nnl2p5ui1gister15ide81s264mnr3l', '127.0.0.1', 1588885026, 0x5f5f63695f6c6173745f726567656e65726174657c693a313538383838353032363b6e616d617c733a333a22667575223b7374617475737c733a353a226c6f67696e223b726f6c657c733a343a2267757275223b757365725f69647c733a313a2233223b),
-('r8v80962buai73o32kto4d859dn8g9lu', '127.0.0.1', 1588886091, 0x5f5f63695f6c6173745f726567656e65726174657c693a313538383838363039313b6e616d617c733a333a22667575223b7374617475737c733a353a226c6f67696e223b726f6c657c733a343a2267757275223b757365725f69647c733a313a2233223b),
-('a6p5gc88naaoh4gmhnmv19r2hvdl742n', '127.0.0.1', 1588886848, 0x5f5f63695f6c6173745f726567656e65726174657c693a313538383838363834383b6e616d617c733a333a22667575223b7374617475737c733a353a226c6f67696e223b726f6c657c733a343a2267757275223b757365725f69647c733a313a2233223b),
-('p4umqcb5dd0k60utdco4q5lr9oj3rh4p', '127.0.0.1', 1588887177, 0x5f5f63695f6c6173745f726567656e65726174657c693a313538383838373137373b6e616d617c733a333a22667575223b7374617475737c733a353a226c6f67696e223b726f6c657c733a343a2267757275223b757365725f69647c733a313a2233223b),
-('ah04jv4n899b426grhuo1g1laahsdci0', '127.0.0.1', 1588887490, 0x5f5f63695f6c6173745f726567656e65726174657c693a313538383838373439303b6e616d617c733a333a22667575223b7374617475737c733a353a226c6f67696e223b726f6c657c733a343a2267757275223b757365725f69647c733a313a2233223b),
-('qbuji015ovk1n03qd2m6qcrdajaf9tth', '127.0.0.1', 1588888174, 0x5f5f63695f6c6173745f726567656e65726174657c693a313538383838383137343b6e616d617c733a333a22667575223b7374617475737c733a353a226c6f67696e223b726f6c657c733a343a2267757275223b757365725f69647c733a313a2233223b),
-('9ss15eosak80e8au18kjbtq181de98hj', '127.0.0.1', 1588888476, 0x5f5f63695f6c6173745f726567656e65726174657c693a313538383838383437363b6e616d617c733a333a22667575223b7374617475737c733a353a226c6f67696e223b726f6c657c733a343a2267757275223b757365725f69647c733a313a2233223b),
-('4i4mp5vt9kss9nhrf2jb5v54du4p9e7g', '127.0.0.1', 1588888800, 0x5f5f63695f6c6173745f726567656e65726174657c693a313538383838383830303b6e616d617c733a333a22667575223b7374617475737c733a353a226c6f67696e223b726f6c657c733a343a2267757275223b757365725f69647c733a313a2233223b),
-('rkra19f9ui8sg86a0aejnfdjvc41q56a', '127.0.0.1', 1588889664, 0x5f5f63695f6c6173745f726567656e65726174657c693a313538383838393636343b6e616d617c733a333a22667575223b7374617475737c733a353a226c6f67696e223b726f6c657c733a343a2267757275223b757365725f69647c733a313a2233223b),
-('240i0kkfandbodii3b6nmb7vi01i6tdh', '127.0.0.1', 1588889967, 0x5f5f63695f6c6173745f726567656e65726174657c693a313538383838393936373b6e616d617c733a333a22667575223b7374617475737c733a353a226c6f67696e223b726f6c657c733a343a2267757275223b757365725f69647c733a313a2233223b),
-('pj8lfmr0ms4tahu0d8dptjolcll5dfos', '127.0.0.1', 1588890270, 0x5f5f63695f6c6173745f726567656e65726174657c693a313538383839303237303b6e616d617c733a333a22667575223b7374617475737c733a353a226c6f67696e223b726f6c657c733a343a2267757275223b757365725f69647c733a313a2233223b),
-('5h4nvp8pg0qdaesemfgrk2jm9q5l160m', '127.0.0.1', 1588890270, 0x5f5f63695f6c6173745f726567656e65726174657c693a313538383839303237303b6e616d617c733a333a22667575223b7374617475737c733a353a226c6f67696e223b726f6c657c733a343a2267757275223b757365725f69647c733a313a2233223b);
-
 -- --------------------------------------------------------
 
 --
@@ -75,13 +49,6 @@ CREATE TABLE `detail_user` (
   `alamat` varchar(255) DEFAULT NULL,
   `no_hp` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `detail_user`
---
-
-INSERT INTO `detail_user` (`id`, `user_id`, `nomor_induk`, `nama_lengkap`, `sekolah_id`, `alamat`, `no_hp`) VALUES
-(6, 3, '1607488', 'Akhmad', 1, 'agasd', '081122');
 
 -- --------------------------------------------------------
 
@@ -113,14 +80,6 @@ CREATE TABLE `kelas` (
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `kelas`
---
-
-INSERT INTO `kelas` (`id`, `guru_id`, `mapel_id`, `code`, `nama`, `periode`, `created_at`, `updated_at`) VALUES
-(1, 1, 2, 'VQPZUO', 'KOM-1A', 2016, '2020-03-03 07:10:19', '0000-00-00 00:00:00'),
-(2, 1, 1, '1cozNP', 'KOM-1C', 2017, '2020-03-03 07:53:23', '0000-00-00 00:00:00');
-
 -- --------------------------------------------------------
 
 --
@@ -134,13 +93,6 @@ CREATE TABLE `kunci_soal` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `kunci_soal`
---
-
-INSERT INTO `kunci_soal` (`id`, `soal_id`, `pilihan_soal_id`, `created_at`, `updated_at`) VALUES
-(5, 1, 2, '2020-05-07 22:21:27', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -245,14 +197,6 @@ CREATE TABLE `mata_pelajaran` (
   `nama_mapel` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `mata_pelajaran`
---
-
-INSERT INTO `mata_pelajaran` (`id`, `nama_mapel`) VALUES
-(1, 'Basis Data'),
-(2, 'Pemrograman Dasar');
-
 -- --------------------------------------------------------
 
 --
@@ -272,13 +216,6 @@ CREATE TABLE `materi` (
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `materi`
---
-
-INSERT INTO `materi` (`id`, `kode`, `kelas_id`, `judul`, `konten`, `status`, `tanggal_buka`, `tanggal_tutup_tes`, `kunci_tes`, `created_at`, `updated_at`) VALUES
-(2, 'GRyBjP', 1, 'Percabangan', '<p>Lorem ipsum dolor sit amet <b>Lorem ipsum</b>&nbsp;<i>Dolor sit amet</i></p>', 1, '2020-04-06 15:59:13', '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -309,15 +246,6 @@ CREATE TABLE `pilihan_soal` (
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `pilihan_soal`
---
-
-INSERT INTO `pilihan_soal` (`id`, `soal_id`, `pilihan`, `created_at`, `updated_at`) VALUES
-(1, 1, 'dasd', '2020-05-07 22:21:11', '0000-00-00 00:00:00'),
-(2, 1, 'ddd', '2020-05-07 22:21:11', '0000-00-00 00:00:00'),
-(3, 1, 'fghfg', '2020-05-07 22:21:21', '0000-00-00 00:00:00');
-
 -- --------------------------------------------------------
 
 --
@@ -330,14 +258,6 @@ CREATE TABLE `roles` (
   `kode` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `roles`
---
-
-INSERT INTO `roles` (`id`, `nama`, `kode`) VALUES
-(1, 'Guru', 'GR'),
-(2, 'Siswa', 'SW');
-
 -- --------------------------------------------------------
 
 --
@@ -349,13 +269,6 @@ CREATE TABLE `sekolah` (
   `nama_sekolah` varchar(255) NOT NULL,
   `alamat` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `sekolah`
---
-
-INSERT INTO `sekolah` (`id`, `nama_sekolah`, `alamat`) VALUES
-(1, 'SMKN 1 Cimahi', 'Jl. Mahar Martanegara No.48, Utama, Kec. Cimahi Sel., Kota Cimahi, Jawa Barat 40521');
 
 -- --------------------------------------------------------
 
@@ -374,14 +287,6 @@ CREATE TABLE `soal` (
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `soal`
---
-
-INSERT INTO `soal` (`id`, `materi_kode`, `tipe`, `pertanyaan`, `bloom`, `bobot`, `created_at`, `updated_at`) VALUES
-(1, 'GRyBjP', 'pg', 'hello world', NULL, 10, '2020-05-06 18:52:52', '0000-00-00 00:00:00'),
-(2, 'GRyBjP', 'esai', 'Hello world hehe', NULL, 1, '2020-05-06 19:00:54', '0000-00-00 00:00:00');
-
 -- --------------------------------------------------------
 
 --
@@ -395,15 +300,6 @@ CREATE TABLE `users` (
   `password` varchar(255) NOT NULL,
   `role_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `users`
---
-
-INSERT INTO `users` (`id`, `username`, `email`, `password`, `role_id`) VALUES
-(1, 'fitrird', 'Abifitrird@gmail.com', '202cb962ac59075b964b07152d234b70', 1),
-(2, 'coba2', 'FRATNADEWI@GMAIL.COM', '912ec803b2ce49e4a541068d495ab570', 2),
-(3, 'fuu', 'hello@akhmad.id', '202cb962ac59075b964b07152d234b70', 1);
 
 -- --------------------------------------------------------
 
@@ -579,7 +475,7 @@ ALTER TABLE `user_kelas`
 -- AUTO_INCREMENT for table `detail_user`
 --
 ALTER TABLE `detail_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `hak_akses`
@@ -591,13 +487,13 @@ ALTER TABLE `hak_akses`
 -- AUTO_INCREMENT for table `kelas`
 --
 ALTER TABLE `kelas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `kunci_soal`
 --
 ALTER TABLE `kunci_soal`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `log_activity`
@@ -639,13 +535,13 @@ ALTER TABLE `log_on_materi_detail`
 -- AUTO_INCREMENT for table `mata_pelajaran`
 --
 ALTER TABLE `mata_pelajaran`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `materi`
 --
 ALTER TABLE `materi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `nilai`
@@ -657,31 +553,31 @@ ALTER TABLE `nilai`
 -- AUTO_INCREMENT for table `pilihan_soal`
 --
 ALTER TABLE `pilihan_soal`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `sekolah`
 --
 ALTER TABLE `sekolah`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `soal`
 --
 ALTER TABLE `soal`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `user_kelas`
@@ -697,8 +593,8 @@ ALTER TABLE `user_kelas`
 -- Constraints for table `detail_user`
 --
 ALTER TABLE `detail_user`
-  ADD CONSTRAINT `detail_user_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
-  ADD CONSTRAINT `detail_user_ibfk_2` FOREIGN KEY (`sekolah_id`) REFERENCES `sekolah` (`id`);
+  ADD CONSTRAINT `detail_user_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `detail_user_ibfk_2` FOREIGN KEY (`sekolah_id`) REFERENCES `sekolah` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `hak_akses`
@@ -710,15 +606,15 @@ ALTER TABLE `hak_akses`
 -- Constraints for table `kelas`
 --
 ALTER TABLE `kelas`
-  ADD CONSTRAINT `kelas_ibfk_1` FOREIGN KEY (`guru_id`) REFERENCES `users` (`id`),
-  ADD CONSTRAINT `kelas_ibfk_2` FOREIGN KEY (`mapel_id`) REFERENCES `mata_pelajaran` (`id`);
+  ADD CONSTRAINT `kelas_ibfk_1` FOREIGN KEY (`guru_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `kelas_ibfk_2` FOREIGN KEY (`mapel_id`) REFERENCES `mata_pelajaran` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `kunci_soal`
 --
 ALTER TABLE `kunci_soal`
-  ADD CONSTRAINT `kunci_soal_ibfk_1` FOREIGN KEY (`soal_id`) REFERENCES `soal` (`id`),
-  ADD CONSTRAINT `kunci_soal_ibfk_2` FOREIGN KEY (`pilihan_soal_id`) REFERENCES `pilihan_soal` (`id`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `kunci_soal_ibfk_1` FOREIGN KEY (`soal_id`) REFERENCES `soal` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `kunci_soal_ibfk_2` FOREIGN KEY (`pilihan_soal_id`) REFERENCES `pilihan_soal` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `log_activity`
@@ -778,7 +674,7 @@ ALTER TABLE `nilai`
 -- Constraints for table `pilihan_soal`
 --
 ALTER TABLE `pilihan_soal`
-  ADD CONSTRAINT `pilihan_soal_ibfk_1` FOREIGN KEY (`soal_id`) REFERENCES `soal` (`id`);
+  ADD CONSTRAINT `pilihan_soal_ibfk_1` FOREIGN KEY (`soal_id`) REFERENCES `soal` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `soal`
