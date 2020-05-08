@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 08, 2020 at 08:53 PM
+-- Generation Time: May 08, 2020 at 09:43 PM
 -- Server version: 10.4.12-MariaDB
 -- PHP Version: 7.4.5
 
@@ -34,6 +34,16 @@ CREATE TABLE `ci_sessions` (
   `data` blob NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `ci_sessions`
+--
+
+INSERT INTO `ci_sessions` (`id`, `ip_address`, `timestamp`, `data`) VALUES
+('02o1p21fm1l3t7fovqqhk7408lo4qqjt', '127.0.0.1', 1588973318, 0x5f5f63695f6c6173745f726567656e65726174657c693a313538383937333331383b6e616d617c733a333a22667575223b7374617475737c733a353a226c6f67696e223b726f6c657c733a343a2267757275223b757365725f69647c733a313a2232223b),
+('t7vrog3ov6jtfla4i4m0mc5dt11rrndu', '127.0.0.1', 1588973626, 0x5f5f63695f6c6173745f726567656e65726174657c693a313538383937333632363b6e616d617c733a333a22667575223b7374617475737c733a353a226c6f67696e223b726f6c657c733a343a2267757275223b757365725f69647c733a313a2232223b),
+('0rks8759bk328do04nr838opd0rooms2', '127.0.0.1', 1588974065, 0x5f5f63695f6c6173745f726567656e65726174657c693a313538383937343036353b6e616d617c733a333a22667575223b7374617475737c733a353a226c6f67696e223b726f6c657c733a343a2267757275223b757365725f69647c733a313a2232223b),
+('3htb2kdt5s3j2i4ko5jdf0k7h16rl5pg', '127.0.0.1', 1588974075, 0x5f5f63695f6c6173745f726567656e65726174657c693a313538383937343036353b6e616d617c733a333a22667575223b7374617475737c733a353a226c6f67696e223b726f6c657c733a343a2267757275223b757365725f69647c733a313a2232223b);
+
 -- --------------------------------------------------------
 
 --
@@ -49,6 +59,13 @@ CREATE TABLE `detail_user` (
   `alamat` varchar(255) DEFAULT NULL,
   `no_hp` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `detail_user`
+--
+
+INSERT INTO `detail_user` (`id`, `user_id`, `nomor_induk`, `nama_lengkap`, `sekolah_id`, `alamat`, `no_hp`) VALUES
+(1, 2, '1607488', 'Fuuuuuu~', 1, 'asdasdas', '0811');
 
 -- --------------------------------------------------------
 
@@ -79,6 +96,13 @@ CREATE TABLE `kelas` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `kelas`
+--
+
+INSERT INTO `kelas` (`id`, `guru_id`, `mapel_id`, `code`, `nama`, `periode`, `created_at`, `updated_at`) VALUES
+(2, 2, 2, 'DblnsX', 'KOM-1A', 2016, '2020-05-08 21:28:03', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -197,6 +221,14 @@ CREATE TABLE `mata_pelajaran` (
   `nama_mapel` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `mata_pelajaran`
+--
+
+INSERT INTO `mata_pelajaran` (`id`, `nama_mapel`) VALUES
+(1, 'Basis Data'),
+(2, 'Pemrograman Dasar');
+
 -- --------------------------------------------------------
 
 --
@@ -216,6 +248,13 @@ CREATE TABLE `materi` (
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `materi`
+--
+
+INSERT INTO `materi` (`id`, `kode`, `kelas_id`, `judul`, `konten`, `status`, `tanggal_buka`, `tanggal_tutup_tes`, `kunci_tes`, `created_at`, `updated_at`) VALUES
+(1, 'VbIfMW', 2, 'Tipe Data', '<p>disini tipe data coy</p><p>materi tipe data<br>asd</p>', 1, '2020-05-08 21:41:15', '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -258,6 +297,14 @@ CREATE TABLE `roles` (
   `kode` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `roles`
+--
+
+INSERT INTO `roles` (`id`, `nama`, `kode`) VALUES
+(1, 'Guru', 'GR'),
+(2, 'Siswa', 'SW');
+
 -- --------------------------------------------------------
 
 --
@@ -269,6 +316,13 @@ CREATE TABLE `sekolah` (
   `nama_sekolah` varchar(255) NOT NULL,
   `alamat` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `sekolah`
+--
+
+INSERT INTO `sekolah` (`id`, `nama_sekolah`, `alamat`) VALUES
+(1, 'SMKN 1 Cimahi', 'Jl. Mahar Martanegara No.48, Utama, Kec. Cimahi Sel., Kota Cimahi, Jawa Barat 40521');
 
 -- --------------------------------------------------------
 
@@ -300,6 +354,13 @@ CREATE TABLE `users` (
   `password` varchar(255) NOT NULL,
   `role_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `username`, `email`, `password`, `role_id`) VALUES
+(2, 'fuu', 'fuu@fuu.com', '202cb962ac59075b964b07152d234b70', 1);
 
 -- --------------------------------------------------------
 
@@ -475,7 +536,7 @@ ALTER TABLE `user_kelas`
 -- AUTO_INCREMENT for table `detail_user`
 --
 ALTER TABLE `detail_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `hak_akses`
@@ -487,7 +548,7 @@ ALTER TABLE `hak_akses`
 -- AUTO_INCREMENT for table `kelas`
 --
 ALTER TABLE `kelas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `kunci_soal`
@@ -535,13 +596,13 @@ ALTER TABLE `log_on_materi_detail`
 -- AUTO_INCREMENT for table `mata_pelajaran`
 --
 ALTER TABLE `mata_pelajaran`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `materi`
 --
 ALTER TABLE `materi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `nilai`
@@ -559,13 +620,13 @@ ALTER TABLE `pilihan_soal`
 -- AUTO_INCREMENT for table `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `sekolah`
 --
 ALTER TABLE `sekolah`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `soal`
@@ -577,7 +638,7 @@ ALTER TABLE `soal`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `user_kelas`
