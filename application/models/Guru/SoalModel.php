@@ -9,9 +9,6 @@ class SoalModel extends CI_Model
      */
     public function getSoalByKodeMateri($kode_materi)
     {
-        /* 
-        SELECT soal.id, soal.materi_kode, soal.tipe, soal.pertanyaan, soal.bobot, (SELECT pilihan_soal.pilihan FROM pilihan_soal JOIN kunci_soal ON pilihan_soal.id = kunci_soal.pilihan_soal_id WHERE soal.id = pilihan_soal.soal_id) as pilihan FROM soal
-        */
         $data = $this->db->select('soal.id, soal. materi_kode, soal.tipe, soal.pertanyaan, soal.bobot, (SELECT pilihan_soal.pilihan FROM pilihan_soal JOIN kunci_soal ON pilihan_soal.id = kunci_soal.pilihan_soal_id WHERE soal.id = pilihan_soal.soal_id) as pilihan' )
         ->where('materi_kode', $kode_materi)
         ->get('soal');

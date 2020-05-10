@@ -87,3 +87,7 @@ $route['guru/kelas/(:any)/materi/(:any)/soal/esai/(:num)']['post'] = "Teacher/So
 
 $route['api/soal/(:num)']['get'] = "Teacher/Soal/getSoalJson/$1"; // get JSON API
 $route['api/soal/pilihan/(:num)']['get'] = "Teacher/Soal/getPilihanJawabanBySoalId/$1"; // getpilihan jawbaban as JSON
+
+
+/* route siswa */
+$route['siswa']['get'] = "Student/Siswa/index";
