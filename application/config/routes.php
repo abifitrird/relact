@@ -61,8 +61,8 @@ $route['logout']['get'] = 'Login/Logout';           // logout
 $route['daftar']['get'] = "Signup/index";           // view daftar
 $route['daftar']['post'] = "Signup/daftar";         // proses daftar
 
-$route['guru/profil/ubah/password']['post'] = "Profil/updatePassword"; // change password
-$route['guru/profil/ubah']['post'] = "Profil/updateProfil"; // update profil
+$route['profil/ubah/password']['post'] = "Profil/updatePassword"; // change password
+$route['profil/ubah']['post'] = "Profil/updateProfil"; // update profil
 
 
 /* route guru */

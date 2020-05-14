@@ -85,7 +85,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="<?php echo site_url('guru/profil/ubah') ?>" method="POST">
+                <form action="<?php echo site_url('profil/ubah') ?>" method="POST">
                     <div class="form-group">
                         <label for="namaLengkap">Nama Lengkap</label>
                         <input type="text" class="form-control" id="namaLengkap" name="namaLengkap" value="<?php echo isset($data['nama_lengkap']) ? $data['nama_lengkap'] : "" ?>">
@@ -131,7 +131,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="<?php echo site_url('guru/profil/ubah/password') ?>" method="POST">
+                <form action="<?php echo site_url('profil/ubah/password') ?>" method="POST">
                     <div class="form-group">
                         <label for="passwordLama">Password Saat Ini</label>
                         <input type="password" class="form-control" id="passwordLama" name="passwordLama" required>

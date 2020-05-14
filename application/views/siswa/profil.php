@@ -15,28 +15,50 @@
 <?php include("header.php") ?>
 
 <!-- isi halaman -->
-<div class="container">
+<div class="container-fluid">
+    <?php if ($this->session->flashdata('alert')) { ?>
+    <div class="mx-3 my-4 alert alert-danger" role="alert">
+        <?php echo $this->session->flashdata('alert') ?>
+    </div>
+    <?php } ?>
+
+    <?php if ($this->session->flashdata('success')) { ?>
+    <div class="mx-3 my-4 alert alert-success" role="alert">
+        <?php echo $this->session->flashdata('success') ?>
+    </div>
+    <?php } ?>
+
     <div class="row shadow-sm" style="padding: 25px">
         <div class="col-2">
-            <img src="<?php echo base_url('assets/images/patrick.gif') ?>" class="shadow-sm rounded-circle src=" ./assets/images/patrick.gif" style=" width: 150px; height: 150px;">
+            <img src="<?php echo base_url('assets/images/patrick.gif') ?>" class="shadow-sm rounded-circle" style=" width: 150px; height: 150px;">
         </div>
         <div class="col-10 my-auto">
-            <h3>Nama Lengkap</h3>
-            <p style="color: lightgray">
-                Tambahkan bio singkat untuk memperkenalkan diri anda
+            <h2><?php echo isset($data['nama_lengkap']) ? $data['nama_lengkap'] : "Tidak ada data" ?></h2>
+            <p style="color: gray">
+                NIP : <?php echo isset($data['nomor_induk']) ? $data['nomor_induk'] : "Tidak ada data" ?>
             </p>
         </div>
     </div>
     <div class="row shadow-sm" style="padding: 25px">
         <div class="col-12">
-            <p>
-                NIS<br>
-                Jabatan<br>
-                Sekolah<br>
-                Alamat<br>
-                No. Telp/HP<br>
-                Alamat email<br>
-            </p>
+            <table>
+                <tr>
+                    <th>Jabatan</th>
+                    <td>: <?php echo ucfirst($this->session->userdata('role')) ?></td>
+                </tr>
+                <tr>
+                    <th>Sekolah</th>
+                    <td>: <?php echo isset($data['nama_sekolah']) ? $data['nama_sekolah'] : "Tidak ada data" ?></td>
+                </tr>
+                <tr>
+                    <th>Alamat</th>
+                    <td>: <?php echo isset($data['alamat']) ? $data['alamat'] : "Tidak ada data" ?></td>
+                </tr>
+                <tr>
+                    <th>No. Telp/HP</th>
+                    <td>: <?php echo isset($data['no_hp']) ? $data['no_hp'] : "Tidak ada data" ?></td>
+                </tr>
+            </table>
         </div>
         <div class="row flex-row ml-md-auto d-md-flex">
             <!-- Button trigger modal -->
@@ -61,33 +83,37 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="#" method="POST">
+                <form action="<?php echo site_url('profil/ubah') ?>" method="POST">
                     <div class="form-group">
-                        <label for="NIS">Nomor Induk Siswa (NIS)</label>
-                        <input type="text" class="form-control" id="NIS" name="NIS">
+                        <label for="namaLengkap">Nama Lengkap</label>
+                        <input type="text" class="form-control" id="namaLengkap" name="namaLengkap" value="<?php echo isset($data['nama_lengkap']) ? $data['nama_lengkap'] : "" ?>">
                     </div>
                     <div class="form-group">
-                        <label for="Sekolah">Sekolah</label>
-                        <input type="text" class="form-control" id="sekolah" name="sekolah" readonly>
+                        <label for="nomorInduk">Nomor Induk Sekolah (NIS)</label>
+                        <input type="text" class="form-control" id="nomorInduk" name="nomorInduk" value="<?php echo isset($data['nomor_induk']) ? $data['nomor_induk'] : "" ?>">
+                    </div>
+                    <div class="form-group">
+                        <label for="sekolah">Sekolah</label>
+                        <select id="sekolah" class="form-control" name="sekolah" required>
+                            <?php foreach($sekolah as $school) { ?>
+                            <option value="<?php echo $school['id'] ?>"><?php echo $school['nama_sekolah'] ?></option>
+                            <?php } ?>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="Alamat">Alamat</label>
-                        <textarea class="form-control" id="Alamat" name="Alamat"></textarea>
+                        <textarea class="form-control" id="Alamat" name="Alamat"><?php echo isset($data['alamat']) ? $data['alamat'] : "" ?></textarea>
                     </div>
                     <div class="form-group">
                         <label for="noTelp">No. Telp/HP</label>
-                        <input type="text" class="form-control" id="noTelp" name="noTelp">
+                        <input type="text" class="form-control" id="noTelp" name="noTelp" value="<?php echo isset($data['no_hp']) ? $data['no_hp'] : "" ?>">
                     </div>
-                    <div class="form-group">
-                        <label for="Email">Alamat Email</label>
-                        <input type="email" class="form-control" id="Email" name="Email">
-                    </div>
-                </form>
             </div>
             <div class="modal-footer">
                 <button type="submit" class="btn btn-primary">Simpan</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
             </div>
+            </form>
         </div>
     </div>
 </div>
@@ -103,7 +129,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="#" method="POST">
+                <form action="<?php echo site_url('profil/ubah/password') ?>" method="POST">
                     <div class="form-group">
                         <label for="passwordLama">Password Saat Ini</label>
                         <input type="password" class="form-control" id="passwordLama" name="passwordLama" required>
@@ -117,18 +143,20 @@
                         <label for="konfirmasiPassword">Ketik Ulang Password Baru</label>
                         <input type="password" class="form-control" id="konfirmasiPassword" name="konfirmasiPassword" required>
                     </div>
-                </form>
+                
             </div>
             <div class="modal-footer">
                 <button type="submit" class="btn btn-primary">Simpan</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                </form>
             </div>
         </div>
     </div>
 </div>
 
 <!-- footer -->
-<?php include("footer.php") ?>
+<?php //include("footer.php") 
+?>
 <!-- /#page-content-wrapper -->
 </div>
 </div>
