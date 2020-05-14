@@ -66,11 +66,11 @@ $route['guru/profil/ubah']['post'] = "Profil/updateProfil"; // update profil
 
 
 /* route guru */
-$route['guru']['get'] = "Teacher/Guru";                 // view guru beranda
-$route['guru/profil']['get'] = "Profil/index";         // view profil guru
-$route['guru/kelas']['get'] = "Teacher/Kelas";          // view guru kelas
-$route['guru/capaian']['get'] = "Teacher/CapaianSiswa"; // view guru/capaian siswa
-$route['guru/saran']['get'] = "Maintenances";           // view untuk saran
+$route['guru']['get'] = "Teacher/Guru";                     // view guru beranda
+$route['guru/profil']['get'] = "Profil/guru";              // view profil guru
+$route['guru/kelas']['get'] = "Teacher/Kelas";              // view guru kelas
+$route['guru/capaian']['get'] = "Teacher/CapaianSiswa";     // view guru/capaian siswa
+$route['guru/saran']['get'] = "Saran/guru";                 // kotak saran dari guru
 
 /* route guru/kelas */
 $route['guru/kelas']['post'] = 'Teacher/Kelas/saveKelas';                   // simpan kelas guru
@@ -89,5 +89,10 @@ $route['api/soal/(:num)']['get'] = "Teacher/Soal/getSoalJson/$1"; // get JSON AP
 $route['api/soal/pilihan/(:num)']['get'] = "Teacher/Soal/getPilihanJawabanBySoalId/$1"; // getpilihan jawbaban as JSON
 
 
+
 /* route siswa */
-$route['siswa']['get'] = "Student/Siswa/index";
+$route['siswa']['get'] = "Student/Siswa/index"; // beranda siswa
+$route['siswa/profil']['get'] = "Profil/siswa";  // profil siswa
+$route['siswa/kelas']['get'] = "Student/Kelas/index"; // kelas siswa yang tersedia
+$route['siswa/capaian']['get'] = "Student/Capaian/index"; // capaian belajar siswa
+$route['siswa/saran']['get'] = "Saran/siswa"; // kotak saran dari siswa

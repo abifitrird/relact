@@ -23,6 +23,22 @@ class Profil extends CI_Controller
         }
     }
 
+    public function guru()
+    {
+        $id = $this->session->userdata('user_id');
+        $data['data'] = $this->ProfilModel->getProfil($id);
+        $data['sekolah'] = $this->getListOfSchools();
+        $this->load->view('guru/profil', $data);
+    }
+
+    public function siswa()
+    {
+        $id = $this->session->userdata('user_id');
+        $data['data'] = $this->ProfilModel->getProfil($id);
+        $data['sekolah'] = $this->getListOfSchools();
+        $this->load->view('siswa/profil', $data);
+    }
+
     public function updateProfil()
     {
         $namaLengkap = $this->input->post('namaLengkap');
