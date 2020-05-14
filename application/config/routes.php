@@ -74,10 +74,10 @@ $route['guru/saran']['get'] = "Saran/guru";                 // kotak saran dari 
 
 /* route guru/kelas */
 $route['guru/kelas']['post'] = 'Teacher/Kelas/saveKelas';                   // simpan kelas guru
-$route['guru/kelas/(:any)']['get'] = "Teacher/Kelas/getMateri/$1";          // getList Materi by Id
-$route['guru/kelas/(:any)/materi']['post'] = "Teacher/Kelas/saveMateri/$1"; // save mteri by kelas id
-$route['guru/kelas/(:any)/materi/ubah/(:any)']['post'] = "Teacher/Kelas/ubahMateri/$2"; // save mteri by kelas id
-$route['guru/kelas/(:any)/materi/(:any)']['get'] = "Teacher/Kelas/showMateri/$1/$2"; // view materi by materi id and kelas id
+$route['guru/kelas/(:any)']['get'] = "Teacher/Materi/getMateri/$1";          // getList Materi by Id
+$route['guru/kelas/(:any)/materi']['post'] = "Teacher/Materi/saveMateri/$1"; // save mteri by kelas id
+$route['guru/kelas/(:any)/materi/ubah/(:any)']['post'] = "Teacher/Materi/ubahMateri/$2"; // save mteri by kelas id
+$route['guru/kelas/(:any)/materi/(:any)']['get'] = "Teacher/Materi/showMateri/$1/$2"; // view materi by materi id and kelas id
 $route['guru/kelas/(:any)/materi/(:any)/soal']['get'] = "Teacher/Soal/getSoal/$2"; // view soal by materi id
 $route['guru/kelas/(:any)/materi/(:any)/soal']['post'] = "Teacher/Soal/addSoal/$2"; // add soal by materi kode
 

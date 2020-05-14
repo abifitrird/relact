@@ -40,14 +40,4 @@ class Kelas extends Base {
 
 		redirect($_SERVER['HTTP_REFERER']);
 	}
-
-    public function listMateri()
-	{
-		$this->load->view('siswa/list_materi');
-    }
-    
-    public function lihatCapaian()
-	{
-		$this->load->view('siswa/capaian');
-	}
 }

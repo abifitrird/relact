@@ -1,6 +1,8 @@
 <?php
 
-class Soal extends CI_Controller
+require_once APPPATH . 'controllers/Teacher/Base.php';
+
+class Soal extends Base
 {
     public function __construct()
     {

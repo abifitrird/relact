@@ -12,7 +12,7 @@ class Base extends CI_Controller
             redirect(site_url());
         }
         $this->setUserId($this->session->userdata('user_id'));
-        if ($this->session->userdata('role') !== 'siswa') {
+        if ($this->session->userdata('role') !== 'guru') {
             redirect($_SERVER['HTTP_REFERER']);
         }
     }

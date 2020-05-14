@@ -1,7 +1,9 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Kelas extends CI_Controller
+require_once APPPATH . 'controllers/Teacher/Base.php';
+
+class Kelas extends Base
 {
 
 	public function __construct()
@@ -16,59 +18,6 @@ class Kelas extends CI_Controller
 		$this->load->view('guru/kelas', $data);
 	}
 
-	public function getMateri($kode)
-	{
-		$data['data'] = $this->KelasModel->getMateriByKodeKelas($kode);
-		$this->load->view('guru/list_materi', $data);
-	}
-
-	public function saveMateri($kelas_kode)
-	{
-		$data = array(
-			'kode' => random_string('alnum', 6),
-			'kelas_kode' => $kelas_kode,
-			'judul' => $this->input->post('judul'),
-			'konten' => $this->input->post('konten'),
-			'status' => 1
-		);
-
-		if (!$this->KelasModel->saveMateri($data)) {
-			redirect($_SERVER['HTTP_REFERER']);
-		}
-		redirect($_SERVER['HTTP_REFERER']);
-	}
-
-	public function ubahMateri($materi_kode)
-	{
-		$data = array(
-			'kode' => $materi_kode,
-			'judul' => $this->input->post('judul'),
-			'konten' => $this->input->post('konten'),
-		);
-
-		if (!$this->KelasModel->ubahMateri($data)) {
-			redirect($_SERVER['HTTP_REFERER']);
-		}
-		redirect($_SERVER['HTTP_REFERER']);
-	}
-
-	public function showMateri($kelas_id, $materi_kode)
-	{
-		// $data['data'] = $this->KelasModel->getMateriById($materi_id);
-		$data['data'] = $this->KelasModel->getMateriByKode($materi_kode);
-		$this->load->view('guru/materi', $data);
-	}
-
-	public function showSoalByMateri($kelas_id, $materi_id)
-	{
-		$this->load->view('guru/soal');
-	}
-
-	public function lihatSoal()
-	{
-		$this->load->view('guru/soal');
-	}
-
 	public function saveKelas()
 	{
 		$nama_kelas = $this->input->post('namaKelas');
@@ -76,7 +25,7 @@ class Kelas extends CI_Controller
 		$tahun_periode = $this->input->post('tahunPeriode');
 
 		$data = array(
-			'guru_id' => $this->session->userdata('user_id'),
+			'guru_id' => $this->getUserId(),
 			'mapel_id' => $mata_pelajaran,
 			'code' => random_string('alnum', 6),
 			'nama' => $nama_kelas,
@@ -88,4 +37,6 @@ class Kelas extends CI_Controller
 			redirect($_SERVER['HTTP_REFERER']);
 		}
 	}
+
+	// TODO: add edit Kelas and hapus Kelas
 }

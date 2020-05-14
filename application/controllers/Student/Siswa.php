@@ -9,8 +9,4 @@ class Siswa extends Base {
 	{
 		$this->load->view('siswa/beranda');
 	}
-	public function profil()
-	{
-		$this->load->view('siswa/profil');
-	}
 }
