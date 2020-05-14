@@ -1,7 +1,10 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Kelas extends CI_Controller {
+require_once APPPATH . 'controllers/Student/Base.php';
+
+class Kelas extends Base {
+
 	public function __construct()
 	{
 		parent::__construct();
@@ -10,7 +13,7 @@ class Kelas extends CI_Controller {
 
 	public function index()
 	{
-		$data = $this->Kelas->getUserKelasByUserId($this->session->userdata('user_id'));
+		$data = $this->Kelas->getUserKelasByUserId($this->getUserId());
 		if (!$data) {
 			$res['data'] = false;
 		} else {
@@ -28,7 +31,7 @@ class Kelas extends CI_Controller {
 	public function masukKelas()
 	{
 		$kode_kelas = $this->input->post('kodeKelas');
-		$check = $this->Kelas->masukKelasByKodeKelas($kode_kelas, $this->session->userdata('user_id'));
+		$check = $this->Kelas->masukKelasByKodeKelas($kode_kelas, $this->getUserId());
 		if (!$check) {
 			$this->session->set_flashdata('alert', 'Kode Kelas tidak ditemukan. Cek kembali kode yang diberikan guru.');
 		} else {

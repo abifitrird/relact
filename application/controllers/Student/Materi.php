@@ -1,7 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Materi extends CI_Controller {
+require_once APPPATH . 'controllers/Student/Base.php';
+
+class Materi extends Base {
 
 	public function __construct()
 	{

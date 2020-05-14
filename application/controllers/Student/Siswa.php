@@ -1,14 +1,10 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Siswa extends CI_Controller {
+require_once APPPATH . 'controllers/Student/Base.php';
 
-	function __construct(){
-		parent::__construct();
-		if($this->session->userdata('status') != "login"){
-			redirect(base_url());
-		}
-	}
+class Siswa extends Base {
+	
 	public function index()
 	{
 		$this->load->view('siswa/beranda');
