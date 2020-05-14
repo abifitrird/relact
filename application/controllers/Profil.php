@@ -10,18 +10,6 @@ class Profil extends CI_Controller
         $this->load->model('ProfilModel');
     }
 
-    public function index()
-    {
-        $id = $this->session->userdata('user_id');
-        $data['data'] = $this->ProfilModel->getProfil($id);
-        $data['sekolah'] = $this->getListOfSchools();
-        if ($this->session->userdata('role') == 'guru') {
-            // print_r($data);
-            $this->load->view('guru/profil', $data);
-        } else if ($this->session->userdata('role') == 'siswa') {
-            $this->load->view('siswa/profil', $data);
-        }
-    }
 
     public function guru()
     {

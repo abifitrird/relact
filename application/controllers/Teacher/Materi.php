@@ -4,6 +4,12 @@ require_once APPPATH . 'controllers/Teacher/Base.php';
 
 class Materi extends Base
 {
+	public function __construct()
+	{
+		parent::__construct();
+
+		$this->load->model('KelasModel');
+	}
     public function getMateri($kode)
 	{
 		$data['data'] = $this->KelasModel->getMateriByKodeKelas($kode);
