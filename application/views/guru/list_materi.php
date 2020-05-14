@@ -30,10 +30,6 @@
   </div>
 </div>
 
-
-<!-- footer -->
-<?php //include("footer.php") 
-?>
 <!-- /#page-content-wrapper -->
 
 <div class="modal fade" id="tambahMateri" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">

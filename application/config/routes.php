@@ -96,3 +96,7 @@ $route['siswa/profil']['get'] = "Profil/siswa";  // profil siswa
 $route['siswa/kelas']['get'] = "Student/Kelas/index"; // kelas siswa yang tersedia
 $route['siswa/capaian']['get'] = "Student/Capaian/index"; // capaian belajar siswa
 $route['siswa/saran']['get'] = "Saran/siswa"; // kotak saran dari siswa
+
+/* route siswa/kelas */
+$route['siswa/kelas/kode']['post'] = "Student/Kelas/masukKelas";  // route masuk kelas dengan kode kelas
+$route['siswa/kelas/(:any)']['get'] = "Student/Materi/index/$1";  // get list materi by kode kelas
