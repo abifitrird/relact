@@ -25,4 +25,15 @@ class MateriModel extends CI_Model
         // return $this->db->where('kelas_id', $kelas_id)->get('materi')->result_array();
         return $return;
     }
+
+    /**
+     * get materi by kode materi
+     * 
+     * @param kode_materi
+     * @return data
+     */
+    public function getMateriByKodeMateri($kode_materi)
+    {
+        return $this->db->where('kode', $kode_materi)->get('materi')->row_array();
+    }
 }

@@ -43,12 +43,21 @@
             </button>
             <h5 style="color: white">RELACT</h5>
             <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
-            <?php if ($this->uri->segment(1) == 'siswa' && $this->uri->segment(2) == 'kelas' && $this->uri->segment(3) == null) { ?>
-                <li>
-                    <button type="button" class="btn btn-primary mr-1" data-toggle="modal" data-target="#masukKelas">
-                        Masuk Kelas
-                    </button>
-                </li>
+            <?php if ($this->uri->segment(1) == 'siswa' && $this->uri->segment(2) == 'kelas') { ?>
+                <?php if ($this->uri->segment(3) == null) { ?>
+                    <li>
+                        <button type="button" class="btn btn-primary mr-1" data-toggle="modal" data-target="#masukKelas">
+                            Masuk Kelas
+                        </button>
+                    </li>
+                <?php } ?>
+                <?php if ($this->uri->segment(4) == 'materi' && $this->uri->segment(5)) { ?>
+                    <li>
+                        <button type="button" class="btn btn-primary mr-1" data-toggle="modal" data-target="#kerjakanSoal">
+                            Kerjakan Soal
+                        </button>
+                    </li>
+                <?php } ?>
             <?php } ?>
                 <li class="nav-item dropdown">
                     <a class="nav-item nav-link dropdown-toggle mr-md-2" href="#" id="bd-versions" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white;">
