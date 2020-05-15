@@ -148,8 +148,8 @@
                     </div>
                     <div class="form-group">
                         <label for="editor">Pertanyaan</label>
-                        <div id="editor" class="pell"></div>
-                        <input type="hidden" id="html-editor" name="pertanyaan" required />
+                        <div id="editorTambah" class="pell"></div>
+                        <input type="hidden" id="html-editor-tambah" name="pertanyaan" required />
                         <!-- <textarea id="html-editor" class="form-control" id="pertanyaan" rows="6" name="pertanyaan"
                             required></textarea> -->
                     </div>
@@ -185,8 +185,8 @@
                 <form action="" method="POST">
                     <div class="form-group">
                         <label for="editor">Pertanyaan</label>
-                        <div id="editor" class="pell"></div>
-                        <input type="hidden" id="html-editor" name="pertanyaan" required />
+                        <div id="editorUbah" class="pell"></div>
+                        <input type="hidden" id="html-editor-ubah" name="pertanyaan" required />
                         <!-- <textarea id="html-editor" class="form-control" id="pertanyaan" rows="6" name="pertanyaan"
                             required></textarea> -->
                     </div>
@@ -223,11 +223,20 @@
 <!-- Menu Toggle Script -->
 <script src="<?php echo base_url('assets/js/pell.js') ?>"></script>
 <script>
-var editor = pell.init({
-    element: document.getElementById('editor'),
+var editorTambah = pell.init({
+    element: document.getElementById('editorTambah'),
     defaultParagraphSeparator: 'p',
     onChange: function(html) {
-        $("#html-editor").val(html)
+        $("#html-editor-tambah").val(html)
+        // document.getElementById('html-editor').textContent = html
+    }
+});
+
+var editorUbah = pell.init({
+    element: document.getElementById('editorUbah'),
+    defaultParagraphSeparator: 'p',
+    onChange: function(html) {
+        $("#html-editor-ubah").val(html)
         // document.getElementById('html-editor').textContent = html
     }
 });
@@ -254,7 +263,8 @@ $('#ubahSoal').on('show.bs.modal', function(event) {
         .then(response => response.json())
         .then(data => {
             var pertanyaan = data.pertanyaan
-            modal.find('.modal-body #pertanyaan').val(pertanyaan)
+            editorUbah.content.innerHTML = pertanyaan
+            // modal.find('.modal-body #editorUbah').val(pertanyaan)
             // console.log(pertanyaan)
         });
 
