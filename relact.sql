@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Waktu pembuatan: 16 Bulan Mei 2020 pada 02.06
--- Versi server: 10.1.38-MariaDB
--- Versi PHP: 7.3.3
+-- Host: localhost
+-- Generation Time: May 16, 2020 at 05:38 AM
+-- Server version: 10.4.12-MariaDB
+-- PHP Version: 7.4.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -25,39 +24,20 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `ci_sessions`
+-- Table structure for table `ci_sessions`
 --
 
 CREATE TABLE `ci_sessions` (
   `id` varchar(128) NOT NULL,
   `ip_address` varchar(45) NOT NULL,
-  `timestamp` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `timestamp` int(10) UNSIGNED NOT NULL DEFAULT 0,
   `data` blob NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data untuk tabel `ci_sessions`
---
-
-INSERT INTO `ci_sessions` (`id`, `ip_address`, `timestamp`, `data`) VALUES
-('9n395977vef7aqs54gcp8c7oefbk27j1', '::1', 1589580795, 0x5f5f63695f6c6173745f726567656e65726174657c693a313538393538303739353b6e616d617c733a343a2267757275223b7374617475737c733a353a226c6f67696e223b726f6c657c733a343a2267757275223b757365725f69647c733a313a2234223b),
-('h23gqlsvkv1lbepove437qst20hcoqqm', '::1', 1589581119, 0x5f5f63695f6c6173745f726567656e65726174657c693a313538393538313131393b6e616d617c733a343a2267757275223b7374617475737c733a353a226c6f67696e223b726f6c657c733a343a2267757275223b757365725f69647c733a313a2234223b),
-('50qnd3vvb9j1h08jkkk3i1ero90so4oq', '::1', 1589583368, 0x5f5f63695f6c6173745f726567656e65726174657c693a313538393538333336383b6e616d617c733a343a2267757275223b7374617475737c733a353a226c6f67696e223b726f6c657c733a343a2267757275223b757365725f69647c733a313a2234223b),
-('qmg6o9vv2v1olapadlg4s8rl7t9kf02b', '::1', 1589583961, 0x5f5f63695f6c6173745f726567656e65726174657c693a313538393538333936313b6e616d617c733a343a2267757275223b7374617475737c733a353a226c6f67696e223b726f6c657c733a343a2267757275223b757365725f69647c733a313a2234223b),
-('8p87mrba080l0a2qtqca46e3rg8ppdiu', '::1', 1589584720, 0x5f5f63695f6c6173745f726567656e65726174657c693a313538393538343732303b6e616d617c733a343a2267757275223b7374617475737c733a353a226c6f67696e223b726f6c657c733a343a2267757275223b757365725f69647c733a313a2234223b),
-('1orn8v64ati9j211jmcc3sfa9isjpebh', '::1', 1589585104, 0x5f5f63695f6c6173745f726567656e65726174657c693a313538393538353130343b6e616d617c733a343a2267757275223b7374617475737c733a353a226c6f67696e223b726f6c657c733a343a2267757275223b757365725f69647c733a313a2234223b),
-('0dl9uapfogtu35q1o7bs3oufbsgjh660', '::1', 1589585531, 0x5f5f63695f6c6173745f726567656e65726174657c693a313538393538353533313b6e616d617c733a343a2267757275223b7374617475737c733a353a226c6f67696e223b726f6c657c733a343a2267757275223b757365725f69647c733a313a2234223b),
-('in3h5fibbcb2opqolrqh1kddbcsf920r', '::1', 1589585859, 0x5f5f63695f6c6173745f726567656e65726174657c693a313538393538353835393b6e616d617c733a343a2267757275223b7374617475737c733a353a226c6f67696e223b726f6c657c733a343a2267757275223b757365725f69647c733a313a2234223b),
-('045jo02b3m355gjlqi203lppvk4ea6jp', '::1', 1589586165, 0x5f5f63695f6c6173745f726567656e65726174657c693a313538393538363136353b6e616d617c733a343a2267757275223b7374617475737c733a353a226c6f67696e223b726f6c657c733a343a2267757275223b757365725f69647c733a313a2234223b),
-('1rm02al964p3d1jmpp6l2foq5diksok7', '::1', 1589586496, 0x5f5f63695f6c6173745f726567656e65726174657c693a313538393538363439363b6e616d617c733a343a2267757275223b7374617475737c733a353a226c6f67696e223b726f6c657c733a343a2267757275223b757365725f69647c733a313a2234223b),
-('em38sj8bes65nlkbs15e7srd35mep8on', '::1', 1589586923, 0x5f5f63695f6c6173745f726567656e65726174657c693a313538393538363932333b6e616d617c733a343a2267757275223b7374617475737c733a353a226c6f67696e223b726f6c657c733a343a2267757275223b757365725f69647c733a313a2234223b),
-('3946s35gbaj5idi3d1m1pljtf60ifhtk', '::1', 1589587232, 0x5f5f63695f6c6173745f726567656e65726174657c693a313538393538373233323b6e616d617c733a343a2267757275223b7374617475737c733a353a226c6f67696e223b726f6c657c733a343a2267757275223b757365725f69647c733a313a2234223b),
-('3ieldleoo012hn7j493vhmcm9bcnnsgh', '::1', 1589587400, 0x5f5f63695f6c6173745f726567656e65726174657c693a313538393538373233323b6e616d617c733a343a2267757275223b7374617475737c733a353a226c6f67696e223b726f6c657c733a343a2267757275223b757365725f69647c733a313a2234223b);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `detail_user`
+-- Table structure for table `detail_user`
 --
 
 CREATE TABLE `detail_user` (
@@ -71,7 +51,7 @@ CREATE TABLE `detail_user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `detail_user`
+-- Dumping data for table `detail_user`
 --
 
 INSERT INTO `detail_user` (`id`, `user_id`, `nomor_induk`, `nama_lengkap`, `sekolah_id`, `alamat`, `no_hp`) VALUES
@@ -81,7 +61,7 @@ INSERT INTO `detail_user` (`id`, `user_id`, `nomor_induk`, `nama_lengkap`, `seko
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `hak_akses`
+-- Table structure for table `hak_akses`
 --
 
 CREATE TABLE `hak_akses` (
@@ -94,7 +74,7 @@ CREATE TABLE `hak_akses` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `kelas`
+-- Table structure for table `kelas`
 --
 
 CREATE TABLE `kelas` (
@@ -104,12 +84,12 @@ CREATE TABLE `kelas` (
   `code` varchar(191) NOT NULL,
   `nama` varchar(191) NOT NULL,
   `periode` year(4) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `kelas`
+-- Dumping data for table `kelas`
 --
 
 INSERT INTO `kelas` (`id`, `guru_id`, `mapel_id`, `code`, `nama`, `periode`, `created_at`, `updated_at`) VALUES
@@ -118,37 +98,37 @@ INSERT INTO `kelas` (`id`, `guru_id`, `mapel_id`, `code`, `nama`, `periode`, `cr
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `kunci_soal`
+-- Table structure for table `kunci_soal`
 --
 
 CREATE TABLE `kunci_soal` (
   `id` int(11) NOT NULL,
   `soal_id` int(11) NOT NULL,
   `pilihan_soal_id` int(11) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `kunci_soal`
+-- Dumping data for table `kunci_soal`
 --
 
 INSERT INTO `kunci_soal` (`id`, `soal_id`, `pilihan_soal_id`, `created_at`, `updated_at`) VALUES
 (9, 5, 25, '2020-05-15 23:08:04', '0000-00-00 00:00:00'),
 (11, 4, 18, '2020-05-15 23:08:45', '0000-00-00 00:00:00'),
-(12, 3, 11, '2020-05-15 23:09:07', '0000-00-00 00:00:00'),
 (13, 2, 6, '2020-05-15 23:09:25', '0000-00-00 00:00:00'),
-(14, 1, 3, '2020-05-15 23:09:45', '0000-00-00 00:00:00'),
 (16, 6, 27, '2020-05-15 23:26:10', '0000-00-00 00:00:00'),
 (18, 7, 32, '2020-05-15 23:32:11', '0000-00-00 00:00:00'),
 (27, 8, 37, '2020-05-15 23:48:53', '0000-00-00 00:00:00'),
 (28, 9, 42, '2020-05-15 23:52:10', '0000-00-00 00:00:00'),
-(29, 10, 47, '2020-05-15 23:55:23', '0000-00-00 00:00:00');
+(29, 10, 47, '2020-05-15 23:55:23', '0000-00-00 00:00:00'),
+(30, 3, 11, '2020-05-16 00:40:01', '0000-00-00 00:00:00'),
+(32, 1, 3, '2020-05-16 05:24:37', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `log_activity`
+-- Table structure for table `log_activity`
 --
 
 CREATE TABLE `log_activity` (
@@ -157,14 +137,14 @@ CREATE TABLE `log_activity` (
   `url` varchar(191) NOT NULL,
   `element` varchar(191) NOT NULL,
   `action` varchar(191) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `log_answer`
+-- Table structure for table `log_answer`
 --
 
 CREATE TABLE `log_answer` (
@@ -172,14 +152,14 @@ CREATE TABLE `log_answer` (
   `user_id` int(11) NOT NULL,
   `soal_id` int(11) NOT NULL,
   `pilihan_soal_id` int(11) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `log_answer_essay`
+-- Table structure for table `log_answer_essay`
 --
 
 CREATE TABLE `log_answer_essay` (
@@ -187,14 +167,14 @@ CREATE TABLE `log_answer_essay` (
   `user_id` int(11) NOT NULL,
   `soal_id` int(11) NOT NULL,
   `jawaban` text NOT NULL,
-  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `created_at` timestamp NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `log_on_evaluasi`
+-- Table structure for table `log_on_evaluasi`
 --
 
 CREATE TABLE `log_on_evaluasi` (
@@ -202,14 +182,14 @@ CREATE TABLE `log_on_evaluasi` (
   `user_id` int(11) NOT NULL,
   `materi_id` int(11) NOT NULL,
   `length` int(11) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `log_on_materi`
+-- Table structure for table `log_on_materi`
 --
 
 CREATE TABLE `log_on_materi` (
@@ -218,14 +198,14 @@ CREATE TABLE `log_on_materi` (
   `materi_id` int(11) NOT NULL,
   `length` int(11) NOT NULL,
   `percobaan` int(11) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `log_on_materi_detail`
+-- Table structure for table `log_on_materi_detail`
 --
 
 CREATE TABLE `log_on_materi_detail` (
@@ -233,14 +213,14 @@ CREATE TABLE `log_on_materi_detail` (
   `log_on_materi_id` int(11) NOT NULL,
   `length` int(11) NOT NULL,
   `percobaan_ke` int(11) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `mata_pelajaran`
+-- Table structure for table `mata_pelajaran`
 --
 
 CREATE TABLE `mata_pelajaran` (
@@ -249,7 +229,7 @@ CREATE TABLE `mata_pelajaran` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `mata_pelajaran`
+-- Dumping data for table `mata_pelajaran`
 --
 
 INSERT INTO `mata_pelajaran` (`id`, `nama_mapel`) VALUES
@@ -259,7 +239,7 @@ INSERT INTO `mata_pelajaran` (`id`, `nama_mapel`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `materi`
+-- Table structure for table `materi`
 --
 
 CREATE TABLE `materi` (
@@ -267,26 +247,26 @@ CREATE TABLE `materi` (
   `kode` varchar(191) NOT NULL,
   `kelas_id` int(11) NOT NULL,
   `judul` varchar(191) NOT NULL,
-  `konten` varchar(191) NOT NULL,
+  `konten` text NOT NULL,
   `status` int(11) NOT NULL,
-  `tanggal_buka` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `tanggal_buka` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `tanggal_tutup_tes` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `kunci_tes` int(11) NOT NULL DEFAULT '0',
+  `kunci_tes` int(11) NOT NULL DEFAULT 0,
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `materi`
+-- Dumping data for table `materi`
 --
 
 INSERT INTO `materi` (`id`, `kode`, `kelas_id`, `judul`, `konten`, `status`, `tanggal_buka`, `tanggal_tutup_tes`, `kunci_tes`, `created_at`, `updated_at`) VALUES
-(1, 'C4Gpzl', 1, 'Percabangan', '<p><b>Percabangan</b> merupakan sebuah struktur yang digunakan ketika sebuah program memiliki beberapa pilihan jawaban.</p>', 1, '2020-05-15 22:10:02', '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+(1, 'C4Gpzl', 1, 'Percabangan', '<h1>asdasdas</h1><p>hello world heehe</p><p><b>asdadas</b></p><p><b><i>asdasdas</i></b></p><ul><li><b><i>asdad</i></b></li><li><b><i>asdasd</i></b></li><li>asdasdas</li></ul><p>asdas</p><ol><li>hiji</li><li>dua</li><li>tilu</li><li>opat</li><li>lima</li><li>coy</li></ol>', 1, '2020-05-16 05:29:32', '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `nilai`
+-- Table structure for table `nilai`
 --
 
 CREATE TABLE `nilai` (
@@ -294,26 +274,26 @@ CREATE TABLE `nilai` (
   `user_id` int(11) NOT NULL,
   `materi_kode` varchar(191) NOT NULL,
   `skor` int(11) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `pilihan_soal`
+-- Table structure for table `pilihan_soal`
 --
 
 CREATE TABLE `pilihan_soal` (
   `id` int(11) NOT NULL,
   `soal_id` int(11) NOT NULL,
   `pilihan` text NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `pilihan_soal`
+-- Dumping data for table `pilihan_soal`
 --
 
 INSERT INTO `pilihan_soal` (`id`, `soal_id`, `pilihan`, `created_at`, `updated_at`) VALUES
@@ -371,7 +351,7 @@ INSERT INTO `pilihan_soal` (`id`, `soal_id`, `pilihan`, `created_at`, `updated_a
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `roles`
+-- Table structure for table `roles`
 --
 
 CREATE TABLE `roles` (
@@ -381,7 +361,7 @@ CREATE TABLE `roles` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `roles`
+-- Dumping data for table `roles`
 --
 
 INSERT INTO `roles` (`id`, `nama`, `kode`) VALUES
@@ -391,7 +371,7 @@ INSERT INTO `roles` (`id`, `nama`, `kode`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `sekolah`
+-- Table structure for table `sekolah`
 --
 
 CREATE TABLE `sekolah` (
@@ -401,7 +381,7 @@ CREATE TABLE `sekolah` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `sekolah`
+-- Dumping data for table `sekolah`
 --
 
 INSERT INTO `sekolah` (`id`, `nama_sekolah`, `alamat`) VALUES
@@ -410,7 +390,7 @@ INSERT INTO `sekolah` (`id`, `nama_sekolah`, `alamat`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `soal`
+-- Table structure for table `soal`
 --
 
 CREATE TABLE `soal` (
@@ -420,16 +400,16 @@ CREATE TABLE `soal` (
   `pertanyaan` text NOT NULL,
   `bloom` int(11) DEFAULT NULL,
   `bobot` int(11) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `soal`
+-- Dumping data for table `soal`
 --
 
 INSERT INTO `soal` (`id`, `materi_kode`, `tipe`, `pertanyaan`, `bloom`, `bobot`, `created_at`, `updated_at`) VALUES
-(1, 'C4Gpzl', 'pg', '<span style=\"font-size:12.0pt;font-family:&quot;Times New Roman&quot;,serif;\r\nmso-fareast-font-family:Calibri;color:black;mso-themecolor:text1;mso-ansi-language:\r\nEN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA;mso-no-proof:yes\">Pada\r\npemrograman terdapat berbagai struktur kontrol salah satunya adalah struktur\r\nkontrol percabangan. Berikut ini penjelasan yang paling tepat untuk percabangan\r\ndalam pemrograman adalah ...</span>', NULL, 10, '2020-05-15 23:09:45', '0000-00-00 00:00:00'),
+(1, 'C4Gpzl', 'pg', '<p><span style=\"font-size:12.0pt;font-family:&quot;Times New Roman&quot;,serif;\r\nmso-fareast-font-family:Calibri;color:black;mso-themecolor:text1;mso-ansi-language:\r\nEN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA;mso-no-proof:yes\">Pada\r\npemrograman terdapat berbagai struktur kontrol salah satunya adalah struktur\r\nkontrol percabangan. Berikut ini penjelasan yang paling tepat untuk percabangan\r\ndalam pemrograman adalah ...</span></p>', NULL, 10, '2020-05-16 05:24:37', '0000-00-00 00:00:00'),
 (2, 'C4Gpzl', 'pg', '<span lang=\"IN\" style=\"font-size:12.0pt;font-family:\r\n&quot;Times New Roman&quot;,serif;mso-fareast-font-family:Calibri;color:black;mso-themecolor:\r\ntext1;mso-ansi-language:IN;mso-fareast-language:EN-US;mso-bidi-language:AR-SA;\r\nmso-no-proof:yes\">Jika &lt;kondisi&gt; bernilai benar maka </span><span style=\"font-size:12.0pt;font-family:&quot;Times New Roman&quot;,serif;mso-fareast-font-family:\r\nCalibri;color:black;mso-themecolor:text1;mso-ansi-language:EN-US;mso-fareast-language:\r\nEN-US;mso-bidi-language:AR-SA;mso-no-proof:yes\">perintah</span><span lang=\"IN\" style=\"font-size:12.0pt;font-family:&quot;Times New Roman&quot;,serif;mso-fareast-font-family:\r\nCalibri;color:black;mso-themecolor:text1;mso-ansi-language:IN;mso-fareast-language:\r\nEN-US;mso-bidi-language:AR-SA;mso-no-proof:yes\"> dikerjakan, sedangkan jika\r\ntidak, maka </span><span style=\"font-size:12.0pt;font-family:&quot;Times New Roman&quot;,serif;\r\nmso-fareast-font-family:Calibri;color:black;mso-themecolor:text1;mso-ansi-language:\r\nEN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA;mso-no-proof:yes\">perintah</span><span lang=\"IN\" style=\"font-size:12.0pt;font-family:&quot;Times New Roman&quot;,serif;mso-fareast-font-family:\r\nCalibri;color:black;mso-themecolor:text1;mso-ansi-language:IN;mso-fareast-language:\r\nEN-US;mso-bidi-language:AR-SA;mso-no-proof:yes\"> tidak dikerjakan dan proses langsung\r\nkeluar dari percabangan. Pernyataan tersebut dapat </span><span style=\"font-size:12.0pt;font-family:&quot;Times New Roman&quot;,serif;mso-fareast-font-family:\r\nCalibri;color:black;mso-themecolor:text1;mso-ansi-language:EN-US;mso-fareast-language:\r\nEN-US;mso-bidi-language:AR-SA;mso-no-proof:yes\">dilaksanakan </span><span lang=\"IN\" style=\"font-size:12.0pt;font-family:&quot;Times New Roman&quot;,serif;mso-fareast-font-family:\r\nCalibri;color:black;mso-themecolor:text1;mso-ansi-language:IN;mso-fareast-language:\r\nEN-US;mso-bidi-language:AR-SA;mso-no-proof:yes\">dengan menggunakan percabangan ...</span><br>', NULL, 10, '2020-05-15 23:09:25', '0000-00-00 00:00:00'),
 (3, 'C4Gpzl', 'pg', '<p class=\"MsoNormal\" style=\"margin-top:0in;margin-right:0in;margin-bottom:0in;\r\nmargin-left:-1.55pt;margin-bottom:.0001pt;line-height:150%\"><span style=\"font-size:12.0pt;line-height:150%;font-family:&quot;Times New Roman&quot;,serif;\r\ncolor:black;mso-themecolor:text1;mso-ansi-language:EN-US\">\"Jika kondisi\r\nyang diperiksa bernilai benar atau terpenuhi maka perintah pertama yang\r\ndilaksanakan dan jika kondisi yang diperiksa bernilai salah maka perintah yang\r\nkedua yang dilaksanakan.”<o:p></o:p></span></p>\r\n\r\n<span style=\"font-size:12.0pt;font-family:&quot;Times New Roman&quot;,serif;mso-fareast-font-family:\r\nCalibri;color:black;mso-themecolor:text1;mso-ansi-language:EN-US;mso-fareast-language:\r\nEN-US;mso-bidi-language:AR-SA;mso-no-proof:yes\">Pernyataan di atas akan\r\ndilaksanakan jika menggunakan ...</span>', NULL, 10, '2020-05-15 23:09:07', '0000-00-00 00:00:00'),
 (4, 'C4Gpzl', 'pg', '<p class=\"MsoNormal\" style=\"margin-bottom:0in;margin-bottom:.0001pt;line-height:\r\n150%\"><span lang=\"IN\" style=\"font-size:12.0pt;line-height:150%;font-family:&quot;Times New Roman&quot;,serif;\r\ncolor:black;mso-themecolor:text1\">Jika &lt;kondisi1&gt; dicek nilai\r\nkebenarannya. Jika benar, maka dikerjakan </span><span style=\"font-size:12.0pt;\r\nline-height:150%;font-family:&quot;Times New Roman&quot;,serif;color:black;mso-themecolor:\r\ntext1;mso-ansi-language:EN-US\">perintah</span><span lang=\"IN\" style=\"font-size:\r\n12.0pt;line-height:150%;font-family:&quot;Times New Roman&quot;,serif;color:black;\r\nmso-themecolor:text1\">1. Jika salah, maka dicek nilai kebenaran\r\n&lt;kondisi2&gt;. Jika &lt;kondisi2&gt; benar, maka dikerjakan </span><span style=\"font-size:12.0pt;line-height:150%;font-family:&quot;Times New Roman&quot;,serif;\r\ncolor:black;mso-themecolor:text1;mso-ansi-language:EN-US\">perintah</span><span lang=\"IN\" style=\"font-size:12.0pt;line-height:150%;font-family:&quot;Times New Roman&quot;,serif;\r\ncolor:black;mso-themecolor:text1\">2. Jika tidak</span><span style=\"font-size:\r\n12.0pt;line-height:150%;font-family:&quot;Times New Roman&quot;,serif;color:black;\r\nmso-themecolor:text1;mso-ansi-language:EN-US\">,</span><span lang=\"IN\" style=\"font-size:12.0pt;line-height:150%;font-family:&quot;Times New Roman&quot;,serif;\r\ncolor:black;mso-themecolor:text1\"> algoritma akan mengecek ke kondisi\r\nberikutnya dengan cara yang sama dengan yang sebelumnya. Terakhir, jika semua\r\nkondisi bernilai salah, maka </span><span style=\"font-size:12.0pt;line-height:\r\n150%;font-family:&quot;Times New Roman&quot;,serif;color:black;mso-themecolor:text1;\r\nmso-ansi-language:EN-US\">perintah</span><span lang=\"IN\" style=\"font-size:12.0pt;\r\nline-height:150%;font-family:&quot;Times New Roman&quot;,serif;color:black;mso-themecolor:\r\ntext1\"> yang dikerjakan adalah </span><span style=\"font-size:12.0pt;line-height:\r\n150%;font-family:&quot;Times New Roman&quot;,serif;color:black;mso-themecolor:text1;\r\nmso-ansi-language:EN-US\">Perintah</span><span lang=\"IN\" style=\"font-size:12.0pt;\r\nline-height:150%;font-family:&quot;Times New Roman&quot;,serif;color:black;mso-themecolor:\r\ntext1\">(n+1). </span><span style=\"font-size:12.0pt;line-height:150%;font-family:\r\n&quot;Times New Roman&quot;,serif;color:black;mso-themecolor:text1;mso-ansi-language:\r\nEN-US\">Pernyataan tersebut dapat dilaksanakan dengan percabangan </span><span lang=\"IN\" style=\"font-size:12.0pt;line-height:150%;font-family:&quot;Times New Roman&quot;,serif;\r\ncolor:black;mso-themecolor:text1\">...<o:p></o:p></span></p>', NULL, 10, '2020-05-15 23:08:45', '0000-00-00 00:00:00'),
@@ -448,7 +428,7 @@ INSERT INTO `soal` (`id`, `materi_kode`, `tipe`, `pertanyaan`, `bloom`, `bobot`,
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
@@ -460,7 +440,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `username`, `email`, `password`, `role_id`) VALUES
@@ -471,7 +451,7 @@ INSERT INTO `users` (`id`, `username`, `email`, `password`, `role_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user_kelas`
+-- Table structure for table `user_kelas`
 --
 
 CREATE TABLE `user_kelas` (
@@ -485,13 +465,13 @@ CREATE TABLE `user_kelas` (
 --
 
 --
--- Indeks untuk tabel `ci_sessions`
+-- Indexes for table `ci_sessions`
 --
 ALTER TABLE `ci_sessions`
   ADD KEY `ci_sessions_timestamp` (`timestamp`);
 
 --
--- Indeks untuk tabel `detail_user`
+-- Indexes for table `detail_user`
 --
 ALTER TABLE `detail_user`
   ADD PRIMARY KEY (`id`),
@@ -499,14 +479,14 @@ ALTER TABLE `detail_user`
   ADD KEY `sekolah_id` (`sekolah_id`);
 
 --
--- Indeks untuk tabel `hak_akses`
+-- Indexes for table `hak_akses`
 --
 ALTER TABLE `hak_akses`
   ADD PRIMARY KEY (`id`),
   ADD KEY `role_id` (`role_id`);
 
 --
--- Indeks untuk tabel `kelas`
+-- Indexes for table `kelas`
 --
 ALTER TABLE `kelas`
   ADD PRIMARY KEY (`id`),
@@ -514,7 +494,7 @@ ALTER TABLE `kelas`
   ADD KEY `mapel_id` (`mapel_id`);
 
 --
--- Indeks untuk tabel `kunci_soal`
+-- Indexes for table `kunci_soal`
 --
 ALTER TABLE `kunci_soal`
   ADD PRIMARY KEY (`id`),
@@ -522,14 +502,14 @@ ALTER TABLE `kunci_soal`
   ADD KEY `pilihan_soal_id` (`pilihan_soal_id`);
 
 --
--- Indeks untuk tabel `log_activity`
+-- Indexes for table `log_activity`
 --
 ALTER TABLE `log_activity`
   ADD PRIMARY KEY (`id`),
   ADD KEY `user_id` (`user_id`);
 
 --
--- Indeks untuk tabel `log_answer`
+-- Indexes for table `log_answer`
 --
 ALTER TABLE `log_answer`
   ADD PRIMARY KEY (`id`),
@@ -538,7 +518,7 @@ ALTER TABLE `log_answer`
   ADD KEY `pilihan_soal_id` (`pilihan_soal_id`);
 
 --
--- Indeks untuk tabel `log_answer_essay`
+-- Indexes for table `log_answer_essay`
 --
 ALTER TABLE `log_answer_essay`
   ADD PRIMARY KEY (`id`),
@@ -546,7 +526,7 @@ ALTER TABLE `log_answer_essay`
   ADD KEY `log_answer_essay_ibfk_2` (`user_id`);
 
 --
--- Indeks untuk tabel `log_on_evaluasi`
+-- Indexes for table `log_on_evaluasi`
 --
 ALTER TABLE `log_on_evaluasi`
   ADD PRIMARY KEY (`id`),
@@ -554,7 +534,7 @@ ALTER TABLE `log_on_evaluasi`
   ADD KEY `materi_id` (`materi_id`);
 
 --
--- Indeks untuk tabel `log_on_materi`
+-- Indexes for table `log_on_materi`
 --
 ALTER TABLE `log_on_materi`
   ADD PRIMARY KEY (`id`),
@@ -562,20 +542,20 @@ ALTER TABLE `log_on_materi`
   ADD KEY `materi_id` (`materi_id`);
 
 --
--- Indeks untuk tabel `log_on_materi_detail`
+-- Indexes for table `log_on_materi_detail`
 --
 ALTER TABLE `log_on_materi_detail`
   ADD PRIMARY KEY (`id`),
   ADD KEY `log_on_materi_id` (`log_on_materi_id`);
 
 --
--- Indeks untuk tabel `mata_pelajaran`
+-- Indexes for table `mata_pelajaran`
 --
 ALTER TABLE `mata_pelajaran`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `materi`
+-- Indexes for table `materi`
 --
 ALTER TABLE `materi`
   ADD PRIMARY KEY (`id`),
@@ -583,7 +563,7 @@ ALTER TABLE `materi`
   ADD KEY `kelas_id` (`kelas_id`);
 
 --
--- Indeks untuk tabel `nilai`
+-- Indexes for table `nilai`
 --
 ALTER TABLE `nilai`
   ADD PRIMARY KEY (`id`),
@@ -591,34 +571,34 @@ ALTER TABLE `nilai`
   ADD KEY `materi_kode` (`materi_kode`);
 
 --
--- Indeks untuk tabel `pilihan_soal`
+-- Indexes for table `pilihan_soal`
 --
 ALTER TABLE `pilihan_soal`
   ADD PRIMARY KEY (`id`),
   ADD KEY `soal_id` (`soal_id`);
 
 --
--- Indeks untuk tabel `roles`
+-- Indexes for table `roles`
 --
 ALTER TABLE `roles`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `kode` (`kode`);
 
 --
--- Indeks untuk tabel `sekolah`
+-- Indexes for table `sekolah`
 --
 ALTER TABLE `sekolah`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `soal`
+-- Indexes for table `soal`
 --
 ALTER TABLE `soal`
   ADD PRIMARY KEY (`id`),
   ADD KEY `materi_kode` (`materi_kode`);
 
 --
--- Indeks untuk tabel `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
@@ -627,7 +607,7 @@ ALTER TABLE `users`
   ADD KEY `role_id` (`role_id`);
 
 --
--- Indeks untuk tabel `user_kelas`
+-- Indexes for table `user_kelas`
 --
 ALTER TABLE `user_kelas`
   ADD PRIMARY KEY (`id`),
@@ -635,162 +615,162 @@ ALTER TABLE `user_kelas`
   ADD KEY `siswa_id` (`siswa_id`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `detail_user`
+-- AUTO_INCREMENT for table `detail_user`
 --
 ALTER TABLE `detail_user`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT untuk tabel `hak_akses`
+-- AUTO_INCREMENT for table `hak_akses`
 --
 ALTER TABLE `hak_akses`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `kelas`
+-- AUTO_INCREMENT for table `kelas`
 --
 ALTER TABLE `kelas`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT untuk tabel `kunci_soal`
+-- AUTO_INCREMENT for table `kunci_soal`
 --
 ALTER TABLE `kunci_soal`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
--- AUTO_INCREMENT untuk tabel `log_activity`
+-- AUTO_INCREMENT for table `log_activity`
 --
 ALTER TABLE `log_activity`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `log_answer`
+-- AUTO_INCREMENT for table `log_answer`
 --
 ALTER TABLE `log_answer`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `log_answer_essay`
+-- AUTO_INCREMENT for table `log_answer_essay`
 --
 ALTER TABLE `log_answer_essay`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `log_on_evaluasi`
+-- AUTO_INCREMENT for table `log_on_evaluasi`
 --
 ALTER TABLE `log_on_evaluasi`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `log_on_materi`
+-- AUTO_INCREMENT for table `log_on_materi`
 --
 ALTER TABLE `log_on_materi`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `log_on_materi_detail`
+-- AUTO_INCREMENT for table `log_on_materi_detail`
 --
 ALTER TABLE `log_on_materi_detail`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `mata_pelajaran`
+-- AUTO_INCREMENT for table `mata_pelajaran`
 --
 ALTER TABLE `mata_pelajaran`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT untuk tabel `materi`
+-- AUTO_INCREMENT for table `materi`
 --
 ALTER TABLE `materi`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT untuk tabel `nilai`
+-- AUTO_INCREMENT for table `nilai`
 --
 ALTER TABLE `nilai`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `pilihan_soal`
+-- AUTO_INCREMENT for table `pilihan_soal`
 --
 ALTER TABLE `pilihan_soal`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
--- AUTO_INCREMENT untuk tabel `roles`
+-- AUTO_INCREMENT for table `roles`
 --
 ALTER TABLE `roles`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT untuk tabel `sekolah`
+-- AUTO_INCREMENT for table `sekolah`
 --
 ALTER TABLE `sekolah`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT untuk tabel `soal`
+-- AUTO_INCREMENT for table `soal`
 --
 ALTER TABLE `soal`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
--- AUTO_INCREMENT untuk tabel `users`
+-- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT untuk tabel `user_kelas`
+-- AUTO_INCREMENT for table `user_kelas`
 --
 ALTER TABLE `user_kelas`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+-- Constraints for dumped tables
 --
 
 --
--- Ketidakleluasaan untuk tabel `detail_user`
+-- Constraints for table `detail_user`
 --
 ALTER TABLE `detail_user`
   ADD CONSTRAINT `detail_user_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `detail_user_ibfk_2` FOREIGN KEY (`sekolah_id`) REFERENCES `sekolah` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `hak_akses`
+-- Constraints for table `hak_akses`
 --
 ALTER TABLE `hak_akses`
   ADD CONSTRAINT `hak_akses_ibfk_1` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`);
 
 --
--- Ketidakleluasaan untuk tabel `kelas`
+-- Constraints for table `kelas`
 --
 ALTER TABLE `kelas`
   ADD CONSTRAINT `kelas_ibfk_1` FOREIGN KEY (`guru_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `kelas_ibfk_2` FOREIGN KEY (`mapel_id`) REFERENCES `mata_pelajaran` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `kunci_soal`
+-- Constraints for table `kunci_soal`
 --
 ALTER TABLE `kunci_soal`
   ADD CONSTRAINT `kunci_soal_ibfk_1` FOREIGN KEY (`soal_id`) REFERENCES `soal` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `kunci_soal_ibfk_2` FOREIGN KEY (`pilihan_soal_id`) REFERENCES `pilihan_soal` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `log_activity`
+-- Constraints for table `log_activity`
 --
 ALTER TABLE `log_activity`
   ADD CONSTRAINT `log_activity_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 
 --
--- Ketidakleluasaan untuk tabel `log_answer`
+-- Constraints for table `log_answer`
 --
 ALTER TABLE `log_answer`
   ADD CONSTRAINT `log_answer_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
@@ -798,65 +778,65 @@ ALTER TABLE `log_answer`
   ADD CONSTRAINT `log_answer_ibfk_3` FOREIGN KEY (`pilihan_soal_id`) REFERENCES `pilihan_soal` (`id`);
 
 --
--- Ketidakleluasaan untuk tabel `log_answer_essay`
+-- Constraints for table `log_answer_essay`
 --
 ALTER TABLE `log_answer_essay`
   ADD CONSTRAINT `log_answer_essay_ibfk_1` FOREIGN KEY (`soal_id`) REFERENCES `soal` (`id`) ON UPDATE CASCADE,
   ADD CONSTRAINT `log_answer_essay_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `log_on_evaluasi`
+-- Constraints for table `log_on_evaluasi`
 --
 ALTER TABLE `log_on_evaluasi`
   ADD CONSTRAINT `log_on_evaluasi_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
   ADD CONSTRAINT `log_on_evaluasi_ibfk_2` FOREIGN KEY (`materi_id`) REFERENCES `materi` (`id`);
 
 --
--- Ketidakleluasaan untuk tabel `log_on_materi`
+-- Constraints for table `log_on_materi`
 --
 ALTER TABLE `log_on_materi`
   ADD CONSTRAINT `log_on_materi_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
   ADD CONSTRAINT `log_on_materi_ibfk_2` FOREIGN KEY (`materi_id`) REFERENCES `materi` (`id`);
 
 --
--- Ketidakleluasaan untuk tabel `log_on_materi_detail`
+-- Constraints for table `log_on_materi_detail`
 --
 ALTER TABLE `log_on_materi_detail`
   ADD CONSTRAINT `log_on_materi_detail_ibfk_1` FOREIGN KEY (`log_on_materi_id`) REFERENCES `log_on_materi` (`id`);
 
 --
--- Ketidakleluasaan untuk tabel `materi`
+-- Constraints for table `materi`
 --
 ALTER TABLE `materi`
   ADD CONSTRAINT `materi_ibfk_1` FOREIGN KEY (`kelas_id`) REFERENCES `kelas` (`id`);
 
 --
--- Ketidakleluasaan untuk tabel `nilai`
+-- Constraints for table `nilai`
 --
 ALTER TABLE `nilai`
   ADD CONSTRAINT `nilai_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
   ADD CONSTRAINT `nilai_ibfk_2` FOREIGN KEY (`materi_kode`) REFERENCES `materi` (`kode`);
 
 --
--- Ketidakleluasaan untuk tabel `pilihan_soal`
+-- Constraints for table `pilihan_soal`
 --
 ALTER TABLE `pilihan_soal`
   ADD CONSTRAINT `pilihan_soal_ibfk_1` FOREIGN KEY (`soal_id`) REFERENCES `soal` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `soal`
+-- Constraints for table `soal`
 --
 ALTER TABLE `soal`
   ADD CONSTRAINT `soal_ibfk_1` FOREIGN KEY (`materi_kode`) REFERENCES `materi` (`kode`);
 
 --
--- Ketidakleluasaan untuk tabel `users`
+-- Constraints for table `users`
 --
 ALTER TABLE `users`
   ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`);
 
 --
--- Ketidakleluasaan untuk tabel `user_kelas`
+-- Constraints for table `user_kelas`
 --
 ALTER TABLE `user_kelas`
   ADD CONSTRAINT `user_kelas_ibfk_1` FOREIGN KEY (`kelas_id`) REFERENCES `kelas` (`id`),
