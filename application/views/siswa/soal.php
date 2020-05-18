@@ -19,35 +19,11 @@
         <div class="row justify-content-md-center">
             <div class="d-flex flex-wrap col-12 col-md-8 justify-content-center">
                 <div class="col-12 col-md-8">
-                    <h4 class="font-weight-bold">Soal 1</h4>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis dolore cum quasi nobis porro
-                        nesciunt sed illum ipsa veniam sequi velit, molestias, at earum fugit esse quas quam nostrum.
-                        Eius?
-                    </p>
-                    <div id="pilihanJawaban" class="col-12">
-                        <ul class="list-group">
-                            <li class="list-group-item">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="pilihanJawaban"
-                                        id="pilihanJawaban1" value="A" />
-                                    <label class="form-check-label" for="pilihanJawaban1">A</label>
-                                </div>
-                            </li>
-                            <li class="list-group-item">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="pilihanJawaban"
-                                        id="pilihanJawaban2" value="B" />
-                                    <label class="form-check-label" for="pilihanJawaban2">B</label>
-                                </div>
-                            </li>
-                            <li class="list-group-item">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="pilihanJawaban"
-                                        id="pilihanJawaban3" value="C" />
-                                    <label class="form-check-label" for="pilihanJawaban3">C</label>
-                                </div>
-                            </li>
-                        </ul>
+                    <h4 class="font-weight-bold">Soal</h4>
+                    <div id="pertanyaan"></div>
+                    <h5 class="my-2 font-weight-bold">Pilihan Jawaban</h5>
+                    <div class="col-12">
+                        <form id="pilihanJawaban"></form>
                     </div>
                 </div>
 
@@ -57,56 +33,8 @@
                     <label class="col-form-label">
                         <h6>Pilihan Ganda</h6>
                     </label>
-                    <div class="col-12 d-flex flex-column">
-                        <div class="my-1 mx-1 btn-group " role="group" aria-label="Nomor Soal">
-                            <button type="button" class="btn btn-secondary">1</button>
-                            <button type="button" class="btn btn-dark">2</button>
-                            <button type="button" class="btn btn-secondary">3</button>
-                            <button type="button" class="btn btn-dark">4</button>
-                            <button type="button" class="btn btn-secondary">5</button>
-                        </div>
-                        <div class="my-1 mx-1 btn-group " role="group" aria-label="Nomor Soal">
-                            <button type="button" class="btn btn-dark">6</button>
-                            <button type="button" class="btn btn-secondary">7</button>
-                            <button type="button" class="btn btn-dark">8</button>
-                            <button type="button" class="btn btn-secondary">9</button>
-                            <button type="button" class="btn btn-dark">10</button>
-                        </div>
-                        <div class="my-1 mx-1 btn-group " role="group" aria-label="Nomor Soal">
-                            <button type="button" class="btn btn-secondary">11</button>
-                            <button type="button" class="btn btn-dark">12</button>
-                            <button type="button" class="btn btn-secondary">13</button>
-                            <button type="button" class="btn btn-dark">14</button>
-                            <button type="button" class="btn btn-secondary">15</button>
-                        </div>
-                        <div class="my-1 mx-1 btn-group " role="group" aria-label="Nomor Soal">
-                            <button type="button" class="btn btn-dark">16</button>
-                            <button type="button" class="btn btn-secondary">17</button>
-                            <button type="button" class="btn btn-dark">18</button>
-                            <button type="button" class="btn btn-secondary">19</button>
-                            <button type="button" class="btn btn-dark">20</button>
-                        </div>
-                        <div class="my-1 mx-1 btn-group " role="group" aria-label="Nomor Soal">
-                            <button type="button" class="btn btn-secondary">21</button>
-                            <button type="button" class="btn btn-dark">22</button>
-                            <button type="button" class="btn btn-secondary">23</button>
-                            <button type="button" class="btn btn-dark">24</button>
-                            <button type="button" class="btn btn-secondary">25</button>
-                        </div>
-                        <div class="my-1 mx-1 btn-group " role="group" aria-label="Nomor Soal">
-                            <button type="button" class="btn btn-dark">26</button>
-                            <button type="button" class="btn btn-secondary">27</button>
-                            <button type="button" class="btn btn-dark">28</button>
-                            <button type="button" class="btn btn-secondary">29</button>
-                            <button type="button" class="btn btn-dark">30</button>
-                        </div>
-                        <div class="my-1 mx-1 btn-group " role="group" aria-label="Nomor Soal">
-                            <button type="button" class="btn btn-secondary">31</button>
-                            <button type="button" class="btn btn-dark">32</button>
-                            <button type="button" class="btn btn-secondary">33</button>
-                            <button type="button" class="btn btn-dark">34</button>
-                            <button type="button" class="btn btn-secondary">35</button>
-                        </div>
+                    <div id="btnIndexSoal" class="col-12 d-flex flex-column">
+
                     </div>
                 </div>
                 <div class="col-12 ">
@@ -128,3 +56,148 @@
     </div>
     </div>
 </body>
+
+<script>
+$('document').ready(function() {
+    checkTimestamp()
+    // setInterval(checkTimestamp(), 5000)
+    const url = window.location.href
+    fetch(url + '/getSoal')
+        .then(response => response.json())
+        .then(function(data) {
+            if (!localStorage.getItem('soal_populated')) {
+                localStorage.setItem('soal', JSON.stringify(data));
+            }
+            localStorage.setItem('soal_populated', true);
+            populateBtnSoal();
+            setBtnSoal(0);
+        })
+
+    function populateBtnSoal() {
+        const soal = JSON.parse(localStorage.getItem('soal'));
+        const jumlah_soal = soal.length;
+        let j = 1;
+        for (let i = 0; i < jumlah_soal; i++) {
+            if (i == 1) {
+                $('#btnIndexSoal').append(`
+                <div id="box-${j}" class="my-1 mx-1 btn-group " role="group" aria-label="Nomor Soal">
+                `)
+                j++;
+            } else if (i % 5 == 0) {
+                $('#btnIndexSoal').append(`
+                <div id="box-${j}" class="my-1 mx-1 btn-group " role="group" aria-label="Nomor Soal">
+                `)
+                j++;
+            }
+        }
+        j = 1;
+        for (let i = 0; i < jumlah_soal; i++) {
+            if (i % 2 == 0) {
+                $(`#box-${j}`).append(`
+                <button type="button" onclick="setBtnSoal(${i})" class="btn btn-dark">${i+1}</button>
+                `)
+            } else {
+                $(`#box-${j}`).append(`
+                <button type="button" onclick="setBtnSoal(${i})" class="btn btn-secondary">${i+1}</button>
+                `)
+            }
+            if (i == 4) {
+                j++;
+            }
+        }
+    }
+
+    $('#pilihanJawaban').change(function() {
+        let pilihan_soal_id = $('input[name="pilihanJawaban"]:checked').val()
+        let soal_id = $('input[name="pilihanJawaban"]:checked').data('soal_id')
+        updateJawabanUser(soal_id, pilihan_soal_id)
+    })
+})
+
+function setBtnSoal(index) {
+    const soal = JSON.parse(localStorage.getItem('soal'))[index];
+    document.getElementById("pertanyaan").innerHTML = soal.pertanyaan;
+    populatePilihanJawaban(index);
+}
+
+function populatePilihanJawaban(index) {
+    const soal = JSON.parse(localStorage.getItem('soal'))[index];
+    const pilihan = soal.pilihan;
+    const jumlah_pilihan = pilihan.length;
+    let jawaban = JSON.parse(localStorage.getItem('jawaban'));
+    let pilihan_index = jawaban.findIndex(el => el.soal_id == soal.id);
+    let jawaban_sebelumnya;
+    if (pilihan_index >= 0) {
+        jawaban_sebelumnya = jawaban[pilihan_index].pilihan_soal_id;
+    }
+
+    $('#pilihanJawaban').empty();
+    pilihan.forEach(el => {
+        $('#pilihanJawaban').append(`
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="pilihanJawaban" id="pilihanJawaban${el.id}"
+                value="${el.id}" data-soal_id="${el.soal_id}" />
+            <label class="form-check-label" for="pilihanJawaban${el.id}">${el.pilihan}</label>
+        </div>
+        <hr />
+        `)
+    })
+    $(`#pilihanJawaban${jawaban_sebelumnya}`).prop('checked', true);
+}
+
+let jawaban = [];
+
+function updateJawabanUser(soal_id, jawaban_id) {
+    if (!localStorage.getItem('jawaban')) {
+        jawaban.push({
+            'soal_id': soal_id,
+            'pilihan_soal_id': jawaban_id
+        });
+        localStorage.setItem('jawaban', JSON.stringify(jawaban));
+    } else {
+        let jawaban_user = JSON.parse(localStorage.getItem('jawaban'));
+        let changePilihanIndex = jawaban_user.findIndex(obj => obj.soal_id === soal_id);
+        if (changePilihanIndex < 0) {
+            jawaban_user.push({
+                'soal_id': soal_id,
+                'pilihan_soal_id': jawaban_id
+            });
+        } else {
+            jawaban_user[changePilihanIndex].pilihan_soal_id = jawaban_id
+        }
+        localStorage.setItem('jawaban', JSON.stringify(jawaban_user));
+    }
+    localStorage.setItem('timestamp', new Date().valueOf());    
+}
+
+// TODO: save data jawaban user to database every 1 or 2 minutes
+
+function checkTimestamp() {
+    const url = window.location.href
+    fetch(url + '/check')
+        .then(response => response.json())
+        .then(data => {
+            if (data.timestamp != localStorage.getItem('timestamp')) {
+                sendJawabanToDatabase();
+            }
+            setTimeout(() => checkTimestamp(), 5000);
+        })
+}
+
+function sendJawabanToDatabase() {
+    const url = window.location.href
+    const timestamp = localStorage.getItem('timestamp');
+    const jawaban = localStorage.getItem('jawaban');
+    let data = {
+        timestamp: timestamp,
+        jawaban: jawaban
+    }
+    const form = new FormData();
+    form.append('timestamp', timestamp);
+    form.append('jawaban', jawaban);
+    fetch(url + '/saveJawaban', {
+        method: "POST",
+        body: form
+    }).then(response => response.json()).then(data => console.log("suka es"));
+}
+</script>

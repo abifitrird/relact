@@ -26,7 +26,7 @@
                 <h5 class="mb-1"><?php echo $dat['judul'] ?></h5>
             </div>
             <p class="mb-1 text-truncate">
-                <?php echo str_replace(['<h1>', '</h1>', '<h2>', '</h2>', '<h3>', '</h3>', '<h4>' ,'</h4>', '<h5>', '</h5>', '<h6>', '</h6>' ,'<p>', '</p>', '<br>', '<ul>', '</ul>', '<ol>', '</ol>', '<li>', '</li>'], " ", substr($dat['konten'], 0, 160)) ?>
+                <?php echo strip_tags(substr($dat['konten'], 0, 160) . '...') ?>
             </p>
         </a>
         <?php } ?>
