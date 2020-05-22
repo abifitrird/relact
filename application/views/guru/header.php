@@ -3,7 +3,11 @@
         <!-- Sidebar -->
         <div class="border-right" id="sidebar-wrapper">
             <!-- Logo dan nama aplikasi -->
-            <div class="sidebar-heading" style="text-align: center;">LOGO</div>
+            <div class="sidebar-heading" style="text-align: center;">
+                <a href="<?php echo base_url() ?>">
+                    <img src="<?php echo base_url('assets/images/logoNav_Relact.png') ?>" height="34">
+                </a>
+            </div>
             <div class="list-group list-group-flush">
                 <a href="<?php echo site_url("guru") ?>" class="list-group-item list-group-item-action mb-2">
                     <svg style="width:24px;height:24px" viewBox="0 0 24 24">
@@ -28,7 +32,7 @@
                 <a href="<?php echo site_url("guru/saran") ?>" class="list-group-item list-group-item-action mb-2">
                     <svg style="width:24px;height:24px" viewBox="0 0 24 24">
                         <path fill="currentColor" d="M20,2H4A2,2 0 0,0 2,4V22L6,18H20A2,2 0 0,0 22,16V4C22,2.89 21.1,2 20,2Z" /></svg>
-                    Kotak Saran
+                    Bantuan
                 </a>
             </div>
         </div>
@@ -41,7 +45,7 @@
                 <button class="btn shadow-none pr-3" id="menu-toggle"><svg style="width:24px; height:24px; color: white;" viewBox="0 0 24 24">
                         <path fill="currentColor" d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z" /></svg>
                 </button>
-                <h5 style="color: white">RELACT</h5>
+                <h5 style="color: white">Recording Learning Activities</h5>
                 <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
                     <?php if ($this->uri->segment(2) == 'kelas') { ?>
                         <?php if ($this->uri->segment(3)) { ?>
@@ -53,7 +57,7 @@
                                 </li>
 
                             <?php }
-                            if ($this->uri->segment(4) == 'materi' && $this->uri->segment(5) && !$this->uri->segment(6) == 'soal') { ?>
+                        if ($this->uri->segment(4) == 'materi' && $this->uri->segment(5) && !$this->uri->segment(6) == 'soal') { ?>
                                 <li>
                                     <a class="btn btn-success" href="<?php echo base_url('guru/kelas/' . $this->uri->segment(3) . '/materi/' . $this->uri->segment(5) . '/soal') ?>" role="button">Lihat Soal</a>
                                     <a type="button" class="btn btn-secondary text-white" data-toggle="modal" data-target="#ubahMateri">Edit Materi</a>
@@ -63,15 +67,15 @@
                                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#tambahSoal">Tambah Soal</button>
                                 </li>
                             <?php }
-                        } else { ?>
+                    } else { ?>
                             <li>
                                 <button type="button" class="btn btn-success mr-1" data-toggle="modal" data-target="#tambahKelas">
                                     Tambah Kelas
                                 </button>
                             </li>
-                    <?php
-                        }
-                    } ?>
+                        <?php
+                    }
+                } ?>
                     <li class="nav-item dropdown">
                         <a class="nav-item nav-link dropdown-toggle mr-md-2" href="#" id="bd-versions" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white;">
                             <span class="text-white"><?php echo $this->session->userdata("nama"); ?></span>

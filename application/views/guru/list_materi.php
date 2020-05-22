@@ -9,6 +9,7 @@
     <link rel="stylesheet" type="text/css" media="screen" href="<?php echo base_url('assets/css/main.css') ?>">
     <link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap.min.css') ?>">
     <link rel="stylesheet" href="<?php echo base_url('assets/css/summernote-bs4.min.css') ?>">
+    <link rel="icon" href="<?php echo base_url('assets/images/logoTab_Relact.png') ?>">
     <script src="<?php echo base_url('assets/js/jquery-3.4.1.slim.min.js') ?>"></script>
     <script src="<?php echo base_url('assets/js/popper.min.js') ?>"></script>
     <script src="<?php echo base_url('assets/js/bootstrap.min.js') ?>"></script>
@@ -20,23 +21,21 @@
     <br>
     <div class="list-group">
         <?php foreach ($data as $dat) { ?>
-        <a href="<?php echo base_url('guru/kelas/' . $this->uri->segment(3) . '/materi/' . $dat['kode']) ?>"
-            class="list-group-item list-group-item-action">
-            <div class="d-flex w-100 justify-content-between">
-                <h5 class="mb-1"><?php echo $dat['judul'] ?></h5>
-            </div>
-            <p class="mb-1 text-truncate">
-                <?php echo strip_tags(substr($dat['konten'], 0, 160) . '...') ?>
-            </p>
-        </a>
+            <a href="<?php echo base_url('guru/kelas/' . $this->uri->segment(3) . '/materi/' . $dat['kode']) ?>" class="list-group-item list-group-item-action">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1"><?php echo $dat['judul'] ?></h5>
+                </div>
+                <p class="mb-1 text-truncate">
+                    <?php echo strip_tags(substr($dat['konten'], 0, 160) . '...') ?>
+                </p>
+            </a>
         <?php } ?>
     </div>
 </div>
 
 <!-- /#page-content-wrapper -->
 
-<div class="modal fade" id="tambahMateri" data-backdrop="static" tabindex="-1" role="dialog"
-    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="tambahMateri" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -69,19 +68,19 @@
 <!-- Menu Toggle Script -->
 <script src="<?php echo base_url('assets/js/summernote-bs4.min.js') ?>"></script>
 <script>
-$("#menu-toggle").click(function(e) {
-    e.preventDefault();
-    $("#wrapper").toggleClass("toggled");
-});
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
 
-$(document).ready(function() {
-    $('#summernote').summernote({
-        dialogsInBody: true,
+    $(document).ready(function() {
+        $('#summernote').summernote({
+            dialogsInBody: true,
+        })
+        $('#summernote').each(function() {
+            $(this).val($(this).summernote('code'));
+        })
     })
-    $('#summernote').each(function() {
-        $(this).val($(this).summernote('code'));
-    })
-})
 </script>
 </body>
 
