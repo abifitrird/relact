@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 require_once APPPATH . 'controllers/Student/Base.php';
 
@@ -28,7 +28,7 @@ class Soal extends Base
         /* get soal and pilihan, then save to session. when this function called again, check if session with soal exist, if not generate again */
         if ($this->session->userdata('soal_for_' . $user_id !== null)) {
             $soal = $this->Soal->getSoalPGRandom($kode_materi);
-            $this->session->set_userdata('soal_for_'.$user_id, $soal);
+            $this->session->set_userdata('soal_for_' . $user_id, $soal);
         }
 
         $data['soal'] = $this->session->userdata('soal_for_' . $user_id);
@@ -50,10 +50,8 @@ class Soal extends Base
         $kode_materi = $exploded[0];
         $user_id = $exploded[1];
 
-        // if ($this->session->userdata('soal_for_' . $user_id) == null) {
-        $soal = $this->Soal->getSoalPGRandom($kode_materi);
-        //     $this->session->set_userdata('soal_for_'.$user_id, $soal);
-        // }
+        $soal['pg'] = $this->Soal->getSoalPGRandom($kode_materi);
+        $soal['esai'] = $this->Soal->getSoalEsaiRandom($kode_materi);
 
         // $data = $this->session->userdata('soal_for_'. $user_id);
         header('Content-Type: application/json');
@@ -72,6 +70,7 @@ class Soal extends Base
 
         // TODO: check if timestamp is more than 10 minutes, when pass then push to database
         // gonna try to save to database, need improvement
+        // ! dumped
     }
 
     /**
@@ -94,13 +93,20 @@ class Soal extends Base
     {
         header('Content-Type: application/json');
         $jawaban = json_decode($this->input->post('jawaban'));
+        $jawaban_esai = json_decode($this->input->post('jawaban_esai'));
         $timestamp = $this->input->post('timestamp');
         $user_id = $this->session->userdata('user_id');
         $this->session->set_userdata('timestamp_jawaban', $timestamp);
 
-        foreach($jawaban as $jawab) {
+        foreach ($jawaban as $jawab) {
             $this->Soal->saveJawabanUser($user_id, $jawab->soal_id, $jawab->pilihan_soal_id);
         }
+
+        foreach ($jawaban_esai as $jawab) {
+            $this->Soal->saveJawabanEsai($user_id, $jawab->soal_id, $jawab->jawaban);
+        }
+
+
         echo json_encode(['jawaban' => $jawaban, 'timestamp' => $timestamp]);
     }
- }
+}
