@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Waktu pembuatan: 16 Bulan Mei 2020 pada 08.49
--- Versi server: 10.1.38-MariaDB
--- Versi PHP: 7.3.3
+-- Host: localhost
+-- Generation Time: May 22, 2020 at 10:32 PM
+-- Server version: 10.4.12-MariaDB
+-- PHP Version: 7.4.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -25,30 +24,20 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `ci_sessions`
+-- Table structure for table `ci_sessions`
 --
 
 CREATE TABLE `ci_sessions` (
   `id` varchar(128) NOT NULL,
   `ip_address` varchar(45) NOT NULL,
-  `timestamp` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `timestamp` int(10) UNSIGNED NOT NULL DEFAULT 0,
   `data` blob NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data untuk tabel `ci_sessions`
---
-
-INSERT INTO `ci_sessions` (`id`, `ip_address`, `timestamp`, `data`) VALUES
-('2iae3gajtval07s8uu63s4rvabmebvll', '::1', 1589610457, 0x5f5f63695f6c6173745f726567656e65726174657c693a313538393631303435373b6e616d617c733a343a2267757275223b7374617475737c733a353a226c6f67696e223b726f6c657c733a343a2267757275223b757365725f69647c733a313a2234223b),
-('ajg2hvii6qrn9u2ofi0daml407s5ptru', '::1', 1589610784, 0x5f5f63695f6c6173745f726567656e65726174657c693a313538393631303738343b6e616d617c733a343a2267757275223b7374617475737c733a353a226c6f67696e223b726f6c657c733a343a2267757275223b757365725f69647c733a313a2234223b),
-('hr39mlehdh09l9r6ihd22t4s7evs5fom', '::1', 1589611761, 0x5f5f63695f6c6173745f726567656e65726174657c693a313538393631313736313b6e616d617c733a343a2267757275223b7374617475737c733a353a226c6f67696e223b726f6c657c733a343a2267757275223b757365725f69647c733a313a2234223b),
-('gvnt1rsagfdhk4q8in848hfa8tg3gjdj', '::1', 1589611761, 0x5f5f63695f6c6173745f726567656e65726174657c693a313538393631313736313b);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `detail_user`
+-- Table structure for table `detail_user`
 --
 
 CREATE TABLE `detail_user` (
@@ -62,30 +51,16 @@ CREATE TABLE `detail_user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `detail_user`
+-- Dumping data for table `detail_user`
 --
 
 INSERT INTO `detail_user` (`id`, `user_id`, `nomor_induk`, `nama_lengkap`, `sekolah_id`, `alamat`, `no_hp`) VALUES
-(1, 2, '1607488', 'Fuuuuuu~', 1, 'asdasdas', '0811'),
 (2, 3, '160748888', 'Hello world hehe', 1, 'jalan jalan weh', '123123');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `hak_akses`
---
-
-CREATE TABLE `hak_akses` (
-  `id` int(11) NOT NULL,
-  `role_id` int(11) NOT NULL,
-  `akses` varchar(191) NOT NULL,
-  `metode` enum('create','read','update','delete') NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `kelas`
+-- Table structure for table `kelas`
 --
 
 CREATE TABLE `kelas` (
@@ -95,12 +70,12 @@ CREATE TABLE `kelas` (
   `code` varchar(191) NOT NULL,
   `nama` varchar(191) NOT NULL,
   `periode` year(4) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `kelas`
+-- Dumping data for table `kelas`
 --
 
 INSERT INTO `kelas` (`id`, `guru_id`, `mapel_id`, `code`, `nama`, `periode`, `created_at`, `updated_at`) VALUES
@@ -109,19 +84,19 @@ INSERT INTO `kelas` (`id`, `guru_id`, `mapel_id`, `code`, `nama`, `periode`, `cr
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `kunci_soal`
+-- Table structure for table `kunci_soal`
 --
 
 CREATE TABLE `kunci_soal` (
   `id` int(11) NOT NULL,
   `soal_id` int(11) NOT NULL,
   `pilihan_soal_id` int(11) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `kunci_soal`
+-- Dumping data for table `kunci_soal`
 --
 
 INSERT INTO `kunci_soal` (`id`, `soal_id`, `pilihan_soal_id`, `created_at`, `updated_at`) VALUES
@@ -139,23 +114,25 @@ INSERT INTO `kunci_soal` (`id`, `soal_id`, `pilihan_soal_id`, `created_at`, `upd
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `log_activity`
+-- Table structure for table `log_activity`
 --
 
 CREATE TABLE `log_activity` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `url` varchar(191) NOT NULL,
-  `element` varchar(191) NOT NULL,
+  `from_url` varchar(191) DEFAULT NULL,
   `action` varchar(191) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+  `kelas_id` int(11) DEFAULT NULL,
+  `materi_id` int(11) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `log_answer`
+-- Table structure for table `log_answer`
 --
 
 CREATE TABLE `log_answer` (
@@ -163,14 +140,14 @@ CREATE TABLE `log_answer` (
   `user_id` int(11) NOT NULL,
   `soal_id` int(11) NOT NULL,
   `pilihan_soal_id` int(11) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `log_answer_essay`
+-- Table structure for table `log_answer_essay`
 --
 
 CREATE TABLE `log_answer_essay` (
@@ -178,14 +155,14 @@ CREATE TABLE `log_answer_essay` (
   `user_id` int(11) NOT NULL,
   `soal_id` int(11) NOT NULL,
   `jawaban` text NOT NULL,
-  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `created_at` timestamp NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `log_on_evaluasi`
+-- Table structure for table `log_on_evaluasi`
 --
 
 CREATE TABLE `log_on_evaluasi` (
@@ -193,45 +170,14 @@ CREATE TABLE `log_on_evaluasi` (
   `user_id` int(11) NOT NULL,
   `materi_id` int(11) NOT NULL,
   `length` int(11) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `log_on_materi`
---
-
-CREATE TABLE `log_on_materi` (
-  `id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `materi_id` int(11) NOT NULL,
-  `length` int(11) NOT NULL,
-  `percobaan` int(11) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `log_on_materi_detail`
---
-
-CREATE TABLE `log_on_materi_detail` (
-  `id` int(11) NOT NULL,
-  `log_on_materi_id` int(11) NOT NULL,
-  `length` int(11) NOT NULL,
-  `percobaan_ke` int(11) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `mata_pelajaran`
+-- Table structure for table `mata_pelajaran`
 --
 
 CREATE TABLE `mata_pelajaran` (
@@ -240,7 +186,7 @@ CREATE TABLE `mata_pelajaran` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `mata_pelajaran`
+-- Dumping data for table `mata_pelajaran`
 --
 
 INSERT INTO `mata_pelajaran` (`id`, `nama_mapel`) VALUES
@@ -250,7 +196,7 @@ INSERT INTO `mata_pelajaran` (`id`, `nama_mapel`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `materi`
+-- Table structure for table `materi`
 --
 
 CREATE TABLE `materi` (
@@ -260,15 +206,15 @@ CREATE TABLE `materi` (
   `judul` varchar(191) NOT NULL,
   `konten` text NOT NULL,
   `status` int(11) NOT NULL,
-  `tanggal_buka` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `tanggal_tutup_tes` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `kunci_tes` int(11) NOT NULL DEFAULT '0',
-  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+  `tanggal_buka` timestamp NULL DEFAULT NULL,
+  `tanggal_tutup_tes` timestamp NULL DEFAULT NULL,
+  `kunci_tes` int(11) NOT NULL DEFAULT 0,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `materi`
+-- Dumping data for table `materi`
 --
 
 INSERT INTO `materi` (`id`, `kode`, `kelas_id`, `judul`, `konten`, `status`, `tanggal_buka`, `tanggal_tutup_tes`, `kunci_tes`, `created_at`, `updated_at`) VALUES
@@ -277,7 +223,7 @@ INSERT INTO `materi` (`id`, `kode`, `kelas_id`, `judul`, `konten`, `status`, `ta
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `nilai`
+-- Table structure for table `nilai`
 --
 
 CREATE TABLE `nilai` (
@@ -285,26 +231,26 @@ CREATE TABLE `nilai` (
   `user_id` int(11) NOT NULL,
   `materi_kode` varchar(191) NOT NULL,
   `skor` int(11) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `pilihan_soal`
+-- Table structure for table `pilihan_soal`
 --
 
 CREATE TABLE `pilihan_soal` (
   `id` int(11) NOT NULL,
   `soal_id` int(11) NOT NULL,
   `pilihan` text NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `pilihan_soal`
+-- Dumping data for table `pilihan_soal`
 --
 
 INSERT INTO `pilihan_soal` (`id`, `soal_id`, `pilihan`, `created_at`, `updated_at`) VALUES
@@ -362,7 +308,7 @@ INSERT INTO `pilihan_soal` (`id`, `soal_id`, `pilihan`, `created_at`, `updated_a
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `roles`
+-- Table structure for table `roles`
 --
 
 CREATE TABLE `roles` (
@@ -372,7 +318,7 @@ CREATE TABLE `roles` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `roles`
+-- Dumping data for table `roles`
 --
 
 INSERT INTO `roles` (`id`, `nama`, `kode`) VALUES
@@ -382,7 +328,7 @@ INSERT INTO `roles` (`id`, `nama`, `kode`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `sekolah`
+-- Table structure for table `sekolah`
 --
 
 CREATE TABLE `sekolah` (
@@ -392,7 +338,7 @@ CREATE TABLE `sekolah` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `sekolah`
+-- Dumping data for table `sekolah`
 --
 
 INSERT INTO `sekolah` (`id`, `nama_sekolah`, `alamat`) VALUES
@@ -401,7 +347,7 @@ INSERT INTO `sekolah` (`id`, `nama_sekolah`, `alamat`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `soal`
+-- Table structure for table `soal`
 --
 
 CREATE TABLE `soal` (
@@ -411,12 +357,12 @@ CREATE TABLE `soal` (
   `pertanyaan` text NOT NULL,
   `bloom` int(11) DEFAULT NULL,
   `bobot` int(11) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `soal`
+-- Dumping data for table `soal`
 --
 
 INSERT INTO `soal` (`id`, `materi_kode`, `tipe`, `pertanyaan`, `bloom`, `bobot`, `created_at`, `updated_at`) VALUES
@@ -445,7 +391,7 @@ INSERT INTO `soal` (`id`, `materi_kode`, `tipe`, `pertanyaan`, `bloom`, `bobot`,
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
@@ -457,18 +403,18 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data untuk tabel `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `username`, `email`, `password`, `role_id`) VALUES
-(2, 'fuu', 'fuu@fuu.com', '202cb962ac59075b964b07152d234b70', 1),
 (3, 'siswa', 'siswa@siswa.com', '202cb962ac59075b964b07152d234b70', 2),
-(4, 'guru', 'guru@gmail.com', '77e69c137812518e359196bb2f5e9bb9', 1);
+(4, 'guru', 'guru@gmail.com', '77e69c137812518e359196bb2f5e9bb9', 1),
+(5, 'fuu', 'fuu@f.com', '202cb962ac59075b964b07152d234b70', 1);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user_kelas`
+-- Table structure for table `user_kelas`
 --
 
 CREATE TABLE `user_kelas` (
@@ -478,17 +424,24 @@ CREATE TABLE `user_kelas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
+-- Dumping data for table `user_kelas`
+--
+
+INSERT INTO `user_kelas` (`id`, `kelas_id`, `siswa_id`) VALUES
+(1, 1, 3);
+
+--
 -- Indexes for dumped tables
 --
 
 --
--- Indeks untuk tabel `ci_sessions`
+-- Indexes for table `ci_sessions`
 --
 ALTER TABLE `ci_sessions`
   ADD KEY `ci_sessions_timestamp` (`timestamp`);
 
 --
--- Indeks untuk tabel `detail_user`
+-- Indexes for table `detail_user`
 --
 ALTER TABLE `detail_user`
   ADD PRIMARY KEY (`id`),
@@ -496,14 +449,7 @@ ALTER TABLE `detail_user`
   ADD KEY `sekolah_id` (`sekolah_id`);
 
 --
--- Indeks untuk tabel `hak_akses`
---
-ALTER TABLE `hak_akses`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `role_id` (`role_id`);
-
---
--- Indeks untuk tabel `kelas`
+-- Indexes for table `kelas`
 --
 ALTER TABLE `kelas`
   ADD PRIMARY KEY (`id`),
@@ -511,7 +457,7 @@ ALTER TABLE `kelas`
   ADD KEY `mapel_id` (`mapel_id`);
 
 --
--- Indeks untuk tabel `kunci_soal`
+-- Indexes for table `kunci_soal`
 --
 ALTER TABLE `kunci_soal`
   ADD PRIMARY KEY (`id`),
@@ -519,14 +465,16 @@ ALTER TABLE `kunci_soal`
   ADD KEY `pilihan_soal_id` (`pilihan_soal_id`);
 
 --
--- Indeks untuk tabel `log_activity`
+-- Indexes for table `log_activity`
 --
 ALTER TABLE `log_activity`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `user_id` (`user_id`);
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `kelas_id` (`kelas_id`),
+  ADD KEY `materi_id` (`materi_id`);
 
 --
--- Indeks untuk tabel `log_answer`
+-- Indexes for table `log_answer`
 --
 ALTER TABLE `log_answer`
   ADD PRIMARY KEY (`id`),
@@ -535,7 +483,7 @@ ALTER TABLE `log_answer`
   ADD KEY `pilihan_soal_id` (`pilihan_soal_id`);
 
 --
--- Indeks untuk tabel `log_answer_essay`
+-- Indexes for table `log_answer_essay`
 --
 ALTER TABLE `log_answer_essay`
   ADD PRIMARY KEY (`id`),
@@ -543,7 +491,7 @@ ALTER TABLE `log_answer_essay`
   ADD KEY `log_answer_essay_ibfk_2` (`user_id`);
 
 --
--- Indeks untuk tabel `log_on_evaluasi`
+-- Indexes for table `log_on_evaluasi`
 --
 ALTER TABLE `log_on_evaluasi`
   ADD PRIMARY KEY (`id`),
@@ -551,28 +499,13 @@ ALTER TABLE `log_on_evaluasi`
   ADD KEY `materi_id` (`materi_id`);
 
 --
--- Indeks untuk tabel `log_on_materi`
---
-ALTER TABLE `log_on_materi`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `user_id` (`user_id`),
-  ADD KEY `materi_id` (`materi_id`);
-
---
--- Indeks untuk tabel `log_on_materi_detail`
---
-ALTER TABLE `log_on_materi_detail`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `log_on_materi_id` (`log_on_materi_id`);
-
---
--- Indeks untuk tabel `mata_pelajaran`
+-- Indexes for table `mata_pelajaran`
 --
 ALTER TABLE `mata_pelajaran`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `materi`
+-- Indexes for table `materi`
 --
 ALTER TABLE `materi`
   ADD PRIMARY KEY (`id`),
@@ -580,7 +513,7 @@ ALTER TABLE `materi`
   ADD KEY `kelas_id` (`kelas_id`);
 
 --
--- Indeks untuk tabel `nilai`
+-- Indexes for table `nilai`
 --
 ALTER TABLE `nilai`
   ADD PRIMARY KEY (`id`),
@@ -588,34 +521,34 @@ ALTER TABLE `nilai`
   ADD KEY `materi_kode` (`materi_kode`);
 
 --
--- Indeks untuk tabel `pilihan_soal`
+-- Indexes for table `pilihan_soal`
 --
 ALTER TABLE `pilihan_soal`
   ADD PRIMARY KEY (`id`),
   ADD KEY `soal_id` (`soal_id`);
 
 --
--- Indeks untuk tabel `roles`
+-- Indexes for table `roles`
 --
 ALTER TABLE `roles`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `kode` (`kode`);
 
 --
--- Indeks untuk tabel `sekolah`
+-- Indexes for table `sekolah`
 --
 ALTER TABLE `sekolah`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `soal`
+-- Indexes for table `soal`
 --
 ALTER TABLE `soal`
   ADD PRIMARY KEY (`id`),
   ADD KEY `materi_kode` (`materi_kode`);
 
 --
--- Indeks untuk tabel `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
@@ -624,7 +557,7 @@ ALTER TABLE `users`
   ADD KEY `role_id` (`role_id`);
 
 --
--- Indeks untuk tabel `user_kelas`
+-- Indexes for table `user_kelas`
 --
 ALTER TABLE `user_kelas`
   ADD PRIMARY KEY (`id`),
@@ -632,162 +565,140 @@ ALTER TABLE `user_kelas`
   ADD KEY `siswa_id` (`siswa_id`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `detail_user`
+-- AUTO_INCREMENT for table `detail_user`
 --
 ALTER TABLE `detail_user`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT untuk tabel `hak_akses`
---
-ALTER TABLE `hak_akses`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT untuk tabel `kelas`
+-- AUTO_INCREMENT for table `kelas`
 --
 ALTER TABLE `kelas`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT untuk tabel `kunci_soal`
+-- AUTO_INCREMENT for table `kunci_soal`
 --
 ALTER TABLE `kunci_soal`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
--- AUTO_INCREMENT untuk tabel `log_activity`
+-- AUTO_INCREMENT for table `log_activity`
 --
 ALTER TABLE `log_activity`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `log_answer`
+-- AUTO_INCREMENT for table `log_answer`
 --
 ALTER TABLE `log_answer`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `log_answer_essay`
+-- AUTO_INCREMENT for table `log_answer_essay`
 --
 ALTER TABLE `log_answer_essay`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `log_on_evaluasi`
+-- AUTO_INCREMENT for table `log_on_evaluasi`
 --
 ALTER TABLE `log_on_evaluasi`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `log_on_materi`
---
-ALTER TABLE `log_on_materi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT untuk tabel `log_on_materi_detail`
---
-ALTER TABLE `log_on_materi_detail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT untuk tabel `mata_pelajaran`
+-- AUTO_INCREMENT for table `mata_pelajaran`
 --
 ALTER TABLE `mata_pelajaran`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT untuk tabel `materi`
+-- AUTO_INCREMENT for table `materi`
 --
 ALTER TABLE `materi`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT untuk tabel `nilai`
+-- AUTO_INCREMENT for table `nilai`
 --
 ALTER TABLE `nilai`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `pilihan_soal`
+-- AUTO_INCREMENT for table `pilihan_soal`
 --
 ALTER TABLE `pilihan_soal`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
--- AUTO_INCREMENT untuk tabel `roles`
+-- AUTO_INCREMENT for table `roles`
 --
 ALTER TABLE `roles`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT untuk tabel `sekolah`
+-- AUTO_INCREMENT for table `sekolah`
 --
 ALTER TABLE `sekolah`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT untuk tabel `soal`
+-- AUTO_INCREMENT for table `soal`
 --
 ALTER TABLE `soal`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
--- AUTO_INCREMENT untuk tabel `users`
+-- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT untuk tabel `user_kelas`
+-- AUTO_INCREMENT for table `user_kelas`
 --
 ALTER TABLE `user_kelas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+-- Constraints for dumped tables
 --
 
 --
--- Ketidakleluasaan untuk tabel `detail_user`
+-- Constraints for table `detail_user`
 --
 ALTER TABLE `detail_user`
   ADD CONSTRAINT `detail_user_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `detail_user_ibfk_2` FOREIGN KEY (`sekolah_id`) REFERENCES `sekolah` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `hak_akses`
---
-ALTER TABLE `hak_akses`
-  ADD CONSTRAINT `hak_akses_ibfk_1` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`);
-
---
--- Ketidakleluasaan untuk tabel `kelas`
+-- Constraints for table `kelas`
 --
 ALTER TABLE `kelas`
   ADD CONSTRAINT `kelas_ibfk_1` FOREIGN KEY (`guru_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `kelas_ibfk_2` FOREIGN KEY (`mapel_id`) REFERENCES `mata_pelajaran` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `kunci_soal`
+-- Constraints for table `kunci_soal`
 --
 ALTER TABLE `kunci_soal`
   ADD CONSTRAINT `kunci_soal_ibfk_1` FOREIGN KEY (`soal_id`) REFERENCES `soal` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `kunci_soal_ibfk_2` FOREIGN KEY (`pilihan_soal_id`) REFERENCES `pilihan_soal` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `log_activity`
+-- Constraints for table `log_activity`
 --
 ALTER TABLE `log_activity`
-  ADD CONSTRAINT `log_activity_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
+  ADD CONSTRAINT `log_activity_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
+  ADD CONSTRAINT `log_activity_ibfk_2` FOREIGN KEY (`kelas_id`) REFERENCES `kelas` (`id`),
+  ADD CONSTRAINT `log_activity_ibfk_3` FOREIGN KEY (`materi_id`) REFERENCES `materi` (`id`);
 
 --
--- Ketidakleluasaan untuk tabel `log_answer`
+-- Constraints for table `log_answer`
 --
 ALTER TABLE `log_answer`
   ADD CONSTRAINT `log_answer_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
@@ -795,65 +706,52 @@ ALTER TABLE `log_answer`
   ADD CONSTRAINT `log_answer_ibfk_3` FOREIGN KEY (`pilihan_soal_id`) REFERENCES `pilihan_soal` (`id`);
 
 --
--- Ketidakleluasaan untuk tabel `log_answer_essay`
+-- Constraints for table `log_answer_essay`
 --
 ALTER TABLE `log_answer_essay`
   ADD CONSTRAINT `log_answer_essay_ibfk_1` FOREIGN KEY (`soal_id`) REFERENCES `soal` (`id`) ON UPDATE CASCADE,
   ADD CONSTRAINT `log_answer_essay_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `log_on_evaluasi`
+-- Constraints for table `log_on_evaluasi`
 --
 ALTER TABLE `log_on_evaluasi`
   ADD CONSTRAINT `log_on_evaluasi_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
   ADD CONSTRAINT `log_on_evaluasi_ibfk_2` FOREIGN KEY (`materi_id`) REFERENCES `materi` (`id`);
 
 --
--- Ketidakleluasaan untuk tabel `log_on_materi`
---
-ALTER TABLE `log_on_materi`
-  ADD CONSTRAINT `log_on_materi_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
-  ADD CONSTRAINT `log_on_materi_ibfk_2` FOREIGN KEY (`materi_id`) REFERENCES `materi` (`id`);
-
---
--- Ketidakleluasaan untuk tabel `log_on_materi_detail`
---
-ALTER TABLE `log_on_materi_detail`
-  ADD CONSTRAINT `log_on_materi_detail_ibfk_1` FOREIGN KEY (`log_on_materi_id`) REFERENCES `log_on_materi` (`id`);
-
---
--- Ketidakleluasaan untuk tabel `materi`
+-- Constraints for table `materi`
 --
 ALTER TABLE `materi`
   ADD CONSTRAINT `materi_ibfk_1` FOREIGN KEY (`kelas_id`) REFERENCES `kelas` (`id`);
 
 --
--- Ketidakleluasaan untuk tabel `nilai`
+-- Constraints for table `nilai`
 --
 ALTER TABLE `nilai`
   ADD CONSTRAINT `nilai_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
   ADD CONSTRAINT `nilai_ibfk_2` FOREIGN KEY (`materi_kode`) REFERENCES `materi` (`kode`);
 
 --
--- Ketidakleluasaan untuk tabel `pilihan_soal`
+-- Constraints for table `pilihan_soal`
 --
 ALTER TABLE `pilihan_soal`
   ADD CONSTRAINT `pilihan_soal_ibfk_1` FOREIGN KEY (`soal_id`) REFERENCES `soal` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ketidakleluasaan untuk tabel `soal`
+-- Constraints for table `soal`
 --
 ALTER TABLE `soal`
   ADD CONSTRAINT `soal_ibfk_1` FOREIGN KEY (`materi_kode`) REFERENCES `materi` (`kode`);
 
 --
--- Ketidakleluasaan untuk tabel `users`
+-- Constraints for table `users`
 --
 ALTER TABLE `users`
   ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`);
 
 --
--- Ketidakleluasaan untuk tabel `user_kelas`
+-- Constraints for table `user_kelas`
 --
 ALTER TABLE `user_kelas`
   ADD CONSTRAINT `user_kelas_ibfk_1` FOREIGN KEY (`kelas_id`) REFERENCES `kelas` (`id`),
