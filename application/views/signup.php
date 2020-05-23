@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" type="text/css" media="screen" href="./assets/css/main.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="icon" href="<?php echo base_url('assets/images/logoTab_Relact.png') ?>">
     <script src="main.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
@@ -16,16 +17,15 @@
 
 <body style="background-color: #34ace0;">
     <!-- animated text -->
-    <center>
-        <h1 style="color: white">Selamat Datang</h1><br>
-        <!-- fade out -->
-        <h1 style="color: white">RELACT</h1><br>
+    <div class="fade-in" style="text-align:center;">
+        <h1 style="color: white">Selamat Datang<br>
+            RELACT
+        </h1>
         <h5 style="color: white">Recording Learning Activities</h5>
-    </center>
-
+    </div>
     <!-- form -->
     <div class="container">
-        <div id="content" class="shadow p-3 mb-5 bg-white rounded col-8" style="margin: 0 auto; height: auto; margin-top: 7%;">
+        <div id="content" class="shadow p-3 mb-5 bg-white rounded col-6" style="margin: 0 auto; height: auto; margin-top: 4%;">
             <h2 align="center">Buat Akun Baru</h2>
             <form method="POST" action="<?php echo site_url("daftar"); ?>">
                 <div class="form-group">

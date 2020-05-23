@@ -45,8 +45,6 @@
   </table>
 </div>
 
-<!-- footer -->
-<?php include("footer.php") ?>
 <!-- /#page-content-wrapper -->
 </div>
 </div>
