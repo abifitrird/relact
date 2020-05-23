@@ -10,7 +10,7 @@ class Materi extends Base
 
 		$this->load->model('KelasModel');
 	}
-    public function getMateri($kode)
+	public function getMateri($kode)
 	{
 		$data['data'] = $this->KelasModel->getMateriByKodeKelas($kode);
 		$this->load->view('guru/list_materi', $data);
@@ -51,7 +51,13 @@ class Materi extends Base
 		// $data['data'] = $this->KelasModel->getMateriById($materi_id);
 		$data['data'] = $this->KelasModel->getMateriByKode($materi_kode);
 		$this->load->view('guru/materi', $data);
-    }
-    
-    // TODO: hapus Materi
+	}
+
+	public function showMateriAPI($materi_kode)
+	{
+		$data = $this->KelasModel->getMateriByKode($materi_kode);
+		echo json_encode($data);
+	}
+
+	// TODO: hapus Materi
 }

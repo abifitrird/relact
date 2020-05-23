@@ -19,12 +19,10 @@
     <h1>Soal</h1>
     <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item">
-            <a class="nav-link active" id="pg-tab" data-toggle="tab" href="#pg" role="tab" aria-controls="pilihan ganda"
-                aria-selected="true">Pilihan Ganda</a>
+            <a class="nav-link active" id="pg-tab" data-toggle="tab" href="#pg" role="tab" aria-controls="pilihan ganda" aria-selected="true">Pilihan Ganda</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" id="esai-tab" data-toggle="tab" href="#esai" role="tab" aria-controls="esai"
-                aria-selected="false">Esai</a>
+            <a class="nav-link" id="esai-tab" data-toggle="tab" href="#esai" role="tab" aria-controls="esai" aria-selected="false">Esai</a>
         </li>
     </ul>
     <div class="tab-content" id="myTabContent">
@@ -40,24 +38,23 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php $no_pg=1; foreach ($soal as $soa) {
-                  if ($soa['tipe'] == 'pg') { ?>
-                    <tr>
-                        <th scope="row"><?php echo $no_pg ?></th>
-                        <td><?php echo $soa['pertanyaan'] ?></td>
-                        <td><?php echo $soa['pilihan'] ? $soa['pilihan'] : "belum ada kunci jawaban" ?></td>
-                        <td><?php echo $soa['bobot'] ?></td>
-                        <td style="text-align: center; white-space: nowrap; width: 1%">
-                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#ubahSoal"
-                                data-soalid="<?php echo $soa['id'] ?>" data-soaljenis="<?php echo $soa['tipe'] ?>"
-                                data-url-api-soal="<?php echo site_url('api/soal/') ?>">Ubah</button>
-                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#hapusSoal"
-                                data-soalid="<?php echo $soa['id'] ?>"
-                                data-url-hapus-soal="<?php echo site_url('guru/kelas/' . $this->uri->segment(3) . '/materi/' . $this->uri->segment(5) . '/soal/delete/') ?>">Hapus</button>
-                            <!-- FIXME: hapus soal -->
-                        </td>
-                    </tr>
-                    <?php $no_pg++;}} ?>
+                    <?php $no_pg = 1;
+                    foreach ($soal as $soa) {
+                        if ($soa['tipe'] == 'pg') { ?>
+                            <tr>
+                                <th scope="row"><?php echo $no_pg ?></th>
+                                <td><?php echo $soa['pertanyaan'] ?></td>
+                                <td><?php echo $soa['pilihan'] ? $soa['pilihan'] : "belum ada kunci jawaban" ?></td>
+                                <td><?php echo $soa['bobot'] ?></td>
+                                <td style="text-align: center; white-space: nowrap; width: 1%">
+                                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#ubahSoal" data-soalid="<?php echo $soa['id'] ?>" data-soaljenis="<?php echo $soa['tipe'] ?>" data-url-api-soal="<?php echo site_url('api/soal/') ?>">Ubah</button>
+                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#hapusSoal" data-soalid="<?php echo $soa['id'] ?>" data-url-hapus-soal="<?php echo site_url('guru/kelas/' . $this->uri->segment(3) . '/materi/' . $this->uri->segment(5) . '/soal/delete/') ?>">Hapus</button>
+                                    <!-- FIXME: hapus soal -->
+                                </td>
+                            </tr>
+                    <?php $no_pg++;
+                        }
+                    } ?>
                 </tbody>
             </table>
         </div>
@@ -72,23 +69,22 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php $no_esai=1; foreach ($soal as $soa) {
-                  if ($soa['tipe'] == 'esai') { ?>
-                    <tr>
-                        <th scope="row"><?php echo $no_esai ?></th>
-                        <td><?php echo $soa['pertanyaan'] ?></td>
-                        <td><?php echo $soa['bobot'] ?></td>
-                        <td style="text-align: center; white-space: nowrap; width: 1%">
-                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#ubahSoal"
-                                data-soalid="<?php echo $soa['id'] ?>" data-soaljenis="<?php echo $soa['tipe'] ?>"
-                                data-url-api-soal="<?php echo site_url('api/soal/') ?>">Ubah</button>
-                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#hapusSoal"
-                                data-soalid="<?php echo $soa['id'] ?>"
-                                data-url-hapus-soal="<?php echo site_url('guru/kelas/' . $this->uri->segment(3) . '/materi/' . $this->uri->segment(5) . '/soal/delete/') ?>">Hapus</button>
-                            <!-- FIXME: hapus soal -->
-                        </td>
-                    </tr>
-                    <?php $no_esai++;}} ?>
+                    <?php $no_esai = 1;
+                    foreach ($soal as $soa) {
+                        if ($soa['tipe'] == 'esai') { ?>
+                            <tr>
+                                <th scope="row"><?php echo $no_esai ?></th>
+                                <td><?php echo $soa['pertanyaan'] ?></td>
+                                <td><?php echo $soa['bobot'] ?></td>
+                                <td style="text-align: center; white-space: nowrap; width: 1%">
+                                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#ubahSoal" data-soalid="<?php echo $soa['id'] ?>" data-soaljenis="<?php echo $soa['tipe'] ?>" data-url-api-soal="<?php echo site_url('api/soal/') ?>">Ubah</button>
+                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#hapusSoal" data-soalid="<?php echo $soa['id'] ?>" data-url-hapus-soal="<?php echo site_url('guru/kelas/' . $this->uri->segment(3) . '/materi/' . $this->uri->segment(5) . '/soal/delete/') ?>">Hapus</button>
+                                    <!-- FIXME: hapus soal -->
+                                </td>
+                            </tr>
+                    <?php $no_esai++;
+                        }
+                    } ?>
                 </tbody>
             </table>
         </div>
@@ -96,13 +92,13 @@
 </div>
 
 <!-- footer -->
-<?php //include("footer.php") ?>
+<?php //include("footer.php") 
+?>
 <!-- /#page-content-wrapper -->
 </div>
 </div>
 
-<div class="modal fade" id="hapusSoal" data-backdrop="static" tabindex="-1" role="dialog"
-    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="hapusSoal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -115,7 +111,7 @@
                 <h6>Yakin ingin menghapus soal?</h6>
             </div>
             <div class="modal-footer">
-                <form action="" method="POST">
+                <form id="formHapusSoal" action="" method="POST">
                     <button type="submit" class="btn btn-danger">Hapus</button>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
                 </form>
@@ -124,8 +120,7 @@
     </div>
 </div>
 
-<div class="modal fade" id="tambahSoal" data-backdrop="static" tabindex="-1" role="dialog"
-    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="tambahSoal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -135,9 +130,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form
-                    action="<?php echo site_url('guru/kelas/' . $this->uri->segment(3) . '/materi/' . $this->uri->segment(5) . '/soal') ?>"
-                    method="POST">
+                <form action="<?php echo site_url('guru/kelas/' . $this->uri->segment(3) . '/materi/' . $this->uri->segment(5) . '/soal') ?>" method="POST">
                     <div class="form-group">
                         <label for="tipeSoal">Tipe Soal</label>
                         <select class="form-control" id="tipeSoal" name="tipeSoal" required>
@@ -147,8 +140,7 @@
                     </div>
                     <div class="form-group">
                         <label for="kodeMateri">Kode Materi</label>
-                        <input type="text" class="form-control" id="kodeMateri" name="kodeMateri"
-                            value="<?php echo $this->uri->segment(5) ?>" readonly />
+                        <input type="text" class="form-control" id="kodeMateri" name="kodeMateri" value="<?php echo $this->uri->segment(5) ?>" readonly />
                     </div>
                     <div class="form-group">
                         <label for="editor">Pertanyaan</label>
@@ -172,8 +164,7 @@
 
 <!-- TODO: buat modal untuk tambah pilihan jawaban. Terdapat penambahan pilihan ganda, penambahan kunci jawaban, dan level bloom -->
 
-<div class="modal fade" id="ubahSoal" data-backdrop="static" tabindex="-1" role="dialog"
-    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="ubahSoal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -183,8 +174,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="" method="POST"
-                    data-url="<?php echo site_url('guru/kelas/' . $this->uri->segment(3) . '/materi/' . $this->uri->segment(5) . '/soal/') ?>">
+                <form action="" method="POST" data-url="<?php echo site_url('guru/kelas/' . $this->uri->segment(3) . '/materi/' . $this->uri->segment(5) . '/soal/') ?>">
                     <div class="form-group">
                         <label for="editor">Pertanyaan</label>
                         <textarea class="summernote form-control" id="editorUbah" name="pertanyaan"></textarea>
@@ -210,8 +200,7 @@
                 </div>
                 <div class="text-right">
                     <button type="submit" class="btn btn-primary">Simpan</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal"
-                        onclick="resetTableRow()">Batal</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="resetTableRow()">Batal</button>
                 </div>
 
                 </form>
@@ -222,80 +211,79 @@
 <!-- Menu Toggle Script -->
 <script src="<?php echo base_url('assets/js/summernote-bs4.min.js') ?>"></script>
 <script>
-$(document).ready(function() {
-    $('.summernote').summernote({
-        dialogsInBody: true,
-    })
-    $('.summernote').each(function() {
-        $(this).val($(this).summernote('code'));
-    })
+    $(document).ready(function() {
+        $('.summernote').summernote({
+            dialogsInBody: true,
+        })
+        $('.summernote').each(function() {
+            $(this).val($(this).summernote('code'));
+        })
 
-    $('#hapusSoal').on('show.bs.modal', function(event) {
-        var button = $(event.relatedTarget)
-        var soal_id = button.data('soalid')
-        var urlHapusSoal = button.data('url-hapus-soal')
-        $('.modal-footer form').attr('action', urlHapusSoal + soal_id)
-        // FIXME: HAPUS SOAL
-    })
+        $('#hapusSoal').on('show.bs.modal', function(event) {
+            var button = $(event.relatedTarget)
+            var soal_id = button.data('soalid')
+            var urlHapusSoal = button.data('url-hapus-soal')
+            $('.modal-footer form').attr('action', urlHapusSoal + soal_id)
+            // FIXME: HAPUS SOAL
+        })
 
-    $('#ubahSoal').on('show.bs.modal', function(event) {
-        let button = $(event.relatedTarget)
-        let soal_id = button.data('soalid')
-        var soal_jenis = button.data('soaljenis')
-        var urlApiSoal = button.data('url-api-soal');
-        let modal = $(this)
-        fetch(urlApiSoal + soal_id)
-            .then(response => response.json())
-            .then(data => {
-                var pertanyaan = data.pertanyaan
-                $("#editorUbah").summernote('code', pertanyaan)
-            });
+        $('#ubahSoal').on('show.bs.modal', function(event) {
+            let button = $(event.relatedTarget)
+            let soal_id = button.data('soalid')
+            var soal_jenis = button.data('soaljenis')
+            var urlApiSoal = button.data('url-api-soal');
+            let modal = $(this)
+            fetch(urlApiSoal + soal_id)
+                .then(response => response.json())
+                .then(data => {
+                    var pertanyaan = data.pertanyaan
+                    $("#editorUbah").summernote('code', pertanyaan)
+                });
 
-        fetch(urlApiSoal + "pilihan/" + soal_id)
-            .then(response => response.json())
-            .then(function(data) {
-                // console.log(data)
-                this.appendPilihan(data)
-            })
-        var getUrlPost = $("#ubahSoal .modal-body form").data('url');
+            fetch(urlApiSoal + "pilihan/" + soal_id)
+                .then(response => response.json())
+                .then(function(data) {
+                    this.appendPilihan(data)
+                })
+            var getUrlPost = $("#ubahSoal .modal-body form").data('url');
 
-        if (soal_jenis == 'pg') {
-            $('.modal-body form').attr('action', getUrlPost + soal_id);
-            modal.find('.modal-body #pilihanGanda').removeClass('d-none');
-            modal.find('.modal-footer #btnPG').removeClass('d-none');
-        } else if (soal_jenis == 'esai') {
-            $('.modal-body form').attr('action', getUrlPost + "esai/" + soal_id);
-            modal.find('.modal-body #pilihanGanda').addClass('d-none');
-            modal.find('.modal-footer #btnPG').addClass('d-none');
-        }
+            if (soal_jenis == 'pg') {
+                $('.modal-body form').attr('action', getUrlPost + soal_id);
+                modal.find('.modal-body #pilihanGanda').removeClass('d-none');
+                modal.find('.modal-footer #btnPG').removeClass('d-none');
+            } else if (soal_jenis == 'esai') {
+                $('.modal-body form').attr('action', getUrlPost + "esai/" + soal_id);
+                modal.find('.modal-body #pilihanGanda').addClass('d-none');
+                modal.find('.modal-footer #btnPG').addClass('d-none');
+            }
+        });
+
+        $('#btnTambahPilihan').click(function() {
+            data = [{
+                id: "",
+                soal_id: "",
+                pilihan: "",
+                kunci_id: ""
+            }]
+            appendPilihan(data)
+        })
     });
 
-    $('#btnTambahPilihan').click(function() {
-        data = [{
-            id: "",
-            soal_id: "",
-            pilihan: "",
-            kunci_id: ""
-        }]
-        appendPilihan(data)
-    })
-});
-
-$("#menu-toggle").click(function(e) {
-    e.preventDefault();
-    $("#wrapper").toggleClass("toggled");
-});
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
 
 
-let i = 0;
+    let i = 0;
 
-function appendPilihan(data) {
-    data.forEach(el => {
-        $("#pilihanGanda tbody")
-            .append(`
+    function appendPilihan(data) {
+        data.forEach(el => {
+            $("#pilihanGanda tbody")
+                .append(`
         <tr>
-          <td><textarea name="pilihan[` + i + `]" class="form-control" rows="2" aria-label="Pilihan Jawaban">` + el
-                .pilihan + `</textarea>
+          <td><textarea name="pilihan[` + i + `]" class="form-control" data-pil_id="` + el.id + `" rows="2" aria-label="Pilihan Jawaban">` + el
+                    .pilihan + `</textarea>
           <td>
             <input class="form-check-input" type="checkbox" name="kunci[` + i + `]" value="1" id="checkKunci` + i + `" onclick="selectOnlyThis(this.id)">
             <label for="checkKunci` + i + `">Kunci</label>
@@ -303,30 +291,33 @@ function appendPilihan(data) {
           </td>
         </tr>
         `)
-        if (el.kunci_id) {
-            $("#checkKunci" + i).prop('checked', true)
-        }
-        i++;
-    });
-}
-
-function resetTableRow() {
-    $('#pilihanGanda tbody tr').remove();
-    i = 0;
-}
-
-function selectOnlyThis(id) {
-    for (var j = 0; j <= i; j++) {
-        $("#checkKunci" + j).prop("checked", false)
+            if (el.kunci_id) {
+                $("#checkKunci" + i).prop('checked', true)
+            }
+            i++;
+        });
     }
-    $("#" + id).prop("checked", true)
-}
 
-// FIXME: need to fix this, when data exist, how to make data removed from database
-$('#btnHapusPilihan').click(function() {
-    $("#pilihanGanda tbody tr").last().remove();
-    i--;
-})
+    function resetTableRow() {
+        $('#pilihanGanda tbody tr').remove();
+        i = 0;
+    }
+
+    function selectOnlyThis(id) {
+        for (var j = 0; j <= i; j++) {
+            $("#checkKunci" + j).prop("checked", false)
+        }
+        $("#" + id).prop("checked", true)
+    }
+
+    $('#btnHapusPilihan').click(function() {
+        let id = $("#pilihanGanda tbody tr td textarea").last().data('pil_id');
+        fetch('/api/soal/pilihan/delete/' + id)
+            .then(response => response.json())
+            .then(data => console.log(data.status));
+        $("#pilihanGanda tbody tr").last().remove();
+        i--;
+    })
 </script>
 </body>
 

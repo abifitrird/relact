@@ -9,9 +9,9 @@ class SoalModel extends CI_Model
      */
     public function getSoalByKodeMateri($kode_materi)
     {
-        $data = $this->db->select('soal.id, soal. materi_kode, soal.tipe, soal.pertanyaan, soal.bobot, (SELECT pilihan_soal.pilihan FROM pilihan_soal JOIN kunci_soal ON pilihan_soal.id = kunci_soal.pilihan_soal_id WHERE soal.id = pilihan_soal.soal_id) as pilihan' )
-        ->where('materi_kode', $kode_materi)
-        ->get('soal');
+        $data = $this->db->select('soal.id, soal. materi_kode, soal.tipe, soal.pertanyaan, soal.bobot, (SELECT pilihan_soal.pilihan FROM pilihan_soal JOIN kunci_soal ON pilihan_soal.id = kunci_soal.pilihan_soal_id WHERE soal.id = pilihan_soal.soal_id) as pilihan')
+            ->where('materi_kode', $kode_materi)
+            ->get('soal');
         return $data->result_array();
     }
 
@@ -71,12 +71,12 @@ class SoalModel extends CI_Model
 
             if ($kunci[$i]) {
                 $pilihan_id = $this->db->where('soal_id', $soal_id)
-                ->order_by('id', 'desc')
-                ->limit(1)
-                ->get('pilihan_soal');
-                
+                    ->order_by('id', 'desc')
+                    ->limit(1)
+                    ->get('pilihan_soal');
+
                 $pilihan_id = $pilihan_id->row_array();
-                
+
                 $kirim_kunci = array(
                     'soal_id' => $soal_id,
                     'pilihan_soal_id' => $id[$i] ? $id[$i] : $pilihan_id['id']
@@ -103,10 +103,10 @@ class SoalModel extends CI_Model
     public function getPilihanJawabanBySoalId($soal_id)
     {
         $pilihan = $this->db->select('pilihan_soal.id, pilihan_soal.soal_id, pilihan_soal.pilihan, kunci_soal.id as kunci_id')
-        ->from('pilihan_soal')
-        ->join('kunci_soal', 'pilihan_soal.id = kunci_soal.pilihan_soal_id', 'left')
-        ->where('pilihan_soal.soal_id', $soal_id)
-        ->get();
+            ->from('pilihan_soal')
+            ->join('kunci_soal', 'pilihan_soal.id = kunci_soal.pilihan_soal_id', 'left')
+            ->where('pilihan_soal.soal_id', $soal_id)
+            ->get();
 
         return $pilihan = $pilihan->result_array();
     }
@@ -137,6 +137,22 @@ class SoalModel extends CI_Model
     public function deleteSoal($soal_id)
     {
         $this->db->where('id', $soal_id)->delete('soal');
+        if ($this->db->affected_rows() == 0) {
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
+     * delete pilihan soal by pilihan_Id
+     * 
+     * @param pilihan_id
+     * @return boolean
+     */
+    public function deletePilihanSoal($pilihan_id)
+    {
+        $this->db->where('id', $pilihan_id)->delete('pilihan_soal');
         if ($this->db->affected_rows() == 0) {
             return false;
         }

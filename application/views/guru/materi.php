@@ -24,8 +24,7 @@
 </div>
 
 
-<div class="modal fade" id="ubahMateri" data-backdrop="static" tabindex="-1" role="dialog"
-    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="ubahMateri" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -35,18 +34,14 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form
-                    action="<?php echo site_url('guru/kelas/' . $this->uri->segment(3) . '/materi/ubah/' . $this->uri->segment(5)) ?>"
-                    method="POST" id="ubahMateriForm">
+                <form action="<?php echo site_url('guru/kelas/' . $this->uri->segment(3) . '/materi/ubah/' . $this->uri->segment(5)) ?>" method="POST" id="ubahMateriForm">
                     <div class="form-group">
                         <label for="judul">Judul</label>
-                        <input type="text" class="form-control" id="judul" name="judul" required
-                            value="<?php echo $data['judul'] ?>">
+                        <input type="text" class="form-control" id="judul" name="judul" required value="<?php echo $data['judul'] ?>">
                     </div>
                     <div class="form-group">
                         <label for="summernote">Konten</label>
-                        <textarea class="summernote form-control" id="summernote" name="konten"
-                            data-konten="<?php echo $data['konten'] ?>"></textarea>
+                        <textarea class="summernote form-control" id="summernote" name="konten" data-konten="<?php echo $data['konten'] ?>"></textarea>
                     </div>
 
             </div>
@@ -69,20 +64,22 @@
 <!-- Menu Toggle Script -->
 <script src="<?php echo base_url('assets/js/summernote-bs4.min.js') ?>"></script>
 <script>
-$("#menu-toggle").click(function(e) {
-    e.preventDefault();
-    $("#wrapper").toggleClass("toggled");
-});
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
 
-$(document).ready(function() {
-    var konten = $('#ubahMateri .modal-body #summernote').data('konten')
-    $('#summernote').summernote('code', konten, {
-        dialogsInBody: true,
+    $(document).ready(function() {
+        fetch('/api/materi/<?php echo $this->uri->segment(5) ?>').then(response => response.json())
+            .then(data => console.log(data.konten))
+        var konten = $('#ubahMateri .modal-body #summernote').data('konten')
+        $('#summernote').summernote('code', konten, {
+            dialogsInBody: true,
+        })
+        $('#summernote').each(function() {
+            $(this).val($(this).summernote('code'));
+        })
     })
-    $('#summernote').each(function() {
-        $(this).val($(this).summernote('code'));
-    })
-})
 </script>
 </body>
 

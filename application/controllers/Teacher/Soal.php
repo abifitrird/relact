@@ -53,7 +53,7 @@ class Soal extends Base
         $this->editSoal($soal_id, $data['pertanyaan']);
         redirect($_SERVER['HTTP_REFERER']);
     }
-    
+
     /**
      * edit soal
      * 
@@ -105,6 +105,20 @@ class Soal extends Base
     public function getPilihanJawabanBySoalId($soal_id)
     {
         echo json_encode($this->Soal->getPilihanJawabanBySoalId($soal_id));
-        
+    }
+
+    /**
+     * delete pilihan soal by pilihan id
+     * 
+     * @param pilihan_id
+     * @return
+     */
+    public function deletePilihan($pilihan_id)
+    {
+        if ($this->Soal->deletePilihanSoal($pilihan_id)) {
+            echo json_encode(['status' => 'OK']);
+        } else {
+            echo json_encode(['status' => 'KO']);
+        }
     }
 }

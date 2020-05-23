@@ -77,7 +77,8 @@ $route['guru/kelas']['post'] = 'Teacher/Kelas/saveKelas';                   // s
 $route['guru/kelas/(:any)']['get'] = "Teacher/Materi/getMateri/$1";          // getList Materi by Id
 $route['guru/kelas/(:any)/materi']['post'] = "Teacher/Materi/saveMateri/$1"; // save mteri by kelas id
 $route['guru/kelas/(:any)/materi/ubah/(:any)']['post'] = "Teacher/Materi/ubahMateri/$2"; // save mteri by kelas id
-$route['guru/kelas/(:any)/materi/(:any)']['get'] = "Teacher/Materi/showMateri/$1/$2"; // view materi by materi id and kelas id
+$route['guru/kelas/(:any)/materi/(:any)']['get'] = "Teacher/Materi/showMateri/$1/$2"; // view materi by materi id and 
+$route['api/materi/(:any)']['get'] = "Teacher/Materi/showMateriAPI/$1"; // view materi by id
 $route['guru/kelas/(:any)/materi/(:any)/soal']['get'] = "Teacher/Soal/getSoal/$2"; // view soal by materi id
 $route['guru/kelas/(:any)/materi/(:any)/soal']['post'] = "Teacher/Soal/addSoal/$2"; // add soal by materi kode
 
@@ -86,6 +87,7 @@ $route['guru/kelas/(:any)/materi/(:any)/soal/delete/(:num)']['post'] = "Teacher/
 $route['guru/kelas/(:any)/materi/(:any)/soal/esai/(:num)']['post'] = "Teacher/Soal/editSoal/$3"; // save pilihan 
 
 $route['api/soal/(:num)']['get'] = "Teacher/Soal/getSoalJson/$1"; // get JSON API
+$route['api/soal/pilihan/delete/(:num)']['get'] = "Teacher/Soal/deletePilihan/$1";
 $route['api/soal/pilihan/(:num)']['get'] = "Teacher/Soal/getPilihanJawabanBySoalId/$1"; // getpilihan jawbaban as JSON
 
 
