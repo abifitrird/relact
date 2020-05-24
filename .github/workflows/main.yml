@@ -15,7 +15,7 @@ jobs:
           fetch-depth: 2
       - name: Production
         run: sh prod.sh
-      - name: reset
+      - name: Reset
         run: git reset --hard
       - name: Deploy
         uses: SamKirkland/FTP-Deploy-Action@3.1.1
@@ -23,3 +23,4 @@ jobs:
           ftp-server: ftp://103.214.112.18
           ftp-username: ${{ secrets.FTP_USERNAME }}
           ftp-password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: build/
