@@ -29,7 +29,7 @@
             </div>
             <div class="col-12 col-md-8">
                 <button type="submit" class="btn btn-primary">Simpan</button>
-                <a class="btn btn-info" href="<?php echo $_SERVER['HTTP_REFERER'] ?>">Kembali</a>
+                <a class="btn btn-info" href="<?php echo $_SERVER['HTTP_REFERER'] ?>">Batal</a>
                 </form>
             </div>
         </div>
@@ -80,7 +80,7 @@
                     method: "POST",
                     body: data
                 }).then(response => response.json()).then(data => {
-                    // console.log(data);
+                    console.log(data);
                     $('#summernote').summernote('insertImage', data.path);
                 });
             }
