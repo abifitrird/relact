@@ -7,6 +7,7 @@
     <title><?php echo $head ?></title>
     <link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap.min.css') ?>">
     <link rel="stylesheet" href="<?php echo base_url('assets/css/summernote-bs4.min.css') ?>">
+    <link rel="icon" href="<?php echo base_url('assets/images/logoTab_Relact.png') ?>">
     <script src="<?php echo base_url('assets/js/jquery-3.4.1.slim.min.js') ?>"></script>
     <script src="<?php echo base_url('assets/js/popper.min.js') ?>"></script>
     <script src="<?php echo base_url('assets/js/bootstrap.min.js') ?>"></script>
@@ -16,9 +17,6 @@
     <div class="container">
         <div class="row flex-wrap justify-content-center">
             <div class="col-12 col-md-8 mt-3">
-                <a class="btn btn-info" href="<?php echo $_SERVER['HTTP_REFERER'] ?>">Kembali</a>
-            </div>
-            <div class="col-12 col-md-8 mt-2">
                 <form id="form_kirim" method="POST" action="">
                     <div class="form-group">
                         <label for="judul">Judul</label>
@@ -31,6 +29,7 @@
             </div>
             <div class="col-12 col-md-8">
                 <button type="submit" class="btn btn-primary">Simpan</button>
+                <a class="btn btn-info" href="<?php echo $_SERVER['HTTP_REFERER'] ?>">Kembali</a>
                 </form>
             </div>
         </div>

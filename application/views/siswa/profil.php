@@ -36,7 +36,7 @@
         <div class="col-10 my-auto">
             <h2><?php echo isset($data['nama_lengkap']) ? $data['nama_lengkap'] : "Tidak ada data" ?></h2>
             <p style="color: gray">
-                NIP : <?php echo isset($data['nomor_induk']) ? $data['nomor_induk'] : "Tidak ada data" ?>
+                NIS : <?php echo isset($data['nomor_induk']) ? $data['nomor_induk'] : "Tidak ada data" ?>
             </p>
         </div>
     </div>
