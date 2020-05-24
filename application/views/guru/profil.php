@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" type="text/css" media="screen" href="<?php echo base_url('assets/css/main.css') ?>">
     <link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap.min.css') ?>">
+    <link rel="icon" href="<?php echo base_url('assets/images/logoTab_Relact.png') ?>">
     <script src="<?php echo base_url('assets/js/jquery-3.4.1.slim.min.js') ?>"></script>
     <script src="<?php echo base_url('assets/js/popper.min.js') ?>"></script>
     <script src="<?php echo base_url('assets/js/bootstrap.min.js') ?>"></script>
@@ -19,15 +20,15 @@
 
 <div class="container-fluid">
     <?php if ($this->session->flashdata('alert')) { ?>
-    <div class="mx-3 my-4 alert alert-danger" role="alert">
-        <?php echo $this->session->flashdata('alert') ?>
-    </div>
+        <div class="mx-3 my-4 alert alert-danger" role="alert">
+            <?php echo $this->session->flashdata('alert') ?>
+        </div>
     <?php } ?>
 
     <?php if ($this->session->flashdata('success')) { ?>
-    <div class="mx-3 my-4 alert alert-success" role="alert">
-        <?php echo $this->session->flashdata('success') ?>
-    </div>
+        <div class="mx-3 my-4 alert alert-success" role="alert">
+            <?php echo $this->session->flashdata('success') ?>
+        </div>
     <?php } ?>
 
     <div class="row shadow-sm" style="padding: 25px">
@@ -97,8 +98,8 @@
                     <div class="form-group">
                         <label for="sekolah">Sekolah</label>
                         <select id="sekolah" class="form-control" name="sekolah" required>
-                            <?php foreach($sekolah as $school) { ?>
-                            <option value="<?php echo $school['id'] ?>"><?php echo $school['nama_sekolah'] ?></option>
+                            <?php foreach ($sekolah as $school) { ?>
+                                <option value="<?php echo $school['id'] ?>"><?php echo $school['nama_sekolah'] ?></option>
                             <?php } ?>
                         </select>
                     </div>
@@ -145,7 +146,7 @@
                         <label for="konfirmasiPassword">Ketik Ulang Password Baru</label>
                         <input type="password" class="form-control" id="konfirmasiPassword" name="konfirmasiPassword" required>
                     </div>
-                
+
             </div>
             <div class="modal-footer">
                 <button type="submit" class="btn btn-primary">Simpan</button>
