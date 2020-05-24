@@ -11,13 +11,14 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-        with:
-          ref: ${{ github.head_ref }}
       - name: Make production
         run: sh build.sh
       - name: Commit
-        uses: stefanzweifel/git-auto-commit-action@v4
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git commit -m "Make build" -a
+      - name: Push
+        uses: ad-m/github-push-action@master
         with:
-          commit_message: make build branch
-          branch: build
-          push_options: "--force"
+          github_token: ${{ secrets.GITHUB_TOKEN }}
