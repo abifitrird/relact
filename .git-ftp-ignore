@@ -1,6 +1,5 @@
 relact.sql
 prod.sh
-build.sh
 .git
 .github
 uploads/*
