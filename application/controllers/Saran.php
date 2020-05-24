@@ -9,7 +9,8 @@ class Saran extends CI_Controller
      */
     public function guru()
     {
-        echo "disini akan dibangun kotak saran untuk guru";
+        // echo "disini akan dibangun kotak saran untuk guru";
+        $this->load->view('hubungi_kami');
     }
 
     /**
