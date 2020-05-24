@@ -6,6 +6,7 @@ cp -r application build/
 cp -r system build/
 cp -r assets build/
 cp -r index.prod.php build/
+cp -r .htaccess build/
 
 echo "changes to production"
 cd build/
