@@ -15,8 +15,6 @@ jobs:
           fetch-depth: 2
       - name: Production
         run: sh prod.sh
-      - name: Reset
-        run: git reset --hard
       - name: Deploy
         uses: SamKirkland/FTP-Deploy-Action@3.1.1
         with:
