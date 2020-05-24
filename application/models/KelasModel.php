@@ -32,6 +32,9 @@ class KelasModel extends CI_Model
         $this->db->limit(1);
         $kelas_id = $this->db->get('kelas');
         $kelas_id = $kelas_id->row_array();
+        if (!$kelas_id) {
+            return false;
+        }
         $kelas_id = $kelas_id['id'];
 
         $this->db->where('kelas_id', $kelas_id);
@@ -75,10 +78,10 @@ class KelasModel extends CI_Model
         $kelas_id = $this->db->where('code', $data['kelas_kode'])->get('kelas')->row_array()['id'];
         $dataa = array(
             'kode' => $data['kode'],
-			'kelas_id' => $kelas_id,
-			'judul' => $data['judul'],
-			'konten' => $data['konten'],
-			'status' => $data['status']
+            'kelas_id' => $kelas_id,
+            'judul' => $data['judul'],
+            'konten' => $data['konten'],
+            'status' => $data['status']
         );
         return $this->db->insert('materi', $dataa);
     }
@@ -95,6 +98,22 @@ class KelasModel extends CI_Model
         if ($this->db->affected_rows() == 0) {
             return false;
         }
+        return true;
+    }
+
+    /**
+     * delete materi by materi kode
+     * 
+     * @param materi_kode
+     * @return
+     */
+    public function deleteMateri($kode)
+    {
+        $this->db->where('kode', $kode)->delete('materi');
+        if ($this->db->affected_rows() == 0) {
+            return false;
+        }
+
         return true;
     }
 }

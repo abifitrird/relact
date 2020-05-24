@@ -29,10 +29,10 @@ class Materi extends Base
 		if (!$this->KelasModel->saveMateri($data)) {
 			redirect($_SERVER['HTTP_REFERER']);
 		}
-		redirect($_SERVER['HTTP_REFERER']);
+		redirect(site_url('guru/kelas/' . $kelas_kode));
 	}
 
-	public function ubahMateri($materi_kode)
+	public function ubahMateri($kelas_kode, $materi_kode)
 	{
 		$data = array(
 			'kode' => $materi_kode,
@@ -43,7 +43,7 @@ class Materi extends Base
 		if (!$this->KelasModel->ubahMateri($data)) {
 			redirect($_SERVER['HTTP_REFERER']);
 		}
-		redirect($_SERVER['HTTP_REFERER']);
+		redirect(site_url('guru/kelas/' . $kelas_kode . '/materi/' . $materi_kode));
 	}
 
 	public function showMateri($kelas_id, $materi_kode)
@@ -53,11 +53,57 @@ class Materi extends Base
 		$this->load->view('guru/materi', $data);
 	}
 
+	public function viewAddMateri()
+	{
+		$this->load->view('guru/form_materi', ['head' => 'Tambah Materi']);
+	}
+
+	public function viewEditMateri()
+	{
+		$this->load->view('guru/form_materi', ['head' => 'Ubah Materi']);
+	}
+
 	public function showMateriAPI($materi_kode)
 	{
 		$data = $this->KelasModel->getMateriByKode($materi_kode);
 		echo json_encode($data);
 	}
 
-	// TODO: hapus Materi
+	public function deleteMateriAPI($materi_kode)
+	{
+		if ($this->KelasModel->deleteMateri($materi_kode)) {
+			redirect(site_url('guru/kelas'));
+		} else {
+			redirect($_SERVER['HTTP_REFERER']);
+		}
+	}
+
+	/**
+	 * upload image to server from wysiwyg API
+	 * 
+	 * @param materi_kode
+	 * @return url
+	 */
+	public function saveImageAPI()
+	{
+		$this->load->library('upload');
+		$config['upload_path'] = './uploads/';
+		$config['allowed_types'] = 'gif|jpg|png|jpeg';
+		$config['max_size'] = 2048;
+		$config['encrypt_name'] = TRUE;
+
+		$this->upload->initialize($config);
+
+		if (!$this->upload->do_upload('file')) {
+			echo json_encode(['status' => 'KO', 'error' => $this->upload->display_errors()]);
+		} else {
+			$data = $this->upload->data();
+			$return = array(
+				'path' => base_url("uploads/" . $data['file_name']),
+				'name' => $data['file_name'],
+				'status' => 'OK'
+			);
+			echo json_encode($return);
+		}
+	}
 }

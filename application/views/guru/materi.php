@@ -54,6 +54,28 @@
     </div>
 </div>
 
+<div class="modal fade" id="deleteMateri" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Ubah Materi</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h6>Anda yakin akan menghapus materi ini?</h6>
+            </div>
+            <div class="modal-footer">
+                <form action="<?php echo site_url('api/materi/delete/' . $this->uri->segment(5)) ?>">
+                    <button type="submit" class="btn btn-danger">Hapus</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- footer -->
 <?php //include("footer.php") 
 ?>
@@ -70,15 +92,38 @@
     });
 
     $(document).ready(function() {
-        fetch('/api/materi/<?php echo $this->uri->segment(5) ?>').then(response => response.json())
-            .then(data => console.log(data.konten))
-        var konten = $('#ubahMateri .modal-body #summernote').data('konten')
-        $('#summernote').summernote('code', konten, {
+        const editor = $('#summernote').summernote({
             dialogsInBody: true,
+            disableDragAndDrop: true,
+            spellcheck: false,
+            callbacks: {
+                onImageUpload: function(files) {
+                    if (!files.length) return;
+                    for (let i = 0; i < files.length; i++) {
+                        uploadImage(files[i])
+                    }
+                }
+            }
         })
-        $('#summernote').each(function() {
-            $(this).val($(this).summernote('code'));
-        })
+        fetch('/api/materi/<?php echo $this->uri->segment(5) ?>').then(response => response.json())
+            .then(data => {
+                $('#summernote').summernote('code', data.konten);
+                $('#summernote').each(function() {
+                    $(this).val($(this).summernote('code'));
+                })
+            })
+
+        function uploadImage(file) {
+            let data = new FormData();
+            data.append('file', file);
+            fetch('/api/image', {
+                method: "POST",
+                body: data
+            }).then(response => response.json()).then(data => {
+                // console.log(data);
+                $('#summernote').summernote('insertImage', data.path);
+            });
+        }
     })
 </script>
 </body>

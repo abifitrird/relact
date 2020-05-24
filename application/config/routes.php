@@ -76,11 +76,15 @@ $route['guru/saran']['get'] = "Saran/guru";                 // kotak saran dari 
 $route['guru/kelas']['post'] = 'Teacher/Kelas/saveKelas';                   // simpan kelas guru
 $route['guru/kelas/(:any)']['get'] = "Teacher/Materi/getMateri/$1";          // getList Materi by Id
 $route['guru/kelas/(:any)/materi']['post'] = "Teacher/Materi/saveMateri/$1"; // save mteri by kelas id
-$route['guru/kelas/(:any)/materi/ubah/(:any)']['post'] = "Teacher/Materi/ubahMateri/$2"; // save mteri by kelas id
+$route['guru/kelas/(:any)/materi/ubah/(:any)']['post'] = "Teacher/Materi/ubahMateri/$1/$2"; // save mteri by kelas id
 $route['guru/kelas/(:any)/materi/(:any)']['get'] = "Teacher/Materi/showMateri/$1/$2"; // view materi by materi id and 
+$route['api/materi/delete/(:any)']['get'] = "Teacher/materi/deleteMateriAPI/$1";    // delete materi
 $route['api/materi/(:any)']['get'] = "Teacher/Materi/showMateriAPI/$1"; // view materi by id
 $route['guru/kelas/(:any)/materi/(:any)/soal']['get'] = "Teacher/Soal/getSoal/$2"; // view soal by materi id
 $route['guru/kelas/(:any)/materi/(:any)/soal']['post'] = "Teacher/Soal/addSoal/$2"; // add soal by materi kode
+$route['guru/kelas/(:any)/tambah_materi']['get'] = "Teacher/Materi/viewAddMateri";
+$route['guru/kelas/(:any)/materi/ubah/(:any)']['get'] = "Teacher/Materi/viewEditMateri";
+$route['api/image']['post'] = "Teacher/Materi/saveImageAPI"; // uplaod image from wysiwyg
 
 $route['guru/kelas/(:any)/materi/(:any)/soal/(:num)']['post'] = "Teacher/Soal/savePilihanJawaban/$3"; // save pilihan jawaban
 $route['guru/kelas/(:any)/materi/(:any)/soal/delete/(:num)']['post'] = "Teacher/Soal/deleteSoal/$3"; // hapus soal

@@ -214,10 +214,32 @@
     $(document).ready(function() {
         $('.summernote').summernote({
             dialogsInBody: true,
+            disableDragAndDrop: true,
+            spellcheck: false,
+            callbacks: {
+                onImageUpload: function(files) {
+                    if (!files.length) return;
+                    for (let i = 0; i < files.length; i++) {
+                        uploadImage(files[i])
+                    }
+                }
+            }
         })
         $('.summernote').each(function() {
             $(this).val($(this).summernote('code'));
         })
+
+        function uploadImage(file) {
+            let data = new FormData();
+            data.append('file', file);
+            fetch('/api/image', {
+                method: "POST",
+                body: data
+            }).then(response => response.json()).then(data => {
+                // console.log(data);
+                $('.summernote').summernote('insertImage', data.path);
+            });
+        }
 
         $('#hapusSoal').on('show.bs.modal', function(event) {
             var button = $(event.relatedTarget)
