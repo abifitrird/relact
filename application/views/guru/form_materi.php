@@ -61,7 +61,7 @@
             } else {
                 let kode_kelas = url.split('/').reverse()[2];
                 let kode_materi = url.split('/').reverse()[0];
-                fetch('/api/materi/' + kode_materi).then(response => response.json())
+                fetch("<?php echo site_url('/api/materi/') ?>" + kode_materi).then(response => response.json())
                     .then(data => {
                         $('#summernote').summernote('code', data.konten);
                         $('#summernote').each(function() {
@@ -76,7 +76,7 @@
             function uploadImage(file) {
                 let data = new FormData();
                 data.append('file', file);
-                fetch('/api/image', {
+                fetch("<?php echo site_url('/api/image') ?>", {
                     method: "POST",
                     body: data
                 }).then(response => response.json()).then(data => {

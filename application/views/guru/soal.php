@@ -233,7 +233,7 @@
         function uploadImage(file) {
             let data = new FormData();
             data.append('file', file);
-            fetch('/api/image', {
+            fetch("<?php echo site_url('/api/image') ?>", {
                 method: "POST",
                 body: data
             }).then(response => response.json()).then(data => {
