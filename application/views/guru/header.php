@@ -29,10 +29,15 @@
                         <path fill="currentColor" d="M17 4V2H7V4H2V11C2 12.1 2.9 13 4 13H7.1C7.5 14.96 9.04 16.5 11 16.9V19.08C8 19.54 8 22 8 22H16C16 22 16 19.54 13 19.08V16.9C14.96 16.5 16.5 14.96 16.9 13H20C21.1 13 22 12.1 22 11V4H17M4 11V6H7V11L4 11M20 11L17 11V6H20L20 11Z" /></svg>
                     Capaian Siswa
                 </a>
+                <a href="#" class="list-group-item list-group-item-action mb-2 bg-light">
+                    <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                        <path fill="currentColor" d="M17 4V2H7V4H2V11C2 12.1 2.9 13 4 13H7.1C7.5 14.96 9.04 16.5 11 16.9V19.08C8 19.54 8 22 8 22H16C16 22 16 19.54 13 19.08V16.9C14.96 16.5 16.5 14.96 16.9 13H20C21.1 13 22 12.1 22 11V4H17M4 11V6H7V11L4 11M20 11L17 11V6H20L20 11Z" /></svg>
+                    Aktivitas Siswa
+                </a>
                 <a href="<?php echo site_url("guru/saran") ?>" class="list-group-item list-group-item-action mb-2 bg-light">
                     <svg style="width:24px;height:24px" viewBox="0 0 24 24">
                         <path fill="currentColor" d="M20,2H4A2,2 0 0,0 2,4V22L6,18H20A2,2 0 0,0 22,16V4C22,2.89 21.1,2 20,2Z" /></svg>
-                    Kotak Saran
+                    Hubungi Kami
                 </a>
             </div>
         </div>
@@ -58,7 +63,7 @@
                                 </li>
 
                             <?php }
-                                    if ($this->uri->segment(4) == 'materi' && $this->uri->segment(5) && !$this->uri->segment(6) == 'soal') { ?>
+                            if ($this->uri->segment(4) == 'materi' && $this->uri->segment(5) && !$this->uri->segment(6) == 'soal') { ?>
                                 <li class="mr-2">
                                     <a class="btn btn-success" href="<?php echo base_url('guru/kelas/' . $this->uri->segment(3) . '/materi/' . $this->uri->segment(5) . '/soal') ?>" role="button">Lihat Soal</a>
                                 </li>
@@ -74,7 +79,7 @@
                                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#tambahSoal">Tambah Soal</button>
                                 </li>
                             <?php }
-                                } else { ?>
+                        } else { ?>
                             <li>
                                 <button type="button" class="btn btn-success mr-1" data-toggle="modal" data-target="#tambahKelas">
                                     Tambah Kelas
