@@ -1,12 +1,16 @@
 #!/bin/sh
 
-echo "Change index to production"
-/bin/mv index.php index.php.bak
-/bin/mv index.prod.php index.php
+echo "make build folder"
+mkdir build
+cp -r application build/
+cp -r system build/
+cp -r assets build/
+cp -r index.prod.php build/
+cp -r .htaccess build/
 
-echo "Change database to production"
-cd ./application/config/
-/bin/mv database.php database.php.bak
-/bin/mv config.php config.php.bak
-/bin/mv database.prod.php database.php
-/bin/mv config.prod.php config.php
+echo "changes to production"
+cd build/
+mv -f index.prod.php index.php
+cd application/config/
+mv -f config.prod.php config.php
+mv -f database.prod.php database.php
