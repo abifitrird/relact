@@ -38,7 +38,7 @@
     <h2>Hubungi Kami</h2>
 </header>
 
-<div id="form">
+<div id="form" action="#" method="POST">
 
     <div class="letter" id="letter"></div>
     <div class="letter" id="letter2"></div>
