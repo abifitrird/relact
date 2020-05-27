@@ -6,7 +6,7 @@
         </div>
         <div class="col-md-4 offset-md-2">
             <strong>Informasi</strong><br>
-            <a href="#" style="color: white">Tentang Kami</a><br>
+            <a href="#" style="color: white">Tentang</a><br>
             <a href="#" style="color: white">Hubungi kami</a><br>
             <br>
             <p style="font-size: 10pt">
