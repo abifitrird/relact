@@ -15,15 +15,33 @@
     <script src="<?php echo base_url('assets/js/bootstrap.min.js') ?>"></script>
     <script src="<?php echo base_url('assets/js/contact_us.js') ?>"></script>
 </head>
+<!-- navbar -->
+<nav class="navbar navbar-expand-lg border-bottom shadow-sm">
+    <a href="<?php echo base_url() ?>">
+        <h5 style="color: white">Recording Learning Activities</h5>
+    </a>
+    <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
+        <li class="nav-item dropdown">
+            <a class="nav-item nav-link dropdown-toggle mr-md-2" href="#" id="bd-versions" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white;">
+                <span class="text-white"><?php echo $this->session->userdata("nama"); ?></span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="bd-versions">
+                <a class="dropdown-item" href="#">Bantuan</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="<?php echo base_url('Login/Logout') ?>">Keluar</a>
+            </div>
+        </li>
+    </ul>
+</nav>
 
 <header>
-    <h1>Hubungi Kami</h1>
+    <h2>Hubungi Kami</h2>
 </header>
 
 <div id="form">
 
-    <div class="fish" id="fish"></div>
-    <div class="fish" id="fish2"></div>
+    <div class="letter" id="letter"></div>
+    <div class="letter" id="letter2"></div>
 
     <form id="waterform" method="post">
 
