@@ -20,7 +20,8 @@ class Saran extends CI_Controller
      */
     public function siswa()
     {
-        echo "disini akan dibangun kotak saran untuk siswa";
+        // echo "disini akan dibangun kotak saran untuk siswa";
+        $this->load->view('hubungi_kami');
     }
 
     /**
