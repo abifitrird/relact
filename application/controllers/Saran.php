@@ -2,6 +2,11 @@
 
 class Saran extends CI_Controller
 {
+    public function index()
+    {
+        $this->load->view('hubungi_kami');
+    }
+
     /**
      * view saran/guru
      * 

@@ -42,7 +42,6 @@
                                         <input type="password" class="form-control" id="inputPassword" name="inputPassword" required>
                                     </div>
                                     <center>
-                                        <a href="#">Lupa kata sandi?</a>
                                         <button type="submit" class="my-2 btn btn-primary" style="width: 100%">MASUK</button>
                                         <p>Belum punya akun? <a href="<?php echo site_url('daftar'); ?>">Daftar</a></p>
                                     </center>
