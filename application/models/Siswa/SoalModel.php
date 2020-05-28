@@ -96,4 +96,28 @@ class SoalModel extends CI_Model
             ->get('soal')
             ->result_array();
     }
+
+    /**
+     * calculate nilai from jawaban PG
+     * 
+     * @param user_id
+     * @return boolean
+     */
+    public function calculateNilaiByPG($user_id, $kode_materi)
+    {
+        $pg = $this->db->query("SELECT *, (SELECT bobot FROM soal WHERE soal.id = soal_id) as bobot, (SELECT pilihan_soal_id FROM kunci_soal WHERE kunci_soal.soal_id = log_answer.soal_id) as kunci_id, (SELECT id FROM materi WHERE kode = '$kode_materi') as materi_id FROM log_answer WHERE user_id = $user_id AND soal_id = (SELECT id FROM soal WHERE soal.id = soal_id AND materi_kode = '$kode_materi')")->result_array();
+
+        $skor = 0;
+        foreach ($pg as $pp) {
+            if ($pp['kunci_id'] == $pp['pilihan_soal_id']) {
+                $skor += $pp['bobot'];
+            }
+        }
+        $data = array(
+            'user_id' => $user_id,
+            'materi_id' => $pg[0]['materi_id'],
+            'skor' => $skor
+        );
+        return $this->db->insert('nilai', $data);
+    }
 }

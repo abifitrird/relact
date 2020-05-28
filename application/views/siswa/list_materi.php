@@ -33,11 +33,13 @@
                     <div class="d-flex w-100 justify-content-between">
                         <h5 class="mb-1"><?php echo $dat['judul'] ?></h5>
                     </div>
-                    <p class="mb-1 text-truncate"><?php echo strip_tags(substr($dat['konten'], 0, 160) . '...') ?></p>
+                    <div>
+                        <?php echo substr(strip_tags($dat['konten']), 0, 160) . '...' ?>
+                    </div>
                 </a>
-            <?php }
-    } ?>
-    </div>
+        <?php }
+        } ?>
+        </div>
 </div>
 
 <!-- Menu Toggle Script -->

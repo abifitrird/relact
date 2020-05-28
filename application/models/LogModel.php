@@ -11,7 +11,7 @@ class LogModel extends CI_Model
      * @param action
      * @return
      */
-    public function saveLog($data, $kode_kelas, $kode_materi)
+    public function saveLog($data, $kode_kelas, $kode_materi, $is_soal)
     {
         $kelas_id = null;
         $materi_id = null;
@@ -25,6 +25,7 @@ class LogModel extends CI_Model
             'url' => $data['url'],
             'from_url' => $data['from_url'],
             'action' => $data['action'],
+            'is_soal' => $is_soal,
             'kelas_id' => $kelas_id,
             'materi_id' => $materi_id
         );

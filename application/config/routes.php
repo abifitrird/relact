@@ -113,3 +113,4 @@ $route['siswa/soal/(:any)']['post'] = "Student/Soal/showSoal/$1"; // kerjakan so
 $route['siswa/soal/(:any)/getSoal']['get'] = "Student/Soal/getSoalAPI/$1"; // get kode
 $route['siswa/soal/(:any)/saveJawaban']['post'] = "Student/Soal/saveJawaban"; // kerjakan soal
 $route['siswa/soal/(:any)/check']['get'] = "Student/Soal/checkTimestamp"; // kerjakan soal
+$route['siswa/soal/(:any)/selesai']['post'] = "Student/Soal/selesai/$1"; // selesai dengan tombol/timeout

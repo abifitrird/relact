@@ -55,13 +55,22 @@
                                 </button>
                             </li>
                         <?php } ?>
-                        <?php if ($this->uri->segment(4) == 'materi' && $this->uri->segment(5)) { ?>
-                            <li>
-                                <button type="button" class="btn btn-primary mr-1" data-toggle="modal" data-target="#kerjakanSoal">
-                                    Kerjakan Soal
-                                </button>
-                            </li>
-                        <?php } ?>
+                        <?php if ($this->uri->segment(4) == 'materi' && $this->uri->segment(5)) {
+                                if ($status_soal) { ?>
+                                <li>
+                                    <button type="button" class="btn btn-primary35 mr-1" disabled>
+                                        Kerjakan Soal
+                                    </button>
+                                </li>
+                            <?php } else { ?>
+
+                                <li>
+                                    <button type="button" class="btn btn-primary mr-1" data-toggle="modal" data-target="#kerjakanSoal">
+                                        Kerjakan Soal
+                                    </button>
+                                </li>
+                        <?php }
+                            } ?>
                     <?php } ?>
                     <li class="nav-item dropdown">
                         <a class="nav-item nav-link dropdown-toggle mr-md-2" href="#" id="bd-versions" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white;">

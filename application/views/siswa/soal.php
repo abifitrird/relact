@@ -79,7 +79,7 @@
                 <h6>Anda yakin untuk selesai mengerjakan ini?</h6>
             </div>
             <div class="modal-footer">
-                <button type="button" id="btnSelesaiCoy" class="btn btn-danger">Selesai</button>
+                <button type="button" id="btnSelesai" class="btn btn-danger">Selesai</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
             </div>
         </div>
@@ -98,7 +98,7 @@
                 clearInterval(x);
                 console.log("waktumu sudah habis subur !!");
                 alert("Waktu anda telah habis, jawaban sudah tersimpan.");
-                // TODO: buka alert dan redirect KEMANAPUN
+                selesai();
             }
         }, 1000)
         checkTimestamp()
@@ -168,14 +168,13 @@
             updateJawabanUser(soal_id, pilihan_soal_id)
         })
 
-        $('#jawabanEsai').on('change', function() {
-            let soal_id = $('#jawabanEsaiUser').data('soal_id');
+        $('#jawabanEsai').change(function() {
+            let soal_id = $('textarea#jawabanEsaiUser').data('soal_id');
             updateJawabanEsai(soal_id);
         })
 
-        $('#btnSelesaiCoy').on('click', function() {
-            sendJawabanToDatabase();
-            // TODO: redirect gak tau kemana
+        $('#btnSelesai').on('click', function() {
+            selesai();
         })
     })
 
@@ -199,7 +198,17 @@
         const soal = JSON.parse(localStorage.getItem('soal_esai'))[index];
         $('#pilihanJawaban').empty();
         $('#jawabanEsai').empty();
-        $('#jawabanEsai').append(`<textarea class="form-control" data-soal_id="${soal.id}" id="jawabanEsaiUser" rows="5"></textarea>`);
+
+        let jawaban = JSON.parse(localStorage.getItem('jawaban_esai'));
+        let jawaban_sebelumnya = "";
+        if (jawaban) {
+            let jawab_index = jawaban.findIndex(el => el.soal_id == soal.id);
+            if (jawab_index >= 0) {
+                jawaban_sebelumnya = jawaban[jawab_index].jawaban;
+            }
+        }
+
+        $('#jawabanEsai').append(`<textarea class="form-control" data-soal_id="${soal.id}" id="jawabanEsaiUser" rows="5">${jawaban_sebelumnya}</textarea>`);
     }
 
     function populatePilihanJawaban(index) {
@@ -266,19 +275,18 @@
             });
             localStorage.setItem('jawaban_esai', JSON.stringify(jawaban_esai))
         } else {
-            let jawaban_user = JSON.parse(localStorage.getItem('jawaban_esai'));
-            let jawabanEsaiIndex = jawaban_user.findIndex(obj => obj.soal_id == soal_id);
+            let jawaban_esai = JSON.parse(localStorage.getItem('jawaban_esai'));
+            let jawabanEsaiIndex = jawaban_esai.findIndex(obj => obj.soal_id === soal_id);
             if (jawabanEsaiIndex < 0) {
-                jawaban_user.push({
+                jawaban_esai.push({
                     'soal_id': soal_id,
                     'jawaban': $('#jawabanEsaiUser').val()
                 })
             } else {
-                jawaban_user[jawabanEsaiIndex].jawaban = $('textarea#jawabanEsaiUser').val()
+                jawaban_esai[jawabanEsaiIndex].jawaban = $('textarea#jawabanEsaiUser').val()
             }
-            localStorage.setItem('jawaban_esai', JSON.stringify(jawaban_user));
+            localStorage.setItem('jawaban_esai', JSON.stringify(jawaban_esai));
         }
-        // console.log("debouhce coy")
         localStorage.setItem('timestamp', new Date().valueOf());
     }
 
@@ -310,5 +318,26 @@
                 body: form
             }).then(response => response.json()).then(data => console.log("suka es"));
         }
+    }
+
+    function selesai() {
+        const url = window.location.href
+        const timestamp = localStorage.getItem('timestamp');
+        const jawaban = localStorage.getItem('jawaban');
+        const jawaban_esai = localStorage.getItem('jawaban_esai');
+
+        const form = new FormData();
+        form.append('timestamp', timestamp);
+        form.append('jawaban', jawaban);
+        form.append('jawaban_esai', jawaban_esai);
+        fetch(url + '/selesai', {
+            method: "POST",
+            body: form
+        }).then(response => response.json()).then(data => {
+            if (data.status == "OK") {
+                localStorage.clear();
+                window.location.assign('/');
+            }
+        });
     }
 </script>

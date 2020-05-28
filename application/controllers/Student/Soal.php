@@ -98,15 +98,58 @@ class Soal extends Base
         $user_id = $this->session->userdata('user_id');
         $this->session->set_userdata('timestamp_jawaban', $timestamp);
 
-        foreach ($jawaban as $jawab) {
-            $this->Soal->saveJawabanUser($user_id, $jawab->soal_id, $jawab->pilihan_soal_id);
+        if ($jawaban) {
+            foreach ($jawaban as $jawab) {
+                $this->Soal->saveJawabanUser($user_id, $jawab->soal_id, $jawab->pilihan_soal_id);
+            }
         }
 
-        foreach ($jawaban_esai as $jawab) {
-            $this->Soal->saveJawabanEsai($user_id, $jawab->soal_id, $jawab->jawaban);
+        if ($jawaban_esai) {
+            foreach ($jawaban_esai as $jawab) {
+                $this->Soal->saveJawabanEsai($user_id, $jawab->soal_id, $jawab->jawaban);
+            }
         }
 
 
         echo json_encode(['jawaban' => $jawaban, 'timestamp' => $timestamp]);
+    }
+
+    /**
+     * save jawaban and generate nilai, executed using button selesai or timeout
+     * 
+     * @return redirect
+     */
+    public function selesai($kode)
+    {
+        $encoded_kode = base64_decode(urldecode($kode));
+        $exploded = explode('.', $encoded_kode);
+        $kode_materi = $exploded[0];
+
+        $jawaban = json_decode($this->input->post('jawaban'));
+        $jawaban_esai = json_decode($this->input->post('jawaban_esai'));
+        $timestamp = $this->input->post('timestamp');
+        $user_id = $this->session->userdata('user_id');
+
+        if ($jawaban) {
+            foreach ($jawaban as $jawab) {
+                $this->Soal->saveJawabanUser($user_id, $jawab->soal_id, $jawab->pilihan_soal_id);
+            }
+        }
+
+        if ($jawaban_esai) {
+            foreach ($jawaban_esai as $jawab) {
+                $this->Soal->saveJawabanEsai($user_id, $jawab->soal_id, $jawab->jawaban);
+            }
+        }
+
+        $soal = $this->Soal->calculateNilaiByPG($user_id, $kode_materi);
+
+        $this->session->set_flashdata('alert', "Jawaban berhasil disimpan.");
+        // redirect(site_url('siswa'));
+        if ($soal) {
+            echo json_encode(['status' => "OK"]);
+        } else {
+            echo json_encode(['status' => "KO"]);
+        }
     }
 }

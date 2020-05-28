@@ -11,16 +11,16 @@ class MateriModel extends CI_Model
     public function getMateriByKodeKelas($kode_kelas)
     {
         $kelas_id = $this->db->where('code', $kode_kelas)
-        ->limit(1)
-        ->get('kelas')
-        ->row_array()['id'];
+            ->limit(1)
+            ->get('kelas')
+            ->row_array()['id'];
 
         $return = $this->db
-        ->select('materi.*, (SELECT nama_mapel FROM mata_pelajaran WHERE mata_pelajaran.id = kelas.mapel_id LIMIT 1) as nama_mapel')
-        ->join('kelas', 'kelas_id = kelas.id', 'left')
-        ->where('kelas_id', $kelas_id)
-        ->get('materi')
-        ->result_array();
+            ->select('materi.*, (SELECT nama_mapel FROM mata_pelajaran WHERE mata_pelajaran.id = kelas.mapel_id LIMIT 1) as nama_mapel')
+            ->join('kelas', 'kelas_id = kelas.id', 'left')
+            ->where('kelas_id', $kelas_id)
+            ->get('materi')
+            ->result_array();
 
         // return $this->db->where('kelas_id', $kelas_id)->get('materi')->result_array();
         return $return;
@@ -35,5 +35,21 @@ class MateriModel extends CI_Model
     public function getMateriByKodeMateri($kode_materi)
     {
         return $this->db->where('kode', $kode_materi)->get('materi')->row_array();
+    }
+
+    /**
+     * check if nilai by user_id exist
+     * 
+     * @param user_id
+     * @return boolean
+     */
+    public function checkNilaiByUserId($user_id)
+    {
+        $check = $this->db->where('user_id', $user_id)->limit(1)->get('nilai')->num_rows();
+        if ($check != 0) {
+            return true;
+        }
+
+        return false;
     }
 }

@@ -25,6 +25,7 @@ class Base extends CI_Controller
             $action = $_SERVER['REQUEST_METHOD'];
             $kode_kelas = null;
             $kode_materi = null;
+            $is_soal = null;
             $data = array(
                 'user_id' => $user_id,
                 'url' => $url,
@@ -41,6 +42,7 @@ class Base extends CI_Controller
                     $exploded = explode('.', $encoded_kode);
                     $kode_materi = $exploded[0];
                     $kode_kelas = $this->Log->getByMateriKode($kode_materi)['kode_kelas'];
+                    $is_soal = true;
                 }
 
                 if ($this->uri->segment(4) && $this->uri->segment(5)) {
@@ -50,7 +52,7 @@ class Base extends CI_Controller
                 }
             }
 
-            $this->Log->saveLog($data, $kode_kelas, $kode_materi);
+            $this->Log->saveLog($data, $kode_kelas, $kode_materi, $is_soal);
         }
     }
 
