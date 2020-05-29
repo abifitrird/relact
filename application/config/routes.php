@@ -63,6 +63,7 @@ $route['daftar']['post'] = "Signup/daftar";         // proses daftar
 
 $route['profil/ubah/password']['post'] = "Profil/updatePassword"; // change password
 $route['profil/ubah']['post'] = "Profil/updateProfil"; // update profil
+$route['profil/ubah/foto']['post'] = 'Profil/ubahFotoProfil';
 
 
 /* route guru */

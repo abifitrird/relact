@@ -334,10 +334,8 @@
             method: "POST",
             body: form
         }).then(response => response.json()).then(data => {
-            if (data.status == "OK") {
-                localStorage.clear();
-                window.location.assign('/');
-            }
+            localStorage.clear();
+            window.location.assign('/');
         });
     }
 </script>

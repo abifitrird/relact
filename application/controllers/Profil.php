@@ -81,6 +81,42 @@ class Profil extends CI_Controller
     }
 
     /**
+     * change foto profile
+     * 
+     * @param
+     * @return
+     */
+    public function ubahFotoProfil()
+    {
+        $user_id = $this->session->userdata('user_id');
+        $this->load->library('upload');
+        $config['file_name'] = 'foto-' . $user_id;
+        $config['upload_path'] = './uploads/profil/';
+        $config['allowed_types'] = 'gif|png|jpg|jpeg';
+        $config['max_size'] = 512;
+        $config['overwrite'] = TRUE;
+
+        $this->upload->initialize($config);
+
+        if (!$this->upload->do_upload('file')) {
+            $this->session->set_flashdata('alert', 'Gagal ubah Foto profil, cek kembali ekstensi dan ukurannya');
+            redirect($_SERVER['HTTP_REFERER']);
+        } else {
+            $data = $this->upload->data();
+            $url_foto = $data['file_name'];
+            $this->ProfilModel->changeFoto($user_id, $url_foto);
+            $this->session->set_flashdata('success', 'Berhasil diubah !');
+            redirect($_SERVER['HTTP_REFERER']);
+            // $return = array(
+            //     'path' => base_url("uploads/" . $data['file_name']),
+            //     'name' => $data['file_name'],
+            //     'status' => 'OK'
+            // );
+            // echo json_encode($return);
+        }
+    }
+
+    /**
      * get list of sekolah
      * 
      * @param

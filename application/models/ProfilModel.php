@@ -15,7 +15,7 @@ class ProfilModel extends CI_Model
     }
     public function getProfil($id)
     {
-        $this->db->select('nomor_induk, nama_lengkap, nama_sekolah, detail_user.alamat, no_hp');
+        $this->db->select('nomor_induk, nama_lengkap, nama_sekolah, detail_user.alamat, no_hp, url_foto');
         $this->db->from('detail_user');
         $this->db->join('sekolah', 'detail_user.sekolah_id = sekolah.id', 'left');
         $this->db->where('user_id', $id);
@@ -44,6 +44,28 @@ class ProfilModel extends CI_Model
     public function changePassword($user_id, $baru)
     {
         $this->db->set('password', $baru)->where('id', $user_id)->update('users');
+        if ($this->db->affected_rows() == 0) {
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
+     * change foto profil of user
+     * 
+     * @param user_id
+     * @param url_foto
+     * @return boolean
+     */
+    public function changeFoto($user_id, $url_foto)
+    {
+        $cek = $this->db->where('user_id', $user_id)->get('detail_user')->num_rows();
+        if ($cek == 0) {
+            return $this->db->insert('detail_user', ['user_id' => $user_id, 'url_foto' => $url_foto]);
+        }
+
+        $this->db->where('user_id', $user_id)->set('url_foto', $url_foto)->update('detail_user');
         if ($this->db->affected_rows() == 0) {
             return false;
         }

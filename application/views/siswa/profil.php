@@ -31,7 +31,7 @@
 
     <div class="row shadow-sm" style="padding: 25px">
         <div class="col-2">
-            <img src="<?php echo base_url('assets/images/patrick.gif') ?>" class="shadow-sm rounded-circle" style=" width: 150px; height: 150px;">
+            <img src="<?php echo base_url(isset($data['url_foto']) ? 'uploads/profil/' . $data['url_foto'] : 'assets/images/patrick.gif') ?>" class="shadow-sm rounded-circle" style=" width: 150px; height: 150px;">
         </div>
         <div class="col-10 my-auto">
             <h2><?php echo isset($data['nama_lengkap']) ? $data['nama_lengkap'] : "Tidak ada data" ?></h2>
@@ -63,12 +63,42 @@
         </div>
         <div class="row flex-row ml-md-auto d-md-flex">
             <!-- Button trigger modal -->
+            <button type="button" class="btn btn-success mr-1" data-toggle="modal" data-target="#editFoto">
+                Ubah Foto Saya
+            </button>
             <button type="button" class="btn btn-primary mr-1" data-toggle="modal" data-target="#editProfil">
-                Edit Profil Saya
+                Ubah Profil Saya
             </button>
             <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#editPassword">
-                Edit Password Saya
+                Ubah Password Saya
             </button>
+        </div>
+    </div>
+</div>
+
+<!-- Modal edit foto -->
+<div class="modal fade" id="editFoto" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Ubah Foto Profil</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="<?php echo site_url('profil/ubah/foto') ?>" method="POST" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="fotoProfil">Upload Foto Profil (ekstensi yang diperbolehkan hanya .gif, .png, .jpg, .jpeg dan ukuran maksimal adalah 500kB)</label>
+                        <input type="file" class="form-control-file" name="file" id="fotoProfil">
+                    </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Simpan</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                </form>
+            </div>
         </div>
     </div>
 </div>
