@@ -1,4 +1,4 @@
-<div class="footer shadow">
+<div class="footer shadow fixed-bottom d-none d-md-block">
     <div class="row">
         <div class="col-md-6">
             <h5><strong>RELACT</strong></h5>

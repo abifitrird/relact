@@ -46,7 +46,8 @@ class Login extends CI_Controller
 				redirect(site_url("siswa"));
 			}
 		} else {
-			echo "Username atau password salah !";
+			$this->session->set_flashdata('alert', "Username atau password salah !");
+			redirect(site_url('login'));
 		}
 	}
 	public function Logout()

@@ -6,67 +6,79 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Daftar</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" type="text/css" media="screen" href="./assets/css/main.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" media="screen" href="<?php echo base_url('assets/css/main.css') ?>">
+    <link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap.min.css') ?>">
     <link rel="icon" href="<?php echo base_url('assets/images/logoTab_Relact.png') ?>">
-    <script src="main.js"></script>
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="<?php echo base_url('assets/js/jquery-3.4.1.slim.min.js') ?>"></script>
+    <script src="<?php echo base_url('assets/js/popper.min.js') ?>"></script>
+    <script src="<?php echo base_url('assets/js/bootstrap.min.js') ?>"></script>
 </head>
 
 <body style="background-color: #34ace0;">
-    <!-- animated text -->
-    <div class="fade-in" style="text-align:center;">
-        <h1 style="color: white">Selamat Datang<br>
-            RELACT
-        </h1>
-        <h5 style="color: white">Recording Learning Activities</h5>
-    </div>
-    <!-- form -->
+
+    <!-- container -->
     <div class="container">
-        <div id="content" class="shadow p-3 mb-5 bg-white rounded col-6" style="margin: 0 auto; height: auto; margin-top: 4%;">
-            <h2 align="center">Buat Akun Baru</h2>
-            <form method="POST" action="<?php echo site_url("daftar"); ?>">
-                <div class="form-group">
-                    <label for="inputUsername">Username</label>
-                    <input type="text" class="form-control" id="inputUsername" name="inputUsername" required>
+        <div class="col-12 justify-content-center row px-5">
+            <?php if ($this->session->flashdata('alert')) { ?>
+                <div class=" alert alert-danger fixed-top text-center" role="alert">
+                    <?php echo $this->session->flashdata('alert') ?>
                 </div>
-                <div class="form-group">
-                    <label for="inputJabatan">Saya adalah</label>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="radioJabatan" id="radioGuru" value="1" required>
-                        <label class="form-check-label" for="radioGuru">
-                            Guru
-                        </label>
+            <?php } ?>
+        </div>
+
+        <div class="vh-100 d-flex justify-content-center align-self-center align-items-baseline row px-5">
+            <div class="row shadow bg-light rounded konten col-12 mt-5">
+                <div class="col-12">
+                    <div class="fade-in text-info text-center pt-3">
+                        <h2>Selamat Datang<br>
+                            RELACT
+                        </h2>
+                        <h6>Recording Learning Activities</h6>
                     </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="radioJabatan" id="radioSiswa" value="2" required>
-                        <label class="form-check-label" for="radioSiswa">
-                            Siswa
-                        </label>
+                    <!-- form -->
+                    <div id="content" class="col-12 shadow p-4 my-4 bg-white rounded">
+                        <h5 class="text-center">Daftar</h5>
+                        <hr>
+                        <form method="POST" class="d-flex flex-wrap row" action="<?php echo site_url("daftar"); ?>">
+                            <div class="form-group col-12 col-lg-6">
+                                <label for="inputUsername">Username</label>
+                                <input type="text" class="form-control" id="inputUsername" name="inputUsername" required>
+                            </div>
+                            <div class="form-group col-12 col-lg-6">
+                                <label for="inputJabatan">Saya adalah</label>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="radioJabatan" id="radioGuru" value="1" required>
+                                    <label class="form-check-label" for="radioGuru">
+                                        Guru
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="radioJabatan" id="radioSiswa" value="2" required>
+                                    <label class="form-check-label" for="radioSiswa">
+                                        Siswa
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group col-12 col-lg-6">
+                                <label for="inputEmail">Email</label>
+                                <input type="email" class="form-control" id="inputEmail" name="inputEmail" aria-describedby="emailHelp" required>
+                            </div>
+                            <div class="form-group col-12 col-lg-6">
+                                <label for="inputPassword">Password</label>
+                                <input type="password" class="form-control" id="inputPassword" name="inputPassword" required>
+                            </div>
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-primary" style="width: 100%">DAFTAR</button>
+                                <hr>
+                                <p style="text-align: center">Sudah punya akun? <a href="<?php echo site_url("login") ?>" style="width: 100%">Masuk disini</a></p>
+                            </div>
+                        </form>
                     </div>
                 </div>
-                <div class="form-group">
-                    <label for="inputEmail">Email</label>
-                    <input type="email" class="form-control" id="inputEmail" name="inputEmail" aria-describedby="emailHelp" required>
-                </div>
-                <div class="form-group">
-                    <label for="inputPassword">Password</label>
-                    <input type="password" class="form-control" id="inputPassword" name="inputPassword" required>
-                </div>
-                <div>
-                    <button type="submit" class="btn btn-primary" style="width: 100%">DAFTAR</button>
-                    <hr>
-                    <p style="text-align: center">Sudah punya akun?</p>
-                    <a href="<?php echo site_url("login") ?>" type="button" class="btn btn-secondary" style="width: 100%">MASUK</a>
-                </div>
-            </form>
+            </div>
+            <!-- <?php include("footer.php") ?> -->
         </div>
     </div>
-
-    <!-- footer -->
-    <?php include("footer.php") ?>
 </body>
 
 </html>

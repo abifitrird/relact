@@ -26,12 +26,12 @@ class Signup extends CI_Controller
 			$data['email'] = strtolower($this->input->post('inputEmail'));
 			$data['password'] = $this->input->post('inputPassword');
 			if (!$this->SignupModel->registrasiUser($data)) {
-				$this->session->set_flashdata('msg', 'Username/Email sudah terdaftar');
+				$this->session->set_flashdata('alert', 'Username/Email sudah terdaftar');
 				redirect($_SERVER['HTTP_REFERER']);
 			}
 
-			$this->session->set_flashdata('msg', 'Silahkan Login');
-			redirect(site_url());
+			$this->session->set_flashdata('success', 'Silahkan Login');
+			redirect(site_url('login'));
 		}
 	}
 }
