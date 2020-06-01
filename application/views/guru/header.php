@@ -34,11 +34,6 @@
                         <path fill="currentColor" d="M11 9C11 10.66 9.66 12 8 12C6.34 12 5 10.66 5 9C5 7.34 6.34 6 8 6C9.66 6 11 7.34 11 9M14 20H2V18C2 15.79 4.69 14 8 14C11.31 14 14 15.79 14 18M22 12V14H13V12M22 8V10H13V8M22 4V6H13V4Z" /></svg>
                     Aktivitas Siswa
                 </a>
-                <a href="<?php echo site_url("guru/saran") ?>" class="list-group-item list-group-item-action mb-2 bg-light">
-                    <svg style="width:24px;height:24px" viewBox="0 0 24 24">
-                        <path fill="currentColor" d="M20,2H4A2,2 0 0,0 2,4V22L6,18H20A2,2 0 0,0 22,16V4C22,2.89 21.1,2 20,2Z" /></svg>
-                    Hubungi Kami
-                </a>
             </div>
         </div>
         <!-- /#sidebar-wrapper -->
@@ -93,7 +88,7 @@
                             <span class="text-white"><?php echo $this->session->userdata("nama"); ?></span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="bd-versions">
-                            <a class="dropdown-item" href="#">Bantuan</a>
+                            <a class="dropdown-item" href="<?php echo base_url('faq') ?>">FAQ</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="<?php echo base_url('Login/Logout') ?>">Keluar</a>
                         </div>
