@@ -95,8 +95,17 @@ $route['api/soal/(:num)']['get'] = "Teacher/Soal/getSoalJson/$1"; // get JSON AP
 $route['api/soal/pilihan/delete/(:num)']['get'] = "Teacher/Soal/deletePilihan/$1";
 $route['api/soal/pilihan/(:num)']['get'] = "Teacher/Soal/getPilihanJawabanBySoalId/$1"; // getpilihan jawbaban as JSON
 
+/* route guru/hasil */
+$route['guru/hasil']['get'] = "Teacher/Hasil/viewHasilKerja";
+$route['guru/hasil/(:any)']['get'] = "Teacher/Hasil/viewHasilPerKelas/$1";
+$route['guru/hasil/(:any)/materi/(:any)']['get'] = "Teacher/Hasil/viewHasilPerMateri/$2";
+$route['guru/hasil/(:any)/materi/(:any)/PG/(:num)']['get'] = "Teacher/Hasil/viewJawabanSiswa/PG/$3/$2";
+$route['guru/hasil/(:any)/materi/(:any)/Esai/(:num)']['get'] = "Teacher/Hasil/viewJawabanSiswa/Esai/$3/$2";
+$route['api/simpan_nilai_esai/(:num)']['post'] = "Teacher/Hasil/postNilaiSiswa/$1";
+
 /* route guru/capaian */
 $route['guru/capaian']['get'] = "Teacher/Capaian/capaianSiswa";
+$route['guru/capaian/(:any)']['get'] = "Teacher/Capaian/capaianSiswaDetail/$1";
 
 
 
