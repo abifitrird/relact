@@ -95,6 +95,9 @@ $route['api/soal/(:num)']['get'] = "Teacher/Soal/getSoalJson/$1"; // get JSON AP
 $route['api/soal/pilihan/delete/(:num)']['get'] = "Teacher/Soal/deletePilihan/$1";
 $route['api/soal/pilihan/(:num)']['get'] = "Teacher/Soal/getPilihanJawabanBySoalId/$1"; // getpilihan jawbaban as JSON
 
+/* route guru/capaian */
+$route['guru/capaian']['get'] = "Teacher/Capaian/capaianSiswa";
+
 
 
 /* route siswa */

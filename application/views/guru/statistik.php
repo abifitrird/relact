@@ -23,11 +23,11 @@
         var myChart = new Chart(ctx, {
             type: 'line',
             data: {
-                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                labels: ['Percabangan', 'Perulangan', 'Prosedur/Fungsi'],
                 datasets: [{
-                    label: '# of Votes',
-                    data: [12, 19, 3, 5, 2, 3],
-                    backgroundColor: '#000000'
+                    label: 'Nilai rata-rata siswa dari setiap materi',
+                    data: [12, 19, 3],
+                    // backgroundColor: '#000000'
                 }]
             },
             options: {
@@ -44,7 +44,7 @@
 </div>
 
 <!-- footer -->
-<?php include("footer.php") ?>
+<!-- <?php include("footer.php") ?> -->
 <!-- /#page-content-wrapper -->
 </div>
 </div>
