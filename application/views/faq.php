@@ -142,7 +142,9 @@
                 </div>
                 <div style="height: 0px;" id="collapse5" class="panel-collapse collapse in">
                     <div class="panel-body">
-                        Aktivitas belajar siswa dapat dilihat oleh pihak guru dengan cara klik menu <mark>Aktivitas Siswa</mark> pada bagian navigasi.
+                        <p>
+                            Aktivitas belajar siswa dapat dilihat oleh pihak guru dengan cara klik menu <mark>Aktivitas Siswa</mark> pada bagian navigasi.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -159,7 +161,9 @@
             </div>
             <div style="height: 0px;" id="collapse6" class="panel-collapse collapse in">
                 <div class="panel-body">
-                    Informasi mengenai web ini dapat ditemukan pada menu yang tertera di bagian footer halaman Login maupun Beranda. Menu yang tersedia adalah <mark>Tentang</mark>, <mark>Hubungi Kami</mark>, dan <mark>Frequently Asked Question (FAQ)</mark>.
+                    <p>
+                        Informasi mengenai web ini dapat ditemukan pada menu yang tertera di bagian footer halaman Login maupun Beranda. Menu yang tersedia adalah <mark>Tentang</mark>, <mark>Hubungi Kami</mark>, dan <mark>Frequently Asked Question (FAQ)</mark>.
+                    </p>
                 </div>
             </div>
         </div>
