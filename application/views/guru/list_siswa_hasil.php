@@ -21,7 +21,7 @@
             <tr>
                 <th scope="col">No.</th>
                 <th scope="col">NIS</th>
-                <th scope="col">Username</th>
+                <th scope="col">Nama</th>
                 <th scope="col">Skor</th>
                 <th scope="col">Hasil</th>
             </tr>
@@ -32,7 +32,7 @@
                 <tr>
                     <th><?php echo $i ?></th>
                     <td><?php echo $dat['nis'] ?></td>
-                    <td><?php echo $dat['username'] ?></td>
+                    <td><?php echo $dat['nama'] ?></td>
                     <td><?php echo $dat['skor'] ?></td>
                     <td><a class="btn btn-primary" type="button" href="<?php echo site_url('guru/hasil/' . $this->uri->segment(3) . '/materi/' . $this->uri->segment(5) . '/PG/' . $dat['user_id']) ?>">Pilihan Ganda</a>&nbsp;
                         <a class="btn btn-primary" type="button" href="<?php echo site_url('guru/hasil/' . $this->uri->segment(3) . '/materi/' . $this->uri->segment(5) . '/Esai/' . $dat['user_id']) ?>">Esai</a></td>

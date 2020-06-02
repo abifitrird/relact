@@ -16,6 +16,11 @@
 <?php include('header.php') ?>
 <!-- isi halaman -->
 <div class="container-fluid shadow-sm" style="padding: 25px">
+  <?php if ($this->session->flashdata('alert')) { ?>
+    <div class="mx-3 my-4 alert alert-danger" role="alert">
+      <?php echo $this->session->flashdata('alert') ?>
+    </div>
+  <?php } ?>
   <h1>Judul Notifikasi</h1>
   <hr>
   <p>The starting state of the menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will change.</p>

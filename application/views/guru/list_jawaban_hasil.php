@@ -67,7 +67,7 @@
                         <textarea readonly class="form-control"><?php echo $dat['jawaban'] ?></textarea>
                         <div class="form-group">
                             <label for="nilai">Nilai</label>
-                            <input type="number" class="form-control" id="nilai" name="nilai" required value="<?php echo isset($dat['nilai']) ? $dat['nilai'] : "0" ?>" max="<?php echo $dat['bobot'] ?>" />
+                            <input type="number" class="form-control" id="nilai" name="nilai" required value="<?php echo isset($dat['nilai']) ? $dat['nilai'] : "0" ?>" max="<?php echo $dat['bobot'] ?>" min="0" />
                         </div>
 
                 </div>

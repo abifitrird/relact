@@ -9,7 +9,15 @@ class HasilModel extends CI_Model
 
     public function getNilaiSiswaByMateri($materi_kode)
     {
-        return $this->db->query("SELECT user_id, (SELECT detail_user.nomor_induk FROM detail_user WHERE nilai.user_id = detail_user.user_id) as nis, (SELECT users.username FROM users WHERE users.id = nilai.user_id) as username, skor FROM `nilai` WHERE nilai.materi_id = (SELECT materi.id FROM materi WHERE materi.kode =  '$materi_kode')")->result_array();
+        return $this->db
+            ->query("SELECT 
+        user_id, 
+        (SELECT detail_user.nomor_induk FROM detail_user WHERE nilai.user_id = detail_user.user_id) as nis, 
+        (SELECT detail_user.nama_lengkap FROM detail_user WHERE detail_user.user_id = nilai.user_id) as nama, 
+        (skor / (SELECT SUM(bobot) FROM soal WHERE soal.materi_kode = '$materi_kode'))*100 as skor 
+        FROM `nilai` 
+        WHERE nilai.materi_id = (SELECT materi.id FROM materi WHERE materi.kode =  '$materi_kode')")
+            ->result_array();
     }
 
     public function getPGBySiswaId($user_id, $materi_kode)

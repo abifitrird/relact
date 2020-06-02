@@ -147,7 +147,8 @@ class Soal extends Base
         $this->session->set_flashdata('alert', "Jawaban berhasil disimpan.");
         // redirect(site_url('siswa'));
         if ($soal) {
-            echo json_encode(['status' => "OK"]);
+            redirect(site_url('siswa'));
+            // echo json_encode(['status' => "OK"]);
         } else {
             echo json_encode(['status' => "KO"]);
         }
