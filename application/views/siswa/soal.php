@@ -38,8 +38,8 @@
 
             </div>
             <div class="col-12 col-md-4">
-                <div class="col-12 mb-3">
-                    <h6 id="counterWaktu">0:00 detik</h6>
+                <div class="col-12 mb-3 bg-warning text-dark">
+                    <h4 id="counterWaktu">0:00 detik</h4>
                 </div>
                 <div class="col-12 mb-3">
                     <label class="col-form-label">

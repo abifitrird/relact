@@ -17,12 +17,13 @@ class Signup extends CI_Controller
 	public function daftar()
 	{
 		$this->form_validation->set_rules('inputUsername', 'Username', 'trim|required');
-		$this->form_validation->set_rules('radioJabatan', 'Jabatan', 'trim|required');
+		// $this->form_validation->set_rules('radioJabatan', 'Jabatan', 'trim|required');
 		$this->form_validation->set_rules('inputEmail', 'Email', 'trim|required');
 		$this->form_validation->set_rules('inputPassword', 'Password', 'trim|required');
+		$this->form_validation->set_rules('passwordConfirmation', 'Konfirmasi Password', 'trim|required|matches[inputPassword]');
 		if ($this->form_validation->run() == TRUE) {
 			$data['username'] = strtolower($this->input->post('inputUsername'));
-			$data['role_id'] = $this->input->post('radioJabatan');
+			$data['role_id'] = 2;
 			$data['email'] = strtolower($this->input->post('inputEmail'));
 			$data['password'] = $this->input->post('inputPassword');
 			if (!$this->SignupModel->registrasiUser($data)) {

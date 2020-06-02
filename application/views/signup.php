@@ -45,27 +45,16 @@
                                 <input type="text" class="form-control" id="inputUsername" name="inputUsername" required>
                             </div>
                             <div class="form-group col-12 col-lg-6">
-                                <label for="inputJabatan">Saya adalah</label>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="radioJabatan" id="radioGuru" value="1" required>
-                                    <label class="form-check-label" for="radioGuru">
-                                        Guru
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="radioJabatan" id="radioSiswa" value="2" required>
-                                    <label class="form-check-label" for="radioSiswa">
-                                        Siswa
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="form-group col-12 col-lg-6">
                                 <label for="inputEmail">Email</label>
                                 <input type="email" class="form-control" id="inputEmail" name="inputEmail" aria-describedby="emailHelp" required>
                             </div>
                             <div class="form-group col-12 col-lg-6">
                                 <label for="inputPassword">Password</label>
                                 <input type="password" class="form-control" id="inputPassword" name="inputPassword" required>
+                            </div>
+                            <div class="form-group col-12 col-lg-6">
+                                <label for="passwordConf">Konfirmasi Password</label>
+                                <input type="password" class="form-control" id="passwordConf" name="passwordConfirmation" required>
                             </div>
                             <div class="col-12">
                                 <button type="submit" class="btn btn-primary" style="width: 100%">DAFTAR</button>
