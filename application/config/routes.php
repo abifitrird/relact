@@ -107,6 +107,10 @@ $route['api/simpan_nilai_esai/(:num)']['post'] = "Teacher/Hasil/postNilaiSiswa/$
 $route['guru/capaian']['get'] = "Teacher/Capaian/capaianSiswa";
 $route['guru/capaian/(:any)']['get'] = "Teacher/Capaian/capaianSiswaDetail/$1";
 
+/* route guru/aktivitas */
+$route['guru/aktivitas']['get'] = "Teacher/Aktivitas/viewAktivitas";
+$route['guru/aktivitas/(:any)']['get'] = "Teacher/Aktivitas/viewDetailAktivitas/$1";
+$route['guru/aktivitas/(:any)/detail/(:any)']['get'] = "Teacher/Aktivitas/viewAktivitasSiswa/$1/$2";
 
 
 /* route siswa */
