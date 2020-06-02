@@ -1,3 +1,4 @@
+@import url(https://fonts.googleapis.com/css?family=Sniglet|Raleway:900);
 .panel-default > .panel-heading {
   background-color: transparent;
   border: medium none;
@@ -8,8 +9,8 @@
 }
 .panel-heading .panel-title > a {
   background-color: #34ace0;
+  color: white;
   border: medium none;
-  color: #ecf0f1;
   display: block;
   font-family: Arial, Helvetica, sans-serif;
   line-height: 28px;
@@ -21,7 +22,7 @@
   bottom: 0;
   content: "▲";
   font-family: "Roboto", sans-serif;
-  font-size: 20px;
+  font-size: 1em;
   font-weight: 300;
   letter-spacing: -1px;
   line-height: 48px;
@@ -35,7 +36,26 @@
   content: "▼";
 }
 .panel-body {
+  padding: 10px;
   text-align: justify;
   height: auto;
   overflow: auto;
+  background-color: #ecf0f1;
+}
+
+header {
+  height: 120px;
+  background: url("http://www.geertjanhendriks.nl/codepen/form/golf.png")
+    repeat-x bottom;
+}
+
+h3 {
+  font-weight: normal;
+  font-size: 3em;
+  font-family: "Raleway", sans-serif;
+  margin: 0 auto;
+  margin-top: 30px;
+  width: auto;
+  color: #f90;
+  text-align: center;
 }
