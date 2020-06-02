@@ -39,7 +39,7 @@
             </div>
             <div class="col-12 col-md-4">
                 <div class="col-12 mb-3">
-                    <p id="counterWaktu">0:00 detik</p>
+                    <h6 id="counterWaktu">0:00 detik</h6>
                 </div>
                 <div class="col-12 mb-3">
                     <label class="col-form-label">

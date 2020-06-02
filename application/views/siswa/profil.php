@@ -31,7 +31,7 @@
 
     <div class="row shadow-sm" style="padding: 25px">
         <div class="col-2">
-            <img src="<?php echo base_url(isset($data['url_foto']) ? 'uploads/profil/' . $data['url_foto'] : 'assets/images/patrick.gif') ?>" class="shadow-sm rounded-circle" style=" width: 150px; height: 150px;">
+            <img src="<?php echo base_url(isset($data['url_foto']) ? 'uploads/profil/' . $data['url_foto'] : 'assets/images/img_avatar.png') ?>" class="shadow-sm rounded-circle" style=" width: 150px; height: 150px;">
         </div>
         <div class="col-10 my-auto">
             <h2><?php echo isset($data['nama_lengkap']) ? $data['nama_lengkap'] : "Tidak ada data" ?></h2>
