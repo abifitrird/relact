@@ -29,11 +29,6 @@
                         <path fill="currentColor" d="M17 4V2H7V4H2V11C2 12.1 2.9 13 4 13H7.1C7.5 14.96 9.04 16.5 11 16.9V19.08C8 19.54 8 22 8 22H16C16 22 16 19.54 13 19.08V16.9C14.96 16.5 16.5 14.96 16.9 13H20C21.1 13 22 12.1 22 11V4H17M4 11V6H7V11L4 11M20 11L17 11V6H20L20 11Z" /></svg>
                     Capaian Belajar
                 </a>
-                <a href="<?php echo site_url("siswa/saran") ?>" class="list-group-item list-group-item-action mb-2 bg-light">
-                    <svg style="width:24px;height:24px" viewBox="0 0 24 24">
-                        <path fill="currentColor" d="M20,2H4A2,2 0 0,0 2,4V22L6,18H20A2,2 0 0,0 22,16V4C22,2.89 21.1,2 20,2Z" /></svg>
-                    Hubungi Kami
-                </a>
             </div>
         </div>
         <!-- /#sidebar-wrapper -->
@@ -56,7 +51,7 @@
                             </li>
                         <?php } ?>
                         <?php if ($this->uri->segment(4) == 'materi' && $this->uri->segment(5)) {
-                                if ($status_soal) { ?>
+                            if ($status_soal) { ?>
                                 <li>
                                     <button type="button" class="btn btn-primary35 mr-1" disabled>
                                         Kerjakan Soal
@@ -70,14 +65,14 @@
                                     </button>
                                 </li>
                         <?php }
-                            } ?>
+                        } ?>
                     <?php } ?>
                     <li class="nav-item dropdown">
                         <a class="nav-item nav-link dropdown-toggle mr-md-2" href="#" id="bd-versions" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white;">
                             <span class="text-white"><?php echo $this->session->userdata("nama"); ?></span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="bd-versions">
-                            <a class="dropdown-item" href="#">Bantuan</a>
+                            <a class="dropdown-item" href="<?php echo base_url('faq') ?>">FAQ</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="<?php echo base_url('Login/Logout') ?>">Keluar</a>
                         </div>
