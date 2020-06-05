@@ -148,7 +148,7 @@ class Soal extends Base
         // redirect(site_url('siswa'));
         if ($soal) {
             // redirect(site_url('siswa'));
-            echo json_encode(['status' => "OK"]);
+            echo json_encode(['status' => "OK", 'skor' => $soal]);
         } else {
             echo json_encode(['status' => "KO"]);
         }

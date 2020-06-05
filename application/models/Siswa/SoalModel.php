@@ -118,6 +118,9 @@ class SoalModel extends CI_Model
             'materi_id' => $pg[0]['materi_id'],
             'skor' => $skor
         );
-        return $this->db->insert('nilai', $data);
+        if (!$this->db->insert('nilai', $data)) {
+            return false;
+        }
+        return $skor;
     }
 }

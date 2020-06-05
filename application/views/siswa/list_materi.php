@@ -14,41 +14,47 @@
     <script src="<?php echo base_url('assets/js/bootstrap.min.js') ?>"></script>
 </head>
 
-<?php include("header.php") ?>
-<div class="container-fluid shadow-sm" style="padding: 25px">
-    <?php if (!$data) { ?>
-        <div class="alert alert-danger col-12" role="alert">
-            <h4 class="alert-heading">Tidak ada materi!</h4>
-            <hr />
-            <p class="mb-0">
-                Silahkan hubungi guru pengampu untuk menambahkan materi.
-            </p>
-        </div>
-    <?php } else { ?>
-        <h3>Berikut adalah daftar materi dalam kelas <?php echo $data[0]['nama_mapel'] ?></h3>
-        <br>
-        <div class="list-group">
-            <?php foreach ($data as $dat) { ?>
-                <a href="<?php echo base_url('siswa/kelas/' . $this->uri->segment(3) . '/materi/' . $dat['kode']) ?>" class="list-group-item list-group-item-action">
-                    <div class="d-flex w-100 justify-content-between">
-                        <h5 class="mb-1"><?php echo $dat['judul'] ?></h5>
+<body>
+    <div class="d-flex" id="wrapper">
+        <?php include('sidebar.php') ?>
+        <div id="page-content-wrapper">
+            <?php include('navbar.php') ?>
+            <div class="container-fluid shadow-sm" style="padding: 25px">
+                <?php if (!$data) { ?>
+                    <div class="alert alert-danger col-12" role="alert">
+                        <h4 class="alert-heading">Tidak ada materi !</h4>
+                        <hr />
+                        <p class="mb-0">
+                            Silahkan hubungi guru pengampu untuk menambahkan materi.
+                        </p>
                     </div>
-                    <div>
-                        <?php echo substr(strip_tags($dat['konten']), 0, 160) . '...' ?>
+                <?php } else { ?>
+                    <h3>Daftar Materi</h3>
+                    <br>
+                    <div class="list-group">
+                        <?php foreach ($data as $dat) { ?>
+                            <a href="<?php echo base_url('siswa/kelas/' . $this->uri->segment(3) . '/materi/' . $dat['kode']) ?>" class="list-group-item list-group-item-action">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1"><?php echo $dat['judul'] ?></h5>
+                                </div>
+                                <div>
+                                    <?php echo substr(strip_tags($dat['konten']), 0, 160) . '...' ?>
+                                </div>
+                            </a>
+                    <?php }
+                    } ?>
                     </div>
-                </a>
-        <?php }
-        } ?>
+            </div>
         </div>
-</div>
+    </div>
 
-<!-- Menu Toggle Script -->
-<script>
-    $("#menu-toggle").click(function(e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("toggled");
-    });
-</script>
+    <!-- Menu Toggle Script -->
+    <script>
+        $("#menu-toggle").click(function(e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("toggled");
+        });
+    </script>
 </body>
 
 </html>
