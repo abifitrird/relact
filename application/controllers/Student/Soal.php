@@ -144,11 +144,11 @@ class Soal extends Base
 
         $soal = $this->Soal->calculateNilaiByPG($user_id, $kode_materi);
 
-        $this->session->set_flashdata('alert', "Jawaban berhasil disimpan.");
+        // $this->session->set_flashdata('alert', "Jawaban berhasil disimpan.");
         // redirect(site_url('siswa'));
         if ($soal) {
-            redirect(site_url('siswa'));
-            // echo json_encode(['status' => "OK"]);
+            // redirect(site_url('siswa'));
+            echo json_encode(['status' => "OK"]);
         } else {
             echo json_encode(['status' => "KO"]);
         }
