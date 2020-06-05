@@ -38,7 +38,9 @@
                                     <h5 class="mb-1"><?php echo $dat['judul'] ?></h5>
                                 </div>
                                 <div>
-                                    <?php echo substr(strip_tags($dat['konten']), 0, 160) . '...' ?>
+                                    <p class="text-capitalize m-0">
+                                        Berisi materi tentang <?php echo $dat['judul'] ?>
+                                    </p>
                                 </div>
                             </a>
                     <?php }

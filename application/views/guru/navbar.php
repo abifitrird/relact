@@ -8,10 +8,10 @@
             <?php if ($this->uri->segment(3)) { ?>
                 <?php if (!$this->uri->segment(4)) { ?>
                     <li>
-                        <a class="btn btn-secondary" href="<?php echo site_url('guru/kelas/' . $this->uri->segment(3) . '/tambah_materi') ?>">Tambah Materi</a>
-                        <!-- <button type="button" class="btn btn-secondary mr-1" data-toggle="modal" data-target="#tambahMateri">
-                                        Tambah Materi
-                                    </button> -->
+                        <!-- <a class="btn btn-secondary" href="<?php echo site_url('guru/kelas/' . $this->uri->segment(3) . '/tambah_materi') ?>">Tambah Materi</a> -->
+                        <button type="button" class="btn btn-secondary mr-1" data-toggle="modal" data-target="#tambahMateri">
+                            Tambah Materi
+                        </button>
                     </li>
 
                 <?php }
@@ -20,8 +20,7 @@
                         <a class="btn btn-success" href="<?php echo base_url('guru/kelas/' . $this->uri->segment(3) . '/materi/' . $this->uri->segment(5) . '/soal') ?>" role="button">Lihat Soal</a>
                     </li>
                     <li class="mr-2">
-                        <a class="btn btn-secondary" href="<?php echo site_url('guru/kelas/' . $this->uri->segment(3) . '/materi/ubah/' . $this->uri->segment(5)) ?>">Ubah Materi</a>
-                        <!-- <a type="button" class="btn btn-secondary text-white" data-toggle="modal" data-target="#ubahMateri">Edit Materi</a> -->
+                        <a class="btn btn-secondary" href="<?php echo site_url('guru/kelas/' . $this->uri->segment(3) . '/materi/' . $this->uri->segment(5) . '/tambah') ?>">Tambah Submateri</a>
                     </li>
                     <li class="mr-2">
                         <a type="button" class="btn btn-danger text-white" data-toggle="modal" data-target="#deleteMateri">Hapus Materi</a>
@@ -29,6 +28,13 @@
                 <?php } else if ($this->uri->segment(4) == 'materi' && $this->uri->segment(5) && $this->uri->segment(6) == 'soal') { ?>
                     <li>
                         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#tambahSoal">Tambah Soal</button>
+                    </li>
+                <?php } else if ($this->uri->segment(4) == 'materi' && $this->uri->segment(5) && $this->uri->segment(6) == 'sub') { ?>
+                    <li class="mr-2">
+                        <a class="btn btn-secondary" href="<?php echo site_url(uri_string() . '/ubah') ?>">Ubah Submateri</a>
+                    </li>
+                    <li class="mr-2">
+                        <a type="button" class="btn btn-danger text-white" data-toggle="modal" data-target="#deleteSub">Hapus Submateri</a>
                     </li>
                 <?php }
             } else { ?>

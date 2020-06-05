@@ -14,13 +14,13 @@
 </head>
 
 <body>
-    <div class="container">
+    <div class="container-fluid">
         <div class="row flex-wrap justify-content-center">
             <div class="col-12 col-md-8 mt-3">
-                <form id="form_kirim" method="POST" action="">
+                <form method="POST" action="<?php echo site_url(uri_string()) ?>">
                     <div class="form-group">
                         <label for="judul">Judul</label>
-                        <input type="text" class="form-control" id="judul" name="judul" required>
+                        <input type="text" class="form-control" id="judul" name="judul" required value="<?php echo isset($judul) ? $judul : '' ?>">
                     </div>
                     <div class="form-group">
                         <label for="summernote">Konten</label>
@@ -42,6 +42,7 @@
                 dialogsInBody: true,
                 disableDragAndDrop: true,
                 spellcheck: false,
+                height: 350,
                 callbacks: {
                     onImageUpload: function(files) {
                         if (!files.length) return;
@@ -51,27 +52,11 @@
                     }
                 }
             })
-
-            // if data is edit_materi
-            let url = $(location).attr('href');
-            let check_uri = url.split('/').reverse()[0];
-            if (check_uri == 'tambah_materi') {
-                let kode_kelas = url.split('/').reverse()[1];
-                $('#form_kirim').attr('action', `<?php echo site_url('guru/kelas/') ?>${kode_kelas}/materi`)
-            } else {
-                let kode_kelas = url.split('/').reverse()[2];
-                let kode_materi = url.split('/').reverse()[0];
-                fetch("<?php echo site_url('/api/materi/') ?>" + kode_materi).then(response => response.json())
-                    .then(data => {
-                        $('#summernote').summernote('code', data.konten);
-                        $('#summernote').each(function() {
-                            $(this).val($(this).summernote('code'));
-                        })
-                        $("#judul").val(data.judul)
-                    })
-
-                $('#form_kirim').attr('action', `<?php echo site_url('guru/kelas/') ?>${kode_kelas}/materi/ubah/${kode_materi}`)
+            let konten = "<?php echo isset($konten) ? $konten : '' ?>";
+            if (konten) {
+                $('#summernote').summernote('code', konten);
             }
+
 
             function uploadImage(file) {
                 let data = new FormData();

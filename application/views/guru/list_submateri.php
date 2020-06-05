@@ -22,28 +22,28 @@
             <div class="container-fluid shadow-sm" style="padding: 25px">
                 <?php if (!$data) { ?>
                     <div class="alert alert-danger col-12" role="alert">
-                        <h4 class="alert-heading">Tidak ada materi !</h4>
+                        <h4 class="alert-heading">Tidak ada sub materi !</h4>
                         <hr />
                         <p class="mb-0">
-                            Silahkan tambahkan materi dengan tombol diatas !
+                            Silahkan tambahkan sub materi dengan tombol diatas !
                         </p>
                     </div>
                 <?php } else { ?>
-                    <h3>Daftar Materi</h3>
+                    <h3>Daftar Sub materi</h3>
                     <br>
                     <div class="list-group">
                         <?php if ($data) {
                             foreach ($data as $dat) { ?>
-                                <a href="<?php echo base_url('guru/kelas/' . $this->uri->segment(3) . '/materi/' . $dat['kode']) ?>" class="list-group-item list-group-item-action">
+                                <a href="<?php echo base_url('guru/kelas/' . $this->uri->segment(3) . '/materi/' . $this->uri->segment(5) . '/sub/' . $dat['id']) ?>" class="list-group-item list-group-item-action">
                                     <div class="d-flex w-100 justify-content-between">
                                         <h5 class="mb-1"><strong>
                                                 <?php echo $dat['judul'] ?>
                                             </strong></h5>
                                     </div>
                                     <div>
-                                        <span class="d-inline-block text-truncate w-100">
-                                            <?php echo $dat['deskripsi'] ?>
-                                        </span>
+                                        <p class="text-capitalize m-0">
+                                            Berisi materi tentang <?php echo $dat['judul'] ?>
+                                        </p>
                                     </div>
                                 </a>
                         <?php }
@@ -54,39 +54,28 @@
         </div>
     </div>
 
-    <div class="modal fade" id="tambahMateri" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal fade" id="deleteMateri" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel">Tambah Materi</h5>
+                    <h5 class="modal-title" id="staticBackdropLabel">Hapus Materi</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="<?php echo site_url(uri_string() . '/materi') ?>" method="POST">
-                        <div class="form-group">
-                            <label for="judul">Judul</label>
-                            <input type="text" class="form-control" id="judul" name="judul" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="deskripsi">Deskripsi singkat (maksimal 160 karakter)</label>
-                            <textarea class="form-control" id="deskripsi" rows="4" maxlength="160" name="deskripsi"></textarea>
-                        </div>
+                    <h6>Anda yakin akan menghapus materi ini?</h6>
+                    <small class="text-muted m-0">Materi hanya bisa dihapus jika sudah tidak ada soal dan sub materi !</small>
                 </div>
                 <div class="modal-footer">
-
-                    <button type="submit" class="btn btn-primary">Simpan</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                    <form action="<?php echo site_url('api/materi/delete/' . $this->uri->segment(5)) ?>">
+                        <button type="submit" class="btn btn-danger">Hapus</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-
-    <!-- /#page-content-wrapper -->
-
-    <!-- Menu Toggle Script -->
 
     <script>
         $("#menu-toggle").click(function(e) {

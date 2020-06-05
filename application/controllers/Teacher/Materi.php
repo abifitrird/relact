@@ -22,7 +22,7 @@ class Materi extends Base
 			'kode' => random_string('alnum', 6),
 			'kelas_kode' => $kelas_kode,
 			'judul' => $this->input->post('judul'),
-			'konten' => $this->input->post('konten'),
+			'deskripsi' => $this->input->post('deskripsi'),
 			'status' => 1
 		);
 
@@ -53,6 +53,68 @@ class Materi extends Base
 		$this->load->view('guru/materi', $data);
 	}
 
+	public function showSubMateri($materi_kode)
+	{
+		$data['data'] = $this->KelasModel->getSubmateriByKode($materi_kode);
+		$this->load->view('guru/list_submateri', $data);
+	}
+
+	public function showSub($materi_kode, $sub_id)
+	{
+		$data['data'] = $this->KelasModel->getSubById($materi_kode, $sub_id);
+		$this->load->view('guru/materi', $data);
+	}
+
+	public function viewTambahSub($materi_kode)
+	{
+		$data = array(
+			'head' => 'Tambah submateri',
+			'materi_kode' => $materi_kode,
+			'mode' => 'tambah'
+		);
+		$this->load->view('guru/form_materi', $data);
+	}
+
+	public function viewUbahSub($materi_kode, $sub_id)
+	{
+		$data = $this->KelasModel->getSubById($materi_kode, $sub_id);
+		$kirim = array(
+			'head' => 'Ubah submateri',
+			'materi_kode' => $materi_kode,
+			'mode' => 'ubah',
+			'judul' => $data['judul'],
+			'konten' => $data['konten']
+		);
+		$this->load->view('guru/form_materi', $kirim);
+	}
+
+	public function saveTambahSub($kelas_kode, $materi_kode)
+	{
+		$data = array(
+			'materi_kode' => $materi_kode,
+			'judul' => $this->input->post('judul'),
+			'konten' => $this->input->post('konten'),
+		);
+
+		if (!$this->KelasModel->saveSubMateri($data)) {
+			redirect($_SERVER['HTTP_REFERER']);
+		}
+		redirect(site_url('guru/kelas/' . $kelas_kode));
+	}
+
+	public function saveUbahSub($kelas_kode, $materi_kode, $sub_id)
+	{
+		$data = array(
+			'judul' => $this->input->post('judul'),
+			'konten' => $this->input->post('konten'),
+		);
+
+		if (!$this->KelasModel->updateSubMateri($sub_id, $data)) {
+			redirect($_SERVER['HTTP_REFERER']);
+		}
+		redirect(site_url('guru/kelas/' . $kelas_kode . '/materi/' . $materi_kode . '/sub/' . $sub_id));
+	}
+
 	public function viewAddMateri()
 	{
 		$this->load->view('guru/form_materi', ['head' => 'Tambah Materi']);
@@ -72,6 +134,15 @@ class Materi extends Base
 	public function deleteMateriAPI($materi_kode)
 	{
 		if ($this->KelasModel->deleteMateri($materi_kode)) {
+			redirect(site_url('guru/kelas'));
+		} else {
+			redirect($_SERVER['HTTP_REFERER']);
+		}
+	}
+
+	public function deleteSubMateriAPI($materi_kode, $sub_id)
+	{
+		if ($this->KelasModel->deleteSubMateri($materi_kode, $sub_id)) {
 			redirect(site_url('guru/kelas'));
 		} else {
 			redirect($_SERVER['HTTP_REFERER']);

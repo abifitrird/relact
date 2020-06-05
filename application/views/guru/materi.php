@@ -28,29 +28,29 @@
                 </div>
             </div>
 
-            <div class="modal fade" id="deleteMateri" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="staticBackdropLabel">Ubah Materi</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <h6>Anda yakin akan menghapus materi ini?</h6>
-                        </div>
-                        <div class="modal-footer">
-                            <form action="<?php echo site_url('api/materi/delete/' . $this->uri->segment(5)) ?>">
-                                <button type="submit" class="btn btn-danger">Hapus</button>
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                            </form>
-                        </div>
-                    </div>
+            <!-- /#page-content-wrapper -->
+        </div>
+    </div>
+
+    <div class="modal fade" id="deleteSub" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Hapus Submateri</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h6>Anda yakin akan menghapus submateri ini?</h6>
+                </div>
+                <div class="modal-footer">
+                    <form action="<?php echo site_url('api/materi/sub/delete/' . $this->uri->segment(5) . '/' . $this->uri->segment(7)) ?>">
+                        <button type="submit" class="btn btn-danger">Hapus</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                    </form>
                 </div>
             </div>
-
-            <!-- /#page-content-wrapper -->
         </div>
     </div>
 
