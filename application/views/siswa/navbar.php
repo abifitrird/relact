@@ -12,7 +12,7 @@
                     </button>
                 </li>
             <?php } ?>
-            <?php if ($this->uri->segment(4) == 'materi' && $this->uri->segment(5)) {
+            <?php if ($this->uri->segment(4) == 'materi' && $this->uri->segment(5) && !$this->uri->segment(6)) {
                 if ($status_soal) { ?>
                     <li>
                         <button type="button" class="btn btn-primary35 mr-1" disabled>

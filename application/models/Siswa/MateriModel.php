@@ -30,11 +30,23 @@ class MateriModel extends CI_Model
      * get materi by kode materi
      * 
      * @param kode_materi
+     * @param sub_id
      * @return data
      */
-    public function getMateriByKodeMateri($kode_materi)
+    public function getMateriByKodeMateri($kode_materi, $sub_id)
     {
-        return $this->db->where('kode', $kode_materi)->get('materi')->row_array();
+        return $this->db->query("SELECT * FROM sub_materi WHERE materi_id = (SELECT id FROM materi WHERE kode = '$kode_materi') AND sub_materi.id = $sub_id")->row_array();
+    }
+
+    /**
+     * get submateri by kode materi
+     * 
+     * @param kode_materi
+     * @return data
+     */
+    public function getSubMateriByKodeMateri($kode_materi)
+    {
+        return $this->db->query("SELECT * FROM sub_materi WHERE materi_id = (SELECT id FROM materi WHERE kode = '$kode_materi')")->result_array();
     }
 
     /**

@@ -132,7 +132,8 @@ $route['siswa/saran']['get'] = "Saran/siswa"; // kotak saran dari siswa
 /* route siswa/kelas */
 $route['siswa/kelas/kode']['post'] = "Student/Kelas/masukKelas";  // route masuk kelas dengan kode kelas
 $route['siswa/kelas/(:any)']['get'] = "Student/Materi/index/$1";  // get list materi by kode kelas
-$route['siswa/kelas/(:any)/materi/(:any)']['get'] = "Student/Materi/showMateri/$2";  // show matery by kode materi
+$route['siswa/kelas/(:any)/materi/(:any)']['get'] = "Student/Materi/showSubMateri/$2";  // show matery by kode materi
+$route['siswa/kelas/(:any)/materi/(:any)/sub/(:num)']['get'] = "Student/Materi/showMateri/$2/$3";  // show matery by kode materi
 
 /* route siswa/soal */
 $route['siswa/soal/(:any)']['post'] = "Student/Soal/showSoal/$1"; // kerjakan soal

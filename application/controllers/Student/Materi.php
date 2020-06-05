@@ -19,16 +19,29 @@ class Materi extends Base
 	}
 
 	/**
-	 * show Materi by materi kode
+	 * show Sub Materi by materi kode
 	 * 
 	 * @param materi_kode
 	 * @return view
 	 */
-	public function showMateri($materi_kode)
+	public function showSubMateri($materi_kode)
 	{
 		$user_id = $this->session->userdata('user_id');
-		$data['data'] = $this->Materi->getMateriByKodeMateri($materi_kode);
+		$data['data'] = $this->Materi->getSubMateriByKodeMateri($materi_kode);
 		$data['status_soal'] = $this->Materi->checkNilaiByUserId($user_id);
+		$this->load->view('siswa/list_submateri', $data);
+	}
+
+	/**
+	 * show materi by materi kode and sub_id
+	 * 
+	 * @param materi_kode
+	 * @param sub_id
+	 * @return view
+	 */
+	public function showMateri($materi_kode, $sub_id)
+	{
+		$data['data'] = $this->Materi->getMateriByKodeMateri($materi_kode, $sub_id);
 		$this->load->view('siswa/materi', $data);
 	}
 }
