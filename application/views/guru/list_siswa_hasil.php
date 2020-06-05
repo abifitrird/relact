@@ -14,31 +14,38 @@
     <script src="<?php echo base_url('assets/js/bootstrap.min.js') ?>"></script>
 </head>
 
-<?php include("header.php") ?>
-<div class="container-fluid">
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th scope="col">No.</th>
-                <th scope="col">NIS</th>
-                <th scope="col">Nama</th>
-                <th scope="col">Skor</th>
-                <th scope="col">Hasil</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php $i = 1;
-            foreach ($data as $dat) { ?>
-                <tr>
-                    <th><?php echo $i ?></th>
-                    <td><?php echo $dat['nis'] ?></td>
-                    <td><?php echo $dat['nama'] ?></td>
-                    <td><?php echo $dat['skor'] ?></td>
-                    <td><a class="btn btn-primary" type="button" href="<?php echo site_url('guru/hasil/' . $this->uri->segment(3) . '/materi/' . $this->uri->segment(5) . '/PG/' . $dat['user_id']) ?>">Pilihan Ganda</a>&nbsp;
-                        <a class="btn btn-primary" type="button" href="<?php echo site_url('guru/hasil/' . $this->uri->segment(3) . '/materi/' . $this->uri->segment(5) . '/Esai/' . $dat['user_id']) ?>">Esai</a></td>
-                </tr>
-            <?php $i++;
-            } ?>
-        </tbody>
-    </table>
-</div>
+<body>
+    <div class="d-flex" id="wrapper">
+        <?php include('sidebar.php') ?>
+        <div id="page-content-wrapper">
+            <?php include('navbar.php') ?>
+            <div class="container-fluid">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">No.</th>
+                            <th scope="col">NIS</th>
+                            <th scope="col">Nama</th>
+                            <th scope="col">Skor</th>
+                            <th scope="col">Hasil</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php $i = 1;
+                        foreach ($data as $dat) { ?>
+                            <tr>
+                                <th><?php echo $i ?></th>
+                                <td><?php echo $dat['nis'] ?></td>
+                                <td><?php echo $dat['nama'] ?></td>
+                                <td><?php echo $dat['skor'] ?></td>
+                                <td><a class="btn btn-primary" type="button" href="<?php echo site_url('guru/hasil/' . $this->uri->segment(3) . '/materi/' . $this->uri->segment(5) . '/PG/' . $dat['user_id']) ?>">Pilihan Ganda</a>&nbsp;
+                                    <a class="btn btn-primary" type="button" href="<?php echo site_url('guru/hasil/' . $this->uri->segment(3) . '/materi/' . $this->uri->segment(5) . '/Esai/' . $dat['user_id']) ?>">Esai</a></td>
+                            </tr>
+                        <?php $i++;
+                        } ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>

@@ -14,30 +14,38 @@
     <script src="<?php echo base_url('assets/js/bootstrap.min.js') ?>"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 </head>
-<?php include('header.php') ?>
-<div class="container-fluid">
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>No.</th>
-                <th>Nama</th>
-                <th>Username</th>
-                <th>NIS</th>
-                <th>Aksi</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php $i = 1;
-            foreach ($data as $dat) { ?>
-                <tr>
-                    <th><?php echo $i ?></th>
-                    <th><?php echo $dat['nama'] ?></th>
-                    <th><?php echo $dat['username'] ?></th>
-                    <th><?php echo $dat['nis'] ?></th>
-                    <th><a class="btn btn-primary" href="<?php echo site_url('guru/aktivitas/' . $this->uri->segment(3) . '/detail/' . $dat['username']) ?>">Detail</a></th>
-                </tr>
-            <?php $i++;
-            } ?>
-        </tbody>
-    </table>
-</div>
+
+<body>
+    <div class="d-flex" id="wrapper">
+        <?php include('sidebar.php') ?>
+        <div id="page-content-wrapper">
+            <?php include('navbar.php') ?>
+            <div class="container-fluid">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>No.</th>
+                            <th>Nama</th>
+                            <th>Username</th>
+                            <th>NIS</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php $i = 1;
+                        foreach ($data as $dat) { ?>
+                            <tr>
+                                <th><?php echo $i ?></th>
+                                <th><?php echo $dat['nama'] ?></th>
+                                <th><?php echo $dat['username'] ?></th>
+                                <th><?php echo $dat['nis'] ?></th>
+                                <th><a class="btn btn-primary" href="<?php echo site_url('guru/aktivitas/' . $this->uri->segment(3) . '/detail/' . $dat['username']) ?>">Detail</a></th>
+                            </tr>
+                        <?php $i++;
+                        } ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>

@@ -14,48 +14,49 @@
     <script src="<?php echo base_url('assets/js/bootstrap.min.js') ?>"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 </head>
-<?php include('header.php') ?>
-<!-- isi halaman -->
-<div class="container-fluid shadow-sm" style="padding: 25px">
-    <canvas id="myChart" class="col-12"></canvas>
-    <script>
-        var ctx = document.getElementById('myChart').getContext('2d');
-        var myChart = new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: ['Percabangan', 'Perulangan', 'Prosedur/Fungsi'],
-                datasets: [{
-                    label: 'Nilai rata-rata siswa dari setiap materi',
-                    data: [12, 19, 3],
-                    // backgroundColor: '#000000'
-                }]
-            },
-            options: {
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true
+
+<body>
+    <div class="d-flex" id="wrapper">
+        <?php include('sidebar.php') ?>
+        <div id="page-content-wrapper">
+            <?php include('navbar.php') ?>
+            <!-- isi halaman -->
+            <div class="container-fluid shadow-sm" style="padding: 25px">
+                <canvas id="myChart" class="col-12"></canvas>
+                <script>
+                    var ctx = document.getElementById('myChart').getContext('2d');
+                    var myChart = new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                            labels: ['Percabangan', 'Perulangan', 'Prosedur/Fungsi'],
+                            datasets: [{
+                                label: 'Nilai rata-rata siswa dari setiap materi',
+                                data: [12, 19, 3],
+                                // backgroundColor: '#000000'
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero: true
+                                    }
+                                }]
+                            }
                         }
-                    }]
-                }
-            }
+                    });
+                </script>
+            </div>
+        </div>
+    </div>
+
+    <!-- Menu Toggle Script -->
+    <script>
+        $("#menu-toggle").click(function(e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("toggled");
         });
     </script>
-</div>
-
-<!-- footer -->
-<!-- <?php include("footer.php") ?> -->
-<!-- /#page-content-wrapper -->
-</div>
-</div>
-
-<!-- Menu Toggle Script -->
-<script>
-    $("#menu-toggle").click(function(e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("toggled");
-    });
-</script>
 </body>
 
 </html>

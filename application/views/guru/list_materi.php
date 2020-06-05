@@ -15,23 +15,38 @@
 </head>
 
 <?php include("header.php") ?>
+
 <div class="container-fluid shadow-sm" style="padding: 25px">
-    <h3>Berikut adalah daftar materi dalam kelas Pemrograman Dasar</h3>
-    <br>
-    <div class="list-group">
-        <?php if ($data) {
-            foreach ($data as $dat) { ?>
-                <a href="<?php echo base_url('guru/kelas/' . $this->uri->segment(3) . '/materi/' . $dat['kode']) ?>" class="list-group-item list-group-item-action">
-                    <div class="d-flex w-100 justify-content-between">
-                        <h5 class="mb-1"><?php echo $dat['judul'] ?></h5>
-                    </div>
-                    <div>
-                        <?php echo substr(strip_tags($dat['konten']), 0, 160) . '...' ?>
-                    </div>
-                </a>
-        <?php }
-        } ?>
-    </div>
+    <?php if (!$data) { ?>
+        <div class="alert alert-danger col-12" role="alert">
+            <h4 class="alert-heading">Tidak ada materi !</h4>
+            <hr />
+            <p class="mb-0">
+                Silahkan tambahkan materi dengan tombol diatas !
+            </p>
+        </div>
+    <?php } else { ?>
+        <h3>Daftar Materi</h3>
+        <br>
+        <div class="list-group">
+            <?php if ($data) {
+                foreach ($data as $dat) { ?>
+                    <a href="<?php echo base_url('guru/kelas/' . $this->uri->segment(3) . '/materi/' . $dat['kode']) ?>" class="list-group-item list-group-item-action">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1"><strong>
+                                    <?php echo $dat['judul'] ?>
+                                </strong></h5>
+                        </div>
+                        <div>
+                            <p class="text-capitalize">
+                                Berisi materi tentang <?php echo $dat['judul'] ?>
+                            </p>
+                        </div>
+                    </a>
+            <?php }
+            } ?>
+        </div>
+    <?php } ?>
 </div>
 
 <!-- /#page-content-wrapper -->
