@@ -1,9 +1,9 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.4
+-- version 4.9.5
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: May 25, 2020 at 01:35 PM
+-- Generation Time: Jun 05, 2020 at 01:42 PM
 -- Server version: 10.3.22-MariaDB-cll-lve
 -- PHP Version: 7.3.6
 
@@ -44,19 +44,26 @@ CREATE TABLE `ci_sessions` (
 CREATE TABLE `detail_user` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `nomor_induk` varchar(191) NOT NULL,
+  `nomor_induk` varchar(191) DEFAULT NULL,
   `nama_lengkap` varchar(191) DEFAULT NULL,
-  `sekolah_id` int(11) NOT NULL,
+  `sekolah_id` int(11) DEFAULT NULL,
   `alamat` varchar(191) DEFAULT NULL,
-  `no_hp` varchar(191) DEFAULT NULL
+  `no_hp` varchar(191) DEFAULT NULL,
+  `url_foto` varchar(191) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `detail_user`
 --
 
-INSERT INTO `detail_user` (`id`, `user_id`, `nomor_induk`, `nama_lengkap`, `sekolah_id`, `alamat`, `no_hp`) VALUES
-(2, 3, '160748888', 'Hello world hehe', 1, 'jalan jalan weh', '123123');
+INSERT INTO `detail_user` (`id`, `user_id`, `nomor_induk`, `nama_lengkap`, `sekolah_id`, `alamat`, `no_hp`, `url_foto`) VALUES
+(2, 3, '160748888', 'Hello world hehe', 1, 'jalan jalan weh', '123123', NULL),
+(3, 4, '1998012820200602', 'John Doe', 1, 'London', '082240476246', NULL),
+(4, 6, '2020060201', 'Samantha Rodriguez', 1, 'Idaho', '085763646662', NULL),
+(5, 7, '2020060202', 'Hannah Barbara', 1, 'Tokyo', '081234567890', NULL),
+(6, 8, '2020060203', 'Alec William', 1, 'Brazil', '085763535551', NULL),
+(7, 9, '2020060204', 'Brian Dolores', 1, 'Kuala Lumpur', '089098890090', NULL),
+(8, 10, '2020060205', 'Lena Franklin', 1, 'Hongkong', '089765432123', NULL);
 
 -- --------------------------------------------------------
 
@@ -126,584 +133,10 @@ CREATE TABLE `log_activity` (
   `action` varchar(191) NOT NULL,
   `kelas_id` int(11) DEFAULT NULL,
   `materi_id` int(11) DEFAULT NULL,
+  `is_soal` tinyint(1) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `log_activity`
---
-
-INSERT INTO `log_activity` (`id`, `user_id`, `url`, `from_url`, `action`, `kelas_id`, `materi_id`, `created_at`, `updated_at`) VALUES
-(1, 6, 'http://localhost/relact/siswa', 'http://localhost/relact/login', 'GET', NULL, NULL, '2020-05-24 10:15:14', '2020-05-24 10:15:14'),
-(2, 6, 'http://localhost/relact/siswa/kelas', 'http://localhost/relact/siswa', 'GET', NULL, NULL, '2020-05-24 10:15:17', '2020-05-24 10:15:17'),
-(3, 6, 'http://localhost/relact/siswa/kelas/kode', 'http://localhost/relact/siswa/kelas', 'POST', NULL, NULL, '2020-05-24 10:15:33', '2020-05-24 10:15:33'),
-(4, 6, 'http://localhost/relact/siswa/kelas', 'http://localhost/relact/siswa/kelas', 'GET', NULL, NULL, '2020-05-24 10:15:33', '2020-05-24 10:15:33'),
-(5, 6, 'http://localhost/relact/siswa/kelas/pKuQ7o', 'http://localhost/relact/siswa/kelas', 'GET', NULL, NULL, '2020-05-24 10:15:34', '2020-05-24 10:15:34'),
-(6, 6, 'http://localhost/relact/siswa/kelas/pKuQ7o/materi/C4Gpzl', 'http://localhost/relact/siswa/kelas/pKuQ7o', 'GET', 1, 1, '2020-05-24 10:15:37', '2020-05-24 10:15:37'),
-(7, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'http://localhost/relact/siswa/kelas/pKuQ7o/materi/C4Gpzl', 'POST', 1, 1, '2020-05-24 10:15:41', '2020-05-24 10:15:41'),
-(8, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:15:41', '2020-05-24 10:15:41'),
-(9, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/getSoal', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:15:41', '2020-05-24 10:15:41'),
-(10, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:15:46', '2020-05-24 10:15:46'),
-(11, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:15:51', '2020-05-24 10:15:51'),
-(12, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:15:56', '2020-05-24 10:15:56'),
-(13, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:16:01', '2020-05-24 10:16:01'),
-(14, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:16:07', '2020-05-24 10:16:07'),
-(15, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:16:12', '2020-05-24 10:16:12'),
-(16, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:16:17', '2020-05-24 10:16:17'),
-(17, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:16:22', '2020-05-24 10:16:22'),
-(18, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:16:27', '2020-05-24 10:16:27'),
-(19, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:16:32', '2020-05-24 10:16:32'),
-(20, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:16:37', '2020-05-24 10:16:37'),
-(21, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:16:42', '2020-05-24 10:16:42'),
-(22, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:16:47', '2020-05-24 10:16:47'),
-(23, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:16:52', '2020-05-24 10:16:52'),
-(24, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:16:57', '2020-05-24 10:16:57'),
-(25, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:17:03', '2020-05-24 10:17:03'),
-(26, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:17:08', '2020-05-24 10:17:08'),
-(27, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:17:13', '2020-05-24 10:17:13'),
-(28, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:17:18', '2020-05-24 10:17:18'),
-(29, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:17:23', '2020-05-24 10:17:23'),
-(30, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:17:28', '2020-05-24 10:17:28'),
-(31, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:17:33', '2020-05-24 10:17:33'),
-(32, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:17:38', '2020-05-24 10:17:38'),
-(33, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:17:43', '2020-05-24 10:17:43'),
-(34, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:17:48', '2020-05-24 10:17:48'),
-(35, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:17:53', '2020-05-24 10:17:53'),
-(36, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:17:59', '2020-05-24 10:17:59'),
-(37, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:18:04', '2020-05-24 10:18:04'),
-(38, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:18:09', '2020-05-24 10:18:09'),
-(39, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:18:14', '2020-05-24 10:18:14'),
-(40, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:18:19', '2020-05-24 10:18:19'),
-(41, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:18:24', '2020-05-24 10:18:24'),
-(42, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:18:29', '2020-05-24 10:18:29'),
-(43, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:18:34', '2020-05-24 10:18:34'),
-(44, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:18:39', '2020-05-24 10:18:39'),
-(45, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:18:44', '2020-05-24 10:18:44'),
-(46, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:18:49', '2020-05-24 10:18:49'),
-(47, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:18:55', '2020-05-24 10:18:55'),
-(48, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:19:00', '2020-05-24 10:19:00'),
-(49, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:19:05', '2020-05-24 10:19:05'),
-(50, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/saveJawaban', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'POST', 1, 1, '2020-05-24 10:19:05', '2020-05-24 10:19:05'),
-(51, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:19:10', '2020-05-24 10:19:10'),
-(52, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:19:15', '2020-05-24 10:19:15'),
-(53, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:19:20', '2020-05-24 10:19:20'),
-(54, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:19:25', '2020-05-24 10:19:25'),
-(55, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/saveJawaban', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'POST', 1, 1, '2020-05-24 10:19:25', '2020-05-24 10:19:25'),
-(56, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:19:30', '2020-05-24 10:19:30'),
-(57, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:19:35', '2020-05-24 10:19:35'),
-(58, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:19:40', '2020-05-24 10:19:40'),
-(59, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:19:45', '2020-05-24 10:19:45'),
-(60, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:19:51', '2020-05-24 10:19:51'),
-(61, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/saveJawaban', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'POST', 1, 1, '2020-05-24 10:19:51', '2020-05-24 10:19:51'),
-(62, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:19:56', '2020-05-24 10:19:56'),
-(63, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:20:01', '2020-05-24 10:20:01'),
-(64, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:20:06', '2020-05-24 10:20:06'),
-(65, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/saveJawaban', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'POST', 1, 1, '2020-05-24 10:20:06', '2020-05-24 10:20:06'),
-(66, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:20:11', '2020-05-24 10:20:11'),
-(67, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:20:16', '2020-05-24 10:20:16'),
-(68, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:20:21', '2020-05-24 10:20:21'),
-(69, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:20:26', '2020-05-24 10:20:26'),
-(70, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:20:31', '2020-05-24 10:20:31'),
-(71, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/saveJawaban', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'POST', 1, 1, '2020-05-24 10:20:31', '2020-05-24 10:20:31'),
-(72, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:20:36', '2020-05-24 10:20:36'),
-(73, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:20:42', '2020-05-24 10:20:42'),
-(74, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/saveJawaban', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'POST', 1, 1, '2020-05-24 10:20:42', '2020-05-24 10:20:42'),
-(75, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:20:47', '2020-05-24 10:20:47'),
-(76, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:20:52', '2020-05-24 10:20:52'),
-(77, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/saveJawaban', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'POST', 1, 1, '2020-05-24 10:20:52', '2020-05-24 10:20:52'),
-(78, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:20:57', '2020-05-24 10:20:57'),
-(79, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:21:02', '2020-05-24 10:21:02'),
-(80, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:21:07', '2020-05-24 10:21:07'),
-(81, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:21:12', '2020-05-24 10:21:12'),
-(82, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:21:17', '2020-05-24 10:21:17'),
-(83, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:21:22', '2020-05-24 10:21:22'),
-(84, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:21:27', '2020-05-24 10:21:27'),
-(85, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:21:32', '2020-05-24 10:21:32'),
-(86, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:21:38', '2020-05-24 10:21:38'),
-(87, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:21:43', '2020-05-24 10:21:43'),
-(88, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:21:48', '2020-05-24 10:21:48'),
-(89, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/saveJawaban', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'POST', 1, 1, '2020-05-24 10:21:48', '2020-05-24 10:21:48'),
-(90, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:21:53', '2020-05-24 10:21:53'),
-(91, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:21:58', '2020-05-24 10:21:58'),
-(92, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:22:03', '2020-05-24 10:22:03'),
-(93, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:22:08', '2020-05-24 10:22:08'),
-(94, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:22:13', '2020-05-24 10:22:13'),
-(95, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:22:18', '2020-05-24 10:22:18'),
-(96, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/saveJawaban', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'POST', 1, 1, '2020-05-24 10:22:18', '2020-05-24 10:22:18'),
-(97, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:22:23', '2020-05-24 10:22:23'),
-(98, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:22:29', '2020-05-24 10:22:29'),
-(99, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:22:34', '2020-05-24 10:22:34'),
-(100, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:22:39', '2020-05-24 10:22:39'),
-(101, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:22:44', '2020-05-24 10:22:44'),
-(102, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:22:49', '2020-05-24 10:22:49'),
-(103, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:22:54', '2020-05-24 10:22:54'),
-(104, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/saveJawaban', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'POST', 1, 1, '2020-05-24 10:22:54', '2020-05-24 10:22:54'),
-(105, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:22:59', '2020-05-24 10:22:59'),
-(106, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:23:04', '2020-05-24 10:23:04'),
-(107, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:23:09', '2020-05-24 10:23:09'),
-(108, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/saveJawaban', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'POST', 1, 1, '2020-05-24 10:23:09', '2020-05-24 10:23:09'),
-(109, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:23:14', '2020-05-24 10:23:14'),
-(110, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:23:19', '2020-05-24 10:23:19'),
-(111, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:23:25', '2020-05-24 10:23:25'),
-(112, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:23:30', '2020-05-24 10:23:30'),
-(113, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:23:35', '2020-05-24 10:23:35'),
-(114, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:23:40', '2020-05-24 10:23:40'),
-(115, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:23:45', '2020-05-24 10:23:45'),
-(116, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/saveJawaban', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'POST', 1, 1, '2020-05-24 10:23:45', '2020-05-24 10:23:45'),
-(117, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:23:50', '2020-05-24 10:23:50'),
-(118, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:23:55', '2020-05-24 10:23:55'),
-(119, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:24:00', '2020-05-24 10:24:00'),
-(120, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/saveJawaban', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'POST', 1, 1, '2020-05-24 10:24:00', '2020-05-24 10:24:00'),
-(121, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:24:05', '2020-05-24 10:24:05'),
-(122, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/saveJawaban', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'POST', 1, 1, '2020-05-24 10:24:05', '2020-05-24 10:24:05'),
-(123, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:24:10', '2020-05-24 10:24:10'),
-(124, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:24:15', '2020-05-24 10:24:15'),
-(125, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/saveJawaban', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'POST', 1, 1, '2020-05-24 10:24:16', '2020-05-24 10:24:16'),
-(126, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:24:21', '2020-05-24 10:24:21'),
-(127, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:24:26', '2020-05-24 10:24:26'),
-(128, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/saveJawaban', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'POST', 1, 1, '2020-05-24 10:24:26', '2020-05-24 10:24:26'),
-(129, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:24:31', '2020-05-24 10:24:31'),
-(130, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/saveJawaban', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'POST', 1, 1, '2020-05-24 10:24:31', '2020-05-24 10:24:31'),
-(131, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/saveJawaban', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'POST', 1, 1, '2020-05-24 10:24:34', '2020-05-24 10:24:34'),
-(132, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:24:36', '2020-05-24 10:24:36'),
-(133, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:24:41', '2020-05-24 10:24:41'),
-(134, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:24:46', '2020-05-24 10:24:46'),
-(135, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/saveJawaban', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'POST', 1, 1, '2020-05-24 10:24:46', '2020-05-24 10:24:46'),
-(136, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:24:51', '2020-05-24 10:24:51'),
-(137, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/saveJawaban', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'POST', 1, 1, '2020-05-24 10:24:51', '2020-05-24 10:24:51'),
-(138, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:24:56', '2020-05-24 10:24:56'),
-(139, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/saveJawaban', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'POST', 1, 1, '2020-05-24 10:25:00', '2020-05-24 10:25:00'),
-(140, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/saveJawaban', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'POST', 1, 1, '2020-05-24 10:25:01', '2020-05-24 10:25:01'),
-(141, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/saveJawaban', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'POST', 1, 1, '2020-05-24 10:25:01', '2020-05-24 10:25:01'),
-(142, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:25:01', '2020-05-24 10:25:01'),
-(143, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/saveJawaban', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'POST', 1, 1, '2020-05-24 10:25:02', '2020-05-24 10:25:02'),
-(144, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/saveJawaban', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'POST', 1, 1, '2020-05-24 10:25:02', '2020-05-24 10:25:02'),
-(145, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/saveJawaban', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'POST', 1, 1, '2020-05-24 10:25:02', '2020-05-24 10:25:02'),
-(146, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/saveJawaban', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'POST', 1, 1, '2020-05-24 10:25:02', '2020-05-24 10:25:02'),
-(147, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/saveJawaban', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'POST', 1, 1, '2020-05-24 10:25:03', '2020-05-24 10:25:03'),
-(148, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:25:06', '2020-05-24 10:25:06'),
-(149, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:25:11', '2020-05-24 10:25:11'),
-(150, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:25:17', '2020-05-24 10:25:17'),
-(151, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:25:22', '2020-05-24 10:25:22'),
-(152, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:25:27', '2020-05-24 10:25:27'),
-(153, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:25:32', '2020-05-24 10:25:32'),
-(154, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:25:37', '2020-05-24 10:25:37'),
-(155, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:25:42', '2020-05-24 10:25:42'),
-(156, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:25:47', '2020-05-24 10:25:47'),
-(157, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:25:52', '2020-05-24 10:25:52'),
-(158, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:25:57', '2020-05-24 10:25:57'),
-(159, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/saveJawaban', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'POST', 1, 1, '2020-05-24 10:25:57', '2020-05-24 10:25:57'),
-(160, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:26:02', '2020-05-24 10:26:02'),
-(161, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:26:08', '2020-05-24 10:26:08'),
-(162, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:26:13', '2020-05-24 10:26:13'),
-(163, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:26:18', '2020-05-24 10:26:18'),
-(164, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:26:23', '2020-05-24 10:26:23'),
-(165, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:26:28', '2020-05-24 10:26:28'),
-(166, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:26:33', '2020-05-24 10:26:33'),
-(167, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:26:38', '2020-05-24 10:26:38'),
-(168, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:26:43', '2020-05-24 10:26:43'),
-(169, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:26:48', '2020-05-24 10:26:48'),
-(170, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:26:53', '2020-05-24 10:26:53'),
-(171, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/saveJawaban', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'POST', 1, 1, '2020-05-24 10:26:54', '2020-05-24 10:26:54'),
-(172, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:26:59', '2020-05-24 10:26:59'),
-(173, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:27:04', '2020-05-24 10:27:04'),
-(174, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/saveJawaban', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'POST', 1, 1, '2020-05-24 10:27:04', '2020-05-24 10:27:04'),
-(175, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:27:09', '2020-05-24 10:27:09'),
-(176, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:27:14', '2020-05-24 10:27:14'),
-(177, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:27:19', '2020-05-24 10:27:19'),
-(178, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:27:24', '2020-05-24 10:27:24'),
-(179, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:27:30', '2020-05-24 10:27:30'),
-(180, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:27:35', '2020-05-24 10:27:35'),
-(181, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:27:40', '2020-05-24 10:27:40'),
-(182, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:27:45', '2020-05-24 10:27:45'),
-(183, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:27:50', '2020-05-24 10:27:50'),
-(184, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:27:55', '2020-05-24 10:27:55'),
-(185, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:28:00', '2020-05-24 10:28:00'),
-(186, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:28:05', '2020-05-24 10:28:05'),
-(187, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:28:10', '2020-05-24 10:28:10'),
-(188, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:28:16', '2020-05-24 10:28:16'),
-(189, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:28:21', '2020-05-24 10:28:21'),
-(190, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:28:26', '2020-05-24 10:28:26'),
-(191, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:28:31', '2020-05-24 10:28:31'),
-(192, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:28:36', '2020-05-24 10:28:36'),
-(193, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:28:41', '2020-05-24 10:28:41'),
-(194, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:28:46', '2020-05-24 10:28:46'),
-(195, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:28:51', '2020-05-24 10:28:51'),
-(196, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:28:57', '2020-05-24 10:28:57'),
-(197, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:29:02', '2020-05-24 10:29:02'),
-(198, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:29:07', '2020-05-24 10:29:07'),
-(199, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:29:12', '2020-05-24 10:29:12'),
-(200, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:29:18', '2020-05-24 10:29:18'),
-(201, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:29:23', '2020-05-24 10:29:23'),
-(202, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:29:28', '2020-05-24 10:29:28'),
-(203, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:29:33', '2020-05-24 10:29:33'),
-(204, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:29:38', '2020-05-24 10:29:38'),
-(205, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:29:43', '2020-05-24 10:29:43'),
-(206, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:29:49', '2020-05-24 10:29:49'),
-(207, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:29:55', '2020-05-24 10:29:55'),
-(208, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:30:00', '2020-05-24 10:30:00'),
-(209, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:30:05', '2020-05-24 10:30:05'),
-(210, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:30:10', '2020-05-24 10:30:10'),
-(211, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:30:15', '2020-05-24 10:30:15'),
-(212, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:30:20', '2020-05-24 10:30:20'),
-(213, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:30:25', '2020-05-24 10:30:25'),
-(214, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:30:30', '2020-05-24 10:30:30'),
-(215, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:30:36', '2020-05-24 10:30:36'),
-(216, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:30:41', '2020-05-24 10:30:41'),
-(217, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:30:46', '2020-05-24 10:30:46'),
-(218, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:30:51', '2020-05-24 10:30:51'),
-(219, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:30:56', '2020-05-24 10:30:56'),
-(220, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:31:01', '2020-05-24 10:31:01'),
-(221, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:31:06', '2020-05-24 10:31:06'),
-(222, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:31:11', '2020-05-24 10:31:11'),
-(223, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:31:16', '2020-05-24 10:31:16'),
-(224, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:31:22', '2020-05-24 10:31:22'),
-(225, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:31:27', '2020-05-24 10:31:27'),
-(226, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:31:32', '2020-05-24 10:31:32'),
-(227, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:31:38', '2020-05-24 10:31:38'),
-(228, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:31:43', '2020-05-24 10:31:43'),
-(229, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:31:48', '2020-05-24 10:31:48'),
-(230, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:31:54', '2020-05-24 10:31:54'),
-(231, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:31:59', '2020-05-24 10:31:59'),
-(232, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:32:04', '2020-05-24 10:32:04'),
-(233, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:32:09', '2020-05-24 10:32:09'),
-(234, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:32:14', '2020-05-24 10:32:14'),
-(235, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:32:19', '2020-05-24 10:32:19'),
-(236, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:32:24', '2020-05-24 10:32:24'),
-(237, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:32:30', '2020-05-24 10:32:30'),
-(238, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:32:35', '2020-05-24 10:32:35'),
-(239, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:32:40', '2020-05-24 10:32:40'),
-(240, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:32:45', '2020-05-24 10:32:45'),
-(241, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:32:50', '2020-05-24 10:32:50'),
-(242, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:32:55', '2020-05-24 10:32:55'),
-(243, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:33:00', '2020-05-24 10:33:00'),
-(244, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:33:05', '2020-05-24 10:33:05'),
-(245, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:33:11', '2020-05-24 10:33:11'),
-(246, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:33:16', '2020-05-24 10:33:16'),
-(247, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:33:21', '2020-05-24 10:33:21'),
-(248, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:33:26', '2020-05-24 10:33:26'),
-(249, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:33:31', '2020-05-24 10:33:31'),
-(250, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:33:36', '2020-05-24 10:33:36'),
-(251, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:33:42', '2020-05-24 10:33:42'),
-(252, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:33:47', '2020-05-24 10:33:47'),
-(253, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:33:52', '2020-05-24 10:33:52'),
-(254, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:33:57', '2020-05-24 10:33:57'),
-(255, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:34:02', '2020-05-24 10:34:02'),
-(256, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:34:07', '2020-05-24 10:34:07'),
-(257, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:34:12', '2020-05-24 10:34:12'),
-(258, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:34:18', '2020-05-24 10:34:18'),
-(259, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:34:23', '2020-05-24 10:34:23'),
-(260, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:34:28', '2020-05-24 10:34:28'),
-(261, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:34:33', '2020-05-24 10:34:33'),
-(262, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:34:38', '2020-05-24 10:34:38'),
-(263, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:34:43', '2020-05-24 10:34:43'),
-(264, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:34:49', '2020-05-24 10:34:49'),
-(265, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:34:54', '2020-05-24 10:34:54'),
-(266, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:34:59', '2020-05-24 10:34:59'),
-(267, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:35:04', '2020-05-24 10:35:04'),
-(268, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:35:09', '2020-05-24 10:35:09'),
-(269, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:35:14', '2020-05-24 10:35:14'),
-(270, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:35:19', '2020-05-24 10:35:19'),
-(271, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:35:24', '2020-05-24 10:35:24'),
-(272, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:35:30', '2020-05-24 10:35:30'),
-(273, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:35:35', '2020-05-24 10:35:35'),
-(274, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:35:40', '2020-05-24 10:35:40'),
-(275, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:35:45', '2020-05-24 10:35:45'),
-(276, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:35:50', '2020-05-24 10:35:50'),
-(277, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:35:55', '2020-05-24 10:35:55'),
-(278, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:36:00', '2020-05-24 10:36:00');
-INSERT INTO `log_activity` (`id`, `user_id`, `url`, `from_url`, `action`, `kelas_id`, `materi_id`, `created_at`, `updated_at`) VALUES
-(279, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:36:05', '2020-05-24 10:36:05'),
-(280, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:36:11', '2020-05-24 10:36:11'),
-(281, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:36:16', '2020-05-24 10:36:16'),
-(282, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:36:21', '2020-05-24 10:36:21'),
-(283, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:36:26', '2020-05-24 10:36:26'),
-(284, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:36:31', '2020-05-24 10:36:31'),
-(285, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:36:36', '2020-05-24 10:36:36'),
-(286, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:36:41', '2020-05-24 10:36:41'),
-(287, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:36:47', '2020-05-24 10:36:47'),
-(288, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:36:52', '2020-05-24 10:36:52'),
-(289, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:36:57', '2020-05-24 10:36:57'),
-(290, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:37:02', '2020-05-24 10:37:02'),
-(291, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:37:07', '2020-05-24 10:37:07'),
-(292, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:37:12', '2020-05-24 10:37:12'),
-(293, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:37:17', '2020-05-24 10:37:17'),
-(294, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:37:23', '2020-05-24 10:37:23'),
-(295, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:37:28', '2020-05-24 10:37:28'),
-(296, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:37:33', '2020-05-24 10:37:33'),
-(297, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:37:38', '2020-05-24 10:37:38'),
-(298, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:37:43', '2020-05-24 10:37:43'),
-(299, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:37:48', '2020-05-24 10:37:48'),
-(300, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:37:53', '2020-05-24 10:37:53'),
-(301, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:37:59', '2020-05-24 10:37:59'),
-(302, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:38:04', '2020-05-24 10:38:04'),
-(303, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:38:09', '2020-05-24 10:38:09'),
-(304, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:38:14', '2020-05-24 10:38:14'),
-(305, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:38:19', '2020-05-24 10:38:19'),
-(306, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:38:24', '2020-05-24 10:38:24'),
-(307, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:38:29', '2020-05-24 10:38:29'),
-(308, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:38:35', '2020-05-24 10:38:35'),
-(309, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:38:40', '2020-05-24 10:38:40'),
-(310, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:38:45', '2020-05-24 10:38:45'),
-(311, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:38:50', '2020-05-24 10:38:50'),
-(312, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:38:55', '2020-05-24 10:38:55'),
-(313, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:39:00', '2020-05-24 10:39:00'),
-(314, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:39:05', '2020-05-24 10:39:05'),
-(315, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:39:10', '2020-05-24 10:39:10'),
-(316, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:39:16', '2020-05-24 10:39:16'),
-(317, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:39:21', '2020-05-24 10:39:21'),
-(318, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:39:26', '2020-05-24 10:39:26'),
-(319, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:39:31', '2020-05-24 10:39:31'),
-(320, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:39:36', '2020-05-24 10:39:36'),
-(321, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:39:41', '2020-05-24 10:39:41'),
-(322, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:39:46', '2020-05-24 10:39:46'),
-(323, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:39:52', '2020-05-24 10:39:52'),
-(324, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:39:57', '2020-05-24 10:39:57'),
-(325, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:40:02', '2020-05-24 10:40:02'),
-(326, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:40:07', '2020-05-24 10:40:07'),
-(327, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:40:12', '2020-05-24 10:40:12'),
-(328, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:40:17', '2020-05-24 10:40:17'),
-(329, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:40:22', '2020-05-24 10:40:22'),
-(330, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:40:27', '2020-05-24 10:40:27'),
-(331, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:40:33', '2020-05-24 10:40:33'),
-(332, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:40:38', '2020-05-24 10:40:38'),
-(333, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:40:43', '2020-05-24 10:40:43'),
-(334, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:40:48', '2020-05-24 10:40:48'),
-(335, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:40:53', '2020-05-24 10:40:53'),
-(336, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:40:58', '2020-05-24 10:40:58'),
-(337, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:41:03', '2020-05-24 10:41:03'),
-(338, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:41:08', '2020-05-24 10:41:08'),
-(339, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:41:14', '2020-05-24 10:41:14'),
-(340, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:41:19', '2020-05-24 10:41:19'),
-(341, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:41:24', '2020-05-24 10:41:24'),
-(342, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:41:29', '2020-05-24 10:41:29'),
-(343, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:41:34', '2020-05-24 10:41:34'),
-(344, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:41:40', '2020-05-24 10:41:40'),
-(345, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:41:45', '2020-05-24 10:41:45'),
-(346, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:41:50', '2020-05-24 10:41:50'),
-(347, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:41:56', '2020-05-24 10:41:56'),
-(348, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:42:01', '2020-05-24 10:42:01'),
-(349, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:42:06', '2020-05-24 10:42:06'),
-(350, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:42:11', '2020-05-24 10:42:11'),
-(351, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:42:16', '2020-05-24 10:42:16'),
-(352, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:42:21', '2020-05-24 10:42:21'),
-(353, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:42:27', '2020-05-24 10:42:27'),
-(354, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:42:32', '2020-05-24 10:42:32'),
-(355, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:42:37', '2020-05-24 10:42:37'),
-(356, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:42:42', '2020-05-24 10:42:42'),
-(357, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:42:47', '2020-05-24 10:42:47'),
-(358, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:42:52', '2020-05-24 10:42:52'),
-(359, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:42:57', '2020-05-24 10:42:57'),
-(360, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:43:02', '2020-05-24 10:43:02'),
-(361, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:43:08', '2020-05-24 10:43:08'),
-(362, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:43:13', '2020-05-24 10:43:13'),
-(363, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:43:18', '2020-05-24 10:43:18'),
-(364, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:43:23', '2020-05-24 10:43:23'),
-(365, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:43:28', '2020-05-24 10:43:28'),
-(366, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:43:33', '2020-05-24 10:43:33'),
-(367, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:43:38', '2020-05-24 10:43:38'),
-(368, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:43:43', '2020-05-24 10:43:43'),
-(369, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:43:49', '2020-05-24 10:43:49'),
-(370, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:43:54', '2020-05-24 10:43:54'),
-(371, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:43:59', '2020-05-24 10:43:59'),
-(372, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:44:04', '2020-05-24 10:44:04'),
-(373, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:44:09', '2020-05-24 10:44:09'),
-(374, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:44:14', '2020-05-24 10:44:14'),
-(375, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:44:19', '2020-05-24 10:44:19'),
-(376, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:44:24', '2020-05-24 10:44:24'),
-(377, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:44:30', '2020-05-24 10:44:30'),
-(378, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:44:35', '2020-05-24 10:44:35'),
-(379, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:44:40', '2020-05-24 10:44:40'),
-(380, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:44:45', '2020-05-24 10:44:45'),
-(381, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:44:50', '2020-05-24 10:44:50'),
-(382, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:44:55', '2020-05-24 10:44:55'),
-(383, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:45:00', '2020-05-24 10:45:00'),
-(384, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:45:05', '2020-05-24 10:45:05'),
-(385, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:45:11', '2020-05-24 10:45:11'),
-(386, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:45:16', '2020-05-24 10:45:16'),
-(387, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:45:21', '2020-05-24 10:45:21'),
-(388, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:45:26', '2020-05-24 10:45:26'),
-(389, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:45:31', '2020-05-24 10:45:31'),
-(390, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:45:36', '2020-05-24 10:45:36'),
-(391, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:45:42', '2020-05-24 10:45:42'),
-(392, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:45:47', '2020-05-24 10:45:47'),
-(393, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:45:52', '2020-05-24 10:45:52'),
-(394, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:45:57', '2020-05-24 10:45:57'),
-(395, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:46:02', '2020-05-24 10:46:02'),
-(396, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:46:07', '2020-05-24 10:46:07'),
-(397, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:46:12', '2020-05-24 10:46:12'),
-(398, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:46:18', '2020-05-24 10:46:18'),
-(399, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:46:23', '2020-05-24 10:46:23'),
-(400, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:46:28', '2020-05-24 10:46:28'),
-(401, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:46:33', '2020-05-24 10:46:33'),
-(402, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:46:38', '2020-05-24 10:46:38'),
-(403, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:46:43', '2020-05-24 10:46:43'),
-(404, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:46:48', '2020-05-24 10:46:48'),
-(405, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:46:54', '2020-05-24 10:46:54'),
-(406, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:46:59', '2020-05-24 10:46:59'),
-(407, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:47:04', '2020-05-24 10:47:04'),
-(408, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:47:09', '2020-05-24 10:47:09'),
-(409, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:47:14', '2020-05-24 10:47:14'),
-(410, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:47:19', '2020-05-24 10:47:19'),
-(411, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:47:24', '2020-05-24 10:47:24'),
-(412, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:47:29', '2020-05-24 10:47:29'),
-(413, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:47:35', '2020-05-24 10:47:35'),
-(414, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:47:40', '2020-05-24 10:47:40'),
-(415, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:47:45', '2020-05-24 10:47:45'),
-(416, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:47:50', '2020-05-24 10:47:50'),
-(417, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:47:55', '2020-05-24 10:47:55'),
-(418, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:48:00', '2020-05-24 10:48:00'),
-(419, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:48:05', '2020-05-24 10:48:05'),
-(420, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:48:10', '2020-05-24 10:48:10'),
-(421, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:48:16', '2020-05-24 10:48:16'),
-(422, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:48:21', '2020-05-24 10:48:21'),
-(423, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:48:26', '2020-05-24 10:48:26'),
-(424, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:48:31', '2020-05-24 10:48:31'),
-(425, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:48:36', '2020-05-24 10:48:36'),
-(426, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:48:41', '2020-05-24 10:48:41'),
-(427, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:48:46', '2020-05-24 10:48:46'),
-(428, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:48:51', '2020-05-24 10:48:51'),
-(429, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:48:57', '2020-05-24 10:48:57'),
-(430, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:49:02', '2020-05-24 10:49:02'),
-(431, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:49:07', '2020-05-24 10:49:07'),
-(432, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:49:12', '2020-05-24 10:49:12'),
-(433, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:49:17', '2020-05-24 10:49:17'),
-(434, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:49:22', '2020-05-24 10:49:22'),
-(435, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:49:28', '2020-05-24 10:49:28'),
-(436, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:49:33', '2020-05-24 10:49:33'),
-(437, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:49:38', '2020-05-24 10:49:38'),
-(438, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:49:43', '2020-05-24 10:49:43'),
-(439, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:49:48', '2020-05-24 10:49:48'),
-(440, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:49:53', '2020-05-24 10:49:53'),
-(441, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:49:58', '2020-05-24 10:49:58'),
-(442, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:50:03', '2020-05-24 10:50:03'),
-(443, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:50:09', '2020-05-24 10:50:09'),
-(444, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:50:14', '2020-05-24 10:50:14'),
-(445, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:50:19', '2020-05-24 10:50:19'),
-(446, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:50:24', '2020-05-24 10:50:24'),
-(447, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:50:29', '2020-05-24 10:50:29'),
-(448, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:50:34', '2020-05-24 10:50:34'),
-(449, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:50:39', '2020-05-24 10:50:39'),
-(450, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:50:44', '2020-05-24 10:50:44'),
-(451, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:50:50', '2020-05-24 10:50:50'),
-(452, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:50:55', '2020-05-24 10:50:55'),
-(453, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:51:00', '2020-05-24 10:51:00'),
-(454, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:51:05', '2020-05-24 10:51:05'),
-(455, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:51:10', '2020-05-24 10:51:10'),
-(456, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:51:15', '2020-05-24 10:51:15'),
-(457, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:51:20', '2020-05-24 10:51:20'),
-(458, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:51:25', '2020-05-24 10:51:25'),
-(459, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:51:31', '2020-05-24 10:51:31'),
-(460, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:51:36', '2020-05-24 10:51:36'),
-(461, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:51:41', '2020-05-24 10:51:41'),
-(462, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:51:46', '2020-05-24 10:51:46'),
-(463, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:51:51', '2020-05-24 10:51:51'),
-(464, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:51:56', '2020-05-24 10:51:56'),
-(465, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:52:01', '2020-05-24 10:52:01'),
-(466, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:52:06', '2020-05-24 10:52:06'),
-(467, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:52:11', '2020-05-24 10:52:11'),
-(468, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:52:17', '2020-05-24 10:52:17'),
-(469, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:52:22', '2020-05-24 10:52:22'),
-(470, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:52:27', '2020-05-24 10:52:27'),
-(471, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:52:32', '2020-05-24 10:52:32'),
-(472, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:52:37', '2020-05-24 10:52:37'),
-(473, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:52:42', '2020-05-24 10:52:42'),
-(474, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:52:48', '2020-05-24 10:52:48'),
-(475, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:52:53', '2020-05-24 10:52:53'),
-(476, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:52:58', '2020-05-24 10:52:58'),
-(477, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:53:03', '2020-05-24 10:53:03'),
-(478, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:53:08', '2020-05-24 10:53:08'),
-(479, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:53:13', '2020-05-24 10:53:13'),
-(480, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:53:18', '2020-05-24 10:53:18'),
-(481, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:53:23', '2020-05-24 10:53:23'),
-(482, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:53:29', '2020-05-24 10:53:29'),
-(483, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:53:34', '2020-05-24 10:53:34'),
-(484, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:53:39', '2020-05-24 10:53:39'),
-(485, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:53:44', '2020-05-24 10:53:44'),
-(486, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:53:49', '2020-05-24 10:53:49'),
-(487, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:53:54', '2020-05-24 10:53:54'),
-(488, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:53:59', '2020-05-24 10:53:59'),
-(489, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:54:05', '2020-05-24 10:54:05'),
-(490, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:54:10', '2020-05-24 10:54:10'),
-(491, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:54:15', '2020-05-24 10:54:15'),
-(492, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:54:20', '2020-05-24 10:54:20'),
-(493, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:54:25', '2020-05-24 10:54:25'),
-(494, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:54:30', '2020-05-24 10:54:30'),
-(495, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:54:35', '2020-05-24 10:54:35'),
-(496, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:54:40', '2020-05-24 10:54:40'),
-(497, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:54:45', '2020-05-24 10:54:45'),
-(498, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:54:51', '2020-05-24 10:54:51'),
-(499, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:54:56', '2020-05-24 10:54:56'),
-(500, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:55:01', '2020-05-24 10:55:01'),
-(501, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:55:06', '2020-05-24 10:55:06'),
-(502, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:55:11', '2020-05-24 10:55:11'),
-(503, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:55:16', '2020-05-24 10:55:16'),
-(504, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:55:21', '2020-05-24 10:55:21'),
-(505, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:55:26', '2020-05-24 10:55:26'),
-(506, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:55:32', '2020-05-24 10:55:32'),
-(507, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:55:37', '2020-05-24 10:55:37'),
-(508, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:55:42', '2020-05-24 10:55:42'),
-(509, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:55:47', '2020-05-24 10:55:47'),
-(510, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:55:52', '2020-05-24 10:55:52'),
-(511, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:55:57', '2020-05-24 10:55:57'),
-(512, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:56:02', '2020-05-24 10:56:02'),
-(513, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:56:08', '2020-05-24 10:56:08'),
-(514, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:56:13', '2020-05-24 10:56:13'),
-(515, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:56:18', '2020-05-24 10:56:18'),
-(516, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:56:23', '2020-05-24 10:56:23'),
-(517, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:56:28', '2020-05-24 10:56:28'),
-(518, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:56:33', '2020-05-24 10:56:33'),
-(519, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:56:38', '2020-05-24 10:56:38'),
-(520, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:56:44', '2020-05-24 10:56:44'),
-(521, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:56:49', '2020-05-24 10:56:49'),
-(522, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:56:54', '2020-05-24 10:56:54'),
-(523, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:56:59', '2020-05-24 10:56:59'),
-(524, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:57:04', '2020-05-24 10:57:04'),
-(525, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:57:09', '2020-05-24 10:57:09'),
-(526, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:57:14', '2020-05-24 10:57:14'),
-(527, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:57:19', '2020-05-24 10:57:19'),
-(528, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:57:25', '2020-05-24 10:57:25'),
-(529, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:57:30', '2020-05-24 10:57:30'),
-(530, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:57:35', '2020-05-24 10:57:35'),
-(531, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:57:40', '2020-05-24 10:57:40'),
-(532, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:57:45', '2020-05-24 10:57:45'),
-(533, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:57:50', '2020-05-24 10:57:50'),
-(534, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:57:56', '2020-05-24 10:57:56'),
-(535, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:58:01', '2020-05-24 10:58:01'),
-(536, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:58:06', '2020-05-24 10:58:06'),
-(537, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:58:11', '2020-05-24 10:58:11'),
-(538, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:58:16', '2020-05-24 10:58:16'),
-(539, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:58:21', '2020-05-24 10:58:21'),
-(540, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:58:26', '2020-05-24 10:58:26'),
-(541, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:58:31', '2020-05-24 10:58:31'),
-(542, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:58:37', '2020-05-24 10:58:37'),
-(543, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:58:42', '2020-05-24 10:58:42'),
-(544, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:58:47', '2020-05-24 10:58:47'),
-(545, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:58:52', '2020-05-24 10:58:52'),
-(546, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:58:57', '2020-05-24 10:58:57'),
-(547, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:59:03', '2020-05-24 10:59:03'),
-(548, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:59:08', '2020-05-24 10:59:08'),
-(549, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:59:13', '2020-05-24 10:59:13'),
-(550, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:59:18', '2020-05-24 10:59:18'),
-(551, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:59:23', '2020-05-24 10:59:23'),
-(552, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:59:29', '2020-05-24 10:59:29'),
-(553, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:59:34', '2020-05-24 10:59:34'),
-(554, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:59:39', '2020-05-24 10:59:39'),
-(555, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:59:44', '2020-05-24 10:59:44'),
-(556, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:59:49', '2020-05-24 10:59:49');
-INSERT INTO `log_activity` (`id`, `user_id`, `url`, `from_url`, `action`, `kelas_id`, `materi_id`, `created_at`, `updated_at`) VALUES
-(557, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:59:54', '2020-05-24 10:59:54'),
-(558, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 10:59:59', '2020-05-24 10:59:59'),
-(559, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 11:00:05', '2020-05-24 11:00:05'),
-(560, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 11:00:10', '2020-05-24 11:00:10'),
-(561, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 11:00:15', '2020-05-24 11:00:15'),
-(562, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 11:00:20', '2020-05-24 11:00:20'),
-(563, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 11:00:26', '2020-05-24 11:00:26'),
-(564, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 11:00:31', '2020-05-24 11:00:31'),
-(565, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 11:00:36', '2020-05-24 11:00:36'),
-(566, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 11:00:41', '2020-05-24 11:00:41'),
-(567, 6, 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D/check', 'http://localhost/relact/siswa/soal/QzRHcHpsLjY%3D', 'GET', 1, 1, '2020-05-24 11:00:52', '2020-05-24 11:00:52');
 
 -- --------------------------------------------------------
 
@@ -720,22 +153,6 @@ CREATE TABLE `log_answer` (
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `log_answer`
---
-
-INSERT INTO `log_answer` (`id`, `user_id`, `soal_id`, `pilihan_soal_id`, `created_at`, `updated_at`) VALUES
-(1, 6, 9, 42, '2020-05-24 10:19:05', '2020-05-24 10:19:05'),
-(2, 6, 4, 18, '2020-05-24 10:19:25', '2020-05-24 10:19:25'),
-(3, 6, 3, 11, '2020-05-24 10:19:51', '2020-05-24 10:19:51'),
-(4, 6, 5, 23, '2020-05-24 10:20:06', '2020-05-24 10:20:06'),
-(5, 6, 1, 3, '2020-05-24 10:20:31', '2020-05-24 10:20:31'),
-(6, 6, 10, 47, '2020-05-24 10:20:42', '2020-05-24 10:20:52'),
-(7, 6, 8, 37, '2020-05-24 10:21:48', '2020-05-24 10:22:18'),
-(8, 6, 7, 32, '2020-05-24 10:22:54', '2020-05-24 10:22:54'),
-(9, 6, 2, 10, '2020-05-24 10:23:09', '2020-05-24 10:23:09'),
-(10, 6, 6, 27, '2020-05-24 10:23:45', '2020-05-24 10:23:45');
-
 -- --------------------------------------------------------
 
 --
@@ -747,34 +164,9 @@ CREATE TABLE `log_answer_essay` (
   `user_id` int(11) NOT NULL,
   `soal_id` int(11) NOT NULL,
   `jawaban` text NOT NULL,
+  `nilai` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `log_answer_essay`
---
-
-INSERT INTO `log_answer_essay` (`id`, `user_id`, `soal_id`, `jawaban`, `created_at`, `updated_at`) VALUES
-(1, 6, 15, 'ghgjghjgjh', '2020-05-24 10:24:00', '2020-05-24 10:26:54'),
-(2, 6, 14, 'ghjhgjj', '2020-05-24 10:24:05', '2020-05-24 10:27:04'),
-(3, 6, 16, 'ini jawaban ', '2020-05-24 10:24:26', '2020-05-24 10:24:26'),
-(4, 6, 11, 'ini jawaban ', '2020-05-24 10:24:31', '2020-05-24 10:24:31'),
-(5, 6, 13, 'ini jawaban ', '2020-05-24 10:24:34', '2020-05-24 10:24:34');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `log_on_evaluasi`
---
-
-CREATE TABLE `log_on_evaluasi` (
-  `id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `materi_id` int(11) NOT NULL,
-  `length` int(11) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -832,7 +224,7 @@ INSERT INTO `materi` (`id`, `kode`, `kelas_id`, `judul`, `konten`, `status`, `ta
 CREATE TABLE `nilai` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `materi_kode` varchar(191) NOT NULL,
+  `materi_id` int(11) NOT NULL,
   `skor` int(11) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
@@ -1013,7 +405,12 @@ INSERT INTO `users` (`id`, `username`, `email`, `password`, `role_id`) VALUES
 (3, 'siswa', 'siswa@siswa.com', '202cb962ac59075b964b07152d234b70', 2),
 (4, 'guru', 'guru@gmail.com', '77e69c137812518e359196bb2f5e9bb9', 1),
 (5, 'fuu', 'fuu@f.com', '202cb962ac59075b964b07152d234b70', 1),
-(6, 'siswa1', 'siswa1@gmail.com', '013f0f67779f3b1686c604db150d12ea', 2);
+(6, 'siswa1', 'siswa1@gmail.com', '013f0f67779f3b1686c604db150d12ea', 2),
+(7, 'siswa2', 'siswa2@gmail.com', '331633a246a4e1ceefc9539a71fcd124', 2),
+(8, 'siswa3', 'siswa3@gmail.com', 'df8e1ec27c47f2b8223d984f87aa571e', 2),
+(9, 'siswa4', 'siswa4@gmail.com', 'be92aac38633896eb7b6781816b17c37', 2),
+(10, 'siswa5', 'siswa5@gmail.com', '829e85a9946f9d4621e7e8f544fefd54', 2),
+(11, 'siswa6', 'siswa6@gmail.com', '1061ecee1b8274545fb8c1a3da9c62ff', 2);
 
 -- --------------------------------------------------------
 
@@ -1033,7 +430,12 @@ CREATE TABLE `user_kelas` (
 
 INSERT INTO `user_kelas` (`id`, `kelas_id`, `siswa_id`) VALUES
 (1, 1, 3),
-(2, 1, 6);
+(2, 1, 6),
+(3, 1, 7),
+(4, 1, 8),
+(5, 1, 9),
+(6, 1, 10),
+(7, 1, 11);
 
 --
 -- Indexes for dumped tables
@@ -1096,14 +498,6 @@ ALTER TABLE `log_answer_essay`
   ADD KEY `log_answer_essay_ibfk_2` (`user_id`);
 
 --
--- Indexes for table `log_on_evaluasi`
---
-ALTER TABLE `log_on_evaluasi`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `user_id` (`user_id`),
-  ADD KEY `materi_id` (`materi_id`);
-
---
 -- Indexes for table `mata_pelajaran`
 --
 ALTER TABLE `mata_pelajaran`
@@ -1123,7 +517,7 @@ ALTER TABLE `materi`
 ALTER TABLE `nilai`
   ADD PRIMARY KEY (`id`),
   ADD KEY `user_id` (`user_id`),
-  ADD KEY `materi_kode` (`materi_kode`);
+  ADD KEY `materi_id` (`materi_id`);
 
 --
 -- Indexes for table `pilihan_soal`
@@ -1177,7 +571,7 @@ ALTER TABLE `user_kelas`
 -- AUTO_INCREMENT for table `detail_user`
 --
 ALTER TABLE `detail_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `kelas`
@@ -1195,24 +589,18 @@ ALTER TABLE `kunci_soal`
 -- AUTO_INCREMENT for table `log_activity`
 --
 ALTER TABLE `log_activity`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=568;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `log_answer`
 --
 ALTER TABLE `log_answer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `log_answer_essay`
 --
 ALTER TABLE `log_answer_essay`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT for table `log_on_evaluasi`
---
-ALTER TABLE `log_on_evaluasi`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
@@ -1261,13 +649,13 @@ ALTER TABLE `soal`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `user_kelas`
 --
 ALTER TABLE `user_kelas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Constraints for dumped tables
@@ -1318,13 +706,6 @@ ALTER TABLE `log_answer_essay`
   ADD CONSTRAINT `log_answer_essay_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON UPDATE CASCADE;
 
 --
--- Constraints for table `log_on_evaluasi`
---
-ALTER TABLE `log_on_evaluasi`
-  ADD CONSTRAINT `log_on_evaluasi_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
-  ADD CONSTRAINT `log_on_evaluasi_ibfk_2` FOREIGN KEY (`materi_id`) REFERENCES `materi` (`id`);
-
---
 -- Constraints for table `materi`
 --
 ALTER TABLE `materi`
@@ -1335,7 +716,7 @@ ALTER TABLE `materi`
 --
 ALTER TABLE `nilai`
   ADD CONSTRAINT `nilai_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
-  ADD CONSTRAINT `nilai_ibfk_2` FOREIGN KEY (`materi_kode`) REFERENCES `materi` (`kode`);
+  ADD CONSTRAINT `nilai_ibfk_2` FOREIGN KEY (`materi_id`) REFERENCES `materi` (`id`);
 
 --
 -- Constraints for table `pilihan_soal`
