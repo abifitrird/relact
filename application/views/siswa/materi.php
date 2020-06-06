@@ -27,28 +27,6 @@
           <p><?php echo $data['konten'] ?></p>
         </div>
       </div>
-
-      <div class="modal fade" id="kerjakanSoal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="staticBackdropLabel">Mengerjakan Soal</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <h6>Apa anda yakin sudah siap mengerjakan soal?</h6>
-            </div>
-            <div class="modal-footer">
-              <form action="<?php echo site_url('siswa/soal/' . urlencode(base64_encode($this->uri->segment(5) . '.' . $this->session->userdata('user_id')))) ?>" method="POST">
-                <button type="submit" class="btn btn-primary">Yakin</button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 

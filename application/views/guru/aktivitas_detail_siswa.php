@@ -24,11 +24,11 @@
                 <table>
                     <tr>
                         <th>Nama</th>
-                        <td>:&nbsp;<?php echo isset($data[0]['nama']) ? $data[0]['nama'] : "Belum diisi" ?></td>
+                        <td>:&nbsp;<?php echo isset($user['nama']) ? $user['nama'] : "Belum diisi" ?></td>
                     </tr>
                     <tr>
                         <th>NIS</th>
-                        <td>:&nbsp;<?php echo isset($data[0]['nis']) ? $data[0]['nis'] : "Belum diisi"  ?></td>
+                        <td>:&nbsp;<?php echo isset($user['nis']) ? $user['nis'] : "Belum diisi"  ?></td>
                     </tr>
                 </table>
 
@@ -36,10 +36,11 @@
                     <thead>
                         <tr>
                             <th>No.</th>
-                            <th>url</th>
-                            <th>Judul Materi</th>
-                            <th>Soal</th>
-                            <th>Waktu Akses</th>
+                            <th>Materi</th>
+                            <th>Submateri</th>
+                            <th>Jam mulai</th>
+                            <th>Jam akhir</th>
+                            <th>Durasi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -47,10 +48,11 @@
                         foreach ($data as $dat) { ?>
                             <tr>
                                 <th><?php echo $i ?></th>
-                                <td><?php echo $dat['url'] ?></td>
-                                <td><?php echo $dat['judul_materi'] ?></td>
-                                <td><?php echo $dat['is_soal'] ? "Ya" : "Tidak" ?></td>
-                                <td><?php echo $dat['waktu_akses'] ?></td>
+                                <td><?php echo $dat['materi'] ?></td>
+                                <td><?php echo isset($dat['submateri']) ? $dat['submateri'] : '<span class="text-muted">-</span>' ?></td>
+                                <td><?php echo $dat['mulai'] ?></td>
+                                <td><?php echo $dat['akhir'] ?></td>
+                                <td><?php echo $dat['durasi'] ?></td>
                             </tr>
                         <?php $i++;
                         } ?>
