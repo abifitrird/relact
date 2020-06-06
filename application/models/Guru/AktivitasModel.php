@@ -45,11 +45,11 @@ ORDER BY `created_at` DESC")->result_array();
     {
         return $this->db->query("SELECT (SELECT materi.judul FROM materi WHERE materi.id = sub_materi.materi_id) as judul_materi,
 sub_materi.judul as judul_submateri,
-(SELECT created_at FROM log_activity WHERE user_id = $user_id AND materi_id = (SELECT materi_id FROM sub_materi WHERE sub_materi.materi_id = materi_id) AND sub_materi_id = sub_materi.id AND is_soal IS NULL ORDER BY created_at ASC LIMIT 1) as mulai,
-(SELECT created_at FROM log_activity WHERE user_id = $user_id AND materi_id = (SELECT materi_id FROM sub_materi WHERE sub_materi.materi_id = materi_id) AND sub_materi_id = sub_materi.id AND is_soal IS NULL ORDER BY created_at DESC LIMIT 1) as akhir,
-TIMEDIFF((SELECT created_at FROM log_activity WHERE user_id = $user_id AND materi_id = (SELECT materi_id FROM sub_materi WHERE sub_materi.materi_id = materi_id) AND sub_materi_id = sub_materi.id AND is_soal IS NULL ORDER BY created_at DESC LIMIT 1), (SELECT created_at FROM log_activity WHERE user_id = $user_id AND materi_id = (SELECT materi_id FROM sub_materi WHERE sub_materi.materi_id = materi_id) AND sub_materi_id = sub_materi.id AND is_soal IS NULL ORDER BY created_at ASC LIMIT 1)) as durasi
+(SELECT created_at FROM log_activity WHERE user_id = $user_id AND materi_id = (SELECT materi_id FROM sub_materi WHERE sub_materi.materi_id = materi_id LIMIT 1) AND sub_materi_id = sub_materi.id AND is_soal IS NULL ORDER BY created_at ASC LIMIT 1) as mulai,
+(SELECT created_at FROM log_activity WHERE user_id = $user_id AND materi_id = (SELECT materi_id FROM sub_materi WHERE sub_materi.materi_id = materi_id LIMIT 1) AND sub_materi_id = sub_materi.id AND is_soal IS NULL ORDER BY created_at DESC LIMIT 1) as akhir,
+TIMEDIFF((SELECT created_at FROM log_activity WHERE user_id = $user_id AND materi_id = (SELECT materi_id FROM sub_materi WHERE sub_materi.materi_id = materi_id LIMIT 1) AND sub_materi_id = sub_materi.id AND is_soal IS NULL ORDER BY created_at DESC LIMIT 1), (SELECT created_at FROM log_activity WHERE user_id = $user_id AND materi_id = (SELECT materi_id FROM sub_materi WHERE sub_materi.materi_id = materi_id LIMIT 1) AND sub_materi_id = sub_materi.id AND is_soal IS NULL ORDER BY created_at ASC LIMIT 1)) as durasi
 FROM sub_materi
-WHERE materi_id = (SELECT id FROM materi WHERE materi.kelas_id = (SELECT id FROM kelas WHERE kelas.code = '$kelas_kode' LIMIT 1))
+WHERE materi_id = (SELECT id FROM materi WHERE materi.kelas_id = (SELECT id FROM kelas WHERE kelas.code = '$kelas_kode') LIMIT 1)
 ORDER BY `created_at` DESC")->result_array();
     }
 
