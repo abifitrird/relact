@@ -20,7 +20,10 @@
                         <a class="btn btn-success" href="<?php echo base_url('guru/kelas/' . $this->uri->segment(3) . '/materi/' . $this->uri->segment(5) . '/soal') ?>" role="button">Lihat Soal</a>
                     </li>
                     <li class="mr-2">
-                        <a class="btn btn-secondary" href="<?php echo site_url('guru/kelas/' . $this->uri->segment(3) . '/materi/' . $this->uri->segment(5) . '/tambah') ?>">Tambah Submateri</a>
+                        <a class="btn btn-primary" href="<?php echo site_url('guru/kelas/' . $this->uri->segment(3) . '/materi/' . $this->uri->segment(5) . '/tambah') ?>">Tambah Submateri</a>
+                    </li>
+                    <li class="mr-2">
+                        <a type="button" class="btn btn-secondary text-white" data-toggle="modal" data-target="#ubahMateri">Ubah Materi</a>
                     </li>
                     <li class="mr-2">
                         <a type="button" class="btn btn-danger text-white" data-toggle="modal" data-target="#deleteMateri">Hapus Materi</a>

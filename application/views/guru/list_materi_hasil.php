@@ -14,27 +14,34 @@
     <script src="<?php echo base_url('assets/js/bootstrap.min.js') ?>"></script>
 </head>
 
-<?php include("header.php") ?>
-<div class="container-fluid">
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th scope="col">No.</th>
-                <th scope="col">Judul Materi</th>
-                <th scope="col">Kode Materi</th>
-                <th class="text-right" scope="col">Lihat Hasil Siswa</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php $i = 1;
-            foreach ($data as $dat) { ?>
-                <tr>
-                    <th><?php echo $i ?></th>
-                    <td><?php echo $dat['judul'] ?></td>
-                    <td><?php echo $dat['kode'] ?></td>
-                    <td class="text-right"><a class="btn btn-primary" type="button" href="<?php echo site_url('guru/hasil/' . $this->uri->segment(3) . '/materi/' . $dat['kode']) ?>">Lihat Siswa</a></td>
-                </tr>
-            <?php } ?>
-        </tbody>
-    </table>
-</div>
+<body>
+    <div class="d-flex" id="wrapper">
+        <?php include('sidebar.php') ?>
+        <div id="page-content-wrapper">
+            <?php include('navbar.php') ?>
+            <div class="container-fluid">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">No.</th>
+                            <th scope="col">Judul Materi</th>
+                            <th scope="col">Kode Materi</th>
+                            <th class="text-right" scope="col">Lihat Hasil Siswa</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php $i = 1;
+                        foreach ($data as $dat) { ?>
+                            <tr>
+                                <th><?php echo $i ?></th>
+                                <td><?php echo $dat['judul'] ?></td>
+                                <td><?php echo $dat['kode'] ?></td>
+                                <td class="text-right"><a class="btn btn-primary" type="button" href="<?php echo site_url('guru/hasil/' . $this->uri->segment(3) . '/materi/' . $dat['kode']) ?>">Lihat Siswa</a></td>
+                            </tr>
+                        <?php } ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>

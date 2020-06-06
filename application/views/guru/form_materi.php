@@ -25,6 +25,7 @@
                     <div class="form-group">
                         <label for="summernote">Konten</label>
                         <textarea class="summernote form-control" id="summernote" name="konten"></textarea>
+                        <input type="hidden" id="kontenPhp" value="<?php echo isset($konten) ? $konten : '' ?>">
                     </div>
             </div>
             <div class="col-12 col-md-8">
@@ -52,7 +53,7 @@
                     }
                 }
             })
-            let konten = "<?php echo isset($konten) ? $konten : '' ?>";
+            let konten = $("#kontenPhp").val();
             if (konten) {
                 $('#summernote').summernote('code', konten);
             }

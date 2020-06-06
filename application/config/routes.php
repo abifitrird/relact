@@ -86,7 +86,7 @@ $route['guru/kelas/(:any)/materi/(:any)/sub/(:num)']['get'] = "Teacher/Materi/sh
 $route['guru/kelas/(:any)/materi/(:any)/sub/(:num)/ubah']['get'] = "Teacher/Materi/viewUbahSub/$2/$3";
 $route['guru/kelas/(:any)/materi/(:any)/sub/(:num)/ubah']['post'] = "Teacher/Materi/saveUbahSub/$1/$2/$3";
 
-$route['guru/kelas/(:any)/materi/ubah/(:any)']['post'] = "Teacher/Materi/ubahMateri/$1/$2"; // save mteri by kelas id
+$route['guru/kelas/(:any)/materi/(:any)/ubah']['post'] = "Teacher/Materi/ubahMateri/$1/$2"; // save mteri by kelas id
 $route['api/materi/delete/(:any)']['get'] = "Teacher/materi/deleteMateriAPI/$1";    // delete materi
 $route['api/materi/sub/delete/(:any)/(:num)']['get'] = "Teacher/materi/deleteSubMateriAPI/$1/$2";    // delete materi
 $route['api/materi/(:any)']['get'] = "Teacher/Materi/showMateriAPI/$1"; // view materi by id

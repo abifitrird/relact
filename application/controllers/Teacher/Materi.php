@@ -37,7 +37,7 @@ class Materi extends Base
 		$data = array(
 			'kode' => $materi_kode,
 			'judul' => $this->input->post('judul'),
-			'konten' => $this->input->post('konten'),
+			'deskripsi' => $this->input->post('deskripsi'),
 		);
 
 		if (!$this->KelasModel->ubahMateri($data)) {
@@ -55,6 +55,7 @@ class Materi extends Base
 
 	public function showSubMateri($materi_kode)
 	{
+		$data['materi'] = $this->KelasModel->getMateriByKode($materi_kode);
 		$data['data'] = $this->KelasModel->getSubmateriByKode($materi_kode);
 		$this->load->view('guru/list_submateri', $data);
 	}
