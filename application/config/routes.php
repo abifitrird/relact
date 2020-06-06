@@ -53,6 +53,9 @@ $route['default_controller'] = 'Home';
 $route['404_override'] = 'Home/page404';
 $route['translate_uri_dashes'] = FALSE;
 
+/* other */
+$route['faq']['get'] = "Home/faq";
+
 /* authentification */
 $route['login']['get'] = "Login/index";             // view login
 $route['login']['post'] = "Login/aksi_login";       // proses login
