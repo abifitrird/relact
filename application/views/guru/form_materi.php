@@ -25,7 +25,7 @@
                     <div class="form-group">
                         <label for="summernote">Konten</label>
                         <textarea class="summernote form-control" id="summernote" name="konten"></textarea>
-                        <input type="hidden" id="kontenPhp" value="<?php echo isset($konten) ? $konten : '' ?>">
+                        <input type="hidden" id="mode" value="<?php echo $mode ?>">
                     </div>
             </div>
             <div class="col-12 col-md-8">
@@ -52,10 +52,15 @@
                         }
                     }
                 }
-            })
-            let konten = $("#kontenPhp").val();
-            if (konten) {
-                $('#summernote').summernote('code', konten);
+            });
+
+            const mode = $("#mode").val();
+            if (mode == "ubah") {
+                fetch("<?php echo site_url('api/sub/materi/' . $this->uri->segment(5) . '/' . $this->uri->segment(7)) ?>")
+                    .then(response => response.json())
+                    .then(data => {
+                        $('#summernote').val($('#summernote').summernote('code', data.konten));
+                    })
             }
 
 

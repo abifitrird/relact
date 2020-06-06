@@ -90,6 +90,7 @@ $route['guru/kelas/(:any)/materi/(:any)/ubah']['post'] = "Teacher/Materi/ubahMat
 $route['api/materi/delete/(:any)']['get'] = "Teacher/materi/deleteMateriAPI/$1";    // delete materi
 $route['api/materi/sub/delete/(:any)/(:num)']['get'] = "Teacher/materi/deleteSubMateriAPI/$1/$2";    // delete materi
 $route['api/materi/(:any)']['get'] = "Teacher/Materi/showMateriAPI/$1"; // view materi by id
+$route['api/sub/materi/(:any)/(:num)']['get'] = "Teacher/Materi/showSubMateriAPI/$1/$2"; // view materi by id
 $route['guru/kelas/(:any)/materi/(:any)/soal']['get'] = "Teacher/Soal/getSoal/$2"; // view soal by materi id
 $route['guru/kelas/(:any)/materi/(:any)/soal']['post'] = "Teacher/Soal/addSoal/$2"; // add soal by materi kode
 $route['guru/kelas/(:any)/tambah_materi']['get'] = "Teacher/Materi/viewAddMateri";
