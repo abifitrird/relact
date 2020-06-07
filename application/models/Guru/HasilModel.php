@@ -10,11 +10,12 @@ class HasilModel extends CI_Model
     public function getNilaiSiswaByMateri($materi_kode)
     {
         return $this->db
-            ->query("SELECT 
+            ->query("SELECT id,
         user_id, 
         (SELECT detail_user.nomor_induk FROM detail_user WHERE nilai.user_id = detail_user.user_id) as nis, 
         (SELECT detail_user.nama_lengkap FROM detail_user WHERE detail_user.user_id = nilai.user_id) as nama, 
-        ROUND((skor / (SELECT SUM(bobot) FROM soal WHERE soal.materi_kode = '$materi_kode'))*100, 2) as skor 
+        ROUND((skor / (SELECT SUM(bobot) FROM soal WHERE soal.materi_kode = '$materi_kode'))*100, 2) as skor,
+        nilai
         FROM `nilai` 
         WHERE nilai.materi_id = (SELECT materi.id FROM materi WHERE materi.kode =  '$materi_kode')")
             ->result_array();
@@ -46,5 +47,15 @@ class HasilModel extends CI_Model
         $materi_id = $this->db->query("SELECT materi.id FROM materi WHERE materi.kode = (SELECT materi_kode FROM soal WHERE soal.id = $soal_id)")->row_array()['id'];
         $skor = $this->db->where('user_id', $user_id)->where('materi_id', $materi_id)->get('nilai')->row_array()['skor'];
         $this->db->where('user_id', $user_id)->where('materi_id', $materi_id)->update('nilai', ['skor' => $skor + $nilai]);
+    }
+
+    public function fixNilai($nilai, $id, $user_id)
+    {
+        $this->db->where('id', $id)->update('nilai', ['nilai' => $nilai]);
+        if ($this->db->affected_rows() == 0) {
+            return false;
+        }
+
+        return true;
     }
 }

@@ -115,6 +115,7 @@ $route['guru/hasil/(:any)/materi/(:any)']['get'] = "Teacher/Hasil/viewHasilPerMa
 $route['guru/hasil/(:any)/materi/(:any)/PG/(:num)']['get'] = "Teacher/Hasil/viewJawabanSiswa/PG/$3/$2";
 $route['guru/hasil/(:any)/materi/(:any)/Esai/(:num)']['get'] = "Teacher/Hasil/viewJawabanSiswa/Esai/$3/$2";
 $route['api/simpan_nilai_esai/(:num)']['post'] = "Teacher/Hasil/postNilaiSiswa/$1";
+$route['guru/hasil/fix/(:num)']['post'] = "Teacher/Hasil/fixNilai/$1";
 
 /* route guru/capaian */
 $route['guru/capaian']['get'] = "Teacher/Capaian/capaianSiswa";

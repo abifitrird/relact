@@ -47,4 +47,13 @@ class Hasil extends Base
         $this->Hasil->saveNilai($nilai, $id, $user_id);
         redirect($_SERVER['HTTP_REFERER']);
     }
+
+    public function fixNilai($user_id)
+    {
+        $nilai = $this->input->post('nilai');
+        $id = $this->input->post('id');
+
+        $this->Hasil->fixNilai($nilai, $id, $user_id);
+        redirect($_SERVER['HTTP_REFERER']);
+    }
 }

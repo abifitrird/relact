@@ -28,6 +28,7 @@
                             <th scope="col">Nama</th>
                             <th scope="col">Skor</th>
                             <th scope="col">Hasil</th>
+                            <th scope="col">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -38,13 +39,45 @@
                                 <td><?php echo $dat['nis'] ?></td>
                                 <td><?php echo $dat['nama'] ?></td>
                                 <td><?php echo $dat['skor'] ?></td>
-                                <td><a class="btn btn-primary" type="button" href="<?php echo site_url('guru/hasil/' . $this->uri->segment(3) . '/materi/' . $this->uri->segment(5) . '/PG/' . $dat['user_id']) ?>">Pilihan Ganda</a>&nbsp;
-                                    <a class="btn btn-primary" type="button" href="<?php echo site_url('guru/hasil/' . $this->uri->segment(3) . '/materi/' . $this->uri->segment(5) . '/Esai/' . $dat['user_id']) ?>">Esai</a></td>
+                                <td><a class="btn btn-primary <?php echo isset($dat['nilai']) ? "disabled" : '' ?>" type="button" href="<?php echo  site_url('guru/hasil/' . $this->uri->segment(3) . '/materi/' . $this->uri->segment(5) . '/PG/' . $dat['user_id']) ?>">Pilihan Ganda</a>&nbsp;
+                                    <a class="btn btn-primary <?php echo isset($dat['nilai']) ? "disabled" : '' ?>" type="button" href="<?php echo  site_url('guru/hasil/' . $this->uri->segment(3) . '/materi/' . $this->uri->segment(5) . '/Esai/' . $dat['user_id']) ?>">Esai</a></td>
+                                <td>
+                                    <form action="<?php echo  site_url('guru/hasil/fix/' . $dat['user_id']) ?>" method="<?php echo  'POST' ?>">
+                                        <?php if (!isset($dat['nilai'])) { ?>
+                                            <input type="hidden" class="d-none" name="nilai" value="<?php echo $dat['skor'] ?>">
+                                            <input type="hidden" class="d-none" name="id" value="<?php echo $dat['id'] ?>">
+                                        <?php } ?>
+                                        <button type="submit" class="btn btn-danger" <?php echo isset($dat['nilai']) ? "disabled" : '' ?>>Simpan</button>
+                                    </form>
+
+                                </td>
                             </tr>
                         <?php $i++;
                         } ?>
                     </tbody>
                 </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="fixNilai" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Fix Nilai</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h6>Anda yakin akan fix nilai siswa ini?</h6>
+                    <small>Setelah nilai di fix, anda tidak bisa mengubah kembali nilai esai !</small>
+                </div>
+                <div class="modal-footer">
+
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
