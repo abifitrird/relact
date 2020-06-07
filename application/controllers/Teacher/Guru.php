@@ -7,6 +7,7 @@ class Guru extends Base
 {
 	public function index()
 	{
-		$this->load->view('guru/beranda');
+		redirect(site_url('guru/kelas'));
+		// $this->load->view('guru/beranda');
 	}
 }
