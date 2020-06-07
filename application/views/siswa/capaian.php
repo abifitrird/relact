@@ -28,12 +28,13 @@
                 <div class="px-2 pt-3 col-12 rounded-top text-white bg-dark">
                   <h4><?php echo $dat['mata_pelajaran'] ?></h4>
                   <h5>
-                    <?php echo $dat['judul_materi'] ?>
+                    Materi <?php echo $dat['judul_materi'] ?>
                   </h5>
                 </div>
                 <div class="col-12 px-2 py-3">
                   <p class="px-2 py-1">
-                    Selamat!, Anda telah menyelesaikan materi ini pada tanggal: <br />
+                    Anda telah menyelesaikan materi <strong><?php echo $dat['judul_materi'] ?></strong><br />
+                    pada tanggal: <br />
                     <code><?php echo date_format(date_create($dat['created_at']), "d-m-Y H:i") ?></code>
                   </p>
                 </div>
@@ -46,12 +47,13 @@
                 <div class="px-2 pt-3 col-12 rounded-top text-white bg-dark">
                   <h4><?php echo $dat['mata_pelajaran'] ?></h4>
                   <h5>
-                    <?php echo $dat['judul_materi'] ?>
+                    Soal <?php echo $dat['judul_materi'] ?>
                   </h5>
                 </div>
                 <div class="col-12 px-2 py-3">
                   <p class="px-2 py-1">
-                    Selamat!, Anda telah menyelesaikan soal pada materi ini pada tanggal: <br />
+                    Anda telah menyelesaikan soal <strong><?php echo $dat['judul_materi'] ?></strong> dengan skor <strong><?php echo $dat['skor'] ?></strong> <br />
+                    pada tanggal: <br />
                     <code><?php echo date_format(date_create($dat['created_at']), "d-m-Y H:i") ?></code>
                   </p>
                 </div>
