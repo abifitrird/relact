@@ -99,6 +99,6 @@ ORDER BY `created_at` DESC")->result_array();
 
     public function getDataSiswa($username)
     {
-        $this->db->query("SELECT nama_lengkap as nama, nomor_induk as nis FROM detail_user WHERE user_id = (SELECT id FROM users WHERE username = '$username' LIMIT 1)")->row_array();
+        return $this->db->query("SELECT nama_lengkap as nama, nomor_induk as nis FROM detail_user WHERE detail_user.user_id = (SELECT users.id FROM users WHERE username = '$username' LIMIT 1)")->row_array();
     }
 }
