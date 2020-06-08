@@ -6,11 +6,6 @@
         </a>
     </div>
     <div class="list-group list-group-flush">
-        <a href="<?php echo site_url("siswa") ?>" class="list-group-item list-group-item-action mb-2 bg-light">
-            <svg style="width:24px;height:24px" viewBox="0 0 24 24">
-                <path fill="currentColor" d="M12,3L20,9V21H15V14H9V21H4V9L12,3Z" /></svg>
-            Beranda
-        </a>
         <a href="<?php echo site_url("siswa/profil") ?>" class="list-group-item list-group-item-action mb-2 bg-light">
             <svg style="width:24px;height:24px" viewBox="0 0 24 24">
                 <path fill="currentColor" d="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z" /></svg>
