@@ -335,7 +335,7 @@
             body: form
         }).then(response => response.json()).then(data => {
             localStorage.clear();
-            alert("Jawaban anda sudah disimpan, skor sementara anda: " + data.skor);
+            alert("Jawaban anda sudah disimpan, skor pilihan ganda anda: " + data.skor);
             window.location.assign('/');
         });
     }

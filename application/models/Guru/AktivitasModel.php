@@ -43,16 +43,26 @@ ORDER BY `created_at` DESC")->result_array();
 
     private function getDataSubMateri($kelas_kode, $user_id)
     {
-        return $this->db->query("SELECT (SELECT materi.judul FROM materi WHERE materi.id = sub_materi.materi_id) as judul_materi,
-sub_materi.judul as judul_submateri,
-(SELECT created_at FROM log_activity WHERE user_id = $user_id AND materi_id = (SELECT materi_id FROM sub_materi WHERE sub_materi.materi_id = materi_id LIMIT 1) AND sub_materi_id = sub_materi.id AND is_soal IS NULL ORDER BY created_at ASC LIMIT 1) as mulai,
 
-(SELECT created_at FROM log_activity as log1 WHERE user_id = $user_id AND TIMEDIFF(log1.created_at, (SELECT created_at FROM log_activity as log2 WHERE user_id = $user_id AND materi_id = (SELECT materi_id FROM sub_materi WHERE sub_materi.materi_id = materi_id LIMIT 1) AND sub_materi_id = sub_materi.id AND is_soal IS NULL ORDER BY log2.created_at ASC LIMIT 1)) > 0 ORDER BY TIMEDIFF(log1.created_at, (SELECT created_at FROM log_activity as log2 WHERE user_id = $user_id AND materi_id = (SELECT materi_id FROM sub_materi WHERE sub_materi.materi_id = materi_id LIMIT 1) AND sub_materi_id = sub_materi.id AND is_soal IS NULL ORDER BY log2.created_at ASC LIMIT 1)) LIMIT 1) as akhir,
+        return $this->db->query("SELECT id, url, kelas_id, (SELECT judul FROM materi WHERE materi.id = materi_id LIMIT 1) as judul_materi, (SELECT judul FROM sub_materi WHERE sub_materi.id = sub_materi_id LIMIT 1) as judul_submateri, created_at as mulai,
+(SELECT created_at FROM log_activity as log1 WHERE log1.user_id = log_master.user_id AND TIMEDIFF(log1.created_at, log_master.created_at) > 0 ORDER BY TIMEDIFF(log1.created_at, log_master.created_at) LIMIT 1) as akhir,
+TIMEDIFF((SELECT created_at FROM log_activity as log1 WHERE log1.user_id = log_master.user_id AND TIMEDIFF(log1.created_at, log_master.created_at) > 0 ORDER BY TIMEDIFF(log1.created_at, log_master.created_at) LIMIT 1), log_master.created_at) as durasi
+FROM `log_activity` as log_master
+WHERE user_id = $user_id
+AND kelas_id = (SELECT id FROM kelas WHERE kelas.code = '$kelas_kode' LIMIT 1)
+AND sub_materi_id IS NOT NULL
+ORDER BY `created_at`  ASC")->result_array();
 
-TIMEDIFF((SELECT created_at FROM log_activity as log1 WHERE user_id = $user_id AND TIMEDIFF(log1.created_at, (SELECT created_at FROM log_activity as log2 WHERE user_id = $user_id AND materi_id = (SELECT materi_id FROM sub_materi WHERE sub_materi.materi_id = materi_id LIMIT 1) AND sub_materi_id = sub_materi.id AND is_soal IS NULL ORDER BY log2.created_at ASC LIMIT 1)) > 0 ORDER BY TIMEDIFF(log1.created_at, (SELECT created_at FROM log_activity as log2 WHERE user_id = $user_id AND materi_id = (SELECT materi_id FROM sub_materi WHERE sub_materi.materi_id = materi_id LIMIT 1) AND sub_materi_id = sub_materi.id AND is_soal IS NULL ORDER BY log2.created_at ASC LIMIT 1)) LIMIT 1), (SELECT created_at FROM log_activity WHERE user_id = $user_id AND materi_id = (SELECT materi_id FROM sub_materi WHERE sub_materi.materi_id = materi_id LIMIT 1) AND sub_materi_id = sub_materi.id AND is_soal IS NULL ORDER BY created_at ASC LIMIT 1)) as durasi
-FROM sub_materi
-WHERE materi_id = (SELECT id FROM materi WHERE materi.kelas_id = (SELECT id FROM kelas WHERE kelas.code = '$kelas_kode') LIMIT 1) AND (SELECT created_at FROM log_activity WHERE user_id = $user_id AND materi_id = (SELECT materi_id FROM sub_materi WHERE sub_materi.materi_id = materi_id LIMIT 1) AND sub_materi_id = sub_materi.id AND is_soal IS NULL ORDER BY created_at ASC LIMIT 1) IS NOT NULL
-ORDER BY `created_at` DESC")->result_array();
+        //         return $this->db->query("SELECT (SELECT materi.judul FROM materi WHERE materi.id = sub_materi.materi_id) as judul_materi,
+        // sub_materi.judul as judul_submateri,
+        // (SELECT created_at FROM log_activity WHERE user_id = $user_id AND materi_id = (SELECT materi_id FROM sub_materi WHERE sub_materi.materi_id = materi_id LIMIT 1) AND sub_materi_id = sub_materi.id AND is_soal IS NULL ORDER BY created_at ASC LIMIT 1) as mulai,
+
+        // (SELECT created_at FROM log_activity as log1 WHERE user_id = $user_id AND TIMEDIFF(log1.created_at, (SELECT created_at FROM log_activity as log2 WHERE user_id = $user_id AND materi_id = (SELECT materi_id FROM sub_materi WHERE sub_materi.materi_id = materi_id LIMIT 1) AND sub_materi_id = sub_materi.id AND is_soal IS NULL ORDER BY log2.created_at ASC LIMIT 1)) > 0 ORDER BY TIMEDIFF(log1.created_at, (SELECT created_at FROM log_activity as log2 WHERE user_id = $user_id AND materi_id = (SELECT materi_id FROM sub_materi WHERE sub_materi.materi_id = materi_id LIMIT 1) AND sub_materi_id = sub_materi.id AND is_soal IS NULL ORDER BY log2.created_at ASC LIMIT 1)) LIMIT 1) as akhir,
+
+        // TIMEDIFF((SELECT created_at FROM log_activity as log1 WHERE user_id = $user_id AND TIMEDIFF(log1.created_at, (SELECT created_at FROM log_activity as log2 WHERE user_id = $user_id AND materi_id = (SELECT materi_id FROM sub_materi WHERE sub_materi.materi_id = materi_id LIMIT 1) AND sub_materi_id = sub_materi.id AND is_soal IS NULL ORDER BY log2.created_at ASC LIMIT 1)) > 0 ORDER BY TIMEDIFF(log1.created_at, (SELECT created_at FROM log_activity as log2 WHERE user_id = $user_id AND materi_id = (SELECT materi_id FROM sub_materi WHERE sub_materi.materi_id = materi_id LIMIT 1) AND sub_materi_id = sub_materi.id AND is_soal IS NULL ORDER BY log2.created_at ASC LIMIT 1)) LIMIT 1), (SELECT created_at FROM log_activity WHERE user_id = $user_id AND materi_id = (SELECT materi_id FROM sub_materi WHERE sub_materi.materi_id = materi_id LIMIT 1) AND sub_materi_id = sub_materi.id AND is_soal IS NULL ORDER BY created_at ASC LIMIT 1)) as durasi
+        // FROM sub_materi
+        // WHERE materi_id = (SELECT id FROM materi WHERE materi.kelas_id = (SELECT id FROM kelas WHERE kelas.code = '$kelas_kode') LIMIT 1) AND (SELECT created_at FROM log_activity WHERE user_id = $user_id AND materi_id = (SELECT materi_id FROM sub_materi WHERE sub_materi.materi_id = materi_id LIMIT 1) AND sub_materi_id = sub_materi.id AND is_soal IS NULL ORDER BY created_at ASC LIMIT 1) IS NOT NULL
+        // ORDER BY `created_at` DESC")->result_array();
     }
 
     public function getDataAktivitas($kelas_kode, $username)

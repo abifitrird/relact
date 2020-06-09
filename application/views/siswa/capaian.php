@@ -35,8 +35,8 @@
                     <p class="mb-0">Selesai pada: <code><?php echo date_format(date_create($dat['created_at']), "d-m-Y") ?></code> jam <code><?php echo date_format(date_create($dat['created_at']), "H:i") ?></code> WIB</p>
                   </div>
                   <div>
-                    <code><?php echo isset($dat['skor']) ? $dat['skor'] : "-" ?></code>
-                    <small class="text-muted"><?php echo isset($dat['nilai']) ? '' : '(Belum fix)' ?></small>
+                    <code><?php echo isset($dat['nilai']) ? $dat['skor'] : " " ?></code>
+                    <!-- <small class="text-muted"><?php echo isset($dat['nilai']) ? '' : '(Belum fix)' ?></small> -->
                   </div>
                 </div>
               </div>
