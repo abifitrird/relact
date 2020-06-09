@@ -19,6 +19,11 @@ class KelasModel extends CI_Model
         return $data->result_array();
     }
 
+    public function getKelasByKode($kelas_kode)
+    {
+        return $this->db->select('nama, (SELECT nama_mapel FROM mata_pelajaran WHERE mapel_id = mata_pelajaran.id LIMIT 1) as mapel')->where('code', $kelas_kode)->get('kelas')->row_array();
+    }
+
     /**
      * get Materi by Kelas Id
      * 

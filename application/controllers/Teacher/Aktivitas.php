@@ -19,6 +19,7 @@ class Aktivitas extends Base
 
     public function viewDetailAktivitas($kode_kelas)
     {
+        $data['kelas'] = $this->Kelas->getKelasByKode($kode_kelas);
         $data['data'] = $this->Aktivitas->getSiswaPerKelas($kode_kelas);
         // print_r($data);
         $this->load->view('guru/aktivitas_detail', $data);

@@ -19,6 +19,7 @@ class Hasil extends Base
 
     public function viewHasilPerKelas($kode_kelas)
     {
+        $data['kelas'] = $this->Kelas->getKelasByKode($kode_kelas);
         $data['data'] = $this->Kelas->getMateriByKodeKelas($kode_kelas);
         $this->load->view('guru/list_materi_hasil', $data);
     }

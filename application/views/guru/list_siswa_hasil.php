@@ -20,6 +20,16 @@
         <div id="page-content-wrapper">
             <?php include('navbar.php') ?>
             <div class="container-fluid">
+                <table>
+                    <tr>
+                        <th>Mata Pelajaran</th>
+                        <td>:&nbsp;<?php echo isset($kelas['mapel']) ? $kelas['mapel'] : "-" ?></td>
+                    </tr>
+                    <tr>
+                        <th>Kelas</th>
+                        <td>:&nbsp;<?php echo isset($kelas['nama']) ? $kelas['nama'] : "-"  ?></td>
+                    </tr>
+                </table>
                 <table class="table table-striped">
                     <thead>
                         <tr>
