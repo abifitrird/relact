@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $head ?></title>
+    <link rel="stylesheet" type="text/css" media="screen" href="<?php echo base_url('assets/css/main.css') ?>">
     <link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap.min.css') ?>">
     <link rel="stylesheet" href="<?php echo base_url('assets/css/summernote-bs4.min.css') ?>">
     <link rel="icon" href="<?php echo base_url('assets/images/logoTab_Relact.png') ?>">
@@ -14,24 +15,30 @@
 </head>
 
 <body>
-    <div class="container-fluid">
-        <div class="row flex-wrap justify-content-center">
-            <div class="col-12 col-md-8 mt-3">
-                <form method="POST" action="<?php echo site_url(uri_string()) ?>">
-                    <div class="form-group">
-                        <label for="judul">Judul</label>
-                        <input type="text" class="form-control" id="judul" name="judul" required value="<?php echo isset($judul) ? $judul : '' ?>">
+    <div class="d-flex" id="wrapper">
+        <?php include('sidebar.php') ?>
+        <div id="page-content-wrapper">
+            <?php include('navbar.php') ?>
+            <div class="container-fluid">
+                <div class="row flex-wrap justify-content-center">
+                    <div class="col-12 col-md-8 mt-3">
+                        <form method="POST" action="<?php echo site_url(uri_string()) ?>">
+                            <div class="form-group">
+                                <label for="judul">Judul</label>
+                                <input type="text" class="form-control" id="judul" name="judul" required value="<?php echo isset($judul) ? $judul : '' ?>">
+                            </div>
+                            <div class="form-group">
+                                <label for="summernote">Konten</label>
+                                <textarea class="summernote form-control" id="summernote" name="konten"></textarea>
+                                <input type="hidden" id="mode" value="<?php echo $mode ?>">
+                            </div>
                     </div>
-                    <div class="form-group">
-                        <label for="summernote">Konten</label>
-                        <textarea class="summernote form-control" id="summernote" name="konten"></textarea>
-                        <input type="hidden" id="mode" value="<?php echo $mode ?>">
+                    <div class="col-12 col-md-8">
+                        <button type="submit" class="btn btn-primary">Simpan</button>
+                        <a class="btn btn-info" href="<?php echo $_SERVER['HTTP_REFERER'] ?>">Batal</a>
+                        </form>
                     </div>
-            </div>
-            <div class="col-12 col-md-8">
-                <button type="submit" class="btn btn-primary">Simpan</button>
-                <a class="btn btn-info" href="<?php echo $_SERVER['HTTP_REFERER'] ?>">Batal</a>
-                </form>
+                </div>
             </div>
         </div>
     </div>
