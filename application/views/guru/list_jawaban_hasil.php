@@ -28,7 +28,7 @@
                                 <th scope="col">Pertanyaan</th>
                                 <?php if (isset($data[0]['pilihan_soal_id'])) { ?>
                                     <th scope="col">Jawaban</th>
-                                    <th scope="col">Benar</th>
+                                    <th scope="col">Keterangan</th>
                                 <?php } else { ?>
                                     <th scope="col">Nilai</th>
                                     <th scope="col">Aksi</th>
@@ -44,7 +44,7 @@
                                     <?php if (isset($dat['pilihan_soal_id'])) { ?>
                                         <td><?php echo $dat['jawaban'] ?></td>
 
-                                        <td><?php echo $dat['pilihan_soal_id'] == $dat['kunci_soal'] ? 1 : 0; ?></td>
+                                        <td><?php echo $dat['pilihan_soal_id'] == $dat['kunci_soal'] ? '&#10004;' : 'x'; ?></td>
                                     <?php } else { ?>
                                         <td><?php echo $dat['nilai'] ?></td>
                                         <td><button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#cekJawaban<?php echo $dat['id'] ?>">Lihat Jawaban</button></td>
