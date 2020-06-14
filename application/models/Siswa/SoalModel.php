@@ -12,7 +12,7 @@ class SoalModel extends CI_Model
     {
         $soal = $this->db->where('materi_kode', $kode_materi)
             ->where('tipe', 'pg')
-            ->order_by(5, 'RANDOM')
+            ->order_by('id', 'RANDOM')
             ->get('soal')
             ->result_array();
 
@@ -42,7 +42,7 @@ class SoalModel extends CI_Model
     private function getPilihanJawabanPG($soal_id)
     {
         return $this->db->where('soal_id', $soal_id)
-            ->order_by(2, 'RANDOM')
+            ->order_by('id', 'RANDOM')
             ->get('pilihan_soal')
             ->result_array();
     }
@@ -92,7 +92,7 @@ class SoalModel extends CI_Model
     {
         return $this->db->where('materi_kode', $kode_materi)
             ->where('tipe', 'esai')
-            ->order_by(5, 'RANDOM')
+            ->order_by('id', 'RANDOM')
             ->get('soal')
             ->result_array();
     }
@@ -118,6 +118,9 @@ class SoalModel extends CI_Model
             'materi_id' => $pg[0]['materi_id'],
             'skor' => $skor
         );
-        return $this->db->insert('nilai', $data);
+        if (!$this->db->insert('nilai', $data)) {
+            return false;
+        }
+        return $skor;
     }
 }

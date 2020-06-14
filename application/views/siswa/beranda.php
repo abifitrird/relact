@@ -13,39 +13,49 @@
   <script src="<?php echo base_url('assets/js/popper.min.js') ?>"></script>
   <script src="<?php echo base_url('assets/js/bootstrap.min.js') ?>"></script>
 </head>
-<?php include('header.php') ?>
-<!-- isi halaman -->
-<div class="container-fluid shadow-sm" style="padding: 25px">
-  <h1>Judul Notifikasi</h1>
-  <hr>
-  <p>The starting state of the menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will change.</p>
-  <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>. The top navbar is optional, and just for demonstration. Just create an element with the <code>#menu-toggle</code> ID which will toggle the menu when clicked.</p>
-</div>
-<div class="container-fluid shadow-sm" style="padding: 25px">
-  <h1>Judul Notifikasi</h1>
-  <hr>
-  <p>The starting state of the menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will change.</p>
-  <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>. The top navbar is optional, and just for demonstration. Just create an element with the <code>#menu-toggle</code> ID which will toggle the menu when clicked.</p>
-</div>
 
-<!-- footer -->
-<?php include("footer.php") ?>
-<!-- /#page-content-wrapper -->
-</div>
-</div>
+<body>
+  <div class="d-flex" id="wrapper">
+    <?php include('sidebar.php') ?>
+    <div id="page-content-wrapper">
+      <?php include('navbar.php') ?>
+      <!-- isi halaman -->
+      <div class="container-fluid shadow-sm" style="padding: 25px">
+        <?php if ($this->session->flashdata('alert')) { ?>
+          <div class="mx-3 my-4 alert alert-danger" role="alert">
+            <?php echo $this->session->flashdata('alert') ?>
+          </div>
+        <?php } ?>
+        <h1>Judul Notifikasi</h1>
+        <hr>
+        <p>The starting state of the menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will change.</p>
+        <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>. The top navbar is optional, and just for demonstration. Just create an element with the <code>#menu-toggle</code> ID which will toggle the menu when clicked.</p>
+      </div>
+      <div class="container-fluid shadow-sm" style="padding: 25px">
+        <h1>Judul Notifikasi</h1>
+        <hr>
+        <p>The starting state of the menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will change.</p>
+        <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>. The top navbar is optional, and just for demonstration. Just create an element with the <code>#menu-toggle</code> ID which will toggle the menu when clicked.</p>
+      </div>
 
-<!-- Menu Toggle Script -->
-<script>
-  const TWO_HOURS = 60 * 60 * 1000 * 2;
-  if ((new Date() - TWO_HOURS) > localStorage.getItem('timestamp')) {
-    localStorage.clear()
-  }
+      <!-- footer -->
+      <?php include("footer.php") ?>
+      <!-- /#page-content-wrapper -->
+    </div>
+  </div>
 
-  $("#menu-toggle").click(function(e) {
-    e.preventDefault();
-    $("#wrapper").toggleClass("toggled");
-  });
-</script>
+  <!-- Menu Toggle Script -->
+  <script>
+    const TWO_HOURS = 60 * 60 * 1000 * 2;
+    if ((new Date() - TWO_HOURS) > localStorage.getItem('timestamp')) {
+      localStorage.clear()
+    }
+
+    $("#menu-toggle").click(function(e) {
+      e.preventDefault();
+      $("#wrapper").toggleClass("toggled");
+    });
+  </script>
 </body>
 
 </html>

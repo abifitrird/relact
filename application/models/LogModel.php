@@ -11,7 +11,7 @@ class LogModel extends CI_Model
      * @param action
      * @return
      */
-    public function saveLog($data, $kode_kelas, $kode_materi, $is_soal)
+    public function saveLog($data, $kode_kelas, $kode_materi, $sub_id, $is_soal)
     {
         $kelas_id = null;
         $materi_id = null;
@@ -27,7 +27,8 @@ class LogModel extends CI_Model
             'action' => $data['action'],
             'is_soal' => $is_soal,
             'kelas_id' => $kelas_id,
-            'materi_id' => $materi_id
+            'materi_id' => $materi_id,
+            'sub_materi_id' => $sub_id
         );
 
         $this->db->insert('log_activity', $dataa);

@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $head ?></title>
+    <link rel="stylesheet" type="text/css" media="screen" href="<?php echo base_url('assets/css/main.css') ?>">
     <link rel="stylesheet" href="<?php echo base_url('assets/css/bootstrap.min.css') ?>">
     <link rel="stylesheet" href="<?php echo base_url('assets/css/summernote-bs4.min.css') ?>">
     <link rel="icon" href="<?php echo base_url('assets/images/logoTab_Relact.png') ?>">
@@ -14,23 +15,30 @@
 </head>
 
 <body>
-    <div class="container">
-        <div class="row flex-wrap justify-content-center">
-            <div class="col-12 col-md-8 mt-3">
-                <form id="form_kirim" method="POST" action="">
-                    <div class="form-group">
-                        <label for="judul">Judul</label>
-                        <input type="text" class="form-control" id="judul" name="judul" required>
+    <div class="d-flex" id="wrapper">
+        <?php include('sidebar.php') ?>
+        <div id="page-content-wrapper">
+            <?php include('navbar.php') ?>
+            <div class="container-fluid">
+                <div class="row flex-wrap justify-content-center">
+                    <div class="col-12 col-md-8 mt-3">
+                        <form method="POST" action="<?php echo site_url(uri_string()) ?>">
+                            <div class="form-group">
+                                <label for="judul">Judul</label>
+                                <input type="text" class="form-control" id="judul" name="judul" required value="<?php echo isset($judul) ? $judul : '' ?>">
+                            </div>
+                            <div class="form-group">
+                                <label for="summernote">Konten</label>
+                                <textarea class="summernote form-control" id="summernote" name="konten"></textarea>
+                                <input type="hidden" id="mode" value="<?php echo $mode ?>">
+                            </div>
                     </div>
-                    <div class="form-group">
-                        <label for="summernote">Konten</label>
-                        <textarea class="summernote form-control" id="summernote" name="konten"></textarea>
+                    <div class="col-12 col-md-8">
+                        <button type="submit" class="btn btn-primary">Simpan</button>
+                        <a class="btn btn-info" href="<?php echo $_SERVER['HTTP_REFERER'] ?>">Batal</a>
+                        </form>
                     </div>
-            </div>
-            <div class="col-12 col-md-8">
-                <button type="submit" class="btn btn-primary">Simpan</button>
-                <a class="btn btn-info" href="<?php echo $_SERVER['HTTP_REFERER'] ?>">Batal</a>
-                </form>
+                </div>
             </div>
         </div>
     </div>
@@ -42,6 +50,7 @@
                 dialogsInBody: true,
                 disableDragAndDrop: true,
                 spellcheck: false,
+                height: 350,
                 callbacks: {
                     onImageUpload: function(files) {
                         if (!files.length) return;
@@ -50,28 +59,17 @@
                         }
                     }
                 }
-            })
+            });
 
-            // if data is edit_materi
-            let url = $(location).attr('href');
-            let check_uri = url.split('/').reverse()[0];
-            if (check_uri == 'tambah_materi') {
-                let kode_kelas = url.split('/').reverse()[1];
-                $('#form_kirim').attr('action', `<?php echo site_url('guru/kelas/') ?>${kode_kelas}/materi`)
-            } else {
-                let kode_kelas = url.split('/').reverse()[2];
-                let kode_materi = url.split('/').reverse()[0];
-                fetch("<?php echo site_url('/api/materi/') ?>" + kode_materi).then(response => response.json())
+            const mode = $("#mode").val();
+            if (mode == "ubah") {
+                fetch("<?php echo site_url('api/sub/materi/' . $this->uri->segment(5) . '/' . $this->uri->segment(7)) ?>")
+                    .then(response => response.json())
                     .then(data => {
-                        $('#summernote').summernote('code', data.konten);
-                        $('#summernote').each(function() {
-                            $(this).val($(this).summernote('code'));
-                        })
-                        $("#judul").val(data.judul)
+                        $('#summernote').val($('#summernote').summernote('code', data.konten));
                     })
-
-                $('#form_kirim').attr('action', `<?php echo site_url('guru/kelas/') ?>${kode_kelas}/materi/ubah/${kode_materi}`)
             }
+
 
             function uploadImage(file) {
                 let data = new FormData();

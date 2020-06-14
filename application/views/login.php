@@ -15,7 +15,6 @@
 </head>
 
 <body style="background-color: #34ace0;">
-
     <!-- container -->
     <div class="container">
         <div class="col-12 justify-content-center row px-5">

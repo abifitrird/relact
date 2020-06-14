@@ -6,7 +6,7 @@ class ProfilModel extends CI_Model
     {
         $res = false;
         if ($this->db->where('user_id', $data['user_id'])->get('detail_user')->num_rows() > 0) {
-            $res = $this->db->update('detail_user', $data);
+            $res = $this->db->where('user_id', $data['user_id'])->update('detail_user', $data);
         } else {
             $res = $this->db->insert('detail_user', $data);
         }

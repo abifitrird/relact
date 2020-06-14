@@ -24,4 +24,9 @@ class Home extends CI_Controller
     {
         echo "404 not found, cek kembali url yang diakses !";
     }
+
+    public function faq()
+    {
+        $this->load->view('faq');
+    }
 }

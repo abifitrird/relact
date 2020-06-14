@@ -20,37 +20,28 @@
         <?php include('sidebar.php') ?>
         <div id="page-content-wrapper">
             <?php include('navbar.php') ?>
-            <!-- isi halaman -->
-            <div class="container-fluid shadow-sm" style="padding: 25px">
-                <canvas id="myChart" class="col-12"></canvas>
-                <script>
-                    var ctx = document.getElementById('myChart').getContext('2d');
-                    var myChart = new Chart(ctx, {
-                        type: 'line',
-                        data: {
-                            labels: ['Percabangan', 'Perulangan', 'Prosedur/Fungsi'],
-                            datasets: [{
-                                label: 'Nilai rata-rata siswa dari setiap materi',
-                                data: [12, 19, 3],
-                                // backgroundColor: '#000000'
-                            }]
-                        },
-                        options: {
-                            scales: {
-                                yAxes: [{
-                                    ticks: {
-                                        beginAtZero: true
-                                    }
-                                }]
-                            }
-                        }
-                    });
-                </script>
+            <div class="m-3 bd-highlight">
+                <div class="d-flex align-content-start flex-wrap">
+                    <?php foreach ($data as $dat) { ?>
+                        <div class="px-1 mb-2 col-12 col-sm-12 col-md-8 col-lg-4 col-xl-3">
+                            <div class="bg-white rounded shadow-sm d-flex flex-wrap">
+                                <div class="px-2 pt-3 col-12 rounded-top text-white bg-dark">
+                                    <a href="<?php echo site_url('guru/capaian/' . $dat['code']) ?>" class="text-white">
+                                        <h4><?php echo $dat['nama_mapel'] ?></h4>
+                                    </a>
+                                    <h5>Capaian Siswa</h5>
+                                </div>
+                                <div class="col-12 px-2 py-3">
+                                    <?php echo $dat['nama'] ?><br>
+                                    <?php echo $dat['periode'] ?>
+                                </div>
+                            </div>
+                        </div>
+                    <?php  } ?>
+                </div>
             </div>
         </div>
     </div>
-
-    <!-- Menu Toggle Script -->
     <script>
         $("#menu-toggle").click(function(e) {
             e.preventDefault();
@@ -58,5 +49,3 @@
         });
     </script>
 </body>
-
-</html>

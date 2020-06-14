@@ -13,9 +13,9 @@ class Capaian extends Base
     public function index()
     {
         $user_id = $this->session->userdata('user_id');
-        $materi = $this->Capaian->getMateri($user_id);
+        // $materi = $this->Capaian->getMateri($user_id);
         $soal = $this->Capaian->getSoal($user_id);
-        $data['materi'] = $materi;
+        // $data['materi'] = $materi;
         $data['soal'] = $soal;
         $this->load->view('siswa/capaian', $data);
     }

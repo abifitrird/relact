@@ -46,7 +46,7 @@
             </div>
 
             <div class="formgroup">
-                <label for="jenisPertanyaan">Jenis Pertanyaan</label>
+                <label for="jenisPertanyaan">Jenis Pertanyaan*</label>
                 <select id="jenisPertanyaan" name="jenisPertanyaan" required>
                     <option value="Pendaftaran">Pendaftaran</option>
                     <option value="Fitur Sistem">Fitur Sistem</option>

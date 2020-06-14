@@ -53,6 +53,9 @@ $route['default_controller'] = 'Home';
 $route['404_override'] = 'Home/page404';
 $route['translate_uri_dashes'] = FALSE;
 
+/* other */
+$route['faq']['get'] = "Home/faq";
+
 /* authentification */
 $route['login']['get'] = "Login/index";             // view login
 $route['login']['post'] = "Login/aksi_login";       // proses login
@@ -76,11 +79,21 @@ $route['guru/saran']['get'] = "Saran/guru";                 // kotak saran dari 
 /* route guru/kelas */
 $route['guru/kelas']['post'] = 'Teacher/Kelas/saveKelas';                   // simpan kelas guru
 $route['guru/kelas/(:any)']['get'] = "Teacher/Materi/getMateri/$1";          // getList Materi by Id
-$route['guru/kelas/(:any)/materi']['post'] = "Teacher/Materi/saveMateri/$1"; // save mteri by kelas id
-$route['guru/kelas/(:any)/materi/ubah/(:any)']['post'] = "Teacher/Materi/ubahMateri/$1/$2"; // save mteri by kelas id
-$route['guru/kelas/(:any)/materi/(:any)']['get'] = "Teacher/Materi/showMateri/$1/$2"; // view materi by materi id and 
+$route['guru/kelas/(:any)/materi']['post'] = "Teacher/Materi/saveMateri/$1";
+// save mteri by kelas id
+$route['guru/kelas/(:any)/materi/(:any)']['get'] = "Teacher/Materi/showSubMateri/$2"; // view submateri by materi kode 
+$route['guru/kelas/(:any)/materi/(:any)/tambah']['get'] = "Teacher/Materi/viewTambahSub/$2";
+$route['guru/kelas/(:any)/materi/(:any)/tambah']['post'] = "Teacher/Materi/saveTambahSub/$1/$2";
+
+$route['guru/kelas/(:any)/materi/(:any)/sub/(:num)']['get'] = "Teacher/Materi/showSub/$2/$3";
+$route['guru/kelas/(:any)/materi/(:any)/sub/(:num)/ubah']['get'] = "Teacher/Materi/viewUbahSub/$2/$3";
+$route['guru/kelas/(:any)/materi/(:any)/sub/(:num)/ubah']['post'] = "Teacher/Materi/saveUbahSub/$1/$2/$3";
+
+$route['guru/kelas/(:any)/materi/(:any)/ubah']['post'] = "Teacher/Materi/ubahMateri/$1/$2"; // save mteri by kelas id
 $route['api/materi/delete/(:any)']['get'] = "Teacher/materi/deleteMateriAPI/$1";    // delete materi
+$route['api/materi/sub/delete/(:any)/(:num)']['get'] = "Teacher/materi/deleteSubMateriAPI/$1/$2";    // delete materi
 $route['api/materi/(:any)']['get'] = "Teacher/Materi/showMateriAPI/$1"; // view materi by id
+$route['api/sub/materi/(:any)/(:num)']['get'] = "Teacher/Materi/showSubMateriAPI/$1/$2"; // view materi by id
 $route['guru/kelas/(:any)/materi/(:any)/soal']['get'] = "Teacher/Soal/getSoal/$2"; // view soal by materi id
 $route['guru/kelas/(:any)/materi/(:any)/soal']['post'] = "Teacher/Soal/addSoal/$2"; // add soal by materi kode
 $route['guru/kelas/(:any)/tambah_materi']['get'] = "Teacher/Materi/viewAddMateri";
@@ -95,9 +108,23 @@ $route['api/soal/(:num)']['get'] = "Teacher/Soal/getSoalJson/$1"; // get JSON AP
 $route['api/soal/pilihan/delete/(:num)']['get'] = "Teacher/Soal/deletePilihan/$1";
 $route['api/soal/pilihan/(:num)']['get'] = "Teacher/Soal/getPilihanJawabanBySoalId/$1"; // getpilihan jawbaban as JSON
 
+/* route guru/hasil */
+$route['guru/hasil']['get'] = "Teacher/Hasil/viewHasilKerja";
+$route['guru/hasil/(:any)']['get'] = "Teacher/Hasil/viewHasilPerKelas/$1";
+$route['guru/hasil/(:any)/materi/(:any)']['get'] = "Teacher/Hasil/viewHasilPerMateri/$1/$2";
+$route['guru/hasil/(:any)/materi/(:any)/PG/(:num)']['get'] = "Teacher/Hasil/viewJawabanSiswa/PG/$3/$2";
+$route['guru/hasil/(:any)/materi/(:any)/Esai/(:num)']['get'] = "Teacher/Hasil/viewJawabanSiswa/Esai/$3/$2";
+$route['api/simpan_nilai_esai/(:num)']['post'] = "Teacher/Hasil/postNilaiSiswa/$1";
+$route['guru/hasil/fix/(:num)']['post'] = "Teacher/Hasil/fixNilai/$1";
+
 /* route guru/capaian */
 $route['guru/capaian']['get'] = "Teacher/Capaian/capaianSiswa";
+$route['guru/capaian/(:any)']['get'] = "Teacher/Capaian/capaianSiswaDetail/$1";
 
+/* route guru/aktivitas */
+$route['guru/aktivitas']['get'] = "Teacher/Aktivitas/viewAktivitas";
+$route['guru/aktivitas/(:any)']['get'] = "Teacher/Aktivitas/viewDetailAktivitas/$1";
+$route['guru/aktivitas/(:any)/detail/(:any)']['get'] = "Teacher/Aktivitas/viewAktivitasSiswa/$1/$2";
 
 
 /* route siswa */
@@ -110,7 +137,8 @@ $route['siswa/saran']['get'] = "Saran/siswa"; // kotak saran dari siswa
 /* route siswa/kelas */
 $route['siswa/kelas/kode']['post'] = "Student/Kelas/masukKelas";  // route masuk kelas dengan kode kelas
 $route['siswa/kelas/(:any)']['get'] = "Student/Materi/index/$1";  // get list materi by kode kelas
-$route['siswa/kelas/(:any)/materi/(:any)']['get'] = "Student/Materi/showMateri/$2";  // show matery by kode materi
+$route['siswa/kelas/(:any)/materi/(:any)']['get'] = "Student/Materi/showSubMateri/$2";  // show matery by kode materi
+$route['siswa/kelas/(:any)/materi/(:any)/sub/(:num)']['get'] = "Student/Materi/showMateri/$2/$3";  // show matery by kode materi
 
 /* route siswa/soal */
 $route['siswa/soal/(:any)']['post'] = "Student/Soal/showSoal/$1"; // kerjakan soal
