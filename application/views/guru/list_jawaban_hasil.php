@@ -20,39 +20,41 @@
         <div id="page-content-wrapper">
             <?php include('navbar.php') ?>
             <div class="container-fluid">
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th scope="col">No.</th>
-                            <th scope="col">Pertanyaan</th>
-                            <?php if (isset($data[0]['pilihan_soal_id'])) { ?>
-                                <th scope="col">Jawaban</th>
-                                <th scope="col">Benar</th>
-                            <?php } else { ?>
-                                <th scope="col">Nilai</th>
-                                <th scope="col">Aksi</th>
-                            <?php } ?>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php $i = 1;
-                        foreach ($data as $dat) { ?>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
                             <tr>
-                                <th><?php echo $i ?></th>
-                                <td><?php echo $dat['pertanyaan'] ?></td>
-                                <?php if (isset($dat['pilihan_soal_id'])) { ?>
-                                    <td><?php echo $dat['jawaban'] ?></td>
-
-                                    <td><?php echo $dat['pilihan_soal_id'] == $dat['kunci_soal'] ? 1 : 0; ?></td>
+                                <th scope="col">No.</th>
+                                <th scope="col">Pertanyaan</th>
+                                <?php if (isset($data[0]['pilihan_soal_id'])) { ?>
+                                    <th scope="col">Jawaban</th>
+                                    <th scope="col">Benar</th>
                                 <?php } else { ?>
-                                    <td><?php echo $dat['nilai'] ?></td>
-                                    <td><button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#cekJawaban<?php echo $dat['id'] ?>">Lihat Jawaban</button></td>
+                                    <th scope="col">Nilai</th>
+                                    <th scope="col">Aksi</th>
                                 <?php } ?>
                             </tr>
-                        <?php $i++;
-                        } ?>
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            <?php $i = 1;
+                            foreach ($data as $dat) { ?>
+                                <tr>
+                                    <th><?php echo $i ?></th>
+                                    <td><?php echo $dat['pertanyaan'] ?></td>
+                                    <?php if (isset($dat['pilihan_soal_id'])) { ?>
+                                        <td><?php echo $dat['jawaban'] ?></td>
+
+                                        <td><?php echo $dat['pilihan_soal_id'] == $dat['kunci_soal'] ? 1 : 0; ?></td>
+                                    <?php } else { ?>
+                                        <td><?php echo $dat['nilai'] ?></td>
+                                        <td><button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#cekJawaban<?php echo $dat['id'] ?>">Lihat Jawaban</button></td>
+                                    <?php } ?>
+                                </tr>
+                            <?php $i++;
+                            } ?>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

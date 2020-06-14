@@ -21,25 +21,27 @@
         <div id="page-content-wrapper">
             <?php include('navbar.php') ?>
             <div class="container-fluid">
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th scope="col">No.</th>
-                            <th scope="col">Judul Materi</th>
-                            <th scope="col">Nilai rata-rata</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php $i = 1;
-                        foreach ($nilai as $data) { ?>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
                             <tr>
-                                <th><?php echo $i ?></th>
-                                <td><?php echo $data['judul_materi'] ?></td>
-                                <td><?php echo $data['rata_skor'] ?></td>
+                                <th scope="col">No.</th>
+                                <th scope="col">Judul Materi</th>
+                                <th scope="col">Nilai rata-rata</th>
                             </tr>
-                        <?php } ?>
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            <?php $i = 1;
+                            foreach ($nilai as $data) { ?>
+                                <tr>
+                                    <th><?php echo $i ?></th>
+                                    <td><?php echo $data['judul_materi'] ?></td>
+                                    <td><?php echo $data['rata_skor'] ?></td>
+                                </tr>
+                            <?php } ?>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

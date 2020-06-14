@@ -24,7 +24,7 @@
             <div class="m-3 bd-highlight">
                 <div class="d-flex align-content-start flex-wrap">
                     <?php foreach ($data as $dat) { ?>
-                        <div class="px-1 mb-2 col-3">
+                        <div class="px-1 mb-2 col-12 col-sm-12 col-md-8 col-lg-4 col-xl-3">
                             <div class="bg-white rounded shadow-sm d-flex flex-wrap">
                                 <div class="px-2 pt-3 col-12 rounded-top text-white bg-dark">
                                     <a href="<?php echo site_url('guru/hasil/' . $dat['code']) ?>" class="text-white">

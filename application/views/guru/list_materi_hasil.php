@@ -30,27 +30,29 @@
                         <td>:&nbsp;<?php echo isset($kelas['nama']) ? $kelas['nama'] : "-"  ?></td>
                     </tr>
                 </table>
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th scope="col">No.</th>
-                            <th scope="col">Judul Materi</th>
-                            <th scope="col">Kode Materi</th>
-                            <th class="text-right" scope="col">Lihat Hasil Siswa</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php $i = 1;
-                        foreach ($data as $dat) { ?>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
                             <tr>
-                                <th><?php echo $i ?></th>
-                                <td><?php echo $dat['judul'] ?></td>
-                                <td><?php echo $dat['kode'] ?></td>
-                                <td class="text-right"><a class="btn btn-primary" type="button" href="<?php echo site_url('guru/hasil/' . $this->uri->segment(3) . '/materi/' . $dat['kode']) ?>">Lihat Siswa</a></td>
+                                <th scope="col">No.</th>
+                                <th scope="col">Judul Materi</th>
+                                <th scope="col">Kode Materi</th>
+                                <th class="text-right" scope="col">Lihat Hasil Siswa</th>
                             </tr>
-                        <?php } ?>
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            <?php $i = 1;
+                            foreach ($data as $dat) { ?>
+                                <tr>
+                                    <th><?php echo $i ?></th>
+                                    <td><?php echo $dat['judul'] ?></td>
+                                    <td><?php echo $dat['kode'] ?></td>
+                                    <td class="text-right"><a class="btn btn-primary" type="button" href="<?php echo site_url('guru/hasil/' . $this->uri->segment(3) . '/materi/' . $dat['kode']) ?>">Lihat Siswa</a></td>
+                                </tr>
+                            <?php } ?>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

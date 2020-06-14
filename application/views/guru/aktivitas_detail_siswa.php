@@ -31,33 +31,34 @@
                         <td>:&nbsp;<?php echo isset($user['nis']) ? $user['nis'] : "Belum diisi"  ?></td>
                     </tr>
                 </table>
-
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th>No.</th>
-                            <th>Materi</th>
-                            <th>Submateri</th>
-                            <th>Jam mulai</th>
-                            <th>Jam akhir</th>
-                            <th>Durasi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php $i = 1;
-                        foreach ($data as $dat) { ?>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
                             <tr>
-                                <th><?php echo $i ?></th>
-                                <td><?php echo $dat['materi'] ?></td>
-                                <td><?php echo isset($dat['submateri']) ? $dat['submateri'] : '<span class="text-muted">-</span>' ?></td>
-                                <td><?php echo $dat['mulai'] ?></td>
-                                <td><?php echo $dat['akhir'] ?></td>
-                                <td><?php echo $dat['durasi'] ?></td>
+                                <th scope="col">No.</th>
+                                <th scope="col">Materi</th>
+                                <th scope="col">Submateri</th>
+                                <th scope="col">Jam mulai</th>
+                                <th scope="col">Jam akhir</th>
+                                <th scope="col">Durasi</th>
                             </tr>
-                        <?php $i++;
-                        } ?>
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            <?php $i = 1;
+                            foreach ($data as $dat) { ?>
+                                <tr>
+                                    <th scope="row"><?php echo $i ?></th>
+                                    <td><?php echo $dat['materi'] ?></td>
+                                    <td><?php echo isset($dat['submateri']) ? $dat['submateri'] : '<span class="text-muted">-</span>' ?></td>
+                                    <td><?php echo $dat['mulai'] ?></td>
+                                    <td><?php echo $dat['akhir'] ?></td>
+                                    <td><?php echo $dat['durasi'] ?></td>
+                                </tr>
+                            <?php $i++;
+                            } ?>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

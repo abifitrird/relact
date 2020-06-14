@@ -30,42 +30,44 @@
                         <td>:&nbsp;<?php echo isset($kelas['nama']) ? $kelas['nama'] : "-"  ?></td>
                     </tr>
                 </table>
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th scope="col">No.</th>
-                            <th scope="col">NIS</th>
-                            <th scope="col">Nama</th>
-                            <th scope="col">Skor</th>
-                            <th scope="col">Hasil</th>
-                            <th scope="col">Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php $i = 1;
-                        foreach ($data as $dat) { ?>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
                             <tr>
-                                <th><?php echo $i ?></th>
-                                <td><?php echo $dat['nis'] ?></td>
-                                <td><?php echo $dat['nama'] ?></td>
-                                <td><?php echo $dat['skor'] ?></td>
-                                <td><a class="btn btn-primary <?php echo isset($dat['nilai']) ? "disabled" : '' ?>" type="button" href="<?php echo  site_url('guru/hasil/' . $this->uri->segment(3) . '/materi/' . $this->uri->segment(5) . '/PG/' . $dat['user_id']) ?>">Pilihan Ganda</a>&nbsp;
-                                    <a class="btn btn-primary <?php echo isset($dat['nilai']) ? "disabled" : '' ?>" type="button" href="<?php echo  site_url('guru/hasil/' . $this->uri->segment(3) . '/materi/' . $this->uri->segment(5) . '/Esai/' . $dat['user_id']) ?>">Esai</a></td>
-                                <td>
-                                    <form action="<?php echo  site_url('guru/hasil/fix/' . $dat['user_id']) ?>" method="<?php echo  'POST' ?>">
-                                        <?php if (!isset($dat['nilai'])) { ?>
-                                            <input type="hidden" class="d-none" name="nilai" value="<?php echo $dat['skor'] ?>">
-                                            <input type="hidden" class="d-none" name="id" value="<?php echo $dat['id'] ?>">
-                                        <?php } ?>
-                                        <button type="submit" class="btn btn-danger" <?php echo isset($dat['nilai']) ? "disabled" : '' ?>>Simpan</button>
-                                    </form>
-
-                                </td>
+                                <th scope="col">No.</th>
+                                <th scope="col">NIS</th>
+                                <th scope="col">Nama</th>
+                                <th scope="col">Skor</th>
+                                <th scope="col">Hasil</th>
+                                <th scope="col">Aksi</th>
                             </tr>
-                        <?php $i++;
-                        } ?>
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            <?php $i = 1;
+                            foreach ($data as $dat) { ?>
+                                <tr>
+                                    <th><?php echo $i ?></th>
+                                    <td><?php echo $dat['nis'] ?></td>
+                                    <td><?php echo $dat['nama'] ?></td>
+                                    <td><?php echo $dat['skor'] ?></td>
+                                    <td><a class="btn btn-primary <?php echo isset($dat['nilai']) ? "disabled" : '' ?>" type="button" href="<?php echo  site_url('guru/hasil/' . $this->uri->segment(3) . '/materi/' . $this->uri->segment(5) . '/PG/' . $dat['user_id']) ?>">Pilihan Ganda</a>&nbsp;
+                                        <a class="btn btn-primary <?php echo isset($dat['nilai']) ? "disabled" : '' ?>" type="button" href="<?php echo  site_url('guru/hasil/' . $this->uri->segment(3) . '/materi/' . $this->uri->segment(5) . '/Esai/' . $dat['user_id']) ?>">Esai</a></td>
+                                    <td>
+                                        <form action="<?php echo  site_url('guru/hasil/fix/' . $dat['user_id']) ?>" method="<?php echo  'POST' ?>">
+                                            <?php if (!isset($dat['nilai'])) { ?>
+                                                <input type="hidden" class="d-none" name="nilai" value="<?php echo $dat['skor'] ?>">
+                                                <input type="hidden" class="d-none" name="id" value="<?php echo $dat['id'] ?>">
+                                            <?php } ?>
+                                            <button type="submit" class="btn btn-danger" <?php echo isset($dat['nilai']) ? "disabled" : '' ?>>Simpan</button>
+                                        </form>
+
+                                    </td>
+                                </tr>
+                            <?php $i++;
+                            } ?>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

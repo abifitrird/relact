@@ -31,30 +31,32 @@
                         <td>:&nbsp;<?php echo isset($kelas['nama']) ? $kelas['nama'] : "-"  ?></td>
                     </tr>
                 </table>
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th>No.</th>
-                            <th>Nama</th>
-                            <th>Username</th>
-                            <th>NIS</th>
-                            <th>Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php $i = 1;
-                        foreach ($data as $dat) { ?>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
                             <tr>
-                                <th><?php echo $i ?></th>
-                                <th><?php echo $dat['nama'] ?></th>
-                                <th><?php echo $dat['username'] ?></th>
-                                <th><?php echo $dat['nis'] ?></th>
-                                <th><a class="btn btn-primary" href="<?php echo site_url('guru/aktivitas/' . $this->uri->segment(3) . '/detail/' . $dat['username']) ?>">Detail</a></th>
+                                <th>No.</th>
+                                <th>Nama</th>
+                                <th>Username</th>
+                                <th>NIS</th>
+                                <th>Aksi</th>
                             </tr>
-                        <?php $i++;
-                        } ?>
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            <?php $i = 1;
+                            foreach ($data as $dat) { ?>
+                                <tr>
+                                    <th><?php echo $i ?></th>
+                                    <th><?php echo $dat['nama'] ?></th>
+                                    <th><?php echo $dat['username'] ?></th>
+                                    <th><?php echo $dat['nis'] ?></th>
+                                    <th><a class="btn btn-primary" href="<?php echo site_url('guru/aktivitas/' . $this->uri->segment(3) . '/detail/' . $dat['username']) ?>">Detail</a></th>
+                                </tr>
+                            <?php $i++;
+                            } ?>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
