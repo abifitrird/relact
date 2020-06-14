@@ -32,15 +32,17 @@
                     </div>
                 <?php } ?>
 
-                <div class="row shadow-sm" style="padding: 25px">
-                    <div class="col-2">
-                        <img src="<?php echo base_url(isset($data['url_foto']) ? 'uploads/profil/' . $data['url_foto'] : 'assets/images/img_avatar.png') ?>" class="shadow-sm rounded-circle" style=" width: 150px; height: 150px;">
-                    </div>
-                    <div class="col-10 my-auto">
-                        <h2><?php echo isset($data['nama_lengkap']) ? $data['nama_lengkap'] : "Tidak ada data" ?></h2>
-                        <p style="color: gray">
-                            NIP : <?php echo isset($data['nomor_induk']) ? $data['nomor_induk'] : "Tidak ada data" ?>
-                        </p>
+                <div class="row shadow-sm p-2 p-md-4">
+                    <div class="d-flex flex-wrap col-12">
+                        <div class="text-center col-12 col-lg-2">
+                            <img src="<?php echo base_url(isset($data['url_foto']) ? 'uploads/profil/' . $data['url_foto'] : 'assets/images/img_avatar.png') ?>" class="shadow-sm rounded-circle" style="object-fit:cover; width: 150px; height: 150px;">
+                        </div>
+                        <div class="text-center text-lg-left col-12 col-lg-10 my-2">
+                            <h2><?php echo isset($data['nama_lengkap']) ? $data['nama_lengkap'] : "Tidak ada data" ?></h2>
+                            <p style="color: gray">
+                                NIP : <?php echo isset($data['nomor_induk']) ? $data['nomor_induk'] : "Tidak ada data" ?>
+                            </p>
+                        </div>
                     </div>
                 </div>
                 <div class="row shadow-sm" style="padding: 25px">
