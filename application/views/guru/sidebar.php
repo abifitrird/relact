@@ -19,8 +19,7 @@
         </a>
         <a href="<?php echo site_url("guru/hasil") ?>" class="list-group-item list-group-item-action mb-2 bg-light">
             <svg style="width:24px;height:24px" viewBox="0 0 24 24">
-                <path fill="currentColor" d="M16.84,2.73C16.45,2.73 16.07,2.88 15.77,3.17L13.65,5.29L18.95,10.6L21.07,8.5C21.67,7.89 21.67,6.94 21.07,6.36L17.9,3.17C17.6,2.88 17.22,2.73 16.84,2.73M12.94,6L4.84,14.11L7.4,14.39L7.58,16.68L9.86,16.85L10.15,19.41L18.25,11.3M4.25,15.04L2.5,21.73L9.2,19.94L8.96,17.78L6.65,17.61L6.47,15.29" />
-            </svg>
+                <path fill="currentColor" d="M16.84,2.73C16.45,2.73 16.07,2.88 15.77,3.17L13.65,5.29L18.95,10.6L21.07,8.5C21.67,7.89 21.67,6.94 21.07,6.36L17.9,3.17C17.6,2.88 17.22,2.73 16.84,2.73M12.94,6L4.84,14.11L7.4,14.39L7.58,16.68L9.86,16.85L10.15,19.41L18.25,11.3M4.25,15.04L2.5,21.73L9.2,19.94L8.96,17.78L6.65,17.61L6.47,15.29" /></svg>
             Hasil Kerja Siswa
         </a>
         <a href="<?php echo site_url("guru/aktivitas") ?>" class="list-group-item list-group-item-action mb-2 bg-light">
@@ -28,5 +27,17 @@
                 <path fill="currentColor" d="M11 9C11 10.66 9.66 12 8 12C6.34 12 5 10.66 5 9C5 7.34 6.34 6 8 6C9.66 6 11 7.34 11 9M14 20H2V18C2 15.79 4.69 14 8 14C11.31 14 14 15.79 14 18M22 12V14H13V12M22 8V10H13V8M22 4V6H13V4Z" /></svg>
             Aktivitas Siswa
         </a>
+        <hr>
+        <hr>
+        <p class="list-group-item mb-2 bg-light">
+            <svg style="width:24px;height:24px" viewBox="0 0 24 24">
+                <path fill="currentColor" d="M15.07,11.25L14.17,12.17C13.45,12.89 13,13.5 13,15H11V14.5C11,13.39 11.45,12.39 12.17,11.67L13.41,10.41C13.78,10.05 14,9.55 14,9C14,7.89 13.1,7 12,7A2,2 0 0,0 10,9H8A4,4 0 0,1 12,5A4,4 0 0,1 16,9C16,9.88 15.64,10.67 15.07,11.25M13,19H11V17H13M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12C22,6.47 17.5,2 12,2Z" /></svg>
+            Pusat Bantuan
+            <div class="list-group">
+                <a href="<?php echo base_url("tentang") ?>" class="list-group-item list-group-item-action">Tentang</a>
+                <a href="<?php echo base_url("saran") ?>" class="list-group-item list-group-item-action">Hubungi Kami</a>
+                <a href="<?php echo base_url('faq') ?>" class="list-group-item list-group-item-action">FAQ</a>
+            </div>
+        </p>
     </div>
 </div>
