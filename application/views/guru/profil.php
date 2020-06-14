@@ -64,17 +64,22 @@
                             </tr>
                         </table>
                     </div>
-                    <div class="row flex-row ml-md-auto d-md-flex">
-                        <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-success mr-1" data-toggle="modal" data-target="#editFoto">
-                            Ubah Foto Saya
-                        </button>
-                        <button type="button" class="btn btn-primary mr-1" data-toggle="modal" data-target="#editProfil">
-                            Ubah Profil Saya
-                        </button>
-                        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#editPassword">
-                            Ubah Password Saya
-                        </button>
+                    <div class="ml-md-auto d-md-flex flex-column flex-md-row flex-wrap">
+                        <div class="p-1 col-12 col-md-auto">
+                            <button type="button" class="col-12 btn btn-success" data-toggle="modal" data-target="#editFoto">
+                                Ubah Foto
+                            </button>
+                        </div>
+                        <div class="p-1 col-12 col-md-auto">
+                            <button type="button" class="col-12 btn btn-primary" data-toggle="modal" data-target="#editProfil">
+                                Ubah Profil
+                            </button>
+                        </div>
+                        <div class="p-1 col-12 col-md-auto">
+                            <button type="button" class="col-12 btn btn-secondary" data-toggle="modal" data-target="#editPassword">
+                                Ubah Password
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
