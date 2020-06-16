@@ -16,14 +16,13 @@
 
 <body>
     <div class="d-flex" id="wrapper">
-        <?php include('sidebar.php') ?>
         <div id="page-content-wrapper">
             <?php include('navbar.php') ?>
             <div class="container-fluid mt-3">
                 <div class="row justify-content-md-center">
                     <div class="d-flex flex-wrap col-12 col-md-8 justify-content-center">
                         <div class="col-12 col-md-8">
-                            <h4 class="font-weight-bold">Soal</h4>
+                            <h4 class="font-weight-bold">Soal <span id="nomorSoalTampil"></span></h4>
                             <div id="pertanyaan"></div>
                             <div id="boxJawabanPG">
                                 <h5 class="my-2 font-weight-bold">Pilihan Jawaban</h5>
@@ -90,13 +89,38 @@
     </div>
 
     <script>
+        let is_selesai = false;
+        $('#btnSelesai').on('click', function() {
+            is_selesai = true;
+        });
+
+        window.addEventListener('beforeunload', function(e) {
+            let returnValue = undefined;
+            if (!is_selesai) {
+                returnValue = "Anda yakin untuk menyelesaikan mengisi soal? jawaban akan dikunci dan tidak bisa mengulang kembali !";
+                e.preventDefault();
+            }
+            e.returnValue = returnValue;
+        });
+
         $('document').ready(function() {
-            let time_limit = 2700 // on second
+
+            if (!localStorage.getItem('time_limit_soal')) {
+                localStorage.setItem('time_limit_soal', 2700);
+            }
+            let time_limit = localStorage.getItem('time_limit_soal');
             let x = setInterval(function() {
                 time_limit -= 1
                 let menit = Math.floor((time_limit / 60) % 60);
                 let detik = Math.floor(time_limit % 60);
                 document.getElementById("counterWaktu").innerHTML = `${menit}:${detik} detik lagi`
+
+                if (!localStorage.getItem('time_limit_soal')) {
+                    localStorage.setItem('time_limit_soal', time_limit);
+                }
+
+                localStorage.setItem('time_limit_soal', time_limit);
+
                 if (time_limit <= 0) {
                     clearInterval(x);
                     console.log("waktumu sudah habis subur !!");
@@ -184,6 +208,7 @@
         function setBtnSoal(index) {
             const soal = JSON.parse(localStorage.getItem('soal_pg'))[index];
             document.getElementById("pertanyaan").innerHTML = soal.pertanyaan;
+            document.getElementById("nomorSoalTampil").innerHTML = "PG " + (index + 1);
             $('#boxJawabanPG').removeClass('d-none');
             $('#boxJawabanEsai').addClass('d-none');
             populatePilihanJawaban(index);
@@ -192,6 +217,7 @@
         function setBtnSoalEsai(index) {
             const soal = JSON.parse(localStorage.getItem('soal_esai'))[index];
             document.getElementById("pertanyaan").innerHTML = soal.pertanyaan;
+            document.getElementById("nomorSoalTampil").innerHTML = "Esai " + (index + 1);
             $('#boxJawabanEsai').removeClass('d-none');
             $('#boxJawabanPG').addClass('d-none');
             populateJawabanEsai(index);
