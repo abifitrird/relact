@@ -38,6 +38,7 @@
                                 <tr>
                                     <th scope="col">No.</th>
                                     <th scope="col">Pertanyaan</th>
+                                    <th scope="col">Sub materi</th>
                                     <th scope="col">Kunci Jawaban</th>
                                     <th scope="col">Bobot</th>
                                     <th scope="col" style="text-align: center">Aksi</th>
@@ -50,6 +51,7 @@
                                         <tr>
                                             <th scope="row"><?php echo $no_pg ?></th>
                                             <td><?php echo $soa['pertanyaan'] ?></td>
+                                            <td><?php echo $soa['judul_sub'] ?></td>
                                             <td><?php echo $soa['pilihan'] ? $soa['pilihan'] : "belum ada kunci jawaban" ?></td>
                                             <td><?php echo $soa['bobot'] ?></td>
                                             <td style="text-align: center; white-space: nowrap; width: 1%">
@@ -70,6 +72,7 @@
                                 <tr>
                                     <th scope="col">No.</th>
                                     <th scope="col">Pertanyaan</th>
+                                    <th scope="col">Sub materi</th>
                                     <th scope="col">Bobot</th>
                                     <th scope="col" style="text-align: center">Aksi</th>
                                 </tr>
@@ -81,6 +84,7 @@
                                         <tr>
                                             <th scope="row"><?php echo $no_esai ?></th>
                                             <td><?php echo $soa['pertanyaan'] ?></td>
+                                            <td><?php echo $soa['judul_sub'] ?></td>
                                             <td><?php echo $soa['bobot'] ?></td>
                                             <td style="text-align: center; white-space: nowrap; width: 1%">
                                                 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#ubahSoal" data-soalid="<?php echo $soa['id'] ?>" data-soaljenis="<?php echo $soa['tipe'] ?>" data-url-api-soal="<?php echo site_url('api/soal/') ?>">Ubah</button>
@@ -167,8 +171,6 @@
         </div>
     </div>
 
-    <!-- TODO: buat modal untuk tambah pilihan jawaban. Terdapat penambahan pilihan ganda, penambahan kunci jawaban, dan level bloom -->
-
     <div class="modal fade" id="ubahSoal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
@@ -180,6 +182,10 @@
                 </div>
                 <div class="modal-body">
                     <form action="" method="POST" data-url="<?php echo site_url('guru/kelas/' . $this->uri->segment(3) . '/materi/' . $this->uri->segment(5) . '/soal/') ?>">
+                        <!-- <div class="form-group">
+                            <label for="subMateri">Sub Materi</label>
+                            <select class="form-control" id="subMateri" name="subMateri" required></select>
+                        </div> -->
                         <div class="form-group">
                             <label for="editor">Pertanyaan</label>
                             <textarea class="summernote form-control" id="editorUbah" name="pertanyaan"></textarea>
@@ -251,7 +257,6 @@
                 var soal_id = button.data('soalid')
                 var urlHapusSoal = button.data('url-hapus-soal')
                 $('.modal-footer form').attr('action', urlHapusSoal + soal_id)
-                // FIXME: HAPUS SOAL
             })
 
             $('#ubahSoal').on('show.bs.modal', function(event) {
@@ -265,6 +270,7 @@
                     .then(data => {
                         var pertanyaan = data.pertanyaan
                         $("#editorUbah").summernote('code', pertanyaan)
+                        // $("#subMateriId" + data.sub_id).prop('selected', true);
                     });
 
                 fetch(urlApiSoal + "pilihan/" + soal_id)
@@ -350,7 +356,7 @@
             console.log(data);
             let first = true;
             data.forEach(el => {
-                $("#subMateri").append(`<option ${first ? 'default' : ''} value="${el.id}">${el.judul}</option>`);
+                $("#subMateri").append(`<option id="subMateriId${el.id}" ${first ? 'default' : ''} value="${el.id}">${el.judul}</option>`);
                 first = false;
             })
         });
