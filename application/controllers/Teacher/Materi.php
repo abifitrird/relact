@@ -138,6 +138,12 @@ class Materi extends Base
 		echo json_encode($data);
 	}
 
+	public function showListSubAPI($materi_kode)
+	{
+		$data = $this->KelasModel->getSubmateriByKode($materi_kode);
+		echo json_encode($data);
+	}
+
 	public function deleteMateriAPI($materi_kode)
 	{
 		if ($this->KelasModel->deleteMateri($materi_kode)) {
