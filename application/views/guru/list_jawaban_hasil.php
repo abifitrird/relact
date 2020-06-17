@@ -44,12 +44,7 @@
                                     <?php if (isset($dat['pilihan_soal_id'])) { ?>
                                         <td><?php echo $dat['jawaban'] ?></td>
 
-                                        <td><?php echo $dat['pilihan_soal_id'] == $dat['kunci_soal'] ?
-                                                        '<svg style="width:24px;height:24px" viewBox="0 0 24 24">
-    <path fill="currentColor" d="M10,17L5,12L6.41,10.58L10,14.17L17.59,6.58L19,8M19,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3Z" />
-</svg>' : '<svg style="width:24px;height:24px" viewBox="0 0 24 24">
-    <path fill="currentColor" d="M19,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3Z" />
-</svg>'; ?></td>
+                                        <td><?php echo $dat['pilihan_soal_id'] == $dat['kunci_soal'] ? '❌' : '✅'; ?></td>
                                     <?php } else { ?>
                                         <td><?php echo $dat['nilai'] ?></td>
                                         <td><button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#cekJawaban<?php echo $dat['id'] ?>">Lihat Jawaban</button></td>
@@ -73,7 +68,7 @@
 
 <?php foreach ($data as $dat) { ?>
     <div class="modal fade" id="cekJawaban<?php echo $dat['id'] ?>" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="staticBackdropLabel">Koreksi Jawaban</h5>
@@ -84,7 +79,7 @@
                 <div class="modal-body">
                     <form action="<?php echo site_url('api/simpan_nilai_esai/' . $this->uri->segment(7)) ?>" method="POST">
                         <input type="hidden" name="id" value="<?php echo $dat['id'] ?>" />
-                        <textarea readonly class="form-control"><?php echo $dat['jawaban'] ?></textarea>
+                        <textarea readonly class="form-control" rows="8"><?php echo $dat['jawaban'] ?></textarea>
                         <div class="form-group">
                             <label for="nilai">Nilai</label>
                             <input type="number" class="form-control" id="nilai" name="nilai" required value="<?php echo isset($dat['nilai']) ? $dat['nilai'] : "0" ?>" max="<?php echo $dat['bobot'] ?>" min="0" />
