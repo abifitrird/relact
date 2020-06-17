@@ -107,6 +107,7 @@ $route['guru/kelas/(:any)/materi/(:any)/soal/esai/(:num)']['post'] = "Teacher/So
 $route['api/soal/(:num)']['get'] = "Teacher/Soal/getSoalJson/$1"; // get JSON API
 $route['api/soal/pilihan/delete/(:num)']['get'] = "Teacher/Soal/deletePilihan/$1";
 $route['api/soal/pilihan/(:num)']['get'] = "Teacher/Soal/getPilihanJawabanBySoalId/$1"; // getpilihan jawbaban as JSON
+$route['api/showlistsub/(:any)']['get'] = "Teacher/Materi/showListSubAPI/$1";
 
 /* route guru/hasil */
 $route['guru/hasil']['get'] = "Teacher/Hasil/viewHasilKerja";

@@ -33,7 +33,8 @@ class Soal extends Base
             'materi_kode' => $this->input->post('kodeMateri'),
             'tipe' => $this->input->post('tipeSoal'),
             'pertanyaan' => $this->input->post('pertanyaan'),
-            'bobot' => $this->input->post('bobotSoal')
+            'bobot' => $this->input->post('bobotSoal'),
+            'sub_id' => $this->input->post('subMateri')
         );
 
         $this->Soal->addSoal($data_post);

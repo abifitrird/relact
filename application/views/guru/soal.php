@@ -140,6 +140,10 @@
                             </select>
                         </div>
                         <div class="form-group">
+                            <label for="subMateri">Sub Materi</label>
+                            <select class="form-control" id="subMateri" name="subMateri" required></select>
+                        </div>
+                        <div class="form-group">
                             <label for="kodeMateri">Kode Materi</label>
                             <input type="text" class="form-control" id="kodeMateri" name="kodeMateri" value="<?php echo $this->uri->segment(5) ?>" readonly />
                         </div>
@@ -341,6 +345,15 @@
             $("#pilihanGanda tbody tr").last().remove();
             i--;
         })
+
+        fetch('/api/showlistsub/<?php echo $this->uri->segment(5) ?>').then(response => response.json()).then(data => {
+            console.log(data);
+            let first = true;
+            data.forEach(el => {
+                $("#subMateri").append(`<option ${first ? 'default' : ''} value="${el.id}">${el.judul}</option>`);
+                first = false;
+            })
+        });
     </script>
 </body>
 
