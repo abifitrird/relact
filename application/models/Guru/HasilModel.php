@@ -23,7 +23,7 @@ class HasilModel extends CI_Model
 
     public function getPGBySiswaId($user_id, $materi_kode)
     {
-        return $this->db->query("SELECT *, (SELECT pertanyaan FROM soal WHERE soal.id = soal_id) as pertanyaan, (SELECT pilihan_soal_id FROM kunci_soal WHERE kunci_soal.soal_id = log_answer.soal_id) as kunci_soal, (SELECT pilihan FROM pilihan_soal WHERE pilihan_soal.soal_id = log_answer.soal_id AND pilihan_soal.id = log_answer.pilihan_soal_id) as jawaban FROM `log_answer` WHERE user_id = $user_id AND soal_id = (SELECT soal.id FROM soal WHERE soal.materi_kode = '$materi_kode' AND soal.id = soal_id)")->result_array();
+        return $this->db->query("SELECT *, (SELECT pertanyaan FROM soal WHERE soal.id = soal_id) as pertanyaan, (SELECT judul FROM sub_materi WHERE sub_materi.id = sub_id) as judul_sub, (SELECT pilihan_soal_id FROM kunci_soal WHERE kunci_soal.soal_id = log_answer.soal_id) as kunci_soal, (SELECT pilihan FROM pilihan_soal WHERE pilihan_soal.soal_id = log_answer.soal_id AND pilihan_soal.id = log_answer.pilihan_soal_id) as jawaban FROM `log_answer` WHERE user_id = $user_id AND soal_id = (SELECT soal.id FROM soal WHERE soal.materi_kode = '$materi_kode' AND soal.id = soal_id)")->result_array();
     }
 
     public function getEsaiBySiswaId($user_id, $materi_kode)

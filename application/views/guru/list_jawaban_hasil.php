@@ -26,6 +26,7 @@
                             <tr>
                                 <th scope="col">No.</th>
                                 <th scope="col">Pertanyaan</th>
+                                <th scope="col">Sub materi</th>
                                 <?php if (isset($data[0]['pilihan_soal_id'])) { ?>
                                     <th scope="col">Jawaban</th>
                                     <th scope="col">Keterangan</th>
@@ -41,6 +42,7 @@
                                 <tr>
                                     <th><?php echo $i ?></th>
                                     <td><?php echo $dat['pertanyaan'] ?></td>
+                                    <td><?php echo $dat['judul_sub'] ?></td>
                                     <?php if (isset($dat['pilihan_soal_id'])) { ?>
                                         <td><?php echo $dat['jawaban'] ?></td>
 
