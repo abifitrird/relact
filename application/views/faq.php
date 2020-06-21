@@ -47,7 +47,7 @@
                             <br>
                             <strong>Pendaftaran</strong>
                             <p>
-                                Jika anda belum memiliki akun atau belum terdaftar, maka anda bisa menuju halaman <a href="http://relact.codes">relact.codes</a> dan pilih menu <mark>Daftar</mark>. Setelah itu anda dapat mengisi form yang disediakan. Klik tombol <button class="btn btn-primary">DAFTAR</button> dan anda akan diarahkan ke halaman Login.
+                                Jika anda belum memiliki akun atau belum terdaftar, maka anda bisa menuju halaman <a href="http://relact.codes">relact.codes</a> dan klik link <a href="">Daftar</a>. Setelah itu anda dapat mengisi form yang disediakan. Klik tombol <button class="btn btn-primary">DAFTAR</button> dan anda akan diarahkan ke halaman Login.
                             </p>
                         </div>
                     </div>
@@ -66,17 +66,17 @@
                         <div class="panel-body">
                             <strong>Membuat kelas</strong>
                             <p>
-                                Dalam sistem ini, fitur untuk membuat kelas dikhususkan untuk pengguna dari pihak guru. Caranya adalah dengan mendaftarkan akun guru ke pihak operator, kemudian memilih menu <mark>Kelas</mark> di bagian navigasi. Pengguna akan menemukan tampilan daftar kelas yang sudah dibuat. Anda dapat menemukan tombol <button class="btn btn-success">Tambah Kelas</button> di sudut kanan atas halaman.
+                                Dalam sistem ini, fitur untuk membuat kelas dikhususkan untuk guru. Caranya adalah dengan mendaftarkan akun guru ke pihak operator, kemudian memilih menu <mark>Kelas</mark> di bagian navigasi. Anda dapat melihat tampilan daftar kelas yang sudah dibuat. Anda dapat menemukan tombol <button class="btn btn-success">Tambah Kelas</button> di sudut kanan atas halaman.
                             </p>
                             <br>
                             <strong>Mengatur kelas</strong>
                             <p>
-                                Pengguna dari pihak guru dapat mengatur kelas dengan menambahkan, mengubah, atau menghapus materi pada kelas yang telah dibuat.
+                                Guru dapat mengatur kelas dengan menambahkan, mengubah, atau menghapus materi pada kelas yang telah dibuat.
                             </p>
                             <br>
                             <strong>Bergabung dengan kelas</strong>
                             <p>
-                                Bergabung dengan kelas merupakan fitur yang tersedia untuk pengguna dari pihak siswa. Caranya adalah dengan masuk ke dalam menu <mark>Kelas</mark> pada bagian navigasi, kemudian pengguna akan menemukan tombol <button class="btn btn-primary">Masuk Kelas</button>. Pengguna dapat memasukkan kode kelas yang valid sesuai dengan kode kelas yang dibuat oleh guru yang bersangkutan.
+                                Bergabung dengan kelas merupakan fitur yang tersedia untuk siswa. Caranya adalah dengan masuk ke dalam menu <mark>Kelas</mark> pada bagian navigasi, kemudian anda akan menemukan tombol <button class="btn btn-primary">Masuk Kelas</button>. Anda dapat memasukkan kode kelas yang valid sesuai dengan kode kelas yang dibuat oleh guru yang bersangkutan.
                             </p>
                         </div>
                     </div>
@@ -95,7 +95,7 @@
                         <div class="panel-body">
                             <strong>Membuat tugas</strong>
                             <p>
-                                Pada sistem ini, fitur tugas yang disediakan adalah berbentuk soal pilihan ganda dan esai yang dapat disusun oleh pengguna dari pihak guru. Menu untuk menambahkan soal terdapat pada halaman <a href="">Materi</a>, tepatnya di sudut kanan atas halaman anda dapat menemukan tombol <button class="btn btn-success">Lihat Soal</button>
+                                Pada sistem ini, fitur tugas yang disediakan adalah berbentuk soal pilihan ganda dan esai yang dapat disusun oleh guru. Menu untuk menambahkan soal terdapat pada halaman Materi, tepatnya di sudut kanan atas halaman anda dapat menemukan tombol <button class="btn btn-success">Lihat Soal</button>
                                 <br>Jenis soal, jumlah soal, pilihan jawaban, kunci jawaban dan skor dapat diatur secara manual oleh guru yang bersangkutan sesuai dengan kebutuhan kegiatan belajar mengajar.
                             </p>
                             <br>
@@ -120,12 +120,12 @@
                         <div class="panel-body">
                             <strong>Menyerahkan tugas</strong>
                             <p>
-                                Tugas berbentuk soal pilihan ganda maupun esai dapat dikerjakan oleh pengguna dari pihak siswa dalam rentang waktu tertentu setelah menyelesaikan proses pembelajarannya. Hal ini bertujuan untuk melatih kemampuan kognitif siswa setelah belajar dengan materi yang tersedia.
+                                Tugas berbentuk soal pilihan ganda maupun esai dapat dikerjakan oleh siswa dalam rentang waktu tertentu setelah menyelesaikan proses pembelajarannya. Hal ini bertujuan untuk melatih kemampuan kognitif siswa setelah belajar dengan materi yang tersedia.
                             </p>
                             <br>
                             <strong>Melihat hasil tugas</strong>
                             <p>
-                                Tugas yang telah selesai dikerjakan oleh siswa dapat dilihat pada halaman <mark>Capaian Belajar</mark>.
+                                Tugas yang telah selesai dikerjakan oleh siswa dapat dilihat pada halaman Capaian Belajar.
                             </p>
                         </div>
                     </div>
@@ -143,7 +143,7 @@
                     <div style="height: 0px;" id="collapse5" class="panel-collapse collapse in">
                         <div class="panel-body">
                             <p>
-                                Aktivitas belajar siswa dapat dilihat oleh pihak guru dengan cara klik menu <mark>Aktivitas Siswa</mark> pada bagian navigasi.
+                                Aktivitas belajar siswa dapat dilihat oleh guru dengan cara klik menu <mark>Aktivitas Siswa</mark> pada bagian navigasi.
                             </p>
                         </div>
                     </div>
@@ -162,7 +162,7 @@
                 <div style="height: 0px;" id="collapse6" class="panel-collapse collapse in">
                     <div class="panel-body">
                         <p>
-                            Informasi mengenai web ini dapat ditemukan pada menu yang tertera di bagian footer halaman Login maupun Beranda. Menu yang tersedia adalah <mark>Tentang</mark>, <mark>Hubungi Kami</mark>, dan <mark>Frequently Asked Question (FAQ)</mark>.
+                            Informasi mengenai web ini dapat ditemukan pada menu yang tertera di bagian footer halaman Login dan pada navigasi. Layanan informasi yang tersedia adalah <mark>Tentang</mark>, <mark>Hubungi Kami</mark>, dan <mark>Frequently Asked Question (FAQ)</mark>.
                         </p>
                     </div>
                 </div>
