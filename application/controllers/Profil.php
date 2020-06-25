@@ -17,7 +17,7 @@ class Profil extends CI_Controller
         $data['data'] = $this->ProfilModel->getProfil($id);
         $data['sekolah'] = $this->getListOfSchools();
         $this->breadcrumb->push('Guru', '/guru');
-        $this->breadcrumb->push('Profil', '/profil');
+        $this->breadcrumb->push('Profil', '/guru/profil');
         $this->load->view('guru/profil', $data);
     }
 
@@ -26,6 +26,8 @@ class Profil extends CI_Controller
         $id = $this->session->userdata('user_id');
         $data['data'] = $this->ProfilModel->getProfil($id);
         $data['sekolah'] = $this->getListOfSchools();
+        $this->breadcrumb->push('Siswa', '/siswa');
+        $this->breadcrumb->push('Profil', '/siswa/profil');
         $this->load->view('siswa/profil', $data);
     }
 

@@ -45,22 +45,22 @@
         </ul>
     </div>
 </nav>
-
-<nav class="px-3 py-2" aria-label="breadcrumb">
-    <ol class="breadcrumb">
-        <?php $i = 1;
-        $breadcrumb = $this->breadcrumb->get_array();
-        if ($breadcrumb) {
-            foreach ($breadcrumb as $key => $crumb) {
-                $keys = array_keys($breadcrumb);
-                if (end($keys) == $key) { ?>
+<?php if ($this->breadcrumb->get_array() != null) { ?>
+    <nav class="px-3 py-2" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <?php $i = 1;
+                $breadcrumb = $this->breadcrumb->get_array();
+                foreach ($breadcrumb as $key => $crumb) {
+                    $keys = array_keys($breadcrumb);
+                    if (end($keys) == $key) { ?>
                     <li class="breadcrumb-item text-capitalize active" aria-current="page"><?php echo $crumb['page'] ?></li>
                 <?php } else { ?>
                     <li class="breadcrumb-item text-capitalize"><a href="<?php echo $crumb['href'] ?>"><?php echo $crumb['page'] ?></a></li>
                     <!-- <li class="breadcrumb-item"><a href="#">Kelas</a></li> -->
-        <?php }
-                $i++;
-            }
-        } ?>
-    </ol>
-</nav>
+            <?php }
+                    $i++;
+                } ?>
+        </ol>
+    </nav>
+
+<?php } ?>

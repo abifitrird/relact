@@ -17,6 +17,8 @@ class Capaian extends Base
         $soal = $this->Capaian->getSoal($user_id);
         // $data['materi'] = $materi;
         $data['soal'] = $soal;
+        $this->breadcrumb->push('Siswa', '/siswa');
+        $this->breadcrumb->push('Capaian Belajar', '/siswa/capaian');
         $this->load->view('siswa/capaian', $data);
     }
 }
