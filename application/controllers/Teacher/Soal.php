@@ -8,6 +8,7 @@ class Soal extends Base
     {
         parent::__construct();
         $this->load->model('Guru/SoalModel', 'Soal');
+        $this->load->model('KelasModel');
     }
 
     /**
@@ -18,6 +19,14 @@ class Soal extends Base
     public function getSoal($kode_materi)
     {
         $data['soal'] = $this->Soal->getSoalByKodeMateri($kode_materi);
+        $uri_kelas = $this->uri->uri_to_assoc(2);
+        $kelas = $this->KelasModel->getKelasByKode($uri_kelas['kelas']);
+        $materi = $this->KelasModel->getMateriByKode($uri_kelas['materi']);
+        $this->breadcrumb->push('Guru', '/guru');
+        $this->breadcrumb->push('Kelas', '/guru/kelas');
+        $this->breadcrumb->push($kelas['mapel'], '/guru/kelas/' . $uri_kelas['kelas']);
+        $this->breadcrumb->push($materi['judul'], '/guru/kelas/' . $uri_kelas['kelas'] . '/materi/' . $uri_kelas['materi']);
+        $this->breadcrumb->push("Daftar Soal", "#");
         $this->load->view('guru/soal', $data);
     }
 
