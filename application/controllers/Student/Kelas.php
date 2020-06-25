@@ -1,9 +1,10 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 require_once APPPATH . 'controllers/Student/Base.php';
 
-class Kelas extends Base {
+class Kelas extends Base
+{
 
 	public function __construct()
 	{
@@ -20,6 +21,8 @@ class Kelas extends Base {
 			$res['data'] = $data;
 		}
 
+		$this->breadcrumb->push('Siswa', '/siswa');
+		$this->breadcrumb->push('Kelas', '/siswa/kelas');
 		$this->load->view('siswa/kelas', $res);
 	}
 
