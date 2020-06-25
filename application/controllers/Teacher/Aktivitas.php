@@ -14,6 +14,8 @@ class Aktivitas extends Base
     public function viewAktivitas()
     {
         $data['data'] = $this->Kelas->getKelas();
+        $this->breadcrumb->push('Guru', '/guru');
+        $this->breadcrumb->push('Aktivitas', '/guru/aktivitas');
         $this->load->view('guru/aktivitas', $data);
     }
 
@@ -21,7 +23,10 @@ class Aktivitas extends Base
     {
         $data['kelas'] = $this->Kelas->getKelasByKode($kode_kelas);
         $data['data'] = $this->Aktivitas->getSiswaPerKelas($kode_kelas);
-        // print_r($data);
+        $this->breadcrumb->push('Guru', '/guru');
+        $this->breadcrumb->push('Aktivitas', '/guru/aktivitas');
+        $this->breadcrumb->push($data['kelas']['mapel'], '/guru/aktivitas/' . $kode_kelas);
+        $this->breadcrumb->push("Daftar Siswa", "#");
         $this->load->view('guru/aktivitas_detail', $data);
     }
 
@@ -29,7 +34,11 @@ class Aktivitas extends Base
     {
         $data['user'] = $this->Aktivitas->getDataSiswa($username);
         $data['data'] = $this->Aktivitas->getDataAktivitas($kelas_kode, $username);
-        // print_r($data);
+        $kelas = $this->Kelas->getKelasByKode($kelas_kode);
+        $this->breadcrumb->push('Guru', '/guru');
+        $this->breadcrumb->push('Aktivitas', '/guru/aktivitas');
+        $this->breadcrumb->push($kelas['mapel'], '/guru/aktivitas/' . $kelas_kode);
+        $this->breadcrumb->push("Daftar Aktivitas", "#");
         $this->load->view('guru/aktivitas_detail_siswa', $data);
     }
 }
