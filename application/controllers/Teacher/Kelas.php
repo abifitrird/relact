@@ -15,6 +15,8 @@ class Kelas extends Base
 	public function index()
 	{
 		$data['data'] = $this->KelasModel->getKelas();
+		$this->breadcrumb->push('Guru', '/guru');
+		$this->breadcrumb->push('Kelas', '/kelas');
 		$this->load->view('guru/kelas', $data);
 	}
 

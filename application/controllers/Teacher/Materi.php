@@ -10,9 +10,14 @@ class Materi extends Base
 
 		$this->load->model('KelasModel');
 	}
+
 	public function getMateri($kode)
 	{
 		$data['data'] = $this->KelasModel->getMateriByKodeKelas($kode);
+		$kelas = $this->KelasModel->getKelasByKode($kode);
+		$this->breadcrumb->push('Guru', '/guru');
+		$this->breadcrumb->push('Kelas', '/guru/kelas');
+		$this->breadcrumb->push($kelas['mapel'], '/guru/kelas/' . $kode);
 		$this->load->view('guru/list_materi', $data);
 	}
 
@@ -50,6 +55,9 @@ class Materi extends Base
 	{
 		// $data['data'] = $this->KelasModel->getMateriById($materi_id);
 		$data['data'] = $this->KelasModel->getMateriByKode($materi_kode);
+		$this->breadcrumb->push('Guru', '/guru');
+		$this->breadcrumb->push('Kelas', '/kelas');
+		// $this->breadcrumb->push($this->kelas['mapel'], '/' . $this->kelas['kode']);
 		$this->load->view('guru/materi', $data);
 	}
 
@@ -57,12 +65,26 @@ class Materi extends Base
 	{
 		$data['materi'] = $this->KelasModel->getMateriByKode($materi_kode);
 		$data['data'] = $this->KelasModel->getSubmateriByKode($materi_kode);
+		$uri_kelas = $this->uri->uri_to_assoc(2);
+		$kelas = $this->KelasModel->getKelasByKode($uri_kelas['kelas']);
+		$this->breadcrumb->push('Guru', '/guru');
+		$this->breadcrumb->push('Kelas', '/guru/kelas');
+		$this->breadcrumb->push($kelas['mapel'], '/guru/kelas/' . $uri_kelas['kelas']);
+		$this->breadcrumb->push($data['materi']['judul'], '/guru/kelas/' . $uri_kelas['kelas'] . '/materi/' . $materi_kode);
 		$this->load->view('guru/list_submateri', $data);
 	}
 
 	public function showSub($materi_kode, $sub_id)
 	{
 		$data['data'] = $this->KelasModel->getSubById($materi_kode, $sub_id);
+		$uri_kelas = $this->uri->uri_to_assoc(2);
+		$kelas = $this->KelasModel->getKelasByKode($uri_kelas['kelas']);
+		$materi = $this->KelasModel->getMateriByKode($materi_kode);
+		$this->breadcrumb->push('Guru', '/guru');
+		$this->breadcrumb->push('Kelas', '/guru/kelas');
+		$this->breadcrumb->push($kelas['mapel'], '/guru/kelas/' . $uri_kelas['kelas']);
+		$this->breadcrumb->push($materi['judul'], '/guru/kelas/' . $uri_kelas['kelas'] . '/materi/' . $materi_kode);
+		$this->breadcrumb->push($data['data']['judul'], '/guru/kelas/' . $uri_kelas['kelas'] . '/materi/' . $materi_kode . '/sub/' . $sub_id);
 		$this->load->view('guru/materi', $data);
 	}
 
@@ -73,6 +95,14 @@ class Materi extends Base
 			'materi_kode' => $materi_kode,
 			'mode' => 'tambah'
 		);
+		$uri_kelas = $this->uri->uri_to_assoc(2);
+		$kelas = $this->KelasModel->getKelasByKode($uri_kelas['kelas']);
+		$materi = $this->KelasModel->getMateriByKode($materi_kode);
+		$this->breadcrumb->push('Guru', '/guru');
+		$this->breadcrumb->push('Kelas', '/guru/kelas');
+		$this->breadcrumb->push($kelas['mapel'], '/guru/kelas/' . $uri_kelas['kelas']);
+		$this->breadcrumb->push($materi['judul'], '/guru/kelas/' . $uri_kelas['kelas'] . '/materi/' . $materi_kode);
+		$this->breadcrumb->push("Tambah Submateri", "#");
 		$this->load->view('guru/form_materi', $data);
 	}
 
@@ -86,6 +116,15 @@ class Materi extends Base
 			'judul' => $data['judul'],
 			'konten' => $data['konten']
 		);
+		$uri_kelas = $this->uri->uri_to_assoc(2);
+		$kelas = $this->KelasModel->getKelasByKode($uri_kelas['kelas']);
+		$materi = $this->KelasModel->getMateriByKode($materi_kode);
+		$this->breadcrumb->push('Guru', '/guru');
+		$this->breadcrumb->push('Kelas', '/guru/kelas');
+		$this->breadcrumb->push($kelas['mapel'], '/guru/kelas/' . $uri_kelas['kelas']);
+		$this->breadcrumb->push($materi['judul'], '/guru/kelas/' . $uri_kelas['kelas'] . '/materi/' . $materi_kode);
+		$this->breadcrumb->push($data['judul'], '/guru/kelas/' . $uri_kelas['kelas'] . '/materi/' . $materi_kode . '/sub/' . $sub_id);
+		$this->breadcrumb->push("Ubah Data", '#');
 		$this->load->view('guru/form_materi', $kirim);
 	}
 
