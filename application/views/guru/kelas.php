@@ -33,8 +33,8 @@
                                     </h5>
                                 </div>
                                 <div class="col-12 px-2 py-3">
-                                    <?php echo $dat['nama'] ?><br>
-                                    <?php echo $dat['periode'] ?>
+                                    Kelas: <?php echo $dat['nama'] ?><br>
+                                    Tahun ajaran: <?php echo $dat['periode'] ?>
                                 </div>
                             </div>
                         </div>
@@ -67,7 +67,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="tahunPeriode">Tahun Periode</label>
+                            <label for="tahunPeriode">Tahun Ajaran</label>
                             <input type="text" class="form-control" id="tahunPeriode" name="tahunPeriode" required>
                         </div>
 
