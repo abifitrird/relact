@@ -78,11 +78,11 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <h6>Anda yakin untuk selesai mengerjakan ini?</h6>
+                    <h6>Apakah anda sudah yakin dengan semua jawaban anda?</h6>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" id="btnSelesai" class="btn btn-danger">Selesai</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                    <button type="button" id="btnSelesai" class="btn btn-danger">Ya</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tidak</button>
                 </div>
             </div>
         </div>
@@ -97,7 +97,7 @@
         window.addEventListener('beforeunload', function(e) {
             let returnValue = undefined;
             if (!is_selesai) {
-                returnValue = "Anda yakin untuk menyelesaikan mengisi soal? jawaban akan dikunci dan tidak bisa mengulang kembali !";
+                returnValue = "Apakah anda yakin ingin keluar? Jawaban anda saat ini akan disimpan dan tidak bisa mengulang kembali !";
                 e.preventDefault();
             }
             e.returnValue = returnValue;
