@@ -139,7 +139,7 @@ class Materi extends Base
 		if (!$this->KelasModel->saveSubMateri($data)) {
 			redirect($_SERVER['HTTP_REFERER']);
 		}
-		redirect(site_url('guru/kelas/' . $kelas_kode));
+		redirect(site_url('guru/kelas/' . $kelas_kode . '/materi/' . $materi_kode));
 	}
 
 	public function saveUbahSub($kelas_kode, $materi_kode, $sub_id)

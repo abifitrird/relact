@@ -53,7 +53,7 @@
                         </div>
                         <div class="col-12 ">
                             <label class="col-form-label">
-                                <h6>Esai</h6>
+                                <h6>Isian singkat</h6>
                             </label>
                             <div id="btnIndexSoalEsai" class="col-12 d-flex flex-column">
 
@@ -151,16 +151,16 @@
                 let j = 1;
                 for (let i = 0; i < jumlah_soal; i++) {
                     if (i % 5 == 0) {
-                        $('#btnIndexSoal').append(`<div id="box-${j}" class="my-1 mx-1 btn-group " role="group" aria-label="Nomor Soal"></div>`)
+                        $('#btnIndexSoal').append(`<div id="boxpg-${j}" class="my-1 mx-1 btn-group " role="group" aria-label="Nomor Soal"></div>`)
                         j++;
                     }
                 }
                 j = 1;
                 for (let i = 0; i < jumlah_soal; i++) {
                     if (i % 2 == 0) {
-                        $(`#box-${j}`).append(`<button type="button" onclick="setBtnSoal(${i})" class="btn btn-dark">${i+1}</button`)
+                        $(`#boxpg-${j}`).append(`<button type="button" onclick="setBtnSoal(${i})" class="btn btn-dark">${i+1}</button`)
                     } else {
-                        $(`#box-${j}`).append(`<button type="button" onclick="setBtnSoal(${i})" class="btn btn-secondary">${i+1}</button>`)
+                        $(`#boxpg-${j}`).append(`<button type="button" onclick="setBtnSoal(${i})" class="btn btn-secondary">${i+1}</button>`)
                     }
                     if ((i + 1) % 5 == 0 && i != 0) {
                         j++;
@@ -172,16 +172,16 @@
                 const jumlah_soal_esai = soal_esai.length;
                 for (let i = 0; i < jumlah_soal_esai; i++) {
                     if (i % 5 == 0) {
-                        $('#btnIndexSoalEsai').append(`<div id="box-${k}" class="my-1 mx-1 btn-group " role="group" aria-label="Nomor Soal"></div>`)
+                        $('#btnIndexSoalEsai').append(`<div id="boxesai-${k}" class="my-1 mx-1 btn-group " role="group" aria-label="Nomor Soal"></div>`)
                         k++;
                     }
                 }
                 k = j;
                 for (let i = 0; i < jumlah_soal_esai; i++) {
                     if (i % 2 == 0) {
-                        $(`#box-${k}`).append(`<button type="button" onclick="setBtnSoalEsai(${i})" class="btn btn-dark">${i+1}</button>`)
+                        $(`#boxesai-${k}`).append(`<button type="button" onclick="setBtnSoalEsai(${i})" class="btn btn-dark">${i+1}</button>`)
                     } else {
-                        $(`#box-${k}`).append(`<button type="button" onclick="setBtnSoalEsai(${i})" class="btn btn-secondary">${i+1}</button>`)
+                        $(`#boxesai-${k}`).append(`<button type="button" onclick="setBtnSoalEsai(${i})" class="btn btn-secondary">${i+1}</button>`)
                     }
                     if ((i + 1) % 5 == 0 && i != 0) {
                         k++;
@@ -217,7 +217,7 @@
         function setBtnSoalEsai(index) {
             const soal = JSON.parse(localStorage.getItem('soal_esai'))[index];
             document.getElementById("pertanyaan").innerHTML = soal.pertanyaan;
-            document.getElementById("nomorSoalTampil").innerHTML = "Esai " + (index + 1);
+            document.getElementById("nomorSoalTampil").innerHTML = "Isian singkat " + (index + 1);
             $('#boxJawabanEsai').removeClass('d-none');
             $('#boxJawabanPG').addClass('d-none');
             populateJawabanEsai(index);
