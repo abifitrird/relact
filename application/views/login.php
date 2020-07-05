@@ -55,6 +55,7 @@
                                     </div>
                                     <div class="align-center">
                                         <button type="submit" class="my-2 btn btn-primary" style="width: 100%">MASUK</button>
+                                        <p>Lupa password? <a href="#lupaPassword" data-toggle="modal">Reset</a></p>
                                         <p>Belum punya akun? <a href="<?php echo site_url('daftar'); ?>">Daftar</a></p>
                                     </div>
                                 </form>
@@ -66,6 +67,31 @@
         </div>
     </div>
     <?php include("footer.php") ?>
+
+    <div class="modal fade" id="lupaPassword" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Lupa Password</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="<?php echo site_url('lupa') ?>" method="POST">
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="text" class="form-control" id="email" name="email" placeholder="email@example.com">
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Kirim</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>

@@ -61,6 +61,10 @@ $route['login']['get'] = "Login/index";             // view login
 $route['login']['post'] = "Login/aksi_login";       // proses login
 $route['logout']['get'] = 'Login/Logout';           // logout
 
+$route['lupa']['post'] = "Home/kirim_request_password";
+$route['ubah/(:any)']['post'] = "Home/ubah/$1";
+$route['reset/(:any)']['get'] = "Home/reset/$1";
+
 $route['daftar']['get'] = "Signup/index";           // view daftar
 $route['daftar']['post'] = "Signup/daftar";         // proses daftar
 
