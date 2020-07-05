@@ -41,7 +41,7 @@ class Signup extends CI_Controller
 			);
 			$this->Profil->updateProfil($data);
 
-			$this->kirim_email($data['username'], $data['email']);
+			$this->kirim_email($user['username'], $user['email']);
 			$this->session->set_flashdata('success', 'Link verifikasi telah dikirim ke email. Konfirmasi telebih dahulu untuk bisa login.');
 			redirect(site_url('login'));
 		}

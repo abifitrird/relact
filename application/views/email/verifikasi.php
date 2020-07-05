@@ -78,7 +78,7 @@
                     text-decoration: none;
                     vertical-align: top;
                     width: 100%;
-                  ">Username: <?php echo $username ?> telah melakukan pendaftaran pada aplikasi <a href="https://relact.codes">RELACT</a> dengan email <?php echo $email ?>.
+                  ">Username <strong><?php echo $username ?></strong> telah melakukan pendaftaran pada aplikasi <a href="https://relact.codes">RELACT</a> dengan email <strong><?php echo $email ?></strong>.
                                     Abaikan jika anda tidak melakukan permintaan tersebut.</td>
                             </tr>
                             <tr>

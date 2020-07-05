@@ -78,7 +78,7 @@
                     text-decoration: none;
                     vertical-align: top;
                     width: 100%;
-                  ">Username: <?php echo $username ?><br />Anda menerima email ini karena permintaan reset password.
+                  ">Username: <strong><?php echo $username ?></strong><br />Anda menerima email ini karena permintaan reset password.
                                     Abaikan jika anda tidak melakukan permintaan tersebut.</td>
                             </tr>
                             <tr>
