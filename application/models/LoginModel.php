@@ -20,7 +20,9 @@ class LoginModel extends CI_Model
 
 	public function update_token($user_id)
 	{
-		$this->db->where('id', $user_id)->set('token_reset', md5($user_id . date_timestamp_get(date_create())))->update('users');
+		$token = md5($user_id . date_timestamp_get(date_create()));
+		$this->db->where('id', $user_id)->set('token_reset', $token)->update('users');
+		return $token;
 	}
 
 	public function cek_token($token)
@@ -31,5 +33,6 @@ class LoginModel extends CI_Model
 	public function ubah_password($token, $password)
 	{
 		$this->db->where('token_reset', $token)->set('password', $password)->update('users');
+		$this->db->where('token_reset', $token)->set('token_reset', '')->update('users');
 	}
 }

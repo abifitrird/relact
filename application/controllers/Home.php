@@ -46,11 +46,11 @@ class Home extends CI_Controller
     $email = $this->input->post('email');
     $dat = $this->Login->cek_email($email);
     if ($dat['email'] == $email) {
-      $this->Login->update_token($dat['id']);
+      $token = $this->Login->update_token($dat['id']);
       $this->email->from('noreply@relact.codes', "RELACT Automation");
       $this->email->to($email);
       $this->email->subject("(Relact) Request lupa password");
-      $body = $this->load->view('email/reset_password', ['username' => $dat['username'], 'token' => $dat['token_reset']], TRUE);
+      $body = $this->load->view('email/reset_password', ['username' => $dat['username'], 'token' => $token], TRUE);
       $this->email->message($body);
       $this->email->send();
     }
