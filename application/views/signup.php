@@ -56,10 +56,10 @@
                                 <label for="passwordConf">Konfirmasi Password</label>
                                 <input type="password" class="form-control" id="passwordConf" name="passwordConfirmation" required>
                             </div>
-                            <div class="col-12">
-                                <button type="submit" class="btn btn-primary" style="width: 100%">DAFTAR</button>
+                            <div class="col-12 text-center">
+                                <button type="submit" class="btn btn-primary">DAFTAR</button>
                                 <hr>
-                                <p style="text-align: center">Sudah punya akun? <a href="<?php echo site_url("login") ?>" style="width: 100%">Masuk disini</a></p>
+                                <p class="col-12">Sudah punya akun? <a href="<?php echo site_url("login") ?>">Masuk disini</a></p>
                             </div>
                         </form>
                     </div>

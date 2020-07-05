@@ -34,8 +34,8 @@
                                 <label for="passwordConf">Konfirmasi Password</label>
                                 <input type="password" class="form-control" id="passwordConf" name="passwordConfirmation" required>
                             </div>
-                            <div class="col-12">
-                                <button type="submit" class="btn btn-primary" style="width: 100%">Ubah password</button>
+                            <div class="col-12 text-center">
+                                <button type="submit" class="btn btn-primary">Ubah password</button>
                             </div>
                         </form>
                     </div>
