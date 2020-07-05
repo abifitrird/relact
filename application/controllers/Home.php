@@ -33,15 +33,14 @@ class Home extends CI_Controller
 
   public function kirim_request_password()
   {
-    $config['charset'] = 'utf-8';
-    $config['priority'] = 5;
-    $config['mailtype'] = 'html';
     $config['protocol'] = 'smtp';
-    $config['smtp_crypto'] = 'ssl';
-    $config['smtp_host'] = 'mail.relact.codes';
-    $config['smtp_port'] = '465';
-    $config['smtp_user'] = 'noreply@relact.codes';
-    $config['smtp_pass'] = 'M=9IF]Xm0@Yb';
+    $config['smtp_host'] = 'smtp.sendgrid.net';
+    $config['smtp_port'] = '587';
+    $config['smtp_user'] = 'apikey';
+    $config['smtp_pass'] = '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';
+    $config['mailtype'] = 'html';
+    $config['priority'] = 5;
+    $config['charset'] = 'iso-8859-1';
 
     $this->email->initialize($config);
     $email = $this->input->post('email');
@@ -51,185 +50,8 @@ class Home extends CI_Controller
       $this->email->from('noreply@relact.codes', "RELACT Automation");
       $this->email->to($email);
       $this->email->subject("(Relact) Request lupa password");
-      $this->email->set_header('Content-Type', 'text/html');
-      $this->email->message(`<head>
-  <title>[Relact] Reset password</title>
-  <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
-  <meta content="width=device-width" name="viewport" />
-</head>
-
-<body style="background-color: #f4f4f5;">
-  <table
-    align="center"
-    cellpadding="0"
-    cellspacing="0"
-    id="body"
-    style="background-color: #fff; width: 100%; max-width: 680px; height: 100%;"
-  >
-    <tbody>
-      <tr>
-        <td>
-          <table
-            align="center"
-            cellpadding="0"
-            cellspacing="0"
-            class="page-center"
-            style="
-              text-align: left;
-              padding-bottom: 88px;
-              width: 100%;
-              padding-left: 120px;
-              padding-right: 120px;
-            "
-          >
-            <tbody>
-              <tr>
-                <td
-                  colspan="2"
-                  style="
-                    padding-top: 72px;
-                    -ms-text-size-adjust: 100%;
-                    -webkit-font-smoothing: antialiased;
-                    -webkit-text-size-adjust: 100%;
-                    color: #000000;
-                    font-family: 'Postmates Std', 'Helvetica', -apple-system,
-                      BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-                      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
-                      'Helvetica Neue', sans-serif;
-                    font-size: 48px;
-                    font-smoothing: always;
-                    font-style: normal;
-                    font-weight: 600;
-                    letter-spacing: -2.6px;
-                    line-height: 52px;
-                    mso-line-height-rule: exactly;
-                    text-decoration: none;
-                  "
-                >
-                  Reset your password
-                </td>
-              </tr>
-              <tr>
-                <td style="padding-top: 48px; padding-bottom: 48px;">
-                  <table cellpadding="0" cellspacing="0" style="width: 100%;">
-                    <tbody>
-                      <tr>
-                        <td
-                          style="
-                            width: 100%;
-                            height: 1px;
-                            max-height: 1px;
-                            background-color: #d9dbe0;
-                            opacity: 0.81;
-                          "
-                        ></td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </td>
-              </tr>
-              <tr>
-                <td
-                  style="
-                    -ms-text-size-adjust: 100%;
-                    -ms-text-size-adjust: 100%;
-                    -webkit-font-smoothing: antialiased;
-                    -webkit-text-size-adjust: 100%;
-                    color: #9095a2;
-                    font-family: 'Postmates Std', 'Helvetica', -apple-system,
-                      BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-                      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
-                      'Helvetica Neue', sans-serif;
-                    font-size: 16px;
-                    font-smoothing: always;
-                    font-style: normal;
-                    font-weight: 400;
-                    letter-spacing: -0.18px;
-                    line-height: 24px;
-                    mso-line-height-rule: exactly;
-                    text-decoration: none;
-                    vertical-align: top;
-                    width: 100%;
-                  "
-                >
-                  Username anda {$dat['username']} menerima email ini karena permintaan ubah password.
-                  Abaikan jika anda tidak melakukan permintaan.
-                </td>
-              </tr>
-              <tr>
-                <td
-                  style="
-                    padding-top: 24px;
-                    -ms-text-size-adjust: 100%;
-                    -ms-text-size-adjust: 100%;
-                    -webkit-font-smoothing: antialiased;
-                    -webkit-text-size-adjust: 100%;
-                    color: #9095a2;
-                    font-family: 'Postmates Std', 'Helvetica', -apple-system,
-                      BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-                      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
-                      'Helvetica Neue', sans-serif;
-                    font-size: 16px;
-                    font-smoothing: always;
-                    font-style: normal;
-                    font-weight: 400;
-                    letter-spacing: -0.18px;
-                    line-height: 24px;
-                    mso-line-height-rule: exactly;
-                    text-decoration: none;
-                    vertical-align: top;
-                    width: 100%;
-                  "
-                >
-                  Tekan tombol atau salin link dibawah tombol ke browser untuk
-                  melakukan penggantian password.
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <a
-                    href="https://relact.codes/reset/{$dat['token_reset']}"
-                    style="
-                      margin-top: 36px;
-                      -ms-text-size-adjust: 100%;
-                      -ms-text-size-adjust: 100%;
-                      -webkit-font-smoothing: antialiased;
-                      -webkit-text-size-adjust: 100%;
-                      color: #ffffff;
-                      font-family: 'Postmates Std', 'Helvetica', -apple-system,
-                        BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-                        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
-                        'Helvetica Neue', sans-serif;
-                      font-size: 12px;
-                      font-smoothing: always;
-                      font-style: normal;
-                      font-weight: 600;
-                      letter-spacing: 0.7px;
-                      line-height: 48px;
-                      mso-line-height-rule: exactly;
-                      text-decoration: none;
-                      vertical-align: top;
-                      width: 220px;
-                      background-color: #00cc99;
-                      border-radius: 28px;
-                      display: block;
-                      text-align: center;
-                      text-transform: uppercase;
-                    "
-                    target="_blank"
-                    >Reset Password</a
-                  >
-                  <a href="https://relact.codes/reset/{$dat['token_reset']}">https://relact.codes/reset/{$dat['token_reset']}</a>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</body>
-`);
+      $body = $this->load->view('email/reset_password', ['username' => $dat['username'], 'token' => $dat['token_reset']], TRUE);
+      $this->email->message($body);
       $this->email->send();
     }
 
