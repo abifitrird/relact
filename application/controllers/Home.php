@@ -2,51 +2,57 @@
 
 class Home extends CI_Controller
 {
-    public function __construct()
-    {
-        parent::__construct();
-        $this->load->model("LoginModel", "Login");
+  public function __construct()
+  {
+    parent::__construct();
+    $this->load->model("LoginModel", "Login");
+  }
+
+  public function index()
+  {
+    if ($this->session->userdata('status') === 'login') {
+      if ($this->session->userdata('role') === 'guru') {
+        redirect(site_url('guru'));
+      } else if ($this->session->userdata('role') === 'siswa') {
+        redirect(site_url('siswa'));
+      }
+    } else {
+      redirect(site_url('login'));
     }
+  }
 
-    public function index()
-    {
-        if ($this->session->userdata('status') === 'login') {
-            if ($this->session->userdata('role') === 'guru') {
-                redirect(site_url('guru'));
-            } else if ($this->session->userdata('role') === 'siswa') {
-                redirect(site_url('siswa'));
-            }
-        } else {
-            redirect(site_url('login'));
-        }
-    }
+  public function page404()
+  {
+    echo "404 not found, cek kembali url yang diakses !";
+  }
 
-    public function page404()
-    {
-        echo "404 not found, cek kembali url yang diakses !";
-    }
+  public function faq()
+  {
+    $this->load->view('faq');
+  }
 
-    public function faq()
-    {
-        $this->load->view('faq');
-    }
+  public function kirim_request_password()
+  {
+    $config['charset'] = 'utf-8';
+    $config['priority'] = 5;
+    $config['mailtype'] = 'html';
+    $config['protocol'] = 'smtp';
+    $config['smtp_crypto'] = 'ssl';
+    $config['smtp_host'] = 'mail.relact.codes';
+    $config['smtp_port'] = '465';
+    $config['smtp_user'] = 'noreply@relact.codes';
+    $config['smtp_pass'] = 'M=9IF]Xm0@Yb';
 
-    public function kirim_request_password()
-    {
-        $config['charset'] = 'utf-8';
-        $config['priority'] = 5;
-        $config['mailtype'] = 'html';
-
-        $this->email->initialize($config);
-        $email = $this->input->post('email');
-        $dat = $this->Login->cek_email($email);
-        if ($dat['email'] == $email) {
-            $this->Login->update_token($dat['id']);
-            $this->email->from('noreply@relact.codes', "RELACT Automation");
-            $this->email->to($email);
-            $this->email->subject("(Relact) Request lupa password");
-            $this->email->set_header('Content-Type', 'text/html');
-            $this->email->message(`<head>
+    $this->email->initialize($config);
+    $email = $this->input->post('email');
+    $dat = $this->Login->cek_email($email);
+    if ($dat['email'] == $email) {
+      $this->Login->update_token($dat['id']);
+      $this->email->from('noreply@relact.codes', "RELACT Automation");
+      $this->email->to($email);
+      $this->email->subject("(Relact) Request lupa password");
+      $this->email->set_header('Content-Type', 'text/html');
+      $this->email->message(`<head>
   <title>[Relact] Reset password</title>
   <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
   <meta content="width=device-width" name="viewport" />
@@ -224,36 +230,36 @@ class Home extends CI_Controller
   </table>
 </body>
 `);
-            $this->email->send();
-        }
-
-        $this->session->set_flashdata('success', "Jika email anda benar, maka instruksi akan terkirim ke email.");
-        redirect(site_url('login'));
+      $this->email->send();
     }
 
-    public function reset($token)
-    {
-        $dat = $this->Login->cek_token($token);
-        if ($token == $dat['token_reset']) {
-            $this->load->view('reset_password', ['token' => $token]);
-        } else {
-            $this->session->set_flashdata('alert', "Token/link tidak berlaku !");
-            redirect(site_url('login'));
-        }
-    }
+    $this->session->set_flashdata('success', "Jika email anda benar, maka instruksi akan terkirim ke email.");
+    redirect(site_url('login'));
+  }
 
-    public function ubah($token)
-    {
-        $this->form_validation->set_rules('inputPassword', 'Password', 'trim|required');
-        $this->form_validation->set_rules('passwordConfirmation', 'Konfirmasi Password', 'trim|required|matches[inputPassword]');
-        if ($this->form_validation->run() == TRUE) {
-            $password = md5($this->input->post('inputPassword'));
-            $this->Login->ubah_password($token, $password);
-            $this->session->set_flashdata('success', "Password telah berhasil diubah, silahkan login dengan password baru.");
-            redirect(site_url('login'));
-        } else {
-            $this->session->set_flashdata('alert', "Password gagal diubah, coba kembali lain waktu !");
-            redirect(site_url('login'));
-        }
+  public function reset($token)
+  {
+    $dat = $this->Login->cek_token($token);
+    if ($token == $dat['token_reset']) {
+      $this->load->view('reset_password', ['token' => $token]);
+    } else {
+      $this->session->set_flashdata('alert', "Token/link tidak berlaku !");
+      redirect(site_url('login'));
     }
+  }
+
+  public function ubah($token)
+  {
+    $this->form_validation->set_rules('inputPassword', 'Password', 'trim|required');
+    $this->form_validation->set_rules('passwordConfirmation', 'Konfirmasi Password', 'trim|required|matches[inputPassword]');
+    if ($this->form_validation->run() == TRUE) {
+      $password = md5($this->input->post('inputPassword'));
+      $this->Login->ubah_password($token, $password);
+      $this->session->set_flashdata('success', "Password telah berhasil diubah, silahkan login dengan password baru.");
+      redirect(site_url('login'));
+    } else {
+      $this->session->set_flashdata('alert', "Password gagal diubah, coba kembali lain waktu !");
+      redirect(site_url('login'));
+    }
+  }
 }

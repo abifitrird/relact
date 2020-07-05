@@ -81,7 +81,7 @@
                     <form action="<?php echo site_url('lupa') ?>" method="POST">
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input type="text" class="form-control" id="email" name="email" placeholder="email@example.com">
+                            <input type="text" class="form-control" id="email" name="email" placeholder="email@example.com" autofocus>
                         </div>
                 </div>
                 <div class="modal-footer">
