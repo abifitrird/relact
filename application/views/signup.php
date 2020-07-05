@@ -41,6 +41,14 @@
                         <hr>
                         <form method="POST" class="d-flex flex-wrap row" action="<?php echo site_url("daftar"); ?>">
                             <div class="form-group col-12 col-lg-6">
+                                <label for="inputName">Nama</label>
+                                <input type="text" class="form-control" id="inputName" name="inputName" required>
+                            </div>
+                            <div class="form-group col-12 col-lg-6">
+                                <label for="inputNIS">NIS</label>
+                                <input type="text" class="form-control" id="inputNIS" name="inputNIS" required>
+                            </div>
+                            <div class="form-group col-12 col-lg-6">
                                 <label for="inputUsername">Username</label>
                                 <input type="text" class="form-control" id="inputUsername" name="inputUsername" required>
                             </div>

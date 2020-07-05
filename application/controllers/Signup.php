@@ -31,8 +31,51 @@ class Signup extends CI_Controller
 				redirect($_SERVER['HTTP_REFERER']);
 			}
 
-			$this->session->set_flashdata('success', 'Silahkan Login');
+			$this->load->model("ProfilModel", "Profil");
+			$this->load->model('LoginModel');
+			$user = $this->LoginModel->cek_email($data['email']);
+			$data = array(
+				'user_id' => $user['id'],
+				'nama_lengkap' => $this->input->post('inputName'),
+				'nomor_induk' => $this->input->post('inputNIS')
+			);
+			$this->Profil->updateProfil($data);
+
+			$this->kirim_email($data['username'], $data['email']);
+			$this->session->set_flashdata('success', 'Link verifikasi telah dikirim ke email. Konfirmasi telebih dahulu untuk bisa login.');
 			redirect(site_url('login'));
 		}
+	}
+
+	private function kirim_email($username, $email)
+	{
+		$config['protocol'] = 'smtp';
+		$config['smtp_host'] = 'smtp.sendgrid.net';
+		$config['smtp_port'] = '587';
+		$config['smtp_user'] = 'apikey';
+		$config['smtp_pass'] = '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';
+		$config['mailtype'] = 'html';
+		$config['priority'] = 5;
+		$config['charset'] = 'iso-8859-1';
+
+		$this->email->initialize($config);
+		$this->email->from('noreply@relact.codes', "RELACT Verifikasi Email");
+		$this->email->to($email);
+		$this->email->subject("(Relact) Verifikasi email");
+		$token = base64_encode($username . '-' . $email);
+		$body = $this->load->view('email/verifikasi', ['username' => $username, 'email' => $email, 'token' => $token], TRUE);
+		$this->email->message($body);
+		$this->email->send();
+	}
+
+	public function verifikasi($token)
+	{
+		$username = explode('-', base64_decode($token))[0];
+		$email = explode('-', base64_decode($token))[1];
+
+		$this->SignupModel->verifikasi_email($username, $email);
+
+		$this->session->set_flashdata('success', "Email anda telah diverifikasi. Silahkan login.");
+		redirect(site_url('login'));
 	}
 }

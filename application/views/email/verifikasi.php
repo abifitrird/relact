@@ -1,5 +1,5 @@
 <head>
-    <title>(Relact) Reset password</title>
+    <title>(Relact) Verifikasi email</title>
     <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
     <meta content="width=device-width" name="viewport" />
 </head>
@@ -37,7 +37,7 @@
                     mso-line-height-rule: exactly;
                     text-decoration: none;
                   ">
-                                    Reset your password
+                                    Verifikasi email
                                 </td>
                             </tr>
                             <tr>
@@ -78,7 +78,7 @@
                     text-decoration: none;
                     vertical-align: top;
                     width: 100%;
-                  ">Username: <?php echo $username ?><br />Anda menerima email ini karena permintaan reset password.
+                  ">Username: <?php echo $username ?> telah melakukan pendaftaran pada aplikasi <a href="https://relact.codes">RELACT</a> dengan email <?php echo $email ?>.
                                     Abaikan jika anda tidak melakukan permintaan tersebut.</td>
                             </tr>
                             <tr>
@@ -104,13 +104,13 @@
                     vertical-align: top;
                     width: 100%;
                   ">
-                                    Tekan tombol atau salin link dibawah tombol ke browser untuk
-                                    melakukan penggantian password.
+                                    Tekan tombol dibawah atau salin link yang berada dibawah tombol ke browser untuk
+                                    verifikasi email.
                                 </td>
                             </tr>
                             <tr>
                                 <td style="text-align: center;">
-                                    <a href="https://relact.codes/reset/<?php echo $token ?>" style="
+                                    <a href="https://relact.codes/verifikasi/<?php echo $token ?>" style="
                       margin-top: 36px;
                       -ms-text-size-adjust: 100%;
                       -ms-text-size-adjust: 100%;
@@ -136,8 +136,8 @@
                       display: block;
                       text-align: center;
                       text-transform: uppercase;
-                    " target="_blank">Reset Password</a><br />
-                                    <a href="https://relact.codes/reset/<?php echo $token ?>">https://relact.codes/reset/<?php echo $token ?> </a> </td>
+                    " target="_blank">Verifikasi email</a><br />
+                                    <a href="https://relact.codes/verifikasi/<?php echo $token ?>">https://relact.codes/verifikasi/<?php echo $token ?> </a> </td>
                             </tr>
                         </tbody>
                     </table>
