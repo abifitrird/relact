@@ -25,7 +25,7 @@ class Login extends CI_Controller
 		if ($cek > 0) {
 			$cek_role = $this->LoginModel->cek_login("users", $where)->row_array();
 			if (!$cek_role['is_email_confirmed']) {
-				$this->session->set_flashdata('alert', "Akun anda belum diverifikasi. Buka email dan klik link pada email untuk verifikasi akun.");
+				$this->session->set_flashdata('alert', "Anda perlu melakukan verifikasi akun. Silakan klik tautan yang telah kami kirim ke email Anda.");
 				redirect(site_url('login'));
 			}
 			// cek guru

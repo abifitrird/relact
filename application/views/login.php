@@ -55,7 +55,7 @@
                                     </div>
                                     <div class="align-center">
                                         <button type="submit" class="my-2 btn btn-primary" style="width: 100%">MASUK</button>
-                                        <p>Lupa password? <a href="#lupaPassword" data-toggle="modal">Reset</a></p>
+                                        <p><a href="#lupaPassword" data-toggle="modal">Lupa password?</a></p>
                                         <p>Belum punya akun? <a href="<?php echo site_url('daftar'); ?>">Daftar</a></p>
                                     </div>
                                 </form>
