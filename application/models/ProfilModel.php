@@ -15,7 +15,7 @@ class ProfilModel extends CI_Model
     }
     public function getProfil($id)
     {
-        $this->db->select('nomor_induk, nama_lengkap, nama_sekolah, detail_user.alamat, no_hp, url_foto');
+        $this->db->select('nomor_induk, (SELECT email FROM users WHERE users.id = user_id) as email, nama_lengkap, nama_sekolah, detail_user.alamat, no_hp, url_foto');
         $this->db->from('detail_user');
         $this->db->join('sekolah', 'detail_user.sekolah_id = sekolah.id', 'left');
         $this->db->where('user_id', $id);

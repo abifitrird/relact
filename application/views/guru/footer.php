@@ -6,9 +6,9 @@
         </div>
         <div class="col-md-4 offset-md-2">
             <strong>Informasi</strong><br>
-            <a href="<?php echo base_url("tentang") ?>" style="color: white">Tentang</a><br>
-            <a href="<?php echo base_url("saran") ?>" style=" color: white">Hubungi kami</a><br>
-            <a href="<?php echo base_url('faq') ?>" style=" color: white">FAQ</a>
+            <a href="<?php echo site_url("tentang") ?>" style="color: white">Tentang</a><br>
+            <a href="<?php echo site_url("guru/saran") ?>" style=" color: white">Hubungi kami</a><br>
+            <a href="<?php echo site_url('faq') ?>" style=" color: white">FAQ</a>
             <br>
             <p style="font-size: 10pt">
                 Copyright © 2020 Fitri Ratna Dewi All rights reserved.

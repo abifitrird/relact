@@ -28,27 +28,15 @@
         <h2>Hubungi Kami</h2>
     </header>
 
-    <div id="form" action="#" method="POST">
+    <div id="form">
 
         <div class="letter" id="letter"></div>
         <div class="letter" id="letter2"></div>
 
-        <form id="waterform" method="post">
-
-            <div class="formgroup" id="name-form">
-                <label for="name">Nama Lengkap*</label>
-                <input type="text" id="name" name="name" />
-            </div>
-
-            <div class="formgroup" id="email-form">
-                <label for="email">Alamat E-mail*</label>
-                <input type="email" id="email" name="email" />
-            </div>
-
+        <form id="waterform" action="<?php echo site_url('saran') ?>" method="POST">
             <div class="formgroup">
                 <label for="jenisPertanyaan">Jenis Pertanyaan*</label>
                 <select id="jenisPertanyaan" name="jenisPertanyaan" required>
-                    <option value="Pendaftaran">Login/Pendaftaran</option>
                     <option value="Fitur Sistem">Fitur Sistem</option>
                     <option value="Kritik dan Saran">Kritik dan Saran</option>
                     <option value="Lainnya">Lainnya</option>
@@ -57,7 +45,7 @@
 
             <div class="formgroup" id="message-form">
                 <label for="message">Pesan</label>
-                <textarea id="message" name="message"></textarea>
+                <textarea id="message" name="pesan"></textarea>
             </div>
 
             <input type="submit" value="Kirim" />

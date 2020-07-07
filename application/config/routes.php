@@ -74,6 +74,8 @@ $route['profil/ubah/password']['post'] = "Profil/updatePassword"; // change pass
 $route['profil/ubah']['post'] = "Profil/updateProfil"; // update profil
 $route['profil/ubah/foto']['post'] = 'Profil/ubahFotoProfil';
 
+$route['saran']['post'] = 'Saran/sendSaran';
+
 
 /* route guru */
 $route['guru']['get'] = "Teacher/Guru";                     // view guru beranda
