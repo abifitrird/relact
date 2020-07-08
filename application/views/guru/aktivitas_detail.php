@@ -50,7 +50,7 @@
                                     <th><?php echo $dat['nama'] ?></th>
                                     <th><?php echo $dat['username'] ?></th>
                                     <th><?php echo $dat['nis'] ?></th>
-                                    <th><a class="btn btn-primary" href="<?php echo site_url('guru/aktivitas/' . $this->uri->segment(3) . '/detail/' . urlencode($dat['username'])) ?>">Detail</a></th>
+                                    <th><a class="btn btn-primary" href="<?php echo site_url('guru/aktivitas/' . $this->uri->segment(3) . '/detail/' . $dat['username']) ?>">Detail</a></th>
                                 </tr>
                             <?php $i++;
                             } ?>
