@@ -62,7 +62,7 @@ class Signup extends CI_Controller
 		$this->email->from('noreply@relact.codes', "RELACT Verifikasi Email");
 		$this->email->to($email);
 		$this->email->subject("(Relact) Verifikasi email");
-		$token = base64_encode($username . '-' . $email);
+		$token = urlencode(base64_encode($username . '-' . $email));
 		$body = $this->load->view('email/verifikasi', ['username' => $username, 'email' => $email, 'token' => $token], TRUE);
 		$this->email->message($body);
 		$this->email->send();
@@ -70,8 +70,8 @@ class Signup extends CI_Controller
 
 	public function verifikasi($token)
 	{
-		$username = explode('-', base64_decode($token))[0];
-		$email = explode('-', base64_decode($token))[1];
+		$username = explode('-', base64_decode(urldecode($token)))[0];
+		$email = explode('-', base64_decode(urldecode($token)))[1];
 
 		$this->SignupModel->verifikasi_email($username, $email);
 
