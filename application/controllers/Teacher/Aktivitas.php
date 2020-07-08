@@ -32,8 +32,8 @@ class Aktivitas extends Base
 
     public function viewAktivitasSiswa($kelas_kode, $username)
     {
-        $data['user'] = $this->Aktivitas->getDataSiswa($username);
-        $data['data'] = $this->Aktivitas->getDataAktivitas($kelas_kode, $username);
+        $data['user'] = $this->Aktivitas->getDataSiswa(urldecode($username));
+        $data['data'] = $this->Aktivitas->getDataAktivitas($kelas_kode, urldecode($username));
         $kelas = $this->Kelas->getKelasByKode($kelas_kode);
         $this->breadcrumb->push('Guru', '/guru');
         $this->breadcrumb->push('Aktivitas', '/guru/aktivitas');
