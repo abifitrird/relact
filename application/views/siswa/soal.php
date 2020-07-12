@@ -133,17 +133,13 @@
             $('#boxJawabanPG').addClass('d-none');
             // setInterval(checkTimestamp(), 5000)
             const url = window.location.href
-            fetch(url + '/getSoal')
-                .then(response => response.json())
-                .then(function(data) {
-                    if (!localStorage.getItem('soal_populated')) {
-                        localStorage.setItem('soal_pg', JSON.stringify(data.pg));
-                        localStorage.setItem('soal_esai', JSON.stringify(data.esai));
-                    }
-                    localStorage.setItem('soal_populated', true);
-                    populateBtnSoal();
-                    setBtnSoal(0);
-                })
+            if (!localStorage.getItem('soal_populated')) {
+                localStorage.setItem('soal_pg', JSON.stringify(<?php echo $soal['pg'] ?>));
+                localStorage.setItem('soal_esai', JSON.stringify(<?php echo $soal['esai'] ?>));
+            }
+            localStorage.setItem('soal_populated', true);
+            populateBtnSoal();
+            setBtnSoal(0);
 
             function populateBtnSoal() {
                 const soal = JSON.parse(localStorage.getItem('soal_pg'));

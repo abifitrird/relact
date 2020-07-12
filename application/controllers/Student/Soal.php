@@ -25,13 +25,9 @@ class Soal extends Base
         $kode_materi = $exploded[0];
         $user_id = $exploded[1];
 
-        /* get soal and pilihan, then save to session. when this function called again, check if session with soal exist, if not generate again */
-        if ($this->session->userdata('soal_for_' . $user_id !== null)) {
-            $soal = $this->Soal->getSoalPGRandom($kode_materi);
-            $this->session->set_userdata('soal_for_' . $user_id, $soal);
-        }
-
-        $data['soal'] = $this->session->userdata('soal_for_' . $user_id);
+        $soal['pg'] = json_encode($this->Soal->getSoalPGRandom($kode_materi));
+        $soal['esai'] = json_encode($this->Soal->getSoalEsaiRandom($kode_materi));
+        $data['soal'] = $soal;
 
         $this->load->view('siswa/soal', $data);
     }
