@@ -12,7 +12,9 @@ class Signup extends CI_Controller
 
 	public function index()
 	{
-		$this->load->view('signup');
+		$this->session->set_flashdata('alert', 'Aplikasi untuk sementara tidak menerima pendaftaran baru !');
+		redirect(site_url('login'));
+		// $this->load->view('signup');
 	}
 	public function daftar()
 	{
