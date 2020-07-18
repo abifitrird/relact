@@ -43,8 +43,8 @@
 
         <div class="w3-col m6 w3-padding-large">
             <h1 class="w3-center">Tentang RELACT</h1><br>
-            <p class="w3-large">Recording Learning Activities (RELACT) adalah sebuah sistem manajemen pembelajaran yang merupakan gabungan dari teknologi media berbasis Cloud dengan metode Blended Learning.</p>
-            <p class="w3-large">Dengan adanya sistem manajemen pembelajaran ini memungkinkan siswa mengakses materi pembelajaran dari guru baik di dalam maupun di luar ruangan kelas. Selain itu, RELACT berperan sebagai pencatat aktivitas belajar siswa yang dapat membantu guru melakukan tugasnya dengan lebih mudah. Dengan menggunakan RELACT, belajar dapat dilakukan kapan saja dan di mana saja.</p>
+            <p class="w3-large">Recording Learning Activities (RELACT) adalah sebuah media yang merupakan gabungan dari teknologi media berbasis Cloud dengan metode Blended Learning.</p>
+            <p class="w3-large">Dengan adanya media ini memungkinkan siswa mengakses materi pembelajaran dari guru baik di dalam maupun di luar ruangan kelas. Selain itu, RELACT berperan sebagai pencatat aktivitas belajar siswa yang dapat membantu guru melakukan tugasnya dengan lebih mudah. Dengan menggunakan RELACT, belajar dapat dilakukan kapan saja dan di mana saja.</p>
             <p class="w3-large">Tujuan dirancangnya sistem ini adalah untuk mendukung proses belajar siswa, menyediakan media belajar, dan membantu asistensi proses belajar siswa.</p>
         </div>
     </div>
