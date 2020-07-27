@@ -42,8 +42,8 @@
                                 <th scope="col">No.</th>
                                 <th scope="col">Materi</th>
                                 <th scope="col">Submateri</th>
-                                <th scope="col">Jam mulai</th>
-                                <th scope="col">Jam akhir</th>
+                                <th scope="col">Waktu mulai</th>
+                                <th scope="col">Waktu akhir</th>
                                 <th scope="col">Durasi</th>
                             </tr>
                         </thead>

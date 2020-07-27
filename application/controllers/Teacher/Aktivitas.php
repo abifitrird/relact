@@ -56,8 +56,8 @@ class Aktivitas extends Base
 
         $spreadsheet->getActiveSheet()->setCellValue("A1", "Materi");
         $spreadsheet->getActiveSheet()->setCellValue("B1", "Submateri");
-        $spreadsheet->getActiveSheet()->setCellValue("C1", "Jam Mulai");
-        $spreadsheet->getActiveSheet()->setCellValue("D1", "Jam Akhir");
+        $spreadsheet->getActiveSheet()->setCellValue("C1", "Waktu Mulai");
+        $spreadsheet->getActiveSheet()->setCellValue("D1", "Waktu Akhir");
         $spreadsheet->getActiveSheet()->setCellValue("E1", "Durasi");
 
         $i = 2;
