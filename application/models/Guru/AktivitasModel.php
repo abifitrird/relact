@@ -22,7 +22,7 @@ class AktivitasModel extends CI_Model
     private function getDataMateri($kelas_kode, $user_id)
     {
 
-        return $this->db->query("SELECT id, url, kelas_id, (SELECT judul FROM materi WHERE materi.id = materi_id LIMIT 1) as judul_materi, (SELECT judul FROM sub_materi WHERE sub_materi.id = sub_materi_id LIMIT 1) as judul_submateri, created_at as mulai, (SELECT created_at FROM log_activity as log1 WHERE log1.user_id = log_master.user_id AND TIMEDIFF(log1.created_at, log_master.created_at) > 0 ORDER BY TIMEDIFF(log1.created_at, log_master.created_at) DESC LIMIT 1) as akhir, TIMEDIFF((SELECT created_at FROM log_activity as log1 WHERE log1.user_id = log_master.user_id AND TIMEDIFF(log1.created_at, log_master.created_at) > 0 ORDER BY TIMEDIFF(log1.created_at, log_master.created_at) DESC LIMIT 1), log_master.created_at) as durasi FROM `log_activity` as log_master WHERE user_id = $user_id AND kelas_id = (SELECT id FROM kelas WHERE kelas.code = '$kelas_kode' LIMIT 1) AND materi_id IS NOT NULL GROUP BY materi_id ORDER BY `created_at`  ASC")->result_array();
+        return $this->db->query("SELECT id, materi_id, url, kelas_id, (SELECT judul FROM materi WHERE materi.id = materi_id LIMIT 1) as judul_materi, (SELECT judul FROM sub_materi WHERE sub_materi.id = sub_materi_id LIMIT 1) as judul_submateri, created_at as mulai, (SELECT created_at FROM log_activity as log1 WHERE log1.user_id = log_master.user_id AND TIMEDIFF(log1.created_at, log_master.created_at) > 0 ORDER BY TIMEDIFF(log1.created_at, log_master.created_at) DESC LIMIT 1) as akhir FROM `log_activity` as log_master WHERE user_id = $user_id AND kelas_id = (SELECT id FROM kelas WHERE kelas.code = '$kelas_kode' LIMIT 1) AND materi_id IS NOT NULL GROUP BY materi_id ORDER BY `created_at`  ASC")->result_array();
     }
 
     private function getDataSoalMateri($kelas_kode, $user_id)
@@ -34,6 +34,11 @@ class AktivitasModel extends CI_Model
     {
 
         return $this->db->query("SELECT id, url, kelas_id, (SELECT judul FROM materi WHERE materi.id = materi_id LIMIT 1) as judul_materi, (SELECT judul FROM sub_materi WHERE sub_materi.id = sub_materi_id LIMIT 1) as judul_submateri, created_at as mulai, (SELECT created_at FROM log_activity as log1 WHERE log1.user_id = log_master.user_id AND TIMEDIFF(log1.created_at, log_master.created_at) > 0 ORDER BY TIMEDIFF(log1.created_at, log_master.created_at) LIMIT 1) as akhir, TIMEDIFF((SELECT created_at FROM log_activity as log1 WHERE log1.user_id = log_master.user_id AND TIMEDIFF(log1.created_at, log_master.created_at) > 0 ORDER BY TIMEDIFF(log1.created_at, log_master.created_at) LIMIT 1), log_master.created_at) as durasi FROM `log_activity` as log_master WHERE user_id = $user_id AND kelas_id = (SELECT id FROM kelas WHERE kelas.code = '$kelas_kode' LIMIT 1) AND sub_materi_id IS NOT NULL ORDER BY `created_at`  ASC")->result_array();
+    }
+
+    private function getSumDataSubMateri($kelas_kode, $materi_id, $user_id)
+    {
+        return $this->db->query("SELECT SEC_TO_TIME(SUM(TIME_TO_SEC(TIMEDIFF((SELECT created_at FROM log_activity as log1 WHERE log1.user_id = log_master.user_id AND TIMEDIFF(log1.created_at, log_master.created_at) > 0 ORDER BY TIMEDIFF(log1.created_at, log_master.created_at) LIMIT 1), log_master.created_at)))) as durasi FROM `log_activity` as log_master WHERE user_id = $user_id AND kelas_id = (SELECT id FROM kelas WHERE kelas.code = '$kelas_kode' LIMIT 1) AND materi_id = $materi_id AND sub_materi_id IS NOT NULL ORDER BY `created_at`  ASC")->row_array();
     }
 
     public function getDataAktivitas($kelas_kode, $username)
@@ -51,7 +56,7 @@ class AktivitasModel extends CI_Model
                 'submateri' => isset($mat['judul_submateri']) ? $mat['judul_submateri'] : null,
                 'mulai' => $mat['mulai'],
                 'akhir' => $mat['akhir'],
-                'durasi' => $mat['durasi']
+                'durasi' => $this->getSumDataSubMateri($kelas_kode, $mat['materi_id'], $user_id)['durasi']
             );
         }
 
