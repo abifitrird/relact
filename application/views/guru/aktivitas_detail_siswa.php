@@ -31,8 +31,8 @@
                         <td>:&nbsp;<?php echo isset($user['nis']) ? $user['nis'] : "Belum diisi"  ?></td>
                     </tr>
                     <tr>
-                        <th>Export to Excel</th>
-                        <td>:&nbsp;<a href="<?php echo site_url('guru/aktivitas/' . $this->uri->segment(3) . '/detail/' . $this->uri->segment(5) . '/generate') ?>">Generate</a></td>
+                        <th>Export Data</th>
+                        <td>:&nbsp;<a href="<?php echo site_url('guru/aktivitas/' . $this->uri->segment(3) . '/detail/' . $this->uri->segment(5) . '/generate') ?>">Export ke Excel</a></td>
                     </tr>
                 </table>
                 <div class="table-responsive">

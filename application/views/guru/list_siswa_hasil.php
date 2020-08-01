@@ -29,6 +29,10 @@
                         <th>Kelas</th>
                         <td>:&nbsp;<?php echo isset($kelas['nama']) ? $kelas['nama'] : "-"  ?></td>
                     </tr>
+                    <tr>
+                        <th>Export Data</th>
+                        <td>:&nbsp;<a href="<?php echo site_url('guru/hasil/' . $this->uri->segment(3) . '/materi/' . $this->uri->segment(5) . '/generate') ?>">Export ke Excel</a></td>
+                    </tr>
                 </table>
                 <div class="table-responsive">
                     <table class="table table-striped">

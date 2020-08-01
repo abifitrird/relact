@@ -121,6 +121,7 @@ $route['api/showlistsub/(:any)']['get'] = "Teacher/Materi/showListSubAPI/$1";
 $route['guru/hasil']['get'] = "Teacher/Hasil/viewHasilKerja";
 $route['guru/hasil/(:any)']['get'] = "Teacher/Hasil/viewHasilPerKelas/$1";
 $route['guru/hasil/(:any)/materi/(:any)']['get'] = "Teacher/Hasil/viewHasilPerMateri/$1/$2";
+$route['guru/hasil/(:any)/materi/(:any)/generate']['get'] = "Teacher/Hasil/exportNilaiToExcel/$1/$2";
 $route['guru/hasil/(:any)/materi/(:any)/PG/(:num)']['get'] = "Teacher/Hasil/viewJawabanSiswa/PG/$3/$2";
 $route['guru/hasil/(:any)/materi/(:any)/Esai/(:num)']['get'] = "Teacher/Hasil/viewJawabanSiswa/Esai/$3/$2";
 $route['api/simpan_nilai_esai/(:num)']['post'] = "Teacher/Hasil/postNilaiSiswa/$1";
