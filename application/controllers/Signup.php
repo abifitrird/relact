@@ -12,14 +12,13 @@ class Signup extends CI_Controller
 
 	public function index()
 	{
-		$this->session->set_flashdata('alert', 'Aplikasi untuk sementara tidak menerima pendaftaran baru !');
-		redirect(site_url('login'));
-		// $this->load->view('signup');
+		// $this->session->set_flashdata('alert', 'Aplikasi untuk sementara tidak menerima pendaftaran baru !');
+		// redirect(site_url('login'));
+		$this->load->view('signup');
 	}
 	public function daftar()
 	{
 		$this->form_validation->set_rules('inputUsername', 'Username', 'trim|required');
-		// $this->form_validation->set_rules('radioJabatan', 'Jabatan', 'trim|required');
 		$this->form_validation->set_rules('inputEmail', 'Email', 'trim|required');
 		$this->form_validation->set_rules('inputPassword', 'Password', 'trim|required');
 		$this->form_validation->set_rules('passwordConfirmation', 'Konfirmasi Password', 'trim|required|matches[inputPassword]');

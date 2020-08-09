@@ -33,8 +33,8 @@ class Login extends CI_Controller
 				$role = "guru";
 			} else if ($cek_role['role_id'] == 2) {
 				$role = "siswa";
-				$this->session->set_flashdata('alert', 'Aplikasi untuk sementara ditutup !');
-				redirect(site_url('login'));
+				// $this->session->set_flashdata('alert', 'Aplikasi untuk sementara ditutup !');
+				// redirect(site_url('login'));
 			}
 
 			$data_session = array(
